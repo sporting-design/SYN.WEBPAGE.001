@@ -1,0 +1,686 @@
+{% doc %}
+  @prompt
+    Create a conditional display block for a brand ambassador section that only shows on a specific page or tab called "ambassador team" and hides on all other pages including the home page. The block should check the current page or URL to determine visibility.
+
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% liquid
+  assign show_block = false
+  assign current_page_handle = page.handle | default: ''
+  assign current_template = template.name | default: ''
+  if block.settings.visibility_type == 'page_handle'
+    if current_page_handle == block.settings.target_page_handle
+      assign show_block = true
+    endif
+  elsif block.settings.visibility_type == 'url_contains'
+    if request.path contains block.settings.url_keyword
+      assign show_block = true
+    endif
+  elsif block.settings.visibility_type == 'template'
+    if current_template == block.settings.target_template
+      assign show_block = true
+    endif
+  endif
+%}
+
+{% if show_block %}
+  {% style %}
+    .ai-ambassador-section-{{ ai_gen_id }} {
+      padding: {{ block.settings.section_padding }}px 20px;
+      background-color: {{ block.settings.background_color }};
+      text-align: {{ block.settings.text_alignment }};
+    }
+
+    .ai-ambassador-container-{{ ai_gen_id }} {
+      max-width: {{ block.settings.max_width }}px;
+      margin: 0 auto;
+    }
+
+    .ai-ambassador-heading-{{ ai_gen_id }} {
+      font-size: {{ block.settings.heading_size }}px;
+      color: {{ block.settings.heading_color }};
+      margin: 0 0 {{ block.settings.heading_margin }}px 0;
+      font-weight: 600;
+    }
+
+    .ai-ambassador-description-{{ ai_gen_id }} {
+      font-size: {{ block.settings.text_size }}px;
+      color: {{ block.settings.text_color }};
+      margin: 0 0 {{ block.settings.content_spacing }}px 0;
+      line-height: 1.6;
+    }
+
+    .ai-ambassador-grid-{{ ai_gen_id }} {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax({{ block.settings.card_min_width }}px, 1fr));
+      gap: {{ block.settings.grid_gap }}px;
+      margin-top: {{ block.settings.content_spacing }}px;
+    }
+
+    .ai-ambassador-card-{{ ai_gen_id }} {
+      background-color: {{ block.settings.card_background }};
+      border-radius: {{ block.settings.card_border_radius }}px;
+      padding: {{ block.settings.card_padding }}px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+    }
+
+    .ai-ambassador-card-{{ ai_gen_id }}:hover {
+      transform: translateY(-2px);
+    }
+
+    .ai-ambassador-image-wrapper-{{ ai_gen_id }} {
+      width: {{ block.settings.image_size }}px;
+      height: {{ block.settings.image_size }}px;
+      margin: 0 auto {{ block.settings.image_margin }}px;
+      border-radius: 50%;
+      overflow: hidden;
+      background-color: #f4f4f4;
+    }
+
+    .ai-ambassador-image-{{ ai_gen_id }} {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .ai-ambassador-image-placeholder-{{ ai_gen_id }} {
+      width:100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;}
+
+    .ai-ambassador-image-placeholder-{{ ai_gen_id }} svg {
+      width: 60%;
+      height: 60%;
+      opacity: 0.3;
+    }
+
+    .ai-ambassador-name-{{ ai_gen_id }} {
+      font-size: {{ block.settings.name_size }}px;
+      color: {{ block.settings.name_color }};
+      font-weight: 600;
+      margin: 0 0 8px 0;
+    }
+
+    .ai-ambassador-title-{{ ai_gen_id }} {
+      font-size: {{ block.settings.title_size }}px;
+      color: {{ block.settings.title_color }};
+      margin: 0 0 12px 0;
+      font-style: italic;
+    }
+
+    .ai-ambassador-bio-{{ ai_gen_id }} {
+      font-size: {{ block.settings.bio_size }}px;
+      color: {{ block.settings.bio_color }};
+      line-height: 1.5;
+      margin: 0;
+    }
+
+    .ai-ambassador-empty-state-{{ ai_gen_id }} {
+      text-align: center;
+      padding: 40px 20px;
+      color: #666;
+      font-style: italic;
+    }
+
+    @media screen and (max-width: 768px) {
+      .ai-ambassador-grid-{{ ai_gen_id }} {
+        grid-template-columns: 1fr;
+      }
+      
+      .ai-ambassador-heading-{{ ai_gen_id }} {
+        font-size: calc({{ block.settings.heading_size }}px * 0.8);
+      }}
+  {% endstyle %}
+
+  <div class="ai-ambassador-section-{{ ai_gen_id }}" {{ block.shopify_attributes }}>
+    <div class="ai-ambassador-container-{{ ai_gen_id }}">
+      {% if block.settings.heading != blank %}
+        <h2 class="ai-ambassador-heading-{{ ai_gen_id }}">{{ block.settings.heading }}</h2>
+      {% endif %}
+
+      {% if block.settings.description != blank %}
+        <div class="ai-ambassador-description-{{ ai_gen_id }}">{{ block.settings.description }}</div>
+      {% endif %}
+
+      <div class="ai-ambassador-grid-{{ ai_gen_id }}">
+        {% for i in (1..6) %}
+          {% liquid
+            assign name_key = 'ambassador_' | append: i | append: '_name'
+            assign title_key = 'ambassador_' | append: i | append: '_title'
+            assign bio_key = 'ambassador_' | append: i | append: '_bio'
+            assign image_key = 'ambassador_' | append: i | append: '_image'
+            
+            assign ambassador_name = block.settings[name_key]
+            assign ambassador_title = block.settings[title_key]
+            assign ambassador_bio = block.settings[bio_key]
+            assign ambassador_image = block.settings[image_key]%}
+
+          {% if ambassador_name != blank or ambassador_title != blank or ambassador_bio != blank or ambassador_image != blank %}
+            <div class="ai-ambassador-card-{{ ai_gen_id }}">
+              <div class="ai-ambassador-image-wrapper-{{ ai_gen_id }}">
+                {% if ambassador_image %}
+                  <img
+                    src="{{ ambassador_image | image_url: width: 300}}"
+                    alt="{{ ambassador_name | escape }}"
+                    class="ai-ambassador-image-{{ ai_gen_id }}"
+                    loading="lazy"
+                width="300"
+                    height="300"
+                  >
+                {% else %}
+                  <div class="ai-ambassador-image-placeholder-{{ ai_gen_id }}">
+                    {{ 'image' | placeholder_svg_tag }}
+                  </div>
+                {% endif %}
+              </div>
+
+              {% if ambassador_name != blank %}
+                <h3 class="ai-ambassador-name-{{ ai_gen_id }}">{{ ambassador_name }}</h3>
+              {% endif %}
+
+              {% if ambassador_title != blank %}
+                <div class="ai-ambassador-title-{{ ai_gen_id }}">{{ ambassador_title }}</div>
+              {% endif %}
+
+              {% if ambassador_bio != blank %}
+                <div class="ai-ambassador-bio-{{ ai_gen_id }}">{{ ambassador_bio }}</div>
+              {% endif %}
+            </div>
+          {% endif %}
+        {% endfor %}
+
+        {% liquid
+          assign has_ambassadors = false
+          for i in (1..6)
+            assign name_key = 'ambassador_' | append: i | append: '_name'
+            assign title_key = 'ambassador_' | append: i | append: '_title'
+            assign bio_key = 'ambassador_' | append: i | append: '_bio'
+            assign image_key = 'ambassador_' | append: i | append: '_image'
+            
+            if block.settings[name_key] != blank or block.settings[title_key] != blank or block.settings[bio_key] != blank or block.settings[image_key] != blank
+              assign has_ambassadors = true
+              break
+            endif
+          endfor
+        %}
+
+        {% unless has_ambassadors %}
+          <div class="ai-ambassador-empty-state-{{ ai_gen_id }}">
+            Add ambassador information to display your team
+          </div>
+        {% endunless %}
+      </div>
+    </div>
+  </div>
+{% endif %}
+
+{% schema %}
+{
+  "name": "Brand ambassador section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Visibility settings"
+    },
+    {
+      "type": "select",
+      "id": "visibility_type",
+      "label": "Show on",
+      "options": [
+        {
+          "value": "page_handle",
+          "label": "Specific page"
+        },
+        {
+          "value": "url_contains",
+          "label": "URL contains keyword"
+        },
+        {
+          "value": "template",
+          "label": "Template type"
+        }
+      ],
+      "default": "page_handle"
+    },
+    {
+      "type": "text",
+      "id": "target_page_handle",
+      "label": "Page handle",
+      "default": "ambassador-team",
+      "info": "Enter the page handle (e.g., 'ambassador-team')"
+    },
+    {
+      "type": "text",
+      "id": "url_keyword",
+      "label": "URL keyword",
+      "default": "ambassador",
+      "info": "Show when URL contains this keyword"
+    },
+    {
+      "type": "select",
+      "id": "target_template",
+      "label": "Template",
+      "options": [
+        {
+          "value": "page",
+          "label": "Page"
+        },
+        {
+          "value": "collection",
+          "label": "Collection"
+        },
+        {
+          "value": "product",
+          "label": "Product"
+        },
+        {
+          "value": "blog",
+          "label": "Blog"
+        },
+        {
+          "value": "article",
+          "label": "Article"
+        }
+      ],
+      "default": "page"
+    },
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Our Ambassador Team"
+    },
+    {
+      "type": "richtext",
+      "id": "description",
+      "label": "Description",
+      "default": "<p>Meet the passionate individuals who represent our brand and share our values.</p>"
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "range",
+      "id": "max_width",
+      "min": 600,
+      "max": 1400,
+      "step": 50,
+      "unit": "px",
+      "label": "Maximum width",
+      "default": 1200
+    },
+    {
+      "type": "select",
+      "id": "text_alignment",
+      "label": "Text alignment",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "range",
+      "id": "section_padding",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "label": "Section padding",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "content_spacing",
+      "min": 10,
+      "max": 60,
+      "step": 5,
+      "unit": "px",
+      "label": "Content spacing",
+      "default": 30
+    },
+    {
+      "type": "range",
+      "id": "grid_gap",
+      "min": 10,
+      "max": 50,
+      "step": 5,
+      "unit": "px",
+      "label": "Grid gap",
+      "default": 30
+    },
+    {
+      "type": "range",
+      "id": "card_min_width",
+      "min": 200,
+      "max": 400,
+      "step": 20,
+      "unit": "px",
+      "label": "Card minimum width",
+      "default": 280
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text color",
+      "default": "#666666"
+    },
+    {
+      "type": "color",
+      "id": "card_background",
+      "label": "Card background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "header",
+      "content": "Typography"
+    },
+    {
+      "type": "range",
+      "id": "heading_size",
+      "min": 20,
+      "max": 60,
+      "step": 2,
+      "unit": "px",
+      "label": "Heading size",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "heading_margin",
+      "min": 10,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "label": "Heading margin",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "text_size",
+      "min": 12,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "label": "Description size",
+      "default": 16
+    },
+    {
+      "type": "header",
+      "content": "Card style"
+    },
+    {
+      "type": "range",
+      "id": "card_padding",
+      "min": 15,
+      "max": 40,
+      "step": 5,
+      "unit": "px",
+      "label": "Card padding",
+      "default": 25
+    },
+    {
+      "type": "range",
+      "id": "card_border_radius",
+      "min": 0,
+      "max": 20,
+      "step": 2,
+      "unit": "px",
+      "label": "Card border radius",
+      "default": 8
+    },
+    {
+      "type": "range",
+      "id": "image_size",
+      "min": 60,
+      "max": 150,
+      "step": 10,
+      "unit": "px",
+      "label": "Image size",
+      "default": 100
+    },
+    {
+      "type": "range",
+      "id": "image_margin",
+      "min": 10,
+      "max": 30,
+      "step": 2,
+      "unit": "px",
+      "label": "Image margin",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "name_size",
+      "min": 14,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "label": "Name size",
+      "default": 18
+    },
+    {
+      "type": "color",
+      "id": "name_color",
+      "label": "Name color",
+      "default": "#000000"
+    },
+    {
+      "type": "range",
+      "id": "title_size",
+      "min": 12,
+      "max": 18,
+      "step": 1,
+      "unit": "px",
+      "label": "Title size",
+      "default": 14
+    },
+    {
+      "type": "color",
+      "id": "title_color",
+      "label": "Title color",
+      "default": "#666666"
+    },
+    {
+      "type": "range",
+      "id": "bio_size",
+      "min": 12,
+      "max": 16,
+      "step": 1,
+      "unit": "px",
+      "label": "Bio size",
+      "default": 14
+    },
+    {
+      "type": "color",
+      "id": "bio_color",
+      "label": "Bio color",
+      "default": "#888888"
+    },
+    {
+      "type": "header",
+      "content": "Ambassador1"
+    },
+    {
+      "type": "text",
+      "id": "ambassador_1_name",
+      "label": "Name"
+    },
+    {
+      "type": "text",
+      "id": "ambassador_1_title",
+      "label": "Title"
+    },
+    {
+      "type": "textarea",
+      "id": "ambassador_1_bio",
+      "label": "Bio"
+    },
+    {
+      "type": "image_picker",
+      "id": "ambassador_1_image",
+      "label": "Image"
+    },
+    {
+      "type": "header",
+      "content": "Ambassador 2"
+    },
+    {
+      "type": "text",
+      "id": "ambassador_2_name",
+      "label": "Name"
+    },
+    {
+      "type": "text",
+      "id": "ambassador_2_title",
+      "label": "Title"
+    },
+    {
+      "type": "textarea",
+      "id": "ambassador_2_bio",
+      "label": "Bio"
+    },
+    {
+      "type": "image_picker",
+      "id": "ambassador_2_image",
+      "label": "Image"
+    },
+    {
+      "type": "header",
+      "content": "Ambassador 3"
+    },
+    {
+      "type": "text",
+      "id": "ambassador_3_name",
+      "label": "Name"
+    },
+    {
+      "type": "text",
+      "id": "ambassador_3_title",
+      "label": "Title"
+    },
+    {
+      "type": "textarea",
+      "id": "ambassador_3_bio",
+      "label": "Bio"
+    },
+    {
+      "type": "image_picker",
+      "id": "ambassador_3_image",
+      "label": "Image"
+    },
+    {
+      "type": "header",
+      "content": "Ambassador 4"
+    },
+    {
+      "type": "text",
+      "id": "ambassador_4_name",
+      "label": "Name"
+    },
+    {
+      "type": "text",
+      "id": "ambassador_4_title",
+      "label": "Title"
+    },
+    {
+      "type": "textarea",
+      "id": "ambassador_4_bio",
+      "label": "Bio"
+    },
+    {
+      "type": "image_picker",
+      "id": "ambassador_4_image",
+      "label": "Image"
+    },
+    {
+      "type": "header",
+      "content": "Ambassador 5"
+    },
+    {
+      "type": "text",
+      "id": "ambassador_5_name",
+      "label": "Name"
+    },
+    {
+      "type": "text",
+      "id": "ambassador_5_title",
+      "label": "Title"
+    },
+    {
+      "type": "textarea",
+      "id": "ambassador_5_bio",
+      "label": "Bio"
+    },
+    {
+      "type": "image_picker",
+      "id": "ambassador_5_image",
+      "label": "Image"
+    },
+    {
+      "type": "header",
+      "content": "Ambassador 6"
+    },
+    {
+      "type": "text",
+      "id": "ambassador_6_name",
+      "label": "Name"
+    },
+    {
+      "type": "text",
+      "id": "ambassador_6_title",
+      "label": "Title"
+    },
+    {
+      "type": "textarea",
+      "id": "ambassador_6_bio",
+      "label": "Bio"
+    },
+    {
+      "type": "image_picker",
+      "id": "ambassador_6_image",
+      "label": "Image"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Brand ambassador section"
+    }
+  ]
+}
+{% endschema %}

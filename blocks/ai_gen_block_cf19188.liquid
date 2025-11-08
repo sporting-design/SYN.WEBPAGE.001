@@ -1,0 +1,720 @@
+{% doc %}
+  @prompt
+    a place to upload transparent cut out images of athletes and then a text box for up 3 athletes/reviews, fill the section for it take up the same amount in horizontal width as the other contents, add a subheading between the stars and the full quote, so i can have a subheading quote from the athletes and then fully contextual review
+
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-athlete-reviews-{{ ai_gen_id }} {
+    padding: {{ block.settings.section_padding }}px 0;
+    background-color: {{ block.settings.background_color }};
+    width: 100%;
+  }
+
+  .ai-athlete-reviews__container-{{ ai_gen_id }} {
+    max-width: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0 20px;
+  }
+
+  .ai-athlete-reviews__heading-{{ ai_gen_id }} {
+    text-align: center;
+    margin-bottom: {{ block.settings.heading_margin }}px;
+    color: {{ block.settings.heading_color }};
+    font-size: {{ block.settings.heading_size }}px;
+  }
+
+  .ai-athlete-reviews__grid-{{ ai_gen_id }} {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: {{ block.settings.grid_gap }}px;
+    align-items: start;
+    width: 100%;
+  }
+
+  .ai-athlete-review-card-{{ ai_gen_id }} {
+    background-color: {{ block.settings.card_background }};
+    border-radius: {{ block.settings.card_border_radius }}px;
+    padding: {{ block.settings.card_padding }}px;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    width: 100%;
+    min-height: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+
+  .ai-athlete-review-card-{{ ai_gen_id }}:hover {
+    transform: translateY(-5px);
+  }
+
+  .ai-athlete-image-wrapper-{{ ai_gen_id }} {
+    width: {{ block.settings.image_width }}px;
+    height: {{ block.settings.image_height }}px;
+    margin: 0 auto {{ block.settings.image_margin }}px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .ai-athlete-image-{{ ai_gen_id }} {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center;
+  }
+
+  .ai-athlete-image-placeholder-{{ ai_gen_id }} {
+    width: 100%;
+    height: 100%;
+    background-color: #f8f9fa;
+    border: 2px dashed #dee2e6;
+    border-radius: {{ block.settings.image_border_radius }}px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+
+  .ai-athlete-image-placeholder-{{ ai_gen_id }} svg {
+    width: 60px;
+    height: 60px;
+    color: #6c757d;
+    margin-bottom: 8px;
+  }
+
+  .ai-athlete-empty-state-{{ ai_gen_id }} {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 12px;
+    color: #6c757d;
+    text-align: center;
+    pointer-events: none;
+  }
+
+  .ai-athlete-name-{{ ai_gen_id }} {
+    font-size: {{ block.settings.name_size }}px;
+    font-weight: 600;
+    color: {{ block.settings.name_color }};
+    margin-bottom: {{ block.settings.name_margin }}px;
+  }
+
+  .ai-athlete-sport-{{ ai_gen_id }} {
+    font-size: {{ block.settings.sport_size }}px;
+    color: {{ block.settings.sport_color }};
+    margin-bottom: {{ block.settings.sport_margin }}px;
+    font-style: italic;
+  }
+
+  .ai-athlete-rating-{{ ai_gen_id }} {
+    display: flex;
+    justify-content: center;
+    gap: 4px;
+    margin-bottom: {{ block.settings.rating_margin }}px;
+  }
+
+  .ai-athlete-star-{{ ai_gen_id }} {
+    width: {{ block.settings.star_size }}px;
+    height: {{ block.settings.star_size }}px;
+    color: {{ block.settings.star_color }};
+  }
+
+  .ai-athlete-star-empty-{{ ai_gen_id }} {
+    color: {{ block.settings.star_empty_color }};
+  }
+
+  .ai-athlete-quote-{{ ai_gen_id }} {
+    font-size: {{ block.settings.quote_size }}px;
+    font-weight: {{ block.settings.quote_weight }};
+    color: {{ block.settings.quote_color }};
+    margin-bottom: {{ block.settings.quote_margin }}px;
+    font-style: italic;
+    line-height: 1.4;
+  }
+
+  .ai-athlete-review-{{ ai_gen_id }} {
+    font-size: {{ block.settings.review_size }}px;
+    line-height: 1.6;
+    color: {{ block.settings.review_color }};
+    margin-bottom: {{ block.settings.review_margin }}px;flex-grow: 1;
+  }
+
+  @media screen and (max-width: 1024px) {
+    .ai-athlete-reviews__grid-{{ ai_gen_id }} {
+      grid-template-columns: repeat(2, 1fr);gap: {{ block.settings.grid_gap | times: 0.8 }}px;
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    .ai-athlete-reviews__grid-{{ ai_gen_id }} {
+      grid-template-columns: 1fr;
+      gap: {{ block.settings.grid_gap | times: 0.75 }}px;
+    }
+
+    .ai-athlete-image-wrapper-{{ ai_gen_id }} {
+      width: {{ block.settings.image_width | times: 0.8 }}px;
+      height: {{ block.settings.image_height | times: 0.8 }}px;
+    }
+
+    .ai-athlete-review-card-{{ ai_gen_id }} {
+      padding: {{ block.settings.card_padding | times: 0.8 }}px;
+      min-height: auto;
+    }
+
+    .ai-athlete-reviews__container-{{ ai_gen_id }} {
+      padding: 0 15px;
+    }
+  }
+{% endstyle %}
+
+<div class="ai-athlete-reviews-{{ ai_gen_id }}" {{ block.shopify_attributes }}>
+  <div class="ai-athlete-reviews__container-{{ ai_gen_id }}">
+    {% if block.settings.section_heading != blank %}
+      <h2 class="ai-athlete-reviews__heading-{{ ai_gen_id }}">
+        {{ block.settings.section_heading }}
+      </h2>
+    {% endif %}<div class="ai-athlete-reviews__grid-{{ ai_gen_id }}">
+      {% for i in (1..3) %}
+        {% liquid
+          assign athlete_image_key = 'athlete_' | append: i | append: '_image'
+          assign athlete_name_key = 'athlete_' | append: i | append: '_name'
+          assign athlete_sport_key = 'athlete_' | append: i | append: '_sport'
+          assign athlete_quote_key = 'athlete_' | append: i | append: '_quote'
+          assign athlete_review_key = 'athlete_' | append: i | append: '_review'
+          assign athlete_rating_key = 'athlete_' | append: i | append: '_rating'
+
+          assign athlete_image = block.settings[athlete_image_key]
+          assign athlete_name = block.settings[athlete_name_key]
+          assign athlete_sport = block.settings[athlete_sport_key]
+          assign athlete_quote = block.settings[athlete_quote_key]
+          assign athlete_review = block.settings[athlete_review_key]
+          assign athlete_rating = block.settings[athlete_rating_key]
+        %}<div class="ai-athlete-review-card-{{ ai_gen_id }}">
+          <div class="ai-athlete-image-wrapper-{{ ai_gen_id }}">
+            {% if athlete_image %}
+              <img
+                src="{{ athlete_image | image_url: width: block.settings.image_width, height: block.settings.image_height }}"
+                alt="{{ athlete_name | default: 'Athlete' | escape }}"
+                class="ai-athlete-image-{{ ai_gen_id }}"
+                loading="lazy"
+                width="{{ block.settings.image_width }}"
+                height="{{ block.settings.image_height }}"
+              >
+            {% else %}
+              <div class="ai-athlete-image-placeholder-{{ ai_gen_id }}">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                </svg><div class="ai-athlete-empty-state-{{ ai_gen_id }}">
+                  Add athlete photo
+                </div>
+              </div>
+            {% endif %}
+          </div>
+
+          {% if athlete_name != blank %}
+            <h3 class="ai-athlete-name-{{ ai_gen_id }}">{{ athlete_name }}</h3>
+          {% endif %}
+
+          {% if athlete_sport != blank %}
+            <div class="ai-athlete-sport-{{ ai_gen_id }}">{{ athlete_sport }}</div>
+          {% endif %}
+
+          {% if athlete_rating > 0 %}
+            <div class="ai-athlete-rating-{{ ai_gen_id }}">
+              {% for star in (1..5) %}
+                <svg
+                  class="ai-athlete-star-{{ ai_gen_id }} {% if star > athlete_rating %}ai-athlete-star-empty-{{ ai_gen_id }}{% endif %}"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                >
+                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                </svg>
+              {% endfor %}
+            </div>
+          {% endif %}
+
+          {% if athlete_quote != blank %}
+            <div class="ai-athlete-quote-{{ ai_gen_id }}">
+              "{{ athlete_quote }}"
+            </div>
+          {% endif %}
+
+          {% if athlete_review != blank %}
+            <div class="ai-athlete-review-{{ ai_gen_id }}">
+              {{ athlete_review }}
+            </div>
+          {% endif %}
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Athlete reviews",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section"
+    },
+    {
+      "type": "text",
+      "id": "section_heading",
+      "label": "Section heading",
+      "default": "What Athletes Say"
+    },
+    {
+      "type": "range",
+      "id": "section_padding",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "label": "Section padding",
+      "default": 60
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "range",
+      "id": "grid_gap",
+      "min": 10,
+      "max": 60,
+      "step": 5,
+      "unit": "px",
+      "label": "Grid gap",
+      "default": 30
+    },
+    {
+      "type": "color",
+      "id": "card_background",
+      "label": "Card background",
+      "default": "#f8f9fa"
+    },
+    {
+      "type": "range",
+      "id": "card_border_radius",
+      "min": 0,
+      "max": 30,
+      "step": 2,
+      "unit": "px",
+      "label": "Card border radius",
+      "default": 12
+    },
+    {
+      "type": "range",
+      "id": "card_padding",
+      "min": 15,
+      "max": 50,
+      "step": 5,
+      "unit": "px",
+      "label": "Card padding",
+      "default": 30
+    },
+    {
+      "type": "header",
+      "content": "Section heading"
+    },
+    {
+      "type": "range",
+      "id": "heading_size",
+      "min": 16,
+      "max": 48,
+      "step": 2,
+      "unit": "px",
+      "label": "Heading size",
+      "default": 32
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading color",
+      "default": "#000000"
+    },
+    {
+      "type": "range",
+      "id": "heading_margin",
+      "min": 10,
+      "max": 60,
+      "step": 5,
+      "unit": "px",
+      "label": "Heading margin bottom",
+      "default": 40
+    },
+    {
+      "type": "header",
+      "content": "Athlete images"
+    },
+    {
+      "type": "range",
+      "id": "image_width",
+      "min": 80,
+      "max": 200,
+      "step": 10,
+      "unit": "px",
+      "label": "Image width",
+      "default": 120
+    },
+    {
+      "type": "range",
+      "id": "image_height",
+      "min": 80,
+      "max": 200,
+      "step": 10,
+      "unit": "px",
+      "label": "Image height",
+      "default": 120
+    },
+    {
+      "type": "range",
+      "id": "image_border_radius",
+      "min": 0,
+      "max": 60,
+      "step": 5,
+      "unit": "px",
+      "label": "Image border radius",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "image_margin",
+      "min": 10,
+      "max": 40,
+      "step": 5,
+      "unit": "px",
+      "label": "Image margin bottom",
+      "default": 20
+    },
+    {
+      "type": "header",
+      "content": "Athlete names"
+    },
+    {
+      "type": "range",
+      "id": "name_size",
+      "min": 14,
+      "max": 28,
+      "step": 2,
+      "unit": "px",
+      "label": "Name size",
+      "default": 20
+    },
+    {
+      "type": "color",
+      "id": "name_color",
+      "label": "Name color",
+      "default": "#000000"
+    },
+    {
+      "type": "range",
+      "id": "name_margin",
+      "min": 5,
+      "max": 25,
+      "step": 5,
+      "unit": "px",
+      "label": "Name margin bottom",
+      "default": 10
+    },
+    {
+      "type": "header",
+      "content": "Sports"
+    },
+    {
+      "type": "range",
+      "id": "sport_size",
+      "min": 12,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "label": "Sport size",
+      "default": 14
+    },
+    {
+      "type": "color",
+      "id": "sport_color",
+      "label": "Sport color",
+      "default": "#666666"
+    },
+    {
+      "type": "range",
+      "id": "sport_margin",
+      "min": 5,
+      "max": 25,
+      "step": 5,
+      "unit": "px",
+      "label": "Sport margin bottom",
+      "default": 15
+    },
+    {
+      "type": "header",
+      "content": "Star ratings"
+    },
+    {
+      "type": "range",
+      "id": "star_size",
+      "min": 12,
+      "max": 24,
+      "step": 2,
+      "unit": "px",
+      "label": "Star size",
+      "default": 16
+    },
+    {
+      "type": "color",
+      "id": "star_color",
+      "label": "Star color",
+      "default": "#ffc107"
+    },
+    {
+      "type": "color",
+      "id": "star_empty_color",
+      "label": "Empty star color",
+      "default": "#e9ecef"
+    },
+    {
+      "type": "range",
+      "id": "rating_margin",
+      "min": 5,
+      "max": 25,
+      "step": 5,
+      "unit": "px",
+      "label": "Rating margin bottom",
+      "default": 15
+    },
+    {
+      "type": "header",
+      "content": "Quote highlights"
+    },
+    {
+      "type": "range",
+      "id": "quote_size",
+      "min": 14,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "label": "Quote size",
+      "default": 18
+    },
+    {
+      "type": "select",
+      "id": "quote_weight",
+      "label": "Quote weight",
+      "options": [
+        {
+          "value": "400",
+          "label": "Normal"
+        },
+        {
+          "value": "500",
+          "label": "Medium"
+        },
+        {
+          "value": "600",
+          "label": "Semi-bold"
+        },
+        {
+          "value": "700",
+          "label": "Bold"
+        }
+      ],
+      "default": "500"
+    },
+    {
+      "type": "color",
+      "id": "quote_color",
+      "label": "Quote color",
+      "default": "#2563eb"
+    },
+    {
+      "type": "range",
+      "id": "quote_margin",
+      "min": 5,
+      "max": 25,
+      "step": 5,
+      "unit": "px",
+      "label": "Quote margin bottom",
+      "default": 15
+    },
+    {
+      "type": "header",
+      "content": "Reviews"
+    },
+    {
+      "type": "range",
+      "id": "review_size",
+      "min": 12,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "label": "Review size",
+      "default": 16
+    },
+    {
+      "type": "color",
+      "id": "review_color",
+      "label": "Review color",
+      "default": "#333333"
+    },
+    {
+      "type": "range",
+      "id": "review_margin",
+      "min": 0,
+      "max": 25,
+      "step": 5,
+      "unit": "px",
+      "label": "Review margin bottom",
+      "default": 0
+    },
+    {
+      "type": "header",
+      "content": "Athlete 1"
+    },
+    {
+      "type": "image_picker",
+      "id": "athlete_1_image",
+      "label": "Athlete photo"
+    },
+    {
+      "type": "text",
+      "id": "athlete_1_name",
+      "label": "Athlete name",
+      "default": "Sarah Johnson"
+    },
+    {
+      "type": "text",
+      "id": "athlete_1_sport",
+      "label": "Sport",
+      "default": "Professional Runner"
+    },
+    {
+      "type": "range",
+      "id": "athlete_1_rating",
+      "min": 0,
+      "max": 5,
+      "step": 1,
+      "label": "Star rating",
+      "default": 5
+    },
+    {
+      "type": "text",
+      "id": "athlete_1_quote",
+      "label": "Quote highlight",
+      "default": "Game-changing performance gear!"
+    },
+    {
+      "type": "textarea",
+      "id": "athlete_1_review",
+      "label": "Full review",
+      "default": "These products have completely transformed my training routine. The quality and performance are unmatched, and I've seen significant improvements in my race times since switching to this gear."
+    },
+    {
+      "type": "header",
+      "content": "Athlete 2"
+    },
+    {
+      "type": "image_picker",
+      "id": "athlete_2_image",
+      "label": "Athlete photo"
+    },
+    {
+      "type": "text",
+      "id": "athlete_2_name",
+      "label": "Athlete name",
+      "default": "Mike Chen"
+    },
+    {
+      "type": "text",
+      "id": "athlete_2_sport",
+      "label": "Sport",
+      "default": "Olympic Swimmer"
+    },
+    {
+      "type": "range",
+      "id": "athlete_2_rating",
+      "min": 0,
+      "max": 5,
+      "step": 1,
+      "label": "Star rating",
+      "default": 5
+    },
+    {
+      "type": "text",
+      "id": "athlete_2_quote",
+      "label": "Quote highlight",
+      "default": "Incredible durability and comfort!"
+    },
+    {
+      "type": "textarea",
+      "id": "athlete_2_review",
+      "label": "Full review",
+      "default": "I've been using this gear for months and it's held up through intense training sessions. The comfort level is exceptional, and it performs just as well in competition as it does in practice."
+    },
+    {
+      "type": "header",
+      "content": "Athlete 3"
+    },
+    {
+      "type": "image_picker",
+      "id": "athlete_3_image",
+      "label": "Athlete photo"
+    },
+    {
+      "type": "text",
+      "id": "athlete_3_name",
+      "label": "Athlete name",
+      "default": "Emma Rodriguez"
+    },
+    {
+      "type": "text",
+      "id": "athlete_3_sport",
+      "label": "Sport",
+      "default": "Professional Tennis Player"
+    },
+    {
+      "type": "range",
+      "id": "athlete_3_rating",
+      "min": 0,
+      "max": 5,
+      "step": 1,
+      "label": "Star rating",
+      "default": 5
+    },
+    {
+      "type": "text",
+      "id": "athlete_3_quote",
+      "label": "Quote highlight",
+      "default": "Essential for my professional game!"
+    },
+    {
+      "type": "textarea",
+      "id": "athlete_3_review",
+      "label": "Full review",
+      "default": "The comfort and durability of these products are exceptional. They've become an essential part of my game, providing the support and performance I need at the highest level of competition."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Athlete reviews"
+    }
+  ]
+}
+{% endschema %}

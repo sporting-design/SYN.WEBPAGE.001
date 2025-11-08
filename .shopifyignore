@@ -1,0 +1,25 @@
+# Shopify ignore file
+# Files and directories to exclude from Shopify theme uploads
+
+.DS_Store
+.git/
+.gitignore
+node_modules/
+*.log
+.env
+.env.local
+.shopify/
+*.zip
+*.tar.gz
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS files
+Thumbs.db
+desktop.ini
+

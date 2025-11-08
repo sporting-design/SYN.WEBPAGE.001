@@ -1,0 +1,309 @@
+{% doc %}
+  @prompt
+    create slim header banner where i can pit text in the center of it
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-slim-banner-{{ ai_gen_id }} {
+    width: 100%;
+    padding: {{ block.settings.padding_vertical }}px 20px;
+    background-color: {{ block.settings.background_color }};
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .ai-slim-banner-content-{{ ai_gen_id }} {
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+  }
+
+  .ai-slim-banner-text-{{ ai_gen_id }} {
+    color: {{ block.settings.text_color }};
+    font-size: {{ block.settings.font_size }}px;
+    font-family: {{ block.settings.font_family.family }}, {{ block.settings.font_family.fallback_families }};
+    font-weight: {{ block.settings.font_weight }};
+    line-height: 1.4;
+    margin: 0;
+    {% if block.settings.text_transform == 'uppercase' %}
+      text-transform: uppercase;
+    {% endif %}
+    {% if block.settings.letter_spacing != 'normal' %}
+      letter-spacing: {{ block.settings.letter_spacing }};
+    {% endif %}
+  }
+
+  .ai-slim-banner-link-{{ ai_gen_id }} {
+    color: inherit;
+    text-decoration: none;
+    display: block;
+    transition: opacity 0.3s ease;
+  }
+
+  .ai-slim-banner-link-{{ ai_gen_id }}:hover {
+    opacity: 0.8;
+  }
+
+  {% if block.settings.show_close_button %}
+    .ai-slim-banner-close-{{ ai_gen_id }} {
+      position: absolute;
+      top: 50%;
+      right: 20px;
+      transform: translateY(-50%);
+      background: none;
+      border: none;
+      color: {{ block.settings.text_color }};
+      cursor: pointer;
+      padding: 5px;
+      opacity: 0.7;
+      transition: opacity 0.3s ease;
+      z-index: 3;
+    }
+
+    .ai-slim-banner-close-{{ ai_gen_id }}:hover {
+      opacity: 1;
+    }
+
+    .ai-slim-banner-close-{{ ai_gen_id }} svg {
+      width: 16px;
+      height: 16px;
+    }
+  {% endif %}
+
+  @media screen and (max-width: 749px) {
+    .ai-slim-banner-{{ ai_gen_id }} {
+      padding: {{ block.settings.padding_vertical | times: 0.8 }}px 15px;
+    }
+
+    .ai-slim-banner-text-{{ ai_gen_id }} {
+      font-size: {{ block.settings.font_size | times: 0.9 }}px;
+    }
+
+    {% if block.settings.show_close_button %}
+      .ai-slim-banner-close-{{ ai_gen_id }} {
+        right: 15px;
+      }
+    {% endif %}
+  }
+{% endstyle %}
+
+<slim-banner-{{ ai_gen_id }}
+  class="ai-slim-banner-{{ ai_gen_id }}"
+  {{ block.shopify_attributes }}
+  {% if block.settings.show_close_button %}data-dismissible{% endif %}
+>
+  <div class="ai-slim-banner-content-{{ ai_gen_id }}">
+    {% if block.settings.banner_link != blank %}
+      <a href="{{ block.settings.banner_link }}" class="ai-slim-banner-link-{{ ai_gen_id }}">
+        <div class="ai-slim-banner-text-{{ ai_gen_id }}">
+          {{ block.settings.banner_text }}
+        </div>
+      </a>
+    {% else %}
+      <div class="ai-slim-banner-text-{{ ai_gen_id }}">
+        {{ block.settings.banner_text }}
+      </div>
+    {% endif %}
+  </div>
+
+  {% if block.settings.show_close_button %}
+    <button
+      class="ai-slim-banner-close-{{ ai_gen_id }}"
+      aria-label="Close banner"
+      type="button"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <line x1="18" y1="6" x2="6" y2="18"></line>
+        <line x1="6" y1="6" x2="18" y2="18"></line>
+      </svg>
+    </button>
+  {% endif %}
+</slim-banner-{{ ai_gen_id }}>
+
+{% if block.settings.show_close_button %}
+  <script>
+    (function() {
+      class SlimBanner{{ ai_gen_id }} extends HTMLElement {
+        constructor() {
+          super();
+        }
+
+        connectedCallback() {
+          this.closeButton = this.querySelector('.ai-slim-banner-close-{{ ai_gen_id }}');
+          
+          if (this.closeButton) {
+            this.closeButton.addEventListener('click', this.handleClose.bind(this));
+          }
+
+          this.checkStoredState();
+        }
+
+        handleClose() {
+          this.style.display = 'none';
+          localStorage.setItem('banner-{{ ai_gen_id }}-dismissed', 'true');
+        }
+
+        checkStoredState() {
+          const isDismissed = localStorage.getItem('banner-{{ ai_gen_id }}-dismissed');
+          if (isDismissed === 'true') {
+            this.style.display = 'none';
+          }
+        }
+      }
+
+      customElements.define('slim-banner-{{ ai_gen_id }}', SlimBanner{{ ai_gen_id }});
+    })();
+  </script>
+{% endif %}
+
+{% schema %}
+{
+  "name": "Slim header banner",
+  "tag": null,
+  "settings": [
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "banner_text",
+      "label": "Banner text",
+      "default": "Free shipping on orders over $50"
+    },
+    {
+      "type": "url",
+      "id": "banner_link",
+      "label": "Banner link"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_close_button",
+      "label": "Show close button",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Style"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background color",
+      "default": "#2563eb"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "padding_vertical",
+      "min": 8,
+      "max": 30,
+      "step": 2,
+      "unit": "px",
+      "label": "Vertical padding",
+      "default": 12
+    },
+    {
+      "type": "header",
+      "content": "Typography"
+    },
+    {
+      "type": "font_picker",
+      "id": "font_family",
+      "label": "Font",
+      "default": "barlow_condensed_n6"
+    },
+    {
+      "type": "range",
+      "id": "font_size",
+      "min": 12,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "label": "Font size",
+      "default": 14
+    },
+    {
+      "type": "select",
+      "id": "font_weight",
+      "label": "Font weight",
+      "options": [
+        {
+          "value": "400",
+          "label": "Normal"
+        },
+        {
+          "value": "500",
+          "label": "Medium"
+        },
+        {
+          "value": "600",
+          "label": "Semi-bold"
+        },
+        {
+          "value": "700",
+          "label": "Bold"
+        }
+      ],
+      "default": "600"
+    },
+    {
+      "type": "select",
+      "id": "text_transform",
+      "label": "Text case",
+      "options": [
+        {
+          "value": "none",
+          "label": "Default"
+        },
+        {
+          "value": "uppercase",
+          "label": "Uppercase"
+        }
+      ],
+      "default": "uppercase"
+    },
+    {
+      "type": "select",
+      "id": "letter_spacing",
+      "label": "Letter spacing",
+      "options": [
+        {
+          "value": "normal",
+          "label": "Normal"
+        },
+        {
+          "value": "0.5px",
+          "label": "Tight"
+        },
+        {
+          "value": "1px",
+          "label": "Loose"
+        }
+      ],
+      "default": "0.5px"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Slim header banner"
+    }
+  ]
+}
+{% endschema %}

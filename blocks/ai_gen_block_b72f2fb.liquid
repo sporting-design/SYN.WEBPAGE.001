@@ -1,0 +1,560 @@
+{% doc %}
+  @prompt
+    looking to create a survey for athletes to sign up to be ambassadors for my companys brand, create a input forum which when submitted gets uploaded and sent to my sporting@synapex.store email
+
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-ambassador-survey-{{ ai_gen_id }} {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: {{ block.settings.form_padding }}px;
+    background-color: {{ block.settings.background_color }};
+    border-radius: {{ block.settings.border_radius }}px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);}
+
+  .ai-ambassador-survey__header-{{ ai_gen_id }} {
+    text-align: center;
+    margin-bottom: 32px;
+  }
+
+  .ai-ambassador-survey__title-{{ ai_gen_id }} {
+    color: {{ block.settings.heading_color }};
+    font-size: {{ block.settings.heading_size }}px;
+    margin: 0 0 16px 0;
+    font-weight: 600;
+  }
+
+  .ai-ambassador-survey__description-{{ ai_gen_id }} {
+    color: {{ block.settings.text_color }};
+    font-size: {{ block.settings.text_size }}px;
+    line-height: 1.5;
+    margin: 0;
+  }
+
+  .ai-ambassador-survey__form-{{ ai_gen_id }} {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .ai-ambassador-survey__field-group-{{ ai_gen_id }} {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .ai-ambassador-survey__label-{{ ai_gen_id }} {
+    color: {{ block.settings.label_color }};
+    font-size: 14px;
+    font-weight: 500;
+  }
+
+  .ai-ambassador-survey__required-{{ ai_gen_id }} {
+    color: {{ block.settings.required_color }};
+  }
+
+  .ai-ambassador-survey__input-{{ ai_gen_id }},
+  .ai-ambassador-survey__select-{{ ai_gen_id }},
+  .ai-ambassador-survey__textarea-{{ ai_gen_id }} {
+    padding: 12px 16px;
+    border: 1px solid {{ block.settings.input_border_color }};
+    border-radius: {{ block.settings.input_border_radius }}px;
+    background-color: {{ block.settings.input_background_color }};
+    color: {{ block.settings.input_text_color }};
+    font-size: 14px;
+    transition: border-color 0.3s ease;
+  }
+
+  .ai-ambassador-survey__input-{{ ai_gen_id }}:focus,
+  .ai-ambassador-survey__select-{{ ai_gen_id }}:focus,
+  .ai-ambassador-survey__textarea-{{ ai_gen_id }}:focus {
+    outline: none;
+    border-color: {{ block.settings.input_focus_color }};
+  }
+
+  .ai-ambassador-survey__textarea-{{ ai_gen_id }} {
+    min-height: 100px;
+    resize: vertical;
+  }
+
+  .ai-ambassador-survey__checkbox-group-{{ ai_gen_id }} {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .ai-ambassador-survey__checkbox-{{ ai_gen_id }} {
+    margin-top: 2px;
+  }
+
+  .ai-ambassador-survey__checkbox-label-{{ ai_gen_id }} {
+    color: {{ block.settings.text_color }};
+    font-size: 14px;
+    line-height: 1.4;
+    cursor: pointer;}
+
+  .ai-ambassador-survey__submit-{{ ai_gen_id }} {
+    padding: 16px 32px;
+    background-color: {{ block.settings.button_color }};
+    color: {{ block.settings.button_text_color }};
+    border: none;
+    border-radius: {{ block.settings.button_border_radius }}px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease;margin-top: 16px;
+  }
+
+  .ai-ambassador-survey__submit-{{ ai_gen_id }}:hover {
+    background-color: {{ block.settings.button_hover_color }};
+  }
+
+  .ai-ambassador-survey__success-{{ ai_gen_id }} {
+    color: {{ block.settings.success_color }};
+    background-color: {{ block.settings.success_background }};
+    padding: 16px;
+    border-radius: {{ block.settings.input_border_radius }}px;
+    text-align: center;
+    font-weight: 500;
+  }
+
+  .ai-ambassador-survey__error-{{ ai_gen_id }} {
+    color: {{ block.settings.error_color }};
+    background-color: {{ block.settings.error_background }};
+    padding: 16px;
+    border-radius: {{ block.settings.input_border_radius }}px;
+    text-align: center;
+    font-weight: 500;
+  }
+
+  @media screen and (max-width: 749px) {
+    .ai-ambassador-survey-{{ ai_gen_id }} {
+      padding: {{ block.settings.form_padding | times: 0.75}}px;
+    }
+
+    .ai-ambassador-survey__title-{{ ai_gen_id }} {
+      font-size: {{ block.settings.heading_size | times: 0.85 }}px;
+    }
+  }
+{% endstyle %}
+
+<div class="ai-ambassador-survey-{{ ai_gen_id }}" {{ block.shopify_attributes }}>
+  <div class="ai-ambassador-survey__header-{{ ai_gen_id }}">
+    {% if block.settings.heading != blank %}
+      <h2 class="ai-ambassador-survey__title-{{ ai_gen_id }}">{{ block.settings.heading }}</h2>
+    {% endif %}
+    {% if block.settings.description != blank %}
+      <div class="ai-ambassador-survey__description-{{ ai_gen_id }}">{{ block.settings.description }}</div>
+    {% endif %}
+  </div>
+
+  {% form 'contact' %}
+    <input type="hidden" name="contact[subject]" value="Brand Ambassador Application">
+    <input type="hidden" name="contact[tags]" value="ambassador,application">
+    <div class="ai-ambassador-survey__form-{{ ai_gen_id }}">
+      {% if form.posted_successfully? %}
+        <div class="ai-ambassador-survey__success-{{ ai_gen_id }}">
+          {{ block.settings.success_message }}
+        </div>
+      {% else %}
+        {% if form.errors %}
+          <div class="ai-ambassador-survey__error-{{ ai_gen_id }}">
+            {{ form.errors.messages.email | default: 'Please check your information and try again.' }}
+          </div>
+        {% endif %}
+
+        <div class="ai-ambassador-survey__field-group-{{ ai_gen_id }}">
+          <label class="ai-ambassador-survey__label-{{ ai_gen_id }}" for="full-name-{{ ai_gen_id }}">
+            Full Name <span class="ai-ambassador-survey__required-{{ ai_gen_id }}">*</span>
+          </label>
+          <input
+            type="text"
+            id="full-name-{{ ai_gen_id }}"
+            name="contact[full_name]"
+            class="ai-ambassador-survey__input-{{ ai_gen_id }}"
+            required
+            value="{{ form.full_name }}"
+          >
+        </div>
+
+        <div class="ai-ambassador-survey__field-group-{{ ai_gen_id }}">
+          <label class="ai-ambassador-survey__label-{{ ai_gen_id }}" for="email-{{ ai_gen_id }}">
+            Email Address <span class="ai-ambassador-survey__required-{{ ai_gen_id }}">*</span>
+          </label>
+          <input
+            type="email"
+            id="email-{{ ai_gen_id }}"
+            name="contact[email]"
+            class="ai-ambassador-survey__input-{{ ai_gen_id }}"
+            required
+            value="{{ form.email }}"
+          >
+        </div>
+
+        <div class="ai-ambassador-survey__field-group-{{ ai_gen_id }}">
+          <label class="ai-ambassador-survey__label-{{ ai_gen_id }}" for="phone-{{ ai_gen_id }}">
+            Phone Number
+          </label>
+          <input
+            type="tel"
+            id="phone-{{ ai_gen_id }}"
+            name="contact[phone]"
+            class="ai-ambassador-survey__input-{{ ai_gen_id }}"
+            value="{{ form.phone }}"
+          >
+        </div>
+
+        <div class="ai-ambassador-survey__field-group-{{ ai_gen_id }}">
+          <label class="ai-ambassador-survey__label-{{ ai_gen_id }}" for="age-{{ ai_gen_id }}">
+            Age <span class="ai-ambassador-survey__required-{{ ai_gen_id }}">*</span>
+          </label>
+          <input
+            type="number"
+            id="age-{{ ai_gen_id }}"
+            name="contact[age]"
+            class="ai-ambassador-survey__input-{{ ai_gen_id }}"
+            min="16"
+            max="99"
+            required
+            value="{{ form.age }}"
+          >
+        </div>
+
+        <div class="ai-ambassador-survey__field-group-{{ ai_gen_id }}">
+          <label class="ai-ambassador-survey__label-{{ ai_gen_id }}" for="sport-{{ ai_gen_id }}">
+            Primary Sport <span class="ai-ambassador-survey__required-{{ ai_gen_id }}">*</span>
+          </label>
+          <select
+            id="sport-{{ ai_gen_id }}"
+            name="contact[primary_sport]"
+            class="ai-ambassador-survey__select-{{ ai_gen_id }}"
+            required
+          >
+            <option value="">Select your primary sport</option><option value="Basketball">Basketball</option>
+            <option value="Football">Football</option>
+            <option value="Soccer">Soccer</option>
+            <option value="Baseball">Baseball</option>
+            <option value="Tennis">Tennis</option>
+            <option value="Swimming">Swimming</option>
+            <option value="Track and Field">Track and Field</option>
+            <option value="Volleyball">Volleyball</option>
+            <option value="Golf">Golf</option>
+            <option value="Hockey">Hockey</option>
+            <option value="Wrestling">Wrestling</option>
+            <option value="Gymnastics">Gymnastics</option>
+            <option value="CrossFit">CrossFit</option>
+            <option value="Martial Arts">Martial Arts</option>
+            <option value="Cycling">Cycling</option>
+            <option value="Running">Running</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
+
+        <div class="ai-ambassador-survey__field-group-{{ ai_gen_id }}">
+          <label class="ai-ambassador-survey__label-{{ ai_gen_id }}" for="competition-level-{{ ai_gen_id }}">
+            Competition Level <span class="ai-ambassador-survey__required-{{ ai_gen_id }}">*</span>
+          </label>
+          <select
+            id="competition-level-{{ ai_gen_id }}"
+            name="contact[competition_level]"
+            class="ai-ambassador-survey__select-{{ ai_gen_id }}"
+            required
+          >
+            <option value="">Select your level</option>
+            <option value="High School">High School</option>
+            <option value="College/University">College/University</option>
+            <option value="Semi-Professional">Semi-Professional</option>
+            <option value="Professional">Professional</option>
+            <option value="Amateur/Recreational">Amateur/Recreational</option>
+            <option value="Club/Local League">Club/Local League</option>
+          </select>
+        </div>
+
+        <div class="ai-ambassador-survey__field-group-{{ ai_gen_id }}">
+          <label class="ai-ambassador-survey__label-{{ ai_gen_id }}" for="social-media-{{ ai_gen_id }}">
+            Social Media Handles
+          </label>
+          <textarea
+            id="social-media-{{ ai_gen_id }}"
+            name="contact[social_media]"
+            class="ai-ambassador-survey__textarea-{{ ai_gen_id }}"
+            placeholder="Instagram: @username, TikTok: @username, etc."
+          >{{ form.social_media }}</textarea>
+        </div>
+
+        <div class="ai-ambassador-survey__field-group-{{ ai_gen_id }}">
+          <label class="ai-ambassador-survey__label-{{ ai_gen_id }}" for="achievements-{{ ai_gen_id }}">
+            Athletic Achievements & Experience
+          </label>
+          <textarea
+            id="achievements-{{ ai_gen_id }}"
+            name="contact[achievements]"
+            class="ai-ambassador-survey__textarea-{{ ai_gen_id }}"
+            placeholder="Tell us about your athletic background, achievements, awards, and experience..."
+          >{{ form.achievements }}</textarea>
+        </div>
+
+        <div class="ai-ambassador-survey__field-group-{{ ai_gen_id }}">
+          <label class="ai-ambassador-survey__label-{{ ai_gen_id }}" for="why-ambassador-{{ ai_gen_id }}">
+            Why do you want to be a brand ambassador? <span class="ai-ambassador-survey__required-{{ ai_gen_id }}">*</span>
+          </label>
+          <textarea
+            id="why-ambassador-{{ ai_gen_id }}"
+            name="contact[why_ambassador]"
+            class="ai-ambassador-survey__textarea-{{ ai_gen_id }}"
+            placeholder="Tell us what motivates you to represent our brand and how you align with our values..."required
+          >{{ form.why_ambassador }}</textarea>
+        </div>
+
+        <div class="ai-ambassador-survey__field-group-{{ ai_gen_id }}">
+          <label class="ai-ambassador-survey__label-{{ ai_gen_id }}" for="marketing-ideas-{{ ai_gen_id }}">
+            How would you promote our brand?
+          </label>
+          <textarea
+            id="marketing-ideas-{{ ai_gen_id }}"
+            name="contact[marketing_ideas]"
+            class="ai-ambassador-survey__textarea-{{ ai_gen_id }}"
+            placeholder="Share your ideas for promoting our brand through social media, events, or other channels..."
+          >{{ form.marketing_ideas }}</textarea>
+        </div>
+
+        <div class="ai-ambassador-survey__checkbox-group-{{ ai_gen_id }}">
+          <input
+            type="checkbox"
+            id="terms-{{ ai_gen_id }}"
+            name="contact[terms_accepted]"
+            class="ai-ambassador-survey__checkbox-{{ ai_gen_id }}"
+            value="yes"
+            required
+          >
+          <label for="terms-{{ ai_gen_id }}" class="ai-ambassador-survey__checkbox-label-{{ ai_gen_id }}">
+            I agree to the terms and conditions and understand that this application does not guarantee acceptance into the ambassador program.<span class="ai-ambassador-survey__required-{{ ai_gen_id }}">*</span>
+          </label>
+        </div>
+
+        <button type="submit" class="ai-ambassador-survey__submit-{{ ai_gen_id }}">
+          {{ block.settings.submit_button_text }}
+        </button>
+      {% endif %}
+    </div>
+  {% endform %}
+</div>
+
+{% schema %}
+{
+  "name": "Ambassador survey form",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Form heading",
+      "default": "Brand Ambassador Application"
+    },
+    {
+      "type": "richtext",
+      "id": "description",
+      "label": "Form description",
+      "default": "<p>Join our team of athlete ambassadors and represent our brand. Share your passion for sports and help us inspire others.</p>"
+    },
+    {
+      "type": "text",
+      "id": "submit_button_text",
+      "label": "Submit button text",
+      "default": "Submit Application"
+    },
+    {
+      "type": "richtext",
+      "id": "success_message",
+      "label": "Success message",
+      "default": "<p>Thank you for your application! We'll review your submission and get back to you within 5-7 business days.</p>"
+    },
+    {
+      "type": "header",
+      "content": "Form styling"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "form_padding",
+      "min": 20,
+      "max": 60,
+      "step": 4,
+      "unit": "px",
+      "label": "Form padding",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "border_radius",
+      "min": 0,
+      "max": 20,
+      "step": 2,
+      "unit": "px",
+      "label": "Form border radius",
+      "default": 8
+    },
+    {
+      "type": "header",
+      "content": "Typography"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading color",
+      "default": "#000000"
+    },
+    {
+      "type": "range",
+      "id": "heading_size",
+      "min": 20,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "label": "Heading size",
+      "default": 28
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text color",
+      "default": "#666666"
+    },
+    {
+      "type": "range",
+      "id": "text_size",
+      "min": 12,
+      "max": 18,
+      "step": 1,
+      "unit": "px",
+      "label": "Text size",
+      "default": 14
+    },
+    {
+      "type": "color",
+      "id": "label_color",
+      "label": "Label color",
+      "default": "#333333"
+    },
+    {
+      "type": "color",
+      "id": "required_color",
+      "label": "Required asterisk color",
+      "default": "#e74c3c"
+    },
+    {
+      "type": "header",
+      "content": "Input fields"
+    },
+    {
+      "type": "color",
+      "id": "input_background_color",
+      "label": "Input background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "input_text_color",
+      "label": "Input text color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "input_border_color",
+      "label": "Input border color",
+      "default": "#dddddd"
+    },
+    {
+      "type": "color",
+      "id": "input_focus_color",
+      "label": "Input focus color",
+      "default": "#2563eb"
+    },
+    {
+      "type": "range",
+      "id": "input_border_radius",
+      "min": 0,
+      "max": 12,
+      "step": 1,
+      "unit": "px",
+      "label": "Input border radius",
+      "default": 4
+    },
+    {
+      "type": "header",
+      "content": "Submit button"
+    },
+    {
+      "type": "color",
+      "id": "button_color",
+      "label": "Button color",
+      "default": "#2563eb"
+    },
+    {
+      "type": "color",
+      "id": "button_text_color",
+      "label": "Button text color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "button_hover_color",
+      "label": "Button hover color",
+      "default": "#1d4ed8"
+    },
+    {
+      "type": "range",
+      "id": "button_border_radius",
+      "min": 0,
+      "max": 12,
+      "step": 1,
+      "unit": "px",
+      "label": "Button border radius",
+      "default": 4
+    },
+    {
+      "type": "header",
+      "content": "Messages"
+    },
+    {
+      "type": "color",
+      "id": "success_color",
+      "label": "Success text color",
+      "default": "#16a085"
+    },
+    {
+      "type": "color",
+      "id": "success_background",
+      "label": "Success background color",
+      "default": "#d5f4e6"
+    },
+    {
+      "type": "color",
+      "id": "error_color",
+      "label": "Error text color",
+      "default": "#e74c3c"
+    },
+    {
+      "type": "color",
+      "id": "error_background",
+      "label": "Error background color",
+      "default": "#ffeaea"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Ambassador survey form"
+    }
+  ]
+}
+{% endschema %}

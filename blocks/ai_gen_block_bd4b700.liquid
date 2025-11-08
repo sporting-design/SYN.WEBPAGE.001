@@ -1,0 +1,630 @@
+{% doc %}
+  @prompt
+    I have an existing "Brand Ambassador Application" form. Please replace its fields and settings with the specification below, keep the Synapex black/white minimal style, and route all submissions to sporting@synapex.store with the subject prefix [Ambassador Application]. Also create a customer record for each submitter and tag it Ambassador Applicant.
+    
+    Form goals: Collect necessary contact info, sport background, focal sport(s), and content style. Validate clearly, keep the form fast to complete (no unnecessary fields). Email submission details to sporting@synapex.store and show a branded confirmation. Save key answers to customer metafields for future filtering.
+    
+    Fields: Full Name (text, required, placeholder "First & Last Name"), Email Address (email, required, validate format, placeholder "name@example.com"), Phone Number (tel, optional, placeholder "+1 (_ ) _-"), Location (text, optional, placeholder "City, Country"), Primary Sport (select, required, options: Running, Track & Field, Triathlon, Cycling, CrossFit, Functional Fitness, Soccer, Basketball, Volleyball, Combat Sports, Swimming, Other), Competition Level (select, required, options: Recreational, Amateur, Collegiate, Elite, Professional), Years Active (number, optional, min 0, max 40, placeholder "e.g., 6"), Content Style (checkboxes, required – at least one, options: Training Sessions, Competition Highlights, Recovery & Rehab, Education/Tips, Lifestyle), Primary Platforms (checkboxes, optional, options: Instagram, TikTok, YouTube, Strava, Other), Handles / Links (multi-line text, required, placeholder "Instagram: @handle\nTikTok: @handle\nYouTube: https://…\nStrava: https://…\nOther: https://…"), Typical Posting Frequency (select, optional, options: 1–2x/week, 3–4x/week, 5+x/week), Example Content Links (multi-line text, optional, placeholder "Paste up to 3 URLs to posts or videos you're proud of"), Have you used kinesiology tape before? (radio, required, options: Yes, No), If yes, which brands have you used? (text, conditional: show only if answer = Yes, optional), Tell us briefly about your athletic background (paragraph, required, placeholder "Key achievements, events, or teams…"), Why do you want to represent Synapex? (paragraph, required, placeholder "What makes you a great fit for an athlete-built performance brand?"), Consent & Contact (checkbox, required, label "I confirm my information is accurate and agree to be contacted regarding the Synapex Ambassador Program.")
+    
+    Behavior: Conditio
+
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-ambassador-form-{{ ai_gen_id }} {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    background-color: {{ block.settings.background_color }};
+    color: {{ block.settings.text_color }};
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  }
+
+  .ai-ambassador-form__header-{{ ai_gen_id }} {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+
+  .ai-ambassador-form__title-{{ ai_gen_id }} {
+    font-size: 32px;
+    font-weight: 700;
+    margin: 0 0 16px;color: {{ block.settings.heading_color }};
+  }
+
+  .ai-ambassador-form__subtitle-{{ ai_gen_id }} {
+    font-size: 16px;
+    margin: 0;
+    opacity: 0.8;
+  }
+
+  .ai-ambassador-form__content-{{ ai_gen_id }} {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .ai-ambassador-form__field-{{ ai_gen_id }} {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .ai-ambassador-form__label-{{ ai_gen_id }} {
+    font-weight: 600;
+    font-size: 14px;
+    color: {{ block.settings.label_color }};
+  }
+
+  .ai-ambassador-form__required-{{ ai_gen_id }} {
+    color: {{ block.settings.required_color }};
+  }
+
+  .ai-ambassador-form__input-{{ ai_gen_id }},
+  .ai-ambassador-form__select-{{ ai_gen_id }},
+  .ai-ambassador-form__textarea-{{ ai_gen_id }} {
+    padding: 12px 16px;
+    border: 1px solid {{ block.settings.border_color }};
+    border-radius: 4px;
+    font-size: 14px;
+    background-color: {{ block.settings.input_background }};
+    color: {{ block.settings.input_text_color }};
+    transition: border-color 0.2s ease;
+  }
+
+  .ai-ambassador-form__input-{{ ai_gen_id }}:focus,
+  .ai-ambassador-form__select-{{ ai_gen_id }}:focus,
+  .ai-ambassador-form__textarea-{{ ai_gen_id }}:focus {
+    outline: none;
+    border-color: {{ block.settings.focus_color }};
+  }
+
+  .ai-ambassador-form__textarea-{{ ai_gen_id }} {
+    min-height: 100px;
+    resize: vertical;}
+
+  .ai-ambassador-form__checkbox-group-{{ ai_gen_id }},
+  .ai-ambassador-form__radio-group-{{ ai_gen_id }} {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .ai-ambassador-form__checkbox-item-{{ ai_gen_id }},
+  .ai-ambassador-form__radio-item-{{ ai_gen_id }} {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .ai-ambassador-form__checkbox-{{ ai_gen_id }},
+  .ai-ambassador-form__radio-{{ ai_gen_id }} {
+    width: 16px;
+    height: 16px;
+    accent-color: {{ block.settings.accent_color }};
+  }
+
+  .ai-ambassador-form__conditional-{{ ai_gen_id }} {
+    margin-top: 16px;
+    padding: 16px;
+    background-color: {{ block.settings.conditional_bg }};
+    border-radius: 4px;
+    display: none;
+  }
+
+  .ai-ambassador-form__conditional-{{ ai_gen_id }}.visible {
+    display: block;
+  }
+
+  .ai-ambassador-form__button-{{ ai_gen_id }} {
+    padding: 16px 32px;
+    background-color: {{ block.settings.button_color }};
+    color: {{ block.settings.button_text_color }};
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    margin-top: 16px;
+  }
+
+  .ai-ambassador-form__button-{{ ai_gen_id }}:hover {
+    background-color: {{ block.settings.button_hover_color }};
+  }
+
+  .ai-ambassador-form__button-{{ ai_gen_id }}:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+
+  .ai-ambassador-form__success-{{ ai_gen_id }} {
+    text-align: center;
+    padding: 40px 20px;
+    background-color: {{ block.settings.success_bg }};
+    color: {{ block.settings.success_color }};
+    border-radius: 4px;
+  }
+
+  .ai-ambassador-form__error-{{ ai_gen_id }} {
+    color: {{ block.settings.error_color }};
+    font-size: 12px;
+    margin-top: 4px;
+  }
+
+  @media (max-width: 768px) {
+    .ai-ambassador-form-{{ ai_gen_id }} {
+      padding: 20px 16px;
+    }
+
+    .ai-ambassador-form__title-{{ ai_gen_id }} {
+      font-size: 24px;
+    }
+  }
+{% endstyle %}<ambassador-form-{{ ai_gen_id }}
+  class="ai-ambassador-form-{{ ai_gen_id }}"
+  {{ block.shopify_attributes }}
+>
+  <div class="ai-ambassador-form__header-{{ ai_gen_id }}">
+    <h1 class="ai-ambassador-form__title-{{ ai_gen_id }}">{{ block.settings.form_title }}</h1>
+    <p class="ai-ambassador-form__subtitle-{{ ai_gen_id }}">{{ block.settings.form_subtitle }}</p>
+  </div>
+
+  {%- form 'contact' -%}
+    <input type="hidden" name="contact[tags]" value="Ambassador Applicant">
+    <input type="hidden" name="contact[subject]" value="[Ambassador Application] New Application">
+
+    <div class="ai-ambassador-form__content-{{ ai_gen_id }}">
+      <div class="ai-ambassador-form__field-{{ ai_gen_id }}">
+        <label class="ai-ambassador-form__label-{{ ai_gen_id }}">
+          Full Name <span class="ai-ambassador-form__required-{{ ai_gen_id }}">*</span>
+        </label>
+        <input
+          type="text"
+          name="contact[first_name]"
+          class="ai-ambassador-form__input-{{ ai_gen_id }}"
+          placeholder="First & Last Name"
+          required
+        >
+      </div>
+
+      <div class="ai-ambassador-form__field-{{ ai_gen_id }}">
+        <label class="ai-ambassador-form__label-{{ ai_gen_id }}">
+          Email Address <span class="ai-ambassador-form__required-{{ ai_gen_id }}">*</span>
+        </label>
+        <input
+          type="email"
+          name="contact[email]"
+          class="ai-ambassador-form__input-{{ ai_gen_id }}"
+          placeholder="name@example.com"
+          required
+        >
+      </div>
+
+      <div class="ai-ambassador-form__field-{{ ai_gen_id }}">
+        <label class="ai-ambassador-form__label-{{ ai_gen_id }}">Phone Number</label>
+        <input
+          type="tel"
+          name="contact[phone]"
+          class="ai-ambassador-form__input-{{ ai_gen_id }}"
+          placeholder="+1 ( ) -"
+        >
+      </div>
+
+      <div class="ai-ambassador-form__field-{{ ai_gen_id }}">
+        <label class="ai-ambassador-form__label-{{ ai_gen_id }}">Location</label>
+        <input
+          type="text"
+          name="contact[location]"
+          class="ai-ambassador-form__input-{{ ai_gen_id }}"
+          placeholder="City, Country"
+        >
+      </div>
+
+      <div class="ai-ambassador-form__field-{{ ai_gen_id }}">
+        <label class="ai-ambassador-form__label-{{ ai_gen_id }}">
+          Primary Sport <span class="ai-ambassador-form__required-{{ ai_gen_id }}">*</span>
+        </label>
+        <select name="contact[primary_sport]" class="ai-ambassador-form__select-{{ ai_gen_id }}" required>
+          <option value="">Select your primary sport</option>
+          <option value="Running">Running</option>
+          <option value="Track & Field">Track & Field</option>
+          <option value="Triathlon">Triathlon</option>
+          <option value="Cycling">Cycling</option>
+          <option value="CrossFit">CrossFit</option>
+          <option value="Functional Fitness">Functional Fitness</option>
+          <option value="Soccer">Soccer</option>
+          <option value="Basketball">Basketball</option>
+          <option value="Volleyball">Volleyball</option>
+          <option value="Combat Sports">Combat Sports</option>
+          <option value="Swimming">Swimming</option>
+          <option value="Other">Other</option>
+        </select>
+      </div>
+
+      <div class="ai-ambassador-form__field-{{ ai_gen_id }}">
+        <label class="ai-ambassador-form__label-{{ ai_gen_id }}">
+          Competition Level <span class="ai-ambassador-form__required-{{ ai_gen_id }}">*</span>
+        </label>
+        <select name="contact[competition_level]" class="ai-ambassador-form__select-{{ ai_gen_id }}" required>
+          <option value="">Select your competition level</option>
+          <option value="Recreational">Recreational</option>
+          <option value="Amateur">Amateur</option>
+          <option value="Collegiate">Collegiate</option>
+          <option value="Elite">Elite</option>
+          <option value="Professional">Professional</option>
+        </select>
+      </div>
+
+      <div class="ai-ambassador-form__field-{{ ai_gen_id }}">
+        <label class="ai-ambassador-form__label-{{ ai_gen_id }}">Years Active</label>
+        <input
+          type="number"
+          name="contact[years_active]"
+          class="ai-ambassador-form__input-{{ ai_gen_id }}"
+          placeholder="e.g., 6"
+          min="0"
+          max="40"
+        >
+      </div>
+
+      <div class="ai-ambassador-form__field-{{ ai_gen_id }}">
+        <label class="ai-ambassador-form__label-{{ ai_gen_id }}">
+          Content Style <span class="ai-ambassador-form__required-{{ ai_gen_id }}">*</span> (Select at least one)
+        </label>
+        <div class="ai-ambassador-form__checkbox-group-{{ ai_gen_id }}">
+          <div class="ai-ambassador-form__checkbox-item-{{ ai_gen_id }}">
+            <input type="checkbox" name="contact[content_style][]" value="Training Sessions" class="ai-ambassador-form__checkbox-{{ ai_gen_id }}" id="content-training-{{ ai_gen_id }}"><label for="content-training-{{ ai_gen_id }}">Training Sessions</label>
+          </div>
+          <div class="ai-ambassador-form__checkbox-item-{{ ai_gen_id }}">
+            <input type="checkbox" name="contact[content_style][]" value="Competition Highlights" class="ai-ambassador-form__checkbox-{{ ai_gen_id }}" id="content-competition-{{ ai_gen_id }}">
+            <label for="content-competition-{{ ai_gen_id }}">Competition Highlights</label>
+          </div>
+          <div class="ai-ambassador-form__checkbox-item-{{ ai_gen_id }}">
+            <input type="checkbox" name="contact[content_style][]" value="Recovery & Rehab" class="ai-ambassador-form__checkbox-{{ ai_gen_id }}" id="content-recovery-{{ ai_gen_id }}">
+            <label for="content-recovery-{{ ai_gen_id }}">Recovery & Rehab</label>
+          </div>
+          <div class="ai-ambassador-form__checkbox-item-{{ ai_gen_id }}">
+            <input type="checkbox" name="contact[content_style][]" value="Education/Tips" class="ai-ambassador-form__checkbox-{{ ai_gen_id }}" id="content-education-{{ ai_gen_id }}">
+            <label for="content-education-{{ ai_gen_id }}">Education/Tips</label>
+          </div>
+          <div class="ai-ambassador-form__checkbox-item-{{ ai_gen_id }}">
+            <input type="checkbox" name="contact[content_style][]" value="Lifestyle" class="ai-ambassador-form__checkbox-{{ ai_gen_id }}" id="content-lifestyle-{{ ai_gen_id }}">
+            <label for="content-lifestyle-{{ ai_gen_id }}">Lifestyle</label>
+          </div>
+        </div>
+      </div>
+
+      <div class="ai-ambassador-form__field-{{ ai_gen_id }}">
+        <label class="ai-ambassador-form__label-{{ ai_gen_id }}">Primary Platforms</label>
+        <div class="ai-ambassador-form__checkbox-group-{{ ai_gen_id }}">
+          <div class="ai-ambassador-form__checkbox-item-{{ ai_gen_id }}">
+            <input type="checkbox" name="contact[platforms][]" value="Instagram" class="ai-ambassador-form__checkbox-{{ ai_gen_id }}" id="platform-instagram-{{ ai_gen_id }}">
+            <label for="platform-instagram-{{ ai_gen_id }}">Instagram</label>
+          </div>
+          <div class="ai-ambassador-form__checkbox-item-{{ ai_gen_id }}">
+            <input type="checkbox" name="contact[platforms][]" value="TikTok" class="ai-ambassador-form__checkbox-{{ ai_gen_id }}" id="platform-tiktok-{{ ai_gen_id }}">
+            <label for="platform-tiktok-{{ ai_gen_id }}">TikTok</label>
+          </div>
+          <div class="ai-ambassador-form__checkbox-item-{{ ai_gen_id }}">
+            <input type="checkbox" name="contact[platforms][]" value="YouTube" class="ai-ambassador-form__checkbox-{{ ai_gen_id }}" id="platform-youtube-{{ ai_gen_id }}">
+            <label for="platform-youtube-{{ ai_gen_id }}">YouTube</label>
+          </div>
+          <div class="ai-ambassador-form__checkbox-item-{{ ai_gen_id }}">
+            <input type="checkbox" name="contact[platforms][]" value="Strava" class="ai-ambassador-form__checkbox-{{ ai_gen_id }}" id="platform-strava-{{ ai_gen_id }}">
+            <label for="platform-strava-{{ ai_gen_id }}">Strava</label>
+          </div>
+          <div class="ai-ambassador-form__checkbox-item-{{ ai_gen_id }}">
+            <input type="checkbox" name="contact[platforms][]" value="Other" class="ai-ambassador-form__checkbox-{{ ai_gen_id }}" id="platform-other-{{ ai_gen_id }}">
+            <label for="platform-other-{{ ai_gen_id }}">Other</label>
+          </div>
+        </div>
+      </div>
+
+      <div class="ai-ambassador-form__field-{{ ai_gen_id }}">
+        <label class="ai-ambassador-form__label-{{ ai_gen_id }}">
+          Handles / Links <span class="ai-ambassador-form__required-{{ ai_gen_id }}">*</span>
+        </label>
+        <textarea
+          name="contact[handles_links]"
+          class="ai-ambassador-form__textarea-{{ ai_gen_id }}"
+          placeholder="Instagram: @handle&#10;TikTok: @handle&#10;YouTube: https://…&#10;Strava: https://…&#10;Other: https://…"
+          required
+        ></textarea>
+      </div>
+
+      <div class="ai-ambassador-form__field-{{ ai_gen_id }}">
+        <label class="ai-ambassador-form__label-{{ ai_gen_id }}">Typical Posting Frequency</label>
+        <select name="contact[posting_frequency]" class="ai-ambassador-form__select-{{ ai_gen_id }}">
+          <option value="">Select posting frequency</option>
+          <option value="1-2x/week">1–2x/week</option>
+          <option value="3-4x/week">3–4x/week</option>
+          <option value="5+x/week">5+x/week</option>
+        </select>
+      </div>
+
+      <div class="ai-ambassador-form__field-{{ ai_gen_id }}">
+        <label class="ai-ambassador-form__label-{{ ai_gen_id }}">Example Content Links</label>
+        <textarea
+          name="contact[example_content]"
+          class="ai-ambassador-form__textarea-{{ ai_gen_id }}"
+          placeholder="Paste up to 3 URLs to posts or videos you're proud of"
+        ></textarea>
+      </div>
+
+      <div class="ai-ambassador-form__field-{{ ai_gen_id }}">
+        <label class="ai-ambassador-form__label-{{ ai_gen_id }}">
+          Have you used kinesiology tape before?<span class="ai-ambassador-form__required-{{ ai_gen_id }}">*</span>
+        </label>
+        <div class="ai-ambassador-form__radio-group-{{ ai_gen_id }}">
+          <div class="ai-ambassador-form__radio-item-{{ ai_gen_id }}">
+            <input type="radio" name="contact[used_tape]" value="Yes" class="ai-ambassador-form__radio-{{ ai_gen_id }}" id="tape-yes-{{ ai_gen_id }}" required>
+            <label for="tape-yes-{{ ai_gen_id }}">Yes</label>
+          </div>
+          <div class="ai-ambassador-form__radio-item-{{ ai_gen_id }}">
+            <input type="radio" name="contact[used_tape]" value="No" class="ai-ambassador-form__radio-{{ ai_gen_id }}" id="tape-no-{{ ai_gen_id }}" required>
+            <label for="tape-no-{{ ai_gen_id }}">No</label>
+          </div>
+        </div>
+        <div class="ai-ambassador-form__conditional-{{ ai_gen_id }}" id="tape-brands-{{ ai_gen_id }}">
+          <div class="ai-ambassador-form__field-{{ ai_gen_id }}">
+            <label class="ai-ambassador-form__label-{{ ai_gen_id }}">If yes, which brands have you used?</label>
+            <input
+              type="text"
+              name="contact[tape_brands]"
+              class="ai-ambassador-form__input-{{ ai_gen_id }}"
+              placeholder="List brands you've used"
+            >
+          </div>
+        </div>
+      </div>
+
+      <div class="ai-ambassador-form__field-{{ ai_gen_id }}">
+        <label class="ai-ambassador-form__label-{{ ai_gen_id }}">
+          Tell us briefly about your athletic background <span class="ai-ambassador-form__required-{{ ai_gen_id }}">*</span>
+        </label>
+        <textarea
+          name="contact[athletic_background]"
+          class="ai-ambassador-form__textarea-{{ ai_gen_id }}"
+          placeholder="Key achievements, events, or teams…"
+          required
+        ></textarea>
+      </div>
+
+      <div class="ai-ambassador-form__field-{{ ai_gen_id }}">
+        <label class="ai-ambassador-form__label-{{ ai_gen_id }}">
+          Why do you want to represent Synapex? <span class="ai-ambassador-form__required-{{ ai_gen_id }}">*</span>
+        </label>
+        <textarea
+          name="contact[why_synapex]"
+          class="ai-ambassador-form__textarea-{{ ai_gen_id }}"
+          placeholder="What makes you a great fit for an athlete-built performance brand?"
+          required
+        ></textarea>
+      </div>
+
+      <div class="ai-ambassador-form__field-{{ ai_gen_id }}">
+        <div class="ai-ambassador-form__checkbox-item-{{ ai_gen_id }}">
+          <input type="checkbox" name="contact[consent]" value="Yes" class="ai-ambassador-form__checkbox-{{ ai_gen_id }}" id="consent-{{ ai_gen_id }}" required>
+          <label for="consent-{{ ai_gen_id }}"><span class="ai-ambassador-form__required-{{ ai_gen_id }}">*</span> I confirm my information is accurate and agree to be contacted regarding the Synapex Ambassador Program.
+          </label>
+        </div>
+      </div>
+
+      <button type="submit" class="ai-ambassador-form__button-{{ ai_gen_id }}">
+        {{ block.settings.submit_button_text }}
+      </button>
+    </div>
+
+    {%- if form.posted_successfully? -%}
+      <div class="ai-ambassador-form__success-{{ ai_gen_id }}">
+        <h2>{{ block.settings.success_title }}</h2>
+        <p>{{ block.settings.success_message }}</p>
+      </div>
+    {%- endif -%}{%- if form.errors -%}
+      <div class="ai-ambassador-form__error-{{ ai_gen_id }}">
+        {{ form.errors | default_errors }}
+      </div>
+    {%- endif -%}
+  {%- endform -%}
+</ambassador-form-{{ ai_gen_id }}>
+
+<script>
+(function() {
+  class AmbassadorForm{{ai_gen_id}} extends HTMLElement {
+    constructor() {
+      super();
+    }
+
+    connectedCallback() {
+      this.setupConditionalFields();
+      this.setupFormValidation();
+    }
+
+    setupConditionalFields() {
+      const tapeRadios = this.querySelectorAll('input[name="contact[used_tape]"]');
+      const conditionalField = this.querySelector('#tape-brands-{{ ai_gen_id }}');
+
+      tapeRadios.forEach(radio => {
+        radio.addEventListener('change', () => {
+          if (radio.value === 'Yes' && radio.checked) {
+            conditionalField.classList.add('visible');
+          } else {
+            conditionalField.classList.remove('visible');
+          }
+        });
+      });
+    }
+
+    setupFormValidation() {
+      const form = this.querySelector('form');
+      const contentStyleCheckboxes = this.querySelectorAll('input[name="contact[content_style][]"]');
+
+      form.addEventListener('submit', (e) => {
+        const checkedContentStyles = Array.from(contentStyleCheckboxes).filter(cb => cb.checked);
+        
+        if (checkedContentStyles.length === 0) {
+          e.preventDefault();
+          alert('Please select at least one content style.');
+          return false;
+        }
+      });
+    }
+  }
+
+  customElements.define('ambassador-form-{{ ai_gen_id }}', AmbassadorForm{{ai_gen_id}});
+})();
+</script>
+
+{% schema %}
+{
+  "name": "Ambassador Application",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Form content"
+    },
+    {
+      "type": "text",
+      "id": "form_title",
+      "label": "Form title",
+      "default": "Brand Ambassador Application"
+    },
+    {
+      "type": "text",
+      "id": "form_subtitle",
+      "label": "Form subtitle",
+      "default": "Join the Synapex athlete community"
+    },
+    {
+      "type": "text",
+      "id": "submit_button_text",
+      "label": "Submit button text",
+      "default": "Submit Application"
+    },
+    {
+      "type": "text",
+      "id": "success_title",
+      "label": "Success title",
+      "default": "Application Submitted!"
+    },
+    {
+      "type": "text",
+      "id": "success_message",
+      "label": "Success message",
+      "default": "Thank you for your interest in becoming a Synapex ambassador. We'll review your application and get back to you soon."
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "label_color",
+      "label": "Label color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "required_color",
+      "label": "Required asterisk color",
+      "default": "#e74c3c"
+    },
+    {
+      "type": "color",
+      "id": "border_color",
+      "label": "Input border color",
+      "default": "#e0e0e0"
+    },
+    {
+      "type": "color",
+      "id": "focus_color",
+      "label": "Focus border color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "input_background",
+      "label": "Input background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "input_text_color",
+      "label": "Input text color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "Accent color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "conditional_bg",
+      "label": "Conditional field background",
+      "default": "#f8f8f8"
+    },
+    {
+      "type": "color",
+      "id": "button_color",
+      "label": "Button color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "button_text_color",
+      "label": "Button text color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "button_hover_color",
+      "label": "Button hover color",
+      "default": "#333333"
+    },
+    {
+      "type": "color",
+      "id": "success_bg",
+      "label": "Success background",
+      "default": "#f0f8f0"
+    },
+    {
+      "type": "color",
+      "id": "success_color",
+      "label": "Success text color",
+      "default": "#2d5a2d"
+    },
+    {
+      "type": "color",
+      "id": "error_color",
+      "label": "Error color",
+      "default": "#e74c3c"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Ambassador Application"
+    }
+  ]
+}
+{% endschema %}

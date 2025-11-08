@@ -1,0 +1,555 @@
+{% doc %}
+  @prompt
+    Create a three-column layout section for a product landing page.  
+    Headline: HOW IT WORKS: ENGINEERED TO INTEGRATE  
+    
+    Column 1:
+    Icon: upload custom icon (decompress-tissue.png)
+    Title: DECOMPRESSES TISSUE
+    Copy: The tape's elastic recoil creates a microscopic lift of the skin. This aims to decompress the layers of tissue beneath, supporting better localized fluid dynamics and reducing pressure on sensitive areas.
+    
+    Column 2:
+    Icon: upload custom icon (enhances-awareness.png)
+    Title: ENHANCES AWARENESS
+    Copy: The constant sensory input of the tape on your skin provides your brain with increased feedback on your body's position and movement. This heightened awareness, or proprioception, allows for more confident and controlled motion.
+    
+    Column 3:
+    Icon: upload custom icon (supports-without-restriction.png)
+    Title: SUPPORTS WITHOUT RESTRICTION
+    Copy: Unlike a rigid brace, Synapex is engineered to stretch and move with you. Our German Henkel® adhesive ensures this high-performance support system remains locked in place through sweat, water, and competition—when other tapes fail.
+
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-three-column-section-{{ ai_gen_id }} {
+    padding: {{ block.settings.section_padding }}px 20px;
+    background-color: {{ block.settings.background_color }};
+  }
+
+  .ai-three-column-container-{{ ai_gen_id }} {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .ai-three-column-headline-{{ ai_gen_id }} {
+    text-align: {{ block.settings.headline_alignment }};
+    margin-bottom: {{ block.settings.title_margin_bottom }}px;
+    color: {{ block.settings.headline_color }};
+    font-size: {{ block.settings.headline_size }}px;
+    font-weight: {{ block.settings.headline_weight }};
+    text-transform: {{ block.settings.headline_case }};
+    letter-spacing: {{ block.settings.headline_letter_spacing }}px;
+  }
+
+  .ai-three-column-grid-{{ ai_gen_id }} {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: {{ block.settings.column_gap }}px;
+    margin-top: {{ block.settings.content_margin_top }}px;
+  }
+
+  .ai-three-column-item-{{ ai_gen_id }} {
+    text-align: {{ block.settings.column_alignment }};
+    padding: {{ block.settings.column_padding }}px;
+    background-color: {{ block.settings.column_background_color }};
+    border-radius: {{ block.settings.column_border_radius }}px;
+  }
+
+  .ai-three-column-icon-{{ ai_gen_id }} {
+    width: {{ block.settings.icon_size }}px;
+    height: {{ block.settings.icon_size }}px;
+    margin: 0 auto {{ block.settings.icon_margin_bottom }}px;
+    display: block;
+  }
+
+  .ai-three-column-icon-placeholder-{{ ai_gen_id }} {
+    width: {{ block.settings.icon_size }}px;
+    height: {{ block.settings.icon_size }}px;
+    margin: 0 auto {{ block.settings.icon_margin_bottom }}px;
+    background-color: #f4f4f4;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+
+  .ai-three-column-icon-placeholder-{{ ai_gen_id }} svg {
+    width: 60%;
+    height: 60%;
+    color: #999;
+  }
+
+  .ai-three-column-empty-state-{{ ai_gen_id }} {
+    position: absolute;
+    bottom: -25px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 10px;
+    color: #666;
+    white-space: nowrap;
+    pointer-events: none;
+  }
+
+  .ai-three-column-title-{{ ai_gen_id }} {
+    font-size: {{ block.settings.title_size }}px;
+    font-weight: {{ block.settings.title_weight }};
+    color: {{ block.settings.title_color }};
+    margin-bottom: {{ block.settings.title_margin_bottom }}px;
+    text-transform: {{ block.settings.title_case }};
+    letter-spacing: {{ block.settings.title_letter_spacing }}px;
+  }
+
+  .ai-three-column-copy-{{ ai_gen_id }} {
+    font-size: {{ block.settings.copy_size }}px;
+    line-height: {{ block.settings.copy_line_height }};
+    color: {{ block.settings.copy_color }};}
+
+  @media screen and (max-width: 768px) {
+    .ai-three-column-grid-{{ ai_gen_id }} {
+      grid-template-columns: 1fr;
+      gap: {{ block.settings.mobile_gap }}px;
+    }
+
+    .ai-three-column-headline-{{ ai_gen_id }} {
+      font-size: {{ block.settings.headline_size | times: 0.8 }}px;
+    }
+
+    .ai-three-column-icon-{{ ai_gen_id }},
+    .ai-three-column-icon-placeholder-{{ ai_gen_id }} {
+      width: {{ block.settings.icon_size | times: 0.8 }}px;
+      height: {{ block.settings.icon_size | times: 0.8 }}px;
+    }
+  }
+{% endstyle %}<div class="ai-three-column-section-{{ ai_gen_id }}" {{ block.shopify_attributes }}>
+  <div class="ai-three-column-container-{{ ai_gen_id }}">
+    {% if block.settings.headline != blank %}
+      <h2 class="ai-three-column-headline-{{ ai_gen_id }}">{{ block.settings.headline }}</h2>
+    {% endif %}<div class="ai-three-column-grid-{{ ai_gen_id }}">
+      <div class="ai-three-column-item-{{ ai_gen_id }}">
+        {% if block.settings.icon_1 %}
+          <img
+            src="{{ block.settings.icon_1 | image_url: width: 200}}"
+            alt="{{ block.settings.icon_1.alt | escape }}"
+            class="ai-three-column-icon-{{ ai_gen_id }}"
+            loading="lazy"
+            width="{{ block.settings.icon_size }}"
+            height="{{ block.settings.icon_size }}"
+          >
+        {% else %}
+          <div class="ai-three-column-icon-placeholder-{{ ai_gen_id }}">
+            {{ 'image' | placeholder_svg_tag }}<div class="ai-three-column-empty-state-{{ ai_gen_id }}">Add icon</div>
+          </div>
+        {% endif %}
+        {% if block.settings.title_1 != blank %}
+          <h3 class="ai-three-column-title-{{ ai_gen_id }}">{{ block.settings.title_1 }}</h3>
+        {% endif %}
+        
+        {% if block.settings.copy_1 != blank %}
+          <div class="ai-three-column-copy-{{ ai_gen_id }}">{{ block.settings.copy_1 }}</div>
+        {% endif %}
+      </div>
+
+      <div class="ai-three-column-item-{{ ai_gen_id }}">
+        {% if block.settings.icon_2 %}
+          <img
+            src="{{ block.settings.icon_2 | image_url: width: 200 }}"
+            alt="{{ block.settings.icon_2.alt | escape }}"
+            class="ai-three-column-icon-{{ ai_gen_id }}"
+            loading="lazy"
+            width="{{ block.settings.icon_size }}"
+            height="{{ block.settings.icon_size }}"
+          >
+        {% else %}
+          <div class="ai-three-column-icon-placeholder-{{ ai_gen_id }}">
+            {{ 'image' | placeholder_svg_tag }}
+            <div class="ai-three-column-empty-state-{{ ai_gen_id }}">Add icon</div>
+          </div>
+        {% endif %}
+        
+        {% if block.settings.title_2 != blank %}
+          <h3 class="ai-three-column-title-{{ ai_gen_id }}">{{ block.settings.title_2 }}</h3>
+        {% endif %}
+        
+        {% if block.settings.copy_2 != blank %}
+          <div class="ai-three-column-copy-{{ ai_gen_id }}">{{ block.settings.copy_2 }}</div>
+        {% endif %}
+      </div>
+
+      <div class="ai-three-column-item-{{ ai_gen_id }}">
+        {% if block.settings.icon_3 %}
+          <img
+            src="{{ block.settings.icon_3 | image_url: width: 200 }}"
+            alt="{{ block.settings.icon_3.alt | escape }}"
+            class="ai-three-column-icon-{{ ai_gen_id }}"
+            loading="lazy"
+            width="{{ block.settings.icon_size }}"
+            height="{{ block.settings.icon_size }}"
+          >
+        {% else %}
+          <div class="ai-three-column-icon-placeholder-{{ ai_gen_id }}">
+            {{ 'image' | placeholder_svg_tag }}
+            <div class="ai-three-column-empty-state-{{ ai_gen_id }}">Add icon</div>
+          </div>
+        {% endif %}
+        
+        {% if block.settings.title_3 != blank %}
+          <h3 class="ai-three-column-title-{{ ai_gen_id }}">{{ block.settings.title_3 }}</h3>
+        {% endif %}
+        
+        {% if block.settings.copy_3 != blank %}
+          <div class="ai-three-column-copy-{{ ai_gen_id }}">{{ block.settings.copy_3 }}</div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Three column layout",
+  "tag": null,
+  "settings": [
+    {
+      "type": "header",
+      "content": "Headline"
+    },
+    {
+      "type": "text",
+      "id": "headline",
+      "label": "Headline",
+      "default": "HOW IT WORKS: ENGINEERED TO INTEGRATE"
+    },
+    {
+      "type": "color",
+      "id": "headline_color",
+      "label": "Headline color",
+      "default": "#000000"
+    },
+    {
+      "type": "range",
+      "id": "headline_size",
+      "min": 16,
+      "max": 72,
+      "step": 2,
+      "unit": "px",
+      "label": "Headline size",
+      "default": 32
+    },
+    {
+      "type": "select",
+      "id": "headline_weight",
+      "label": "Headline weight",
+      "options": [
+        {"value": "400", "label": "Normal"},
+        {"value": "500", "label": "Medium"},
+        {"value": "600", "label": "Semi-bold"},
+        {"value": "700", "label": "Bold"}
+      ],
+      "default": "700"
+    },
+    {
+      "type": "select",
+      "id": "headline_case",
+      "label": "Headline case",
+      "options": [
+        {"value": "none", "label": "Default"},
+        {"value": "uppercase", "label": "Uppercase"}
+      ],
+      "default": "uppercase"
+    },
+    {
+      "type": "range",
+      "id": "headline_letter_spacing",
+      "min": 0,
+      "max": 5,
+      "step": 0.5,
+      "unit": "px",
+      "label": "Letter spacing",
+      "default": 1
+    },
+    {
+      "type": "select",
+      "id": "headline_alignment",
+      "label": "Headline alignment",
+      "options": [
+        {"value": "left", "label": "Left"},
+        {"value": "center", "label": "Center"},
+        {"value": "right", "label": "Right"}
+      ],
+      "default": "center"
+    },
+    {
+      "type": "header",
+      "content": "Column 1"
+    },
+    {
+      "type": "image_picker",
+      "id": "icon_1",
+      "label": "Icon"
+    },
+    {
+      "type": "text",
+      "id": "title_1",
+      "label": "Title",
+      "default": "DECOMPRESSES TISSUE"
+    },
+    {
+      "type": "textarea",
+      "id": "copy_1",
+      "label": "Copy",
+      "default": "The tape's elastic recoil creates a microscopic lift of the skin. This aims to decompress the layers of tissue beneath, supporting better localized fluid dynamics and reducing pressure on sensitive areas."
+    },
+    {
+      "type": "header",
+      "content": "Column 2"
+    },
+    {
+      "type": "image_picker",
+      "id": "icon_2",
+      "label": "Icon"
+    },
+    {
+      "type": "text",
+      "id": "title_2",
+      "label": "Title",
+      "default": "ENHANCES AWARENESS"
+    },
+    {
+      "type": "textarea",
+      "id": "copy_2",
+      "label": "Copy",
+      "default": "The constant sensory input of the tape on your skin provides your brain with increased feedback on your body's position and movement. This heightened awareness, or proprioception, allows for more confident and controlled motion."
+    },
+    {
+      "type": "header",
+      "content": "Column 3"
+    },
+    {
+      "type": "image_picker",
+      "id": "icon_3",
+      "label": "Icon"
+    },
+    {
+      "type": "text",
+      "id": "title_3",
+      "label": "Title",
+      "default": "SUPPORTS WITHOUT RESTRICTION"
+    },
+    {
+      "type": "textarea",
+      "id": "copy_3",
+      "label": "Copy",
+      "default": "Unlike a rigid brace, Synapex is engineered to stretch and move with you. Our German Henkel® adhesive ensures this high-performance support system remains locked in place through sweat, water, and competition—when other tapes fail."
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "column_background_color",
+      "label": "Column background color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "section_padding",
+      "min": 20,
+      "max": 100,
+      "step": 10,
+      "unit": "px",
+      "label": "Section padding",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "column_padding",
+      "min": 0,
+      "max": 50,
+      "step": 5,
+      "unit": "px",
+      "label": "Column padding",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "column_gap",
+      "min": 20,
+      "max": 80,
+      "step": 10,
+      "unit": "px",
+      "label": "Column gap",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "mobile_gap",
+      "min": 20,
+      "max": 60,
+      "step": 10,
+      "unit": "px",
+      "label": "Mobile gap",
+      "default": 30
+    },
+    {
+      "type": "range",
+      "id": "column_border_radius",
+      "min": 0,
+      "max": 20,
+      "step": 2,
+      "unit": "px",
+      "label": "Column border radius",
+      "default": 8
+    },
+    {
+      "type": "select",
+      "id": "column_alignment",
+      "label": "Column alignment",
+      "options": [
+        {"value": "left", "label": "Left"},
+        {"value": "center", "label": "Center"},
+        {"value": "right", "label": "Right"}
+      ],
+      "default": "center"
+    },
+    {
+      "type": "range",
+      "id": "content_margin_top",
+      "min": 0,
+      "max": 60,
+      "step": 10,
+      "unit": "px",
+      "label": "Content top margin",
+      "default": 40
+    },
+    {
+      "type": "header",
+      "content": "Icons"
+    },
+    {
+      "type": "range",
+      "id": "icon_size",
+      "min": 40,
+      "max": 120,
+      "step": 10,
+      "unit": "px",
+      "label": "Icon size",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "icon_margin_bottom",
+      "min": 10,
+      "max": 40,
+      "step": 5,
+      "unit": "px",
+      "label": "Icon bottom margin",
+      "default": 20
+    },
+    {
+      "type": "header",
+      "content": "Titles"
+    },
+    {
+      "type": "color",
+      "id": "title_color",
+      "label": "Title color",
+      "default": "#000000"
+    },
+    {
+      "type": "range",
+      "id": "title_size",
+      "min": 14,
+      "max": 32,
+      "step": 2,
+      "unit": "px",
+      "label": "Title size",
+      "default": 20
+    },
+    {
+      "type": "select",
+      "id": "title_weight",
+      "label": "Title weight",
+      "options": [
+        {"value": "400", "label": "Normal"},
+        {"value": "500", "label": "Medium"},
+        {"value": "600", "label": "Semi-bold"},
+        {"value": "700", "label": "Bold"}
+      ],
+      "default": "600"
+    },
+    {
+      "type": "select",
+      "id": "title_case",
+      "label": "Title case",
+      "options": [
+        {"value": "none", "label": "Default"},
+        {"value": "uppercase", "label": "Uppercase"}
+      ],
+      "default": "uppercase"
+    },
+    {
+      "type": "range",
+      "id": "title_letter_spacing",
+      "min": 0,
+      "max": 3,
+      "step": 0.5,
+      "unit": "px",
+      "label": "Title letter spacing",
+      "default": 0.5
+    },
+    {
+      "type": "range",
+      "id": "title_margin_bottom",
+      "min": 10,
+      "max": 30,
+      "step": 5,
+      "unit": "px",
+      "label": "Title bottom margin",
+      "default": 15
+    },
+    {
+      "type": "header",
+      "content": "Copy text"
+    },
+    {
+      "type": "color",
+      "id": "copy_color",
+      "label": "Copy color",
+      "default": "#666666"
+    },
+    {
+      "type": "range",
+      "id": "copy_size",
+      "min": 12,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "label": "Copy size",
+      "default": 14
+    },
+    {
+      "type": "range",
+      "id": "copy_line_height",
+      "min": 1.2,
+      "max": 2,
+      "step": 0.1,
+      "label": "Copy line height",
+      "default": 1.5
+    }
+  ],
+  "presets": [
+    {
+      "name": "Three column layout"
+    }
+  ]
+}
+{% endschema %}

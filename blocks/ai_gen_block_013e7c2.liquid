@@ -1,0 +1,536 @@
+{% doc %}
+  @prompt
+    Create a custom section titled “Request Wholesale Pricing & Clinical Catalog” for my Synapex store.
+    
+    The section must include a form with these fields:
+    
+    Clinic Name (required, text)
+    
+    Email (required, email)
+    
+    Individual Reaching Out Name (required, text)
+    
+    Phone Number (optional, text)
+    
+    Clinic Needs / Notes (optional, textarea, 500 character limit). Label it: “Clinic Needs / Notes (e.g., preferred quantities, special requirements)”
+    
+    Below the form, add a new heading labeled “Athletes Choice” and directly under it include a horizontal image frame/slot so I can upload a photo or graphic.
+    
+    Style the section with a clean, minimalist, professional clinic look. The form button should read “Request B2B Pricing”., change "individual reaching out name" - Individual Name
+
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-wholesale-form-{{ ai_gen_id }} {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    background-color: {{ block.settings.background_color }};
+    border-radius: {{ block.settings.border_radius }}px;
+  }
+
+  .ai-wholesale-form__header-{{ ai_gen_id }} {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+
+  .ai-wholesale-form__title-{{ ai_gen_id }} {
+    color: {{ block.settings.heading_color }};
+    font-size: {{ block.settings.heading_size }}px;
+    margin: 0 0 16px;
+    font-weight: 600;
+    line-height: 1.2;
+  }
+
+  .ai-wholesale-form__subtitle-{{ ai_gen_id }} {
+    color: {{ block.settings.text_color }};
+    font-size: {{ block.settings.text_size }}px;
+    margin: 0;
+    opacity: 0.8;
+  }
+
+  .ai-wholesale-form__form-wrapper-{{ ai_gen_id }} {
+    margin-bottom: 50px;
+  }
+
+  .ai-wholesale-form__field-{{ ai_gen_id }} {
+    margin-bottom: 24px;
+  }
+
+  .ai-wholesale-form__label-{{ ai_gen_id }} {
+    display: block;
+    color: {{ block.settings.text_color }};
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 8px;
+  }
+
+  .ai-wholesale-form__required-{{ ai_gen_id }} {
+    color: {{ block.settings.error_color }};
+  }
+
+  .ai-wholesale-form__input-{{ ai_gen_id }},
+  .ai-wholesale-form__textarea-{{ ai_gen_id }} {
+    width: 100%;
+    padding: 12px 16px;
+    border: 1px solid {{ block.settings.input_border_color }};
+    border-radius: {{ block.settings.input_border_radius }}px;
+    background-color: {{ block.settings.input_background }};
+    color: {{ block.settings.text_color }};
+    font-size: 14px;
+    transition: border-color 0.3s ease;
+    box-sizing: border-box;
+  }
+
+  .ai-wholesale-form__input-{{ ai_gen_id }}:focus,
+  .ai-wholesale-form__textarea-{{ ai_gen_id }}:focus {
+    outline: none;
+    border-color: {{ block.settings.button_color }};
+  }
+
+  .ai-wholesale-form__textarea-{{ ai_gen_id }} {
+    resize: vertical;
+    min-height: 100px;
+  }
+
+  .ai-wholesale-form__button-{{ ai_gen_id }} {
+    width: 100%;
+    padding: 16px 24px;
+    background-color: {{ block.settings.button_color }};
+    color: {{ block.settings.button_text_color }};
+    border: none;
+    border-radius: {{ block.settings.button_border_radius }}px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  .ai-wholesale-form__button-{{ ai_gen_id }}:hover {
+    background-color: {{ block.settings.button_hover_color }};
+  }
+
+  .ai-wholesale-form__success-{{ ai_gen_id }} {
+    color: {{ block.settings.success_color }};
+    margin-top: 16px;
+    padding: 12px;
+    background-color: rgba(0, 128, 96, 0.1);
+    border-radius: 4px;
+    text-align: center;
+  }
+
+  .ai-wholesale-form__error-{{ ai_gen_id }} {
+    color: {{ block.settings.error_color }};
+    margin-top: 8px;
+    font-size: 13px;
+  }
+
+  .ai-wholesale-form__athletes-section-{{ ai_gen_id }} {
+    text-align: center;
+  }
+
+  .ai-wholesale-form__athletes-title-{{ ai_gen_id }} {
+    color: {{ block.settings.heading_color }};
+    font-size: {{ block.settings.section_heading_size }}px;
+    margin: 0 0 24px;
+    font-weight: 600;
+  }
+
+  .ai-wholesale-form__image-container-{{ ai_gen_id }} {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    border-radius: {{ block.settings.image_border_radius }}px;
+    overflow: hidden;
+    background-color: #f8f9fa;
+  }
+
+  .ai-wholesale-form__image-{{ ai_gen_id }} {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .ai-wholesale-form__image-placeholder-{{ ai_gen_id }} {
+    width: 100%;
+    height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f8f9fa;
+    position: relative;
+  }
+
+  .ai-wholesale-form__image-placeholder-{{ ai_gen_id }} svg {
+    width: 80px;
+    height: 80px;
+    opacity: 0.3;
+  }
+
+  .ai-wholesale-form__empty-state-{{ ai_gen_id }} {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #666;
+    font-size: 14px;
+    text-align: center;
+  }
+
+  @media screen and (max-width: 749px) {
+    .ai-wholesale-form-{{ ai_gen_id }} {
+      padding: 30px 16px;
+    }
+
+    .ai-wholesale-form__title-{{ ai_gen_id }} {
+      font-size: {{ block.settings.heading_size | times: 0.8 }}px;
+    }
+
+    .ai-wholesale-form__button-{{ ai_gen_id }} {
+      padding: 14px 20px;
+      font-size: 15px;
+    }
+  }
+{% endstyle %}<div
+  class="ai-wholesale-form-{{ ai_gen_id }}"
+  {{ block.shopify_attributes }}
+>
+  <div class="ai-wholesale-form__header-{{ ai_gen_id }}">
+    <h2 class="ai-wholesale-form__title-{{ ai_gen_id }}">
+      {{ block.settings.main_heading }}
+    </h2>
+    {% if block.settings.subtitle != blank %}
+      <p class="ai-wholesale-form__subtitle-{{ ai_gen_id }}">
+        {{ block.settings.subtitle }}
+      </p>
+    {% endif %}
+  </div>
+
+  <div class="ai-wholesale-form__form-wrapper-{{ ai_gen_id }}">
+    {% form 'contact' %}
+      <input type="hidden" name="contact[subject]" value="Wholesale Pricing Request">
+      
+      <div class="ai-wholesale-form__field-{{ ai_gen_id }}">
+        <label for="clinic-name-{{ ai_gen_id }}" class="ai-wholesale-form__label-{{ ai_gen_id }}">
+          Clinic Name<span class="ai-wholesale-form__required-{{ ai_gen_id }}">*</span>
+        </label>
+        <input
+          type="text"
+          id="clinic-name-{{ ai_gen_id }}"
+          name="contact[clinic_name]"
+          class="ai-wholesale-form__input-{{ ai_gen_id }}"
+          required
+          {% if form.errors contains 'clinic_name' %}
+            aria-invalid="true"
+            aria-describedby="clinic-name-error-{{ ai_gen_id }}"
+          {% endif %}
+        >
+        {% if form.errors contains 'clinic_name' %}
+          <div id="clinic-name-error-{{ ai_gen_id }}" class="ai-wholesale-form__error-{{ ai_gen_id }}">
+            Please enter your clinic name
+          </div>
+        {% endif %}
+      </div>
+
+      <div class="ai-wholesale-form__field-{{ ai_gen_id }}">
+        <label for="email-{{ ai_gen_id }}" class="ai-wholesale-form__label-{{ ai_gen_id }}">
+          Email <span class="ai-wholesale-form__required-{{ ai_gen_id }}">*</span>
+        </label>
+        <input
+          type="email"
+          id="email-{{ ai_gen_id }}"
+          name="contact[email]"
+          class="ai-wholesale-form__input-{{ ai_gen_id }}"
+          value="{{ form.email }}"
+          required
+          autocomplete="email"
+          {% if form.errors %}
+            aria-invalid="true"
+            aria-describedby="email-error-{{ ai_gen_id }}"
+          {% endif %}
+        >
+        {% if form.errors %}
+          <div id="email-error-{{ ai_gen_id }}" class="ai-wholesale-form__error-{{ ai_gen_id }}">
+            {{ form.errors.messages.email }}
+          </div>
+        {% endif %}
+      </div>
+
+      <div class="ai-wholesale-form__field-{{ ai_gen_id }}">
+        <label for="contact-name-{{ ai_gen_id }}" class="ai-wholesale-form__label-{{ ai_gen_id }}">
+          Individual Name <span class="ai-wholesale-form__required-{{ ai_gen_id }}">*</span>
+        </label>
+        <input
+          type="text"
+          id="contact-name-{{ ai_gen_id }}"
+          name="contact[contact_name]"
+          class="ai-wholesale-form__input-{{ ai_gen_id }}"
+          required
+          {% if form.errors contains 'contact_name' %}
+            aria-invalid="true"
+            aria-describedby="contact-name-error-{{ ai_gen_id }}"
+          {% endif %}
+        >
+        {% if form.errors contains 'contact_name' %}
+          <div id="contact-name-error-{{ ai_gen_id }}" class="ai-wholesale-form__error-{{ ai_gen_id }}">
+            Please enter your name
+          </div>
+        {% endif %}
+      </div>
+
+      <div class="ai-wholesale-form__field-{{ ai_gen_id }}">
+        <label for="phone-{{ ai_gen_id }}" class="ai-wholesale-form__label-{{ ai_gen_id }}">
+          Phone Number
+        </label>
+        <input
+          type="tel"
+          id="phone-{{ ai_gen_id }}"
+          name="contact[phone]"
+          class="ai-wholesale-form__input-{{ ai_gen_id }}"
+          autocomplete="tel"
+        >
+      </div>
+
+      <div class="ai-wholesale-form__field-{{ ai_gen_id }}">
+        <label for="clinic-notes-{{ ai_gen_id }}" class="ai-wholesale-form__label-{{ ai_gen_id }}">
+          Clinic Needs / Notes (e.g., preferred quantities, special requirements)
+        </label>
+        <textarea
+          id="clinic-notes-{{ ai_gen_id }}"
+          name="contact[body]"
+          class="ai-wholesale-form__textarea-{{ ai_gen_id }}"
+          maxlength="500"
+          placeholder="Tell us about your clinic's specific needs..."></textarea>
+      </div>
+
+      <button type="submit" class="ai-wholesale-form__button-{{ ai_gen_id }}">
+        {{ block.settings.button_text }}
+      </button>
+
+      {% if form.posted_successfully? %}
+        <div class="ai-wholesale-form__success-{{ ai_gen_id }}">
+          {{ block.settings.success_message }}
+        </div>
+      {% endif %}
+    {% endform %}
+  </div>
+
+  <div class="ai-wholesale-form__athletes-section-{{ ai_gen_id }}">
+    <h3 class="ai-wholesale-form__athletes-title-{{ ai_gen_id }}">
+      {{ block.settings.athletes_heading }}
+    </h3>
+    <div class="ai-wholesale-form__image-container-{{ ai_gen_id }}">
+      {% if block.settings.athletes_image %}
+        <img
+          src="{{ block.settings.athletes_image | image_url: width: 1200}}"
+          alt="{{ block.settings.athletes_image.alt | escape }}"
+          class="ai-wholesale-form__image-{{ ai_gen_id }}"
+          loading="lazy"
+          width="{{ block.settings.athletes_image.width }}"
+          height="{{ block.settings.athletes_image.height }}"
+        >
+      {% else %}
+        <div class="ai-wholesale-form__image-placeholder-{{ ai_gen_id }}">
+          {{'image' | placeholder_svg_tag }}<div class="ai-wholesale-form__empty-state-{{ ai_gen_id }}">
+            Add an Athletes Choice image
+          </div>
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Wholesale pricing form",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "main_heading",
+      "label": "Main heading",
+      "default": "Request Wholesale Pricing & Clinical Catalog"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitle"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button text",
+      "default": "Request B2B Pricing"
+    },
+    {
+      "type": "text",
+      "id": "success_message",
+      "label": "Success message",
+      "default": "Thank you! We'll be in touch with wholesale pricing information soon."
+    },
+    {
+      "type": "text",
+      "id": "athletes_heading",
+      "label": "Athletes section heading",
+      "default": "Athletes Choice"
+    },
+    {
+      "type": "image_picker",
+      "id": "athletes_image",
+      "label": "Athletes Choice image"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Headings",
+      "default": "#2c3e50"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text",
+      "default": "#34495e"
+    },
+    {
+      "type": "color",
+      "id": "button_color",
+      "label": "Button background",
+      "default": "#3498db"
+    },
+    {
+      "type": "color",
+      "id": "button_text_color",
+      "label": "Button text",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "button_hover_color",
+      "label": "Button hover background",
+      "default": "#2980b9"
+    },
+    {
+      "type": "color",
+      "id": "input_background",
+      "label": "Input background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "input_border_color",
+      "label": "Input border",
+      "default": "#bdc3c7"
+    },
+    {
+      "type": "color",
+      "id": "success_color",
+      "label": "Success message",
+      "default": "#27ae60"
+    },
+    {
+      "type": "color",
+      "id": "error_color",
+      "label": "Error message",
+      "default": "#e74c3c"
+    },
+    {
+      "type": "header",
+      "content": "Typography"
+    },
+    {
+      "type": "range",
+      "id": "heading_size",
+      "min": 20,
+      "max": 48,
+      "step": 2,
+      "unit": "px",
+      "label": "Main heading size",
+      "default": 32
+    },
+    {
+      "type": "range",
+      "id": "section_heading_size",
+      "min": 16,
+      "max": 32,
+      "step": 2,
+      "unit": "px",
+      "label": "Section heading size",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "text_size",
+      "min": 12,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "label": "Text size",
+      "default": 16
+    },
+    {
+      "type": "header",
+      "content": "Style"
+    },
+    {
+      "type": "range",
+      "id": "border_radius",
+      "min": 0,
+      "max": 20,
+      "step": 2,
+      "unit": "px",
+      "label": "Form border radius",
+      "default": 8
+    },
+    {
+      "type": "range",
+      "id": "input_border_radius",
+      "min": 0,
+      "max": 12,
+      "step": 1,
+      "unit": "px",
+      "label": "Input border radius",
+      "default": 4
+    },
+    {
+      "type": "range",
+      "id": "button_border_radius",
+      "min": 0,
+      "max": 12,
+      "step": 1,
+      "unit": "px",
+      "label": "Button border radius",
+      "default": 6
+    },
+    {
+      "type": "range",
+      "id": "image_border_radius",
+      "min": 0,
+      "max": 20,
+      "step": 2,
+      "unit": "px",
+      "label": "Image border radius",
+      "default": 8
+    }
+  ],
+  "presets": [
+    {
+      "name": "Wholesale pricing form"
+    }
+  ],
+  "tag": null
+}
+{% endschema %}
