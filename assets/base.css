@@ -1216,8 +1216,10 @@ button.shopify-payment-button__button--unbranded {
   line-height: var(--font-paragraph--line-height);
   margin-block: 0;
   transition: color var(--animation-speed) var(--animation-easing),
-    box-shadow var(--animation-speed) var(--animation-easing),
-    background-color var(--animation-speed) var(--animation-easing);
+    box-shadow 0.2s ease-out,
+    background-color var(--animation-speed) var(--animation-easing),
+    transform 0.2s ease-out,
+    filter 0.2s ease-out;
   cursor: pointer;
   width: fit-content;
   box-shadow: inset 0 0 0 var(--button-border-width) var(--button-border-color);
@@ -1290,6 +1292,16 @@ button.shopify-payment-button__button--unbranded:hover:not([disabled]) {
   --button-color: var(--color-primary-button-hover-text);
   --button-background-color: var(--color-primary-button-hover-background);
   --button-border-color: var(--color-primary-button-hover-border);
+  transform: translateY(-2px);
+  box-shadow: inset 0 0 0 var(--button-border-width) var(--button-border-color),
+    0px 7px 15px rgba(59, 130, 246, 0.35);
+}
+
+.button:active,
+button.shopify-payment-button__button--unbranded:active:not([disabled]) {
+  transform: translateY(0);
+  box-shadow: inset 0 0 0 var(--button-border-width) var(--button-border-color);
+  filter: brightness(0.9);
 }
 
 .button-secondary {
@@ -4123,6 +4135,17 @@ text-component {
 .shopify-section:has(.in-onboarding-state) {
   /* stylelint-disable-next-line declaration-no-important */
   display: none !important;
+}
+
+/* Header Navigation Link Hover Effects */
+.menu-list__link {
+  display: inline-block;
+  transition: transform 0.2s ease-in-out, text-shadow 0.2s ease-in-out;
+}
+
+.menu-list__link:hover {
+  transform: scale(1.1);
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.7);
 }
 
 .product-card:hover,

@@ -1,0 +1,508 @@
+{% comment %}
+  Product Selection Component - Brutalist Design
+  Choose Your Standard section
+{% endcomment %}
+
+<section class="product-selection-brutalist" data-section-id="{{ section.id }}">
+  <div class="product-selection-brutalist__container">
+    <h1 class="product-selection-brutalist__headline">
+      {{ section.settings.headline }}
+    </h1>
+
+    <div class="product-selection-brutalist__boxes">
+      <!-- Box 1: The First Step -->
+      <div class="product-box">
+        <h2 class="product-box__title">{{ section.settings.box1_title }}</h2>
+        <p class="product-box__subtitle">{{ section.settings.box1_subtitle }}</p>
+        
+        <div class="product-box__image-wrapper">
+          {% if section.settings.box1_image %}
+            <img 
+              src="{{ section.settings.box1_image | image_url: width: 300 }}" 
+              alt="{{ section.settings.box1_title }}"
+              class="product-box__image"
+              loading="lazy"
+            >
+          {% else %}
+            <img 
+              src="https://placehold.co/300x300/000000/FFFFFF?text=1+ROLL" 
+              alt="{{ section.settings.box1_title }}"
+              class="product-box__image"
+            >
+          {% endif %}
+        </div>
+
+        <ul class="product-box__features">
+          <li>✓ {{ section.settings.box1_feature1 }}</li>
+          <li>✓ {{ section.settings.box1_feature2 }}</li>
+          <li>✓ {{ section.settings.box1_feature3 }}</li>
+        </ul>
+
+        <a href="{{ section.settings.box1_link }}" class="product-box__cta">
+          {{ section.settings.box1_cta_text }}
+        </a>
+      </div>
+
+      <!-- Box 2: The Athlete Pack (Highlighted) -->
+      <div class="product-box is-highlighted">
+        <div class="product-box__badge">{{ section.settings.box2_badge }}</div>
+        
+        <h2 class="product-box__title">{{ section.settings.box2_title }}</h2>
+        <p class="product-box__subtitle">{{ section.settings.box2_subtitle }}</p>
+        
+        <div class="product-box__image-wrapper">
+          {% if section.settings.box2_image %}
+            <img 
+              src="{{ section.settings.box2_image | image_url: width: 300 }}" 
+              alt="{{ section.settings.box2_title }}"
+              class="product-box__image"
+              loading="lazy"
+            >
+          {% else %}
+            <img 
+              src="https://placehold.co/300x300/000000/FFFFFF?text=3+ROLLS" 
+              alt="{{ section.settings.box2_title }}"
+              class="product-box__image"
+            >
+          {% endif %}
+        </div>
+
+        <ul class="product-box__features">
+          <li>✓ {{ section.settings.box2_feature1 }}</li>
+          <li>✓ {{ section.settings.box2_feature2 }}</li>
+          <li>✓ {{ section.settings.box2_feature3 }}</li>
+        </ul>
+
+        <a href="{{ section.settings.box2_link }}" class="product-box__cta">
+          {{ section.settings.box2_cta_text }}
+        </a>
+      </div>
+
+      <!-- Box 3: The Team Pack -->
+      <div class="product-box">
+        <h2 class="product-box__title">{{ section.settings.box3_title }}</h2>
+        <p class="product-box__subtitle">{{ section.settings.box3_subtitle }}</p>
+        
+        <div class="product-box__image-wrapper">
+          {% if section.settings.box3_image %}
+            <img 
+              src="{{ section.settings.box3_image | image_url: width: 300 }}" 
+              alt="{{ section.settings.box3_title }}"
+              class="product-box__image"
+              loading="lazy"
+            >
+          {% else %}
+            <img 
+              src="https://placehold.co/300x300/000000/FFFFFF?text=10+ROLLS" 
+              alt="{{ section.settings.box3_title }}"
+              class="product-box__image"
+            >
+          {% endif %}
+        </div>
+
+        <ul class="product-box__features">
+          <li>✓ {{ section.settings.box3_feature1 }}</li>
+          <li>✓ {{ section.settings.box3_feature2 }}</li>
+          <li>✓ {{ section.settings.box3_feature3 }}</li>
+        </ul>
+
+        <a href="{{ section.settings.box3_link }}" class="product-box__cta">
+          {{ section.settings.box3_cta_text }}
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  /* ============================================
+     PRODUCT SELECTION BRUTALIST COMPONENT
+     Strict adherence to specifications
+     ============================================ */
+
+  .product-selection-brutalist {
+    background-color: #000000;
+    padding: 80px 20px;
+    width: 100%;
+  }
+
+  .product-selection-brutalist__container {
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+
+  /* Main Headline */
+  .product-selection-brutalist__headline {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    font-size: 3rem;
+    font-weight: 900;
+    color: #FFFFFF;
+    text-align: center;
+    margin: 0 0 60px 0;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+  }
+
+  /* Product Boxes Container */
+  .product-selection-brutalist__boxes {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    align-items: stretch;
+  }
+
+  /* Individual Product Box */
+  .product-box {
+    background: transparent;
+    border: 1px solid #FFFFFF;
+    border-radius: 16px;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1;
+    max-width: 400px;
+    position: relative;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .product-box:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 24px rgba(255, 255, 255, 0.1);
+  }
+
+  /* Highlighted Box (Athlete Pack) */
+  .product-box.is-highlighted {
+    border: 2px solid #FFFFFF;
+    box-shadow: 0 0 30px rgba(255, 255, 255, 0.15);
+  }
+
+  /* Best Value Badge */
+  .product-box__badge {
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #FFFFFF;
+    color: #000000;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 6px 16px;
+    border-radius: 20px;
+  }
+
+  /* Product Box Title */
+  .product-box__title {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: #FFFFFF;
+    text-align: center;
+    margin: 0 0 12px 0;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+  }
+
+  /* Product Box Subtitle */
+  .product-box__subtitle {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    font-size: 0.95rem;
+    font-weight: 400;
+    color: #FFFFFF;
+    text-align: center;
+    margin: 0 0 24px 0;
+    opacity: 0.85;
+  }
+
+  /* Product Image */
+  .product-box__image-wrapper {
+    width: 100%;
+    margin-bottom: 24px;
+  }
+
+  .product-box__image {
+    width: 100%;
+    height: auto;
+    max-width: 300px;
+    display: block;
+    margin: 0 auto;
+    border-radius: 8px;
+  }
+
+  /* Feature List */
+  .product-box__features {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 32px 0;
+    width: 100%;
+  }
+
+  .product-box__features li {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    font-size: 0.95rem;
+    font-weight: 400;
+    color: #FFFFFF;
+    margin-bottom: 12px;
+    line-height: 1.6;
+    text-align: left;
+  }
+
+  /* CTA Button */
+  .product-box__cta {
+    background-color: #FFFFFF;
+    color: #000000;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    font-size: 0.95rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    text-decoration: none;
+    text-align: center;
+    padding: 16px 32px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    width: 100%;
+    display: block;
+    transition: all 0.2s ease;
+    letter-spacing: 0.05em;
+    margin-top: auto;
+  }
+
+  .product-box__cta:hover {
+    background-color: #000000;
+    color: #FFFFFF;
+    box-shadow: inset 0 0 0 2px #FFFFFF;
+    transform: translateY(-2px);
+  }
+
+  .product-box__cta:active {
+    transform: translateY(0);
+  }
+
+  /* ============================================
+     RESPONSIVE DESIGN (Critical)
+     Mobile breakpoint: 768px
+     ============================================ */
+
+  @media (max-width: 768px) {
+    .product-selection-brutalist {
+      padding: 60px 16px;
+    }
+
+    .product-selection-brutalist__headline {
+      font-size: 2rem;
+      margin-bottom: 40px;
+    }
+
+    .product-selection-brutalist__boxes {
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    .product-box {
+      max-width: 100%;
+    }
+
+    .product-box__title {
+      font-size: 1.25rem;
+    }
+
+    .product-box__subtitle {
+      font-size: 0.9rem;
+    }
+
+    .product-box__features li {
+      font-size: 0.9rem;
+    }
+
+    .product-box__cta {
+      font-size: 0.9rem;
+      padding: 14px 28px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .product-selection-brutalist__headline {
+      font-size: 1.75rem;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Choose Your Standard",
+  "settings": [
+    {
+      "type": "text",
+      "id": "headline",
+      "label": "Main Headline",
+      "default": "CHOOSE YOUR STANDARD"
+    },
+    {
+      "type": "header",
+      "content": "Box 1: The First Step"
+    },
+    {
+      "type": "text",
+      "id": "box1_title",
+      "label": "Title",
+      "default": "THE FIRST STEP"
+    },
+    {
+      "type": "text",
+      "id": "box1_subtitle",
+      "label": "Subtitle",
+      "default": "The tool to begin the work."
+    },
+    {
+      "type": "image_picker",
+      "id": "box1_image",
+      "label": "Product Image"
+    },
+    {
+      "type": "text",
+      "id": "box1_feature1",
+      "label": "Feature 1",
+      "default": "1 Roll of Synapex Tape"
+    },
+    {
+      "type": "text",
+      "id": "box1_feature2",
+      "label": "Feature 2",
+      "default": "The first step to silencing excuses"
+    },
+    {
+      "type": "text",
+      "id": "box1_feature3",
+      "label": "Feature 3",
+      "default": "Feel the standard for yourself"
+    },
+    {
+      "type": "text",
+      "id": "box1_cta_text",
+      "label": "CTA Button Text",
+      "default": "TAKE THE FIRST STEP"
+    },
+    {
+      "type": "url",
+      "id": "box1_link",
+      "label": "CTA Button Link"
+    },
+    {
+      "type": "header",
+      "content": "Box 2: The Athlete Pack (Highlighted)"
+    },
+    {
+      "type": "text",
+      "id": "box2_badge",
+      "label": "Badge Text",
+      "default": "BEST VALUE"
+    },
+    {
+      "type": "text",
+      "id": "box2_title",
+      "label": "Title",
+      "default": "THE ATHLETE PACK"
+    },
+    {
+      "type": "text",
+      "id": "box2_subtitle",
+      "label": "Subtitle",
+      "default": "The monthly supply for the committed."
+    },
+    {
+      "type": "image_picker",
+      "id": "box2_image",
+      "label": "Product Image"
+    },
+    {
+      "type": "text",
+      "id": "box2_feature1",
+      "label": "Feature 1",
+      "default": "3 Rolls of Synapex Tape"
+    },
+    {
+      "type": "text",
+      "id": "box2_feature2",
+      "label": "Feature 2",
+      "default": "For consistent, daily training"
+    },
+    {
+      "type": "text",
+      "id": "box2_feature3",
+      "label": "Feature 3",
+      "default": "Never run out, never make an excuse"
+    },
+    {
+      "type": "text",
+      "id": "box2_cta_text",
+      "label": "CTA Button Text",
+      "default": "CHOOSE ATHLETE"
+    },
+    {
+      "type": "url",
+      "id": "box2_link",
+      "label": "CTA Button Link"
+    },
+    {
+      "type": "header",
+      "content": "Box 3: The Team Pack"
+    },
+    {
+      "type": "text",
+      "id": "box3_title",
+      "label": "Title",
+      "default": "THE TEAM PACK"
+    },
+    {
+      "type": "text",
+      "id": "box3_subtitle",
+      "label": "Subtitle",
+      "default": "For the leaders who equip their UNIT."
+    },
+    {
+      "type": "image_picker",
+      "id": "box3_image",
+      "label": "Product Image"
+    },
+    {
+      "type": "text",
+      "id": "box3_feature1",
+      "label": "Feature 1",
+      "default": "10 Rolls of Synapex Tape"
+    },
+    {
+      "type": "text",
+      "id": "box3_feature2",
+      "label": "Feature 2",
+      "default": "For coaches, gyms, and teams"
+    },
+    {
+      "type": "text",
+      "id": "box3_feature3",
+      "label": "Feature 3",
+      "default": "Hold the line, together"
+    },
+    {
+      "type": "text",
+      "id": "box3_cta_text",
+      "label": "CTA Button Text",
+      "default": "EQUIP THE TEAM"
+    },
+    {
+      "type": "url",
+      "id": "box3_link",
+      "label": "CTA Button Link"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Choose Your Standard"
+    }
+  ]
+}
+{% endschema %}
+
