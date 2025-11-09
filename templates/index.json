@@ -721,7 +721,7 @@
         "text_3H3pDt": {
           "type": "text",
           "settings": {
-            "text": "<p><em><strong>Synapex is Augmented Kinesiology Tape. We've integrated a superior German Henkel adhesive with a high-performance fabric to create a tool that enhances stability and durability beyond the limits of standard tape.</strong></em></p>",
+            "text": "<p><em><strong>Synapex is Augmented Kinesiology Tape. We've integrated a superior German Henkel adhesive with a high-performance cotton fabric to create a tool that enhances stability and durability beyond the limits of standard tape.</strong></em></p>",
             "width": "fit-content",
             "max_width": "narrow",
             "alignment": "left",
@@ -780,7 +780,7 @@
         "section_width": "page-width",
         "section_height": "medium",
         "section_height_custom": 50,
-        "color_scheme": "scheme-3",
+        "color_scheme": "scheme-6",
         "background_media": "none",
         "video_position": "cover",
         "background_image_position": "cover",
@@ -792,8 +792,8 @@
         "overlay_color": "#00000026",
         "overlay_style": "solid",
         "gradient_direction": "to top",
-        "padding-block-start": 40,
-        "padding-block-end": 40
+        "padding-block-start": 0,
+        "padding-block-end": 0
       }
     },
     "1757730739ed113dc5": {
