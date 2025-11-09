@@ -261,7 +261,7 @@
                 "text_BRfABw": {
                   "type": "text",
                   "settings": {
-                    "text": "<h3><em>The  Synapex Momentum </em>Newsletter</h3>",
+                    "text": "<h6><em>The  Synapex Momentum </em>Newsletter</h6>",
                     "width": "100%",
                     "max_width": "normal",
                     "alignment": "left",
@@ -405,7 +405,7 @@
         "section_width": "page-width",
         "section_height": "",
         "section_height_custom": 50,
-        "color_scheme": "scheme-6",
+        "color_scheme": "scheme-7",
         "background_media": "none",
         "video_position": "cover",
         "background_image_position": "cover",
