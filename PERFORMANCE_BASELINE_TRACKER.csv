@@ -1,0 +1,21 @@
+Date,Trigger Event,Theme Version,App Version,LCP (s),FID (ms),CLS,Total Page Size (MB),Total Requests,TTI (s),JS Execution (ms),Performance Score,Latency Tax (ms),Notes,Tested By
+YYYY-MM-DD,Baseline (Pre-App),,,,,,,,,,,0,,
+YYYY-MM-DD,Post-Installation,,,,,,,,,,,,,
+YYYY-MM-DD,Monthly Check,,,,,,,,,,,,,
+YYYY-MM-DD,Theme Update,,,,,,,,,,,,,
+YYYY-MM-DD,App Update,,,,,,,,,,,,,
+
+# INSTRUCTIONS FOR USE:
+# 1. Fill baseline row BEFORE installing PickyStory
+# 2. Fill post-installation row 24hrs after PickyStory is live
+# 3. Add new row every month and after every update
+# 4. Calculate Latency Tax: (Current LCP - Baseline LCP) * 1000 to get milliseconds
+# 5. Flag any Latency Tax > 300ms for optimization review
+# 
+# TARGET THRESHOLDS:
+# LCP: < 2.5s (Good), 2.5-4.0s (Needs Improvement), > 4.0s (Poor)
+# FID: < 100ms (Good), 100-300ms (Needs Improvement), > 300ms (Poor)
+# CLS: < 0.1 (Good), 0.1-0.25 (Needs Improvement), > 0.25 (Poor)
+# Performance Score: > 90 (Green), 50-89 (Orange), < 50 (Red)
+# Latency Tax: < 300ms (Acceptable), 300-500ms (Warning), > 500ms (Critical)
+

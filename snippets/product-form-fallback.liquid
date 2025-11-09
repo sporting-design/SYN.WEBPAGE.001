@@ -1,0 +1,317 @@
+{% comment %}
+  Fallback product form - displays if PickyStory fails to load
+  Shows after 5 second timeout
+  
+  RESILIENCE PROTOCOL: Phase 2C - Graceful Degradation
+  Last Updated: 2025-11-08
+{% endcomment %}
+
+<div id="fallback-product-form" style="display: none;">
+  <div class="product-form-fallback">
+    <p class="fallback-notice">
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor" style="display: inline-block; vertical-align: middle; margin-right: 8px;">
+        <path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd"/>
+      </svg>
+      <strong>Quick Purchase Mode:</strong> Bundle options temporarily unavailable. Select single roll below.
+    </p>
+    
+    <form method="post" action="/cart/add" id="fallback-form" accept-charset="UTF-8" enctype="multipart/form-data">
+      <input type="hidden" name="form_type" value="product">
+      <input type="hidden" name="utf8" value="✓">
+      
+      {% if product.has_only_default_variant %}
+        <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+      {% else %}
+        <div class="product-form__input product-form__select-wrapper">
+          <label for="fallback-variant-select" class="form__label">
+            Select Option:
+          </label>
+          <select 
+            name="id" 
+            id="fallback-variant-select"
+            class="product-form__select"
+          >
+            {% for variant in product.variants %}
+              <option 
+                value="{{ variant.id }}"
+                {% if variant == product.selected_or_first_available_variant %}selected="selected"{% endif %}
+                {% unless variant.available %}disabled="disabled"{% endunless %}
+              >
+                {{ variant.title }} - {{ variant.price | money }}
+                {% unless variant.available %} (Sold Out){% endunless %}
+              </option>
+            {% endfor %}
+          </select>
+        </div>
+      {% endif %}
+      
+      <div class="product-form__quantity">
+        <label for="fallback-quantity" class="form__label">
+          Quantity:
+        </label>
+        <input 
+          type="number" 
+          id="fallback-quantity"
+          name="quantity" 
+          value="1" 
+          min="1"
+          class="quantity__input"
+        >
+      </div>
+      
+      <button 
+        type="submit" 
+        name="add"
+        class="button button--primary product-form__submit"
+        {% unless product.selected_or_first_available_variant.available %}disabled="disabled"{% endunless %}
+      >
+        <span>
+          {% if product.selected_or_first_available_variant.available %}
+            Add to Cart - {{ product.selected_or_first_available_variant.price | money }}
+          {% else %}
+            Sold Out
+          {% endif %}
+        </span>
+      </button>
+      
+      <small class="fallback-footer">
+        Bundle options will return shortly. Contact <a href="/pages/contact">support</a> if this persists.
+      </small>
+    </form>
+  </div>
+</div>
+
+<script>
+  (function() {
+    'use strict';
+    
+    const FALLBACK_TIMEOUT = 5000; // 5 seconds
+    const PICKYSTORY_SELECTORS = [
+      '.pickystory-bundle-selector',
+      '[data-pickystory]',
+      '#pickystory-container'
+    ];
+    
+    let psLoaded = false;
+    let fallbackActivated = false;
+    
+    /**
+     * Check if PickyStory has loaded successfully
+     */
+    function checkPickyStory() {
+      // Method 1: Check for PickyStory global object
+      if (window.PickyStory && window.PickyStory.initialized) {
+        psLoaded = true;
+        return true;
+      }
+      
+      // Method 2: Check for PickyStory DOM elements
+      for (let selector of PICKYSTORY_SELECTORS) {
+        const element = document.querySelector(selector);
+        if (element && element.children.length > 0) {
+          psLoaded = true;
+          return true;
+        }
+      }
+      
+      return false;
+    }
+    
+    /**
+     * Activate fallback form
+     */
+    function activateFallback() {
+      if (fallbackActivated) return;
+      
+      console.warn('[Fallback] PickyStory did not load - activating fallback form');
+      fallbackActivated = true;
+      
+      const fallbackForm = document.getElementById('fallback-product-form');
+      if (fallbackForm) {
+        fallbackForm.style.display = 'block';
+        
+        // Hide PickyStory containers if present
+        PICKYSTORY_SELECTORS.forEach(selector => {
+          const container = document.querySelector(selector);
+          if (container) {
+            container.style.display = 'none';
+          }
+        });
+        
+        // Track fallback activation in analytics
+        if (window.dataLayer) {
+          window.dataLayer.push({
+            'event': 'pickystory_fallback_activated',
+            'product_id': '{{ product.id }}',
+            'product_handle': '{{ product.handle }}',
+            'timestamp': new Date().toISOString()
+          });
+        }
+        
+        // Log to console for debugging
+        console.log('[Fallback] Product form fallback activated at ' + new Date().toISOString());
+      }
+    }
+    
+    /**
+     * Update fallback button price when variant changes
+     */
+    function setupVariantChangeListener() {
+      const variantSelect = document.getElementById('fallback-variant-select');
+      const submitButton = document.querySelector('.product-form__submit span');
+      
+      if (variantSelect && submitButton) {
+        variantSelect.addEventListener('change', function() {
+          const selectedOption = this.options[this.selectedIndex];
+          const variantId = selectedOption.value;
+          const isAvailable = !selectedOption.disabled;
+          const priceText = selectedOption.text.split(' - ')[1].split(' (')[0];
+          
+          // Update button text
+          if (isAvailable) {
+            submitButton.textContent = 'Add to Cart - ' + priceText;
+            submitButton.closest('button').disabled = false;
+          } else {
+            submitButton.textContent = 'Sold Out';
+            submitButton.closest('button').disabled = true;
+          }
+        });
+      }
+    }
+    
+    // Check immediately on load
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', function() {
+        setTimeout(checkPickyStory, 100);
+      });
+    } else {
+      setTimeout(checkPickyStory, 100);
+    }
+    
+    // Set timeout to activate fallback
+    setTimeout(function() {
+      if (!checkPickyStory()) {
+        activateFallback();
+        setupVariantChangeListener();
+      }
+    }, FALLBACK_TIMEOUT);
+    
+    // Also check when PickyStory might load late
+    window.addEventListener('load', function() {
+      setTimeout(function() {
+        if (checkPickyStory() && fallbackActivated) {
+          // PickyStory loaded late but fallback already shown
+          console.log('[Fallback] PickyStory loaded after fallback activation');
+          
+          // Optionally hide fallback and show PickyStory
+          // Uncomment if you want to auto-switch back:
+          // document.getElementById('fallback-product-form').style.display = 'none';
+          // PICKYSTORY_SELECTORS.forEach(sel => {
+          //   const el = document.querySelector(sel);
+          //   if (el) el.style.display = 'block';
+          // });
+        }
+      }, 1000);
+    });
+    
+  })();
+</script>
+
+<style>
+  .product-form-fallback {
+    padding: 1.5rem;
+    background: linear-gradient(135deg, #fff3cd 0%, #fff8e1 100%);
+    border: 2px solid #ffc107;
+    border-radius: 8px;
+    margin: 1.5rem 0;
+    box-shadow: 0 2px 8px rgba(255, 193, 7, 0.2);
+  }
+  
+  .fallback-notice {
+    margin-bottom: 1.25rem;
+    color: #856404;
+    font-size: 0.95rem;
+    display: flex;
+    align-items: center;
+  }
+  
+  .fallback-notice svg {
+    flex-shrink: 0;
+    color: #ff9800;
+  }
+  
+  .product-form__input {
+    margin-bottom: 1rem;
+  }
+  
+  .form__label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: #333;
+  }
+  
+  .product-form__select {
+    width: 100%;
+    padding: 0.75rem;
+    font-size: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: white;
+    cursor: pointer;
+    transition: border-color 0.2s ease;
+  }
+  
+  .product-form__select:hover {
+    border-color: #999;
+  }
+  
+  .product-form__select:focus {
+    outline: none;
+    border-color: var(--color-primary-button-background, #3B82F6);
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+  }
+  
+  .product-form__quantity {
+    margin-bottom: 1rem;
+  }
+  
+  .quantity__input {
+    width: 80px;
+    padding: 0.75rem;
+    font-size: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    text-align: center;
+  }
+  
+  .product-form__submit {
+    width: 100%;
+    margin-bottom: 0.75rem;
+  }
+  
+  .fallback-footer {
+    display: block;
+    text-align: center;
+    color: #666;
+    font-size: 0.85rem;
+    margin-top: 0.5rem;
+  }
+  
+  .fallback-footer a {
+    color: var(--color-primary-button-background, #3B82F6);
+    text-decoration: underline;
+  }
+  
+  @media (max-width: 749px) {
+    .product-form-fallback {
+      padding: 1rem;
+      margin: 1rem 0;
+    }
+    
+    .fallback-notice {
+      font-size: 0.9rem;
+    }
+  }
+</style>
+
