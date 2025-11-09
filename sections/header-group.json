@@ -86,23 +86,6 @@
         "collection_color_scheme": "inverse"
       }
     },
-    "header_conversion_J79VLe": {
-      "type": "header-conversion",
-      "name": "Command Header",
-      "settings": {
-        "command_center_menu": "",
-        "tools_link": "",
-        "learn_link": "",
-        "mission_link": "",
-        "cta_text": "JOIN THE UNIT",
-        "cta_link": ""
-      }
-    },
-    "ecom_bodymap_front_section_JfFAHF": {
-      "type": "ecom-bodymap-front-section",
-      "name": "BodyMap-front",
-      "settings": {}
-    },
     "1762683921550c821a": {
       "type": "_blocks",
       "blocks": {
@@ -199,8 +182,6 @@
   },
   "order": [
     "header_section",
-    "header_conversion_J79VLe",
-    "ecom_bodymap_front_section_JfFAHF",
     "1762683921550c821a",
     "1755460336964fed85"
   ]
