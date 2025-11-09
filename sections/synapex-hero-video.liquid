@@ -2,7 +2,10 @@
   SYNAPEX HERO VIDEO SECTION
   Maximum Strategic Flexibility Architecture
   Sovereign-Grade Control Over All Visual Elements
+  JURISDICTIONAL INTEGRITY: Home page only
 {% endcomment %}
+
+{% if template.name == 'index' %}
 
 {%- liquid
   assign video_url = section.settings.video_url
@@ -414,6 +417,8 @@
     }
   }
 </style>
+
+{% endif %}
 
 {% schema %}
 {
