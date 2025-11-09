@@ -9,99 +9,6 @@
  */
 {
   "sections": {
-    "hero_RkimKJ": {
-      "type": "hero",
-      "blocks": {
-        "group_3cB4GW": {
-          "type": "group",
-          "settings": {
-            "link": "",
-            "open_in_new_tab": false,
-            "content_direction": "column",
-            "vertical_on_mobile": true,
-            "horizontal_alignment": "flex-start",
-            "vertical_alignment": "center",
-            "align_baseline": false,
-            "horizontal_alignment_flex_direction_column": "center",
-            "vertical_alignment_flex_direction_column": "center",
-            "gap": 12,
-            "width": "custom",
-            "custom_width": 34,
-            "width_mobile": "custom",
-            "custom_width_mobile": 68,
-            "height": "fit",
-            "custom_height": 100,
-            "inherit_color_scheme": true,
-            "color_scheme": "",
-            "background_media": "none",
-            "video_position": "cover",
-            "background_image_position": "cover",
-            "border": "none",
-            "border_width": 1,
-            "border_opacity": 100,
-            "border_radius": 0,
-            "toggle_overlay": false,
-            "overlay_color": "#00000026",
-            "overlay_style": "solid",
-            "gradient_direction": "to top",
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {
-            "button_6pPmdf": {
-              "type": "button",
-              "settings": {
-                "label": "Shop now →",
-                "link": "shopify://collections/synapex",
-                "open_in_new_tab": false,
-                "style_class": "button-secondary",
-                "width": "fit-content",
-                "custom_width": 100,
-                "width_mobile": "fit-content",
-                "custom_width_mobile": 100
-              },
-              "blocks": {}
-            }
-          },
-          "block_order": [
-            "button_6pPmdf"
-          ]
-        }
-      },
-      "block_order": [
-        "group_3cB4GW"
-      ],
-      "settings": {
-        "link": "",
-        "open_in_new_tab": false,
-        "media_type_1": "video",
-        "image_1": "shopify://shop_images/synapex-front-hero-img.png",
-        "video_1": "shopify://files/videos/copy_1C53D966-E79C-4A40-ACD9-A1098DD7F31C.MOV",
-        "media_type_2": "image",
-        "content_direction": "column",
-        "vertical_on_mobile": true,
-        "horizontal_alignment": "flex-start",
-        "vertical_alignment": "center",
-        "align_baseline": false,
-        "horizontal_alignment_flex_direction_column": "center",
-        "vertical_alignment_flex_direction_column": "flex-end",
-        "gap": 16,
-        "section_width": "page-width",
-        "section_height": "large",
-        "section_height_custom": 50,
-        "color_scheme": "scheme-6",
-        "toggle_overlay": false,
-        "overlay_color": "#0000001c",
-        "overlay_style": "solid",
-        "gradient_direction": "to top",
-        "blurred_reflection": true,
-        "reflection_opacity": 25,
-        "padding-block-start": 0,
-        "padding-block-end": 50
-      }
-    },
     "product_selection_brutalist_new": {
       "type": "product-selection-brutalist",
       "settings": {
@@ -2446,7 +2353,6 @@
     }
   },
   "order": [
-    "hero_RkimKJ",
     "product_selection_brutalist_new",
     "reviews_marquee_new",
     "17597176204a724de2",
