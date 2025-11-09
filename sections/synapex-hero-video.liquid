@@ -123,6 +123,7 @@
 
   /* ============================================
      VIDEO BACKGROUND LAYER
+     HARDENED: Video forced to absolute bottom of stacking context
      ============================================ */
   .hero-video__background {
     position: absolute;
@@ -130,20 +131,19 @@
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: 1;
+    z-index: 0;
+    overflow: hidden;
   }
 
   .hero-video__video,
   .hero-video__fallback-image {
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    min-width: 100%;
-    min-height: 100%;
-    width: auto;
-    height: auto;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     object-fit: cover;
+    z-index: -1;
   }
 
   /* Hide video on mobile to save bandwidth */
@@ -161,15 +161,17 @@
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, calc(var(--overlay-opacity) / 100));
-    z-index: 2;
+    z-index: 1;
+    pointer-events: none;
   }
 
   /* ============================================
      CONTENT OVERLAY LAYER
+     HARDENED: Content guaranteed to render above all background layers
      ============================================ */
   .hero-video__content {
     position: relative;
-    z-index: 10;
+    z-index: 100;
     width: 100%;
     height: 100%;
     display: flex;
