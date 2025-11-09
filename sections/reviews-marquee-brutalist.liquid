@@ -3,12 +3,8 @@
   Voices of the Unit section
 {% endcomment %}
 
-<section class="reviews-marquee-brutalist" data-section-id="{{ section.id }}">
+<section class="reviews-marquee-brutalist" data-section-id="{{ section.id }}" style="padding-top: {{ section.settings.padding_top }}px; padding-bottom: {{ section.settings.padding_bottom }}px;">
   <div class="reviews-marquee-brutalist__container">
-    <h2 class="reviews-marquee-brutalist__headline">
-      {{ section.settings.headline }}
-    </h2>
-
     <div class="reviews-marquee-brutalist__marquee">
       <div class="scrolling-content">
         <!-- First set of reviews -->
@@ -67,7 +63,8 @@
 
   .reviews-marquee-brutalist {
     background-color: #000000;
-    padding: 60px 20px;
+    padding-left: 20px;
+    padding-right: 20px;
     width: 100%;
     overflow: hidden;
   }
@@ -75,18 +72,6 @@
   .reviews-marquee-brutalist__container {
     max-width: 100%;
     margin: 0 auto;
-  }
-
-  /* Main Headline */
-  .reviews-marquee-brutalist__headline {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-    font-size: 2.5rem;
-    font-weight: 900;
-    color: #FFFFFF;
-    text-align: center;
-    margin: 0 0 40px 0;
-    letter-spacing: 0.02em;
-    text-transform: uppercase;
   }
 
   /* Marquee Container */
@@ -174,12 +159,8 @@
 
   @media (max-width: 768px) {
     .reviews-marquee-brutalist {
-      padding: 40px 16px;
-    }
-
-    .reviews-marquee-brutalist__headline {
-      font-size: 1.75rem;
-      margin-bottom: 30px;
+      padding-left: 16px;
+      padding-right: 16px;
     }
 
     .reviews-marquee-brutalist__marquee {
@@ -207,10 +188,6 @@
   }
 
   @media (max-width: 480px) {
-    .reviews-marquee-brutalist__headline {
-      font-size: 1.5rem;
-    }
-
     .reviews-marquee-brutalist__marquee {
       height: 45px;
     }
@@ -240,10 +217,28 @@
   "name": "Voices of the Unit",
   "settings": [
     {
-      "type": "text",
-      "id": "headline",
-      "label": "Main Headline",
-      "default": "VOICES OF THE UNIT."
+      "type": "header",
+      "content": "Section Spacing"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Top Padding",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Bottom Padding",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "default": 40
     },
     {
       "type": "header",
