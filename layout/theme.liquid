@@ -77,13 +77,11 @@
       {% render 'quick-add-modal' %}
     {% endif %}
 
-  {% if sections.header.settings.pev_link != blank %}
   {%- comment -%}
   ════════════════════════════════════════════════════════════════
   PERSISTENT ENGAGEMENT VECTOR (PEV)
   Global floating CTA - Annihilated on product pages
   Command interface: Header section settings
-  Resilience Protocol: Only renders if link is set in Header
   ════════════════════════════════════════════════════════════════
   {%- endcomment -%}
   <a href="{{ sections.header.settings.pev_link }}" id="synapex-pev" class="synapex-pev {% if template.name == 'product' %}pev-hidden{% endif %}">
@@ -278,7 +276,6 @@
       });
     })();
   </script>
-  {% endif %}
 
   {%- render "ecom_footer"-%}</body>
 </html>
