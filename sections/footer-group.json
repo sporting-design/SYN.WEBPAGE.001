@@ -54,40 +54,6 @@
     },
     "1757879253b33c6763": {
       "type": "_blocks",
-      "blocks": {
-        "ai_gen_block_013e7c2_UTYYPU": {
-          "type": "ai_gen_block_013e7c2",
-          "settings": {
-            "main_heading": "Request Wholesale Pricing & Clinical Catalog",
-            "subtitle": "",
-            "button_text": "Request B2B Pricing",
-            "success_message": "Thank you! We'll be in touch with wholesale pricing information soon.",
-            "athletes_heading": "Athletes Choice",
-            "athletes_image": "shopify://shop_images/IMG_2254.jpg",
-            "background_color": "#ffffff",
-            "heading_color": "#2c3e50",
-            "text_color": "#34495e",
-            "button_color": "#3498db",
-            "button_text_color": "#ffffff",
-            "button_hover_color": "#2980b9",
-            "input_background": "#ffffff",
-            "input_border_color": "#bdc3c7",
-            "success_color": "#27ae60",
-            "error_color": "#e74c3c",
-            "heading_size": 32,
-            "section_heading_size": 24,
-            "text_size": 16,
-            "border_radius": 8,
-            "input_border_radius": 4,
-            "button_border_radius": 6,
-            "image_border_radius": 8
-          },
-          "blocks": {}
-        }
-      },
-      "block_order": [
-        "ai_gen_block_013e7c2_UTYYPU"
-      ],
       "settings": {
         "content_direction": "column",
         "vertical_on_mobile": true,
