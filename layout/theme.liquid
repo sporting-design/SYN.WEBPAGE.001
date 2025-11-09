@@ -81,12 +81,28 @@
   ════════════════════════════════════════════════════════════════
   PERSISTENT ENGAGEMENT VECTOR (PEV)
   Global floating CTA - Annihilated on product pages
+  Dynamic configuration via Theme Settings
   ════════════════════════════════════════════════════════════════
   {%- endcomment -%}
-  <a href="/products/synapex-performance-tape" id="synapex-pev" class="synapex-pev {% if template.name == 'product' %}pev-hidden{% endif %}">
-    <span class="pev-icon">≠</span>
-    <span class="pev-text">SHOP THE STANDARD</span>
-  </a>
+  {%- liquid
+    assign pev_link = settings.pev_button_link
+    assign pev_text = settings.pev_button_text
+    
+    if pev_link == blank
+      assign pev_link = '/products/synapex-performance-tape'
+    endif
+    
+    if pev_text == blank
+      assign pev_text = 'SHOP THE STANDARD'
+    endif
+  -%}
+  
+  {% if pev_link != blank %}
+    <a href="{{ pev_link }}" id="synapex-pev" class="synapex-pev {% if template.name == 'product' %}pev-hidden{% endif %}">
+      <span class="pev-icon">≠</span>
+      <span class="pev-text">{{ pev_text }}</span>
+    </a>
+  {% endif %}
 
   <style>
     /* ════════════════════════════════════════

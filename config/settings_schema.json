@@ -2240,5 +2240,30 @@
         "default": "equal-width-buttons"
       }
     ]
+  },
+  {
+    "name": "Persistent Engagement Vector",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Global Floating CTA Button"
+      },
+      {
+        "type": "paragraph",
+        "content": "This button appears at the bottom of all pages except product pages."
+      },
+      {
+        "type": "url",
+        "id": "pev_button_link",
+        "label": "Button Link",
+        "info": "The destination URL when the button is clicked."
+      },
+      {
+        "type": "text",
+        "id": "pev_button_text",
+        "label": "Button Text",
+        "default": "SHOP THE STANDARD"
+      }
+    ]
   }
 ]
