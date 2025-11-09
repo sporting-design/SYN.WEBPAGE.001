@@ -280,6 +280,7 @@
           ]
         }
       },
+      "disabled": true,
       "settings": {
         "layout_type": "grid",
         "product_card_size": "large",
@@ -293,6 +294,35 @@
         "color_scheme": "scheme-6",
         "padding-block-start": 25,
         "padding-block-end": 0
+      }
+    },
+    "product_selection_brutalist_JaWGMJ": {
+      "type": "product-selection-brutalist",
+      "name": "Choose Your Standard",
+      "settings": {
+        "headline": "CHOOSE YOUR STANDARD",
+        "box1_title": "THE FIRST STEP",
+        "box1_subtitle": "The tool to begin the work.",
+        "box1_feature1": "1 Roll of Synapex Tape",
+        "box1_feature2": "The first step to silencing excuses",
+        "box1_feature3": "Feel the standard for yourself",
+        "box1_cta_text": "TAKE THE FIRST STEP",
+        "box1_link": "",
+        "box2_badge": "BEST VALUE",
+        "box2_title": "THE ATHLETE PACK",
+        "box2_subtitle": "The monthly supply for the committed.",
+        "box2_feature1": "3 Rolls of Synapex Tape",
+        "box2_feature2": "For consistent, daily training",
+        "box2_feature3": "Never run out, never make an excuse",
+        "box2_cta_text": "CHOOSE ATHLETE",
+        "box2_link": "",
+        "box3_title": "THE TEAM PACK",
+        "box3_subtitle": "For the leaders who equip their UNIT.",
+        "box3_feature1": "10 Rolls of Synapex Tape",
+        "box3_feature2": "For coaches, gyms, and teams",
+        "box3_feature3": "Hold the line, together",
+        "box3_cta_text": "EQUIP THE TEAM",
+        "box3_link": ""
       }
     },
     "section_c7dNJW": {
@@ -571,6 +601,7 @@
   },
   "order": [
     "main",
+    "product_selection_brutalist_JaWGMJ",
     "section_c7dNJW"
   ]
 }
