@@ -116,10 +116,26 @@
         "padding-block-start": 0,
         "padding-block-end": 0
       }
+    },
+    "synapex_hero_video_4mqbzY": {
+      "type": "synapex-hero-video",
+      "name": "Synapex Hero Video",
+      "settings": {
+        "section_height": "compact",
+        "overlay_opacity": 40,
+        "text_color": "#FFFFFF",
+        "heading": "FORGE YOUR STANDARD",
+        "subheading": "Synapex Performance Tape. Built for the uncompromising.",
+        "content_position": "center",
+        "button_label": "SHOP NOW",
+        "button_link": "",
+        "button_style": "primary"
+      }
     }
   },
   "order": [
     "header_section",
-    "1755460336964fed85"
+    "1755460336964fed85",
+    "synapex_hero_video_4mqbzY"
   ]
 }
