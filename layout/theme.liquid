@@ -100,16 +100,16 @@
       transform: translateX(-50%);
       z-index: 999;
 
-      /* VISUAL ARCHITECTURE: Synapex Standard */
+      /* VISUAL ARCHITECTURE: SOVEREIGN STATE - Universal Visibility */
       display: flex;
       align-items: center;
       gap: 0.75rem;
       padding: 1rem 2rem;
-      background-color: #000000;
-      color: #FFFFFF;
+      background-color: #FFFFFF;
+      color: #000000;
+      border: 2px solid #000000;
       border-radius: 50px;
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4),
-                  0 0 0 1px rgba(255, 255, 255, 0.1);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
       text-decoration: none;
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
       font-size: 0.875rem;
@@ -118,9 +118,12 @@
       letter-spacing: 0.05em;
       white-space: nowrap;
 
-      /* BEHAVIORAL PROTOCOL: Smooth transitions */
+      /* BEHAVIORAL PROTOCOL: Smooth cinematic transitions */
       transition: opacity 0.3s ease-in-out,
                   transform 0.3s ease-out,
+                  background-color 0.3s ease-out,
+                  color 0.3s ease-out,
+                  border-color 0.3s ease-out,
                   box-shadow 0.3s ease-out,
                   bottom 0.3s ease-out;
       
@@ -133,7 +136,7 @@
     .pev-icon {
       font-size: 1.25rem;
       line-height: 1;
-      opacity: 0.9;
+      opacity: 1;
     }
 
     /* TEXT: Command payload */
@@ -141,18 +144,22 @@
       line-height: 1;
     }
 
-    /* HOVER STATE: Elevation + intensity */
+    /* HOVER STATE: THE INVERSION - Tactile dominance */
     .synapex-pev:hover {
+      background-color: #000000;
+      color: #FFFFFF;
+      border-color: #FFFFFF;
       transform: translateX(-50%) translateY(-4px);
-      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.5),
-                  0 0 0 1px rgba(255, 255, 255, 0.2);
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);
     }
 
-    /* ACTIVE STATE: Press feedback */
+    /* ACTIVE STATE: Press feedback with maintained inversion */
     .synapex-pev:active {
+      background-color: #000000;
+      color: #FFFFFF;
+      border-color: #FFFFFF;
       transform: translateX(-50%) translateY(-1px);
-      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3),
-                  0 0 0 1px rgba(255, 255, 255, 0.1);
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
     }
 
     /* ════════════════════════════════════════
