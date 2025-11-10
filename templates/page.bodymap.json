@@ -1,1 +1,1163 @@
-{"sections":{"section_jWNT6U":{"type":"section","blocks":{"text_yCdHBJ":{"type":"text","settings":{"text":"<p>Bodymap<\/p>","width":"100%","max_width":"normal","alignment":"center","type_preset":"h2","font":"var(--font-primary--family)","font_size":"","line_height":"normal","letter_spacing":"normal","case":"none","wrap":"pretty","color":"","background":false,"background_color":"#00000026","corner_radius":0,"padding-block-start":100,"padding-block-end":0,"padding-inline-start":40,"padding-inline-end":0},"blocks":{}}},"block_order":["text_yCdHBJ"],"settings":{"content_direction":"row","vertical_on_mobile":true,"horizontal_alignment":"flex-start","vertical_alignment":"center","align_baseline":false,"horizontal_alignment_flex_direction_column":"flex-start","vertical_alignment_flex_direction_column":"center","gap":12,"section_width":"full-width","section_height":"","section_height_custom":50,"color_scheme":"scheme-5","background_media":"image","video_position":"cover","background_image":"shopify:\/\/shop_images\/synapex-herp-img-clean.png","background_image_position":"cover","border":"none","border_width":1,"border_opacity":100,"border_radius":0,"toggle_overlay":true,"overlay_color":"#2563eb1a","overlay_style":"solid","gradient_direction":"to top","padding-block-start":100,"padding-block-end":32}},"section_Xwmc7b":{"type":"section","blocks":{"custom_liquid_A6mM4j":{"type":"custom-liquid","name":"t:names.custom_liquid","settings":{"custom_liquid":"<div id=\"front_body\"><\/div>"},"blocks":{}},"group_fiTXcG":{"type":"group","settings":{"link":"","open_in_new_tab":false,"content_direction":"row","vertical_on_mobile":true,"horizontal_alignment":"flex-start","vertical_alignment":"center","align_baseline":false,"horizontal_alignment_flex_direction_column":"flex-start","vertical_alignment_flex_direction_column":"center","gap":12,"width":"fill","custom_width":100,"width_mobile":"fill","custom_width_mobile":100,"height":"fit","custom_height":100,"inherit_color_scheme":true,"color_scheme":"","background_media":"none","video_position":"cover","background_image_position":"cover","border":"none","border_width":1,"border_opacity":100,"border_radius":0,"toggle_overlay":false,"overlay_color":"#00000026","overlay_style":"solid","gradient_direction":"to top","padding-block-start":0,"padding-block-end":0,"padding-inline-start":0,"padding-inline-end":0},"blocks":{"group_j9w33F":{"type":"group","settings":{"link":"","open_in_new_tab":false,"content_direction":"column","vertical_on_mobile":true,"horizontal_alignment":"flex-start","vertical_alignment":"center","align_baseline":false,"horizontal_alignment_flex_direction_column":"flex-start","vertical_alignment_flex_direction_column":"center","gap":12,"width":"fill","custom_width":100,"width_mobile":"fill","custom_width_mobile":100,"height":"fit","custom_height":100,"inherit_color_scheme":true,"color_scheme":"","background_media":"none","video_position":"cover","background_image_position":"cover","border":"none","border_width":1,"border_opacity":100,"border_radius":0,"toggle_overlay":false,"overlay_color":"#00000026","overlay_style":"solid","gradient_direction":"to top","padding-block-start":0,"padding-block-end":0,"padding-inline-start":0,"padding-inline-end":0},"blocks":{"image_UEhWnM":{"type":"image","settings":{"image":"shopify:\/\/shop_images\/synapex-bodymap-front.png","link":"","image_ratio":"adapt","width":"fill","custom_width":100,"width_mobile":"fill","custom_width_mobile":100,"height":"fit","border":"none","border_width":1,"border_opacity":100,"border_radius":0,"padding-block-start":0,"padding-block-end":0,"padding-inline-start":0,"padding-inline-end":0},"blocks":{}}},"block_order":["image_UEhWnM"]},"group_FKXrcT":{"type":"group","settings":{"link":"","open_in_new_tab":false,"content_direction":"column","vertical_on_mobile":true,"horizontal_alignment":"flex-start","vertical_alignment":"center","align_baseline":false,"horizontal_alignment_flex_direction_column":"flex-start","vertical_alignment_flex_direction_column":"center","gap":12,"width":"fill","custom_width":100,"width_mobile":"fill","custom_width_mobile":100,"height":"fit","custom_height":100,"inherit_color_scheme":true,"color_scheme":"","background_media":"none","video_position":"cover","background_image_position":"cover","border":"none","border_width":1,"border_opacity":100,"border_radius":0,"toggle_overlay":false,"overlay_color":"#00000026","overlay_style":"solid","gradient_direction":"to top","padding-block-start":0,"padding-block-end":0,"padding-inline-start":0,"padding-inline-end":0},"blocks":{"text_44mTxR":{"type":"text","settings":{"text":"<h2>Front of Body<\/h2>","width":"fit-content","max_width":"normal","alignment":"left","type_preset":"rte","font":"var(--font-body--family)","font_size":"1rem","line_height":"normal","letter_spacing":"normal","case":"none","wrap":"pretty","color":"var(--color-foreground)","background":false,"background_color":"#00000026","corner_radius":0,"padding-block-start":0,"padding-block-end":0,"padding-inline-start":0,"padding-inline-end":0},"blocks":{}},"accordion_BieXNc":{"type":"accordion","settings":{"icon":"caret","dividers":true,"type_preset":"h6","inherit_color_scheme":true,"color_scheme":"","border":"none","border_width":1,"border_opacity":100,"border_radius":0,"padding-block-start":0,"padding-block-end":0,"padding-inline-start":0,"padding-inline-end":0},"blocks":{"accordion_row_9NBUr4":{"type":"_accordion-row","settings":{"heading":"1. Neck (SCM \/ Anterior Traps)","open_by_default":true},"blocks":{"text_TgQyfn":{"type":"text","settings":{"text":"<p>Combat tech-neck and posture fatigue. Apply tape along the SCM and front of the traps to relieve daily tension, correct forward head position, and ease pressure from long training days or screen time.<\/p>","width":"100%","max_width":"normal","alignment":"left","type_preset":"rte","font":"var(--font-body--family)","font_size":"1rem","line_height":"normal","letter_spacing":"normal","case":"none","wrap":"pretty","color":"var(--color-foreground)","background":false,"background_color":"#00000026","corner_radius":0,"padding-block-start":0,"padding-block-end":0,"padding-inline-start":0,"padding-inline-end":0},"blocks":{}}},"block_order":["text_TgQyfn"]},"accordion_row_x8mz7F":{"type":"_accordion-row","settings":{"heading":"2. Shoulder (Deltoid)","open_by_default":true},"blocks":{"text_3RrcP3":{"type":"text","settings":{"text":"<p>For lifters, swimmers, and overhead athletes. Taping the deltoid supports the rotator cuff and helps stabilize shoulder mechanics — especially during pressing, throwing, or recovery phases.<\/p>","width":"100%","max_width":"normal","alignment":"left","type_preset":"rte","font":"var(--font-body--family)","font_size":"1rem","line_height":"normal","letter_spacing":"normal","case":"none","wrap":"pretty","color":"var(--color-foreground)","background":false,"background_color":"#00000026","corner_radius":0,"padding-block-start":0,"padding-block-end":0,"padding-inline-start":0,"padding-inline-end":0},"blocks":{}}},"block_order":["text_3RrcP3"]},"accordion_row_qWxwMz":{"type":"_accordion-row","settings":{"heading":"3. Biceps (Upper Arm)","open_by_default":true},"blocks":{"text_7HK9pX":{"type":"text","settings":{"text":"<p>Whether from overuse or high-volume training, biceps taping aids in tendon relief and anterior shoulder support. Great for pull-ups, boxing, and repetitive arm motion recovery.<\/p>","width":"100%","max_width":"normal","alignment":"left","type_preset":"rte","font":"var(--font-body--family)","font_size":"1rem","line_height":"normal","letter_spacing":"normal","case":"none","wrap":"pretty","color":"var(--color-foreground)","background":false,"background_color":"#00000026","corner_radius":0,"padding-block-start":0,"padding-block-end":0,"padding-inline-start":0,"padding-inline-end":0},"blocks":{}}},"block_order":["text_7HK9pX"]},"accordion_row_Dprxmt":{"type":"_accordion-row","settings":{"heading":"4. Forearm (Flexors\/Extensors)","open_by_default":true},"blocks":{"text_tzkmpH":{"type":"text","settings":{"text":"<p>Perfect for golfers, tennis players, and lifters. Tape helps reduce strain on wrist tendons, offering relief from medial\/lateral epicondylitis and improving grip support.<\/p>","width":"100%","max_width":"normal","alignment":"left","type_preset":"rte","font":"var(--font-body--family)","font_size":"1rem","line_height":"normal","letter_spacing":"normal","case":"none","wrap":"pretty","color":"var(--color-foreground)","background":false,"background_color":"#00000026","corner_radius":0,"padding-block-start":0,"padding-block-end":0,"padding-inline-start":0,"padding-inline-end":0},"blocks":{}}},"block_order":["text_tzkmpH"]},"accordion_row_pW8pHk":{"type":"_accordion-row","settings":{"heading":"5. Quad (Thigh)","open_by_default":true},"blocks":{"text_jDReTC":{"type":"text","settings":{"text":"<p>Support the largest muscle group during sprints, squats, and climbs. Taping helps reduce strain, adds tracking support to the knee, and enhances proprioception.<\/p>","width":"100%","max_width":"normal","alignment":"left","type_preset":"rte","font":"var(--font-body--family)","font_size":"1rem","line_height":"normal","letter_spacing":"normal","case":"none","wrap":"pretty","color":"var(--color-foreground)","background":false,"background_color":"#00000026","corner_radius":0,"padding-block-start":0,"padding-block-end":0,"padding-inline-start":0,"padding-inline-end":0},"blocks":{}}},"block_order":["text_jDReTC"]},"accordion_row_WcFaM4":{"type":"_accordion-row","settings":{"heading":"6. Knee (Patellar Area)","open_by_default":true},"blocks":{"text_773U4e":{"type":"text","settings":{"text":"<p>For tracking issues, patellar instability, or jumpers’ knee. This taping point improves joint awareness and offloads pressure during high-impact training.<\/p>","width":"100%","max_width":"normal","alignment":"left","type_preset":"rte","font":"var(--font-body--family)","font_size":"1rem","line_height":"normal","letter_spacing":"normal","case":"none","wrap":"pretty","color":"var(--color-foreground)","background":false,"background_color":"#00000026","corner_radius":0,"padding-block-start":0,"padding-block-end":0,"padding-inline-start":0,"padding-inline-end":0},"blocks":{}}},"block_order":["text_773U4e"]},"accordion_row_U7p4U3":{"type":"_accordion-row","settings":{"heading":"7. Shin (Tibialis Anterior)","open_by_default":true},"blocks":{"text_taL7VR":{"type":"text","settings":{"text":"<p>Shin splints? This zone is essential. Tape here reduces impact strain, supports ankle dorsiflexion, and helps runners, jumpers, and field athletes stay moving pain-free.<\/p>","width":"100%","max_width":"normal","alignment":"left","type_preset":"rte","font":"var(--font-body--family)","font_size":"1rem","line_height":"normal","letter_spacing":"normal","case":"none","wrap":"pretty","color":"var(--color-foreground)","background":false,"background_color":"#00000026","corner_radius":0,"padding-block-start":0,"padding-block-end":0,"padding-inline-start":0,"padding-inline-end":0},"blocks":{}}},"block_order":["text_taL7VR"]},"accordion_row_9HYyFM":{"type":"_accordion-row","settings":{"heading":"8. Foot & Ankle (Peroneals \/ Achilles \/ Plantar Fascia)","open_by_default":true},"blocks":{"text_PwYErN":{"type":"text","settings":{"text":"<p>Ankle giving out or nagging heel pain? Tap this zone to boost lateral stability, unload the Achilles tendon, and cradle the plantar fascia. Perfect for runners dodging uneven terrain, basketball players cutting hard, and dancers landing light—stay grounded and move with confidence.<\/p>","width":"100%","max_width":"normal","alignment":"left","type_preset":"rte","font":"var(--font-body--family)","font_size":"1rem","line_height":"normal","letter_spacing":"normal","case":"none","wrap":"pretty","color":"var(--color-foreground)","background":false,"background_color":"#00000026","corner_radius":0,"padding-block-start":0,"padding-block-end":0,"padding-inline-start":0,"padding-inline-end":0},"blocks":{}}},"block_order":["text_PwYErN"]}},"block_order":["accordion_row_9NBUr4","accordion_row_x8mz7F","accordion_row_qWxwMz","accordion_row_Dprxmt","accordion_row_pW8pHk","accordion_row_WcFaM4","accordion_row_U7p4U3","accordion_row_9HYyFM"]}},"block_order":["text_44mTxR","accordion_BieXNc"]}},"block_order":["group_j9w33F","group_FKXrcT"]},"divider_dGkYpK":{"type":"_divider","settings":{"thickness":1,"corner_radius":"square","width_percent":100,"padding-block-start":0,"padding-block-end":0},"blocks":{}},"custom_liquid_9fDiiP":{"type":"custom-liquid","name":"t:names.custom_liquid","settings":{"custom_liquid":"<div id=\"back_body\"><\/div>"},"blocks":{}},"group_yCrQpt":{"type":"group","settings":{"link":"","open_in_new_tab":false,"content_direction":"row","vertical_on_mobile":true,"horizontal_alignment":"flex-start","vertical_alignment":"center","align_baseline":false,"horizontal_alignment_flex_direction_column":"flex-start","vertical_alignment_flex_direction_column":"center","gap":12,"width":"fill","custom_width":100,"width_mobile":"fill","custom_width_mobile":100,"height":"fit","custom_height":100,"inherit_color_scheme":true,"color_scheme":"","background_media":"none","video_position":"cover","background_image_position":"cover","border":"none","border_width":1,"border_opacity":100,"border_radius":0,"toggle_overlay":false,"overlay_color":"#00000026","overlay_style":"solid","gradient_direction":"to top","padding-block-start":0,"padding-block-end":0,"padding-inline-start":0,"padding-inline-end":0},"blocks":{"group_kRVeqj":{"type":"group","settings":{"link":"","open_in_new_tab":false,"content_direction":"column","vertical_on_mobile":true,"horizontal_alignment":"flex-start","vertical_alignment":"center","align_baseline":false,"horizontal_alignment_flex_direction_column":"flex-start","vertical_alignment_flex_direction_column":"center","gap":12,"width":"fill","custom_width":100,"width_mobile":"fill","custom_width_mobile":100,"height":"fit","custom_height":100,"inherit_color_scheme":true,"color_scheme":"","background_media":"none","video_position":"cover","background_image_position":"cover","border":"none","border_width":1,"border_opacity":100,"border_radius":0,"toggle_overlay":false,"overlay_color":"#00000026","overlay_style":"solid","gradient_direction":"to top","padding-block-start":0,"padding-block-end":0,"padding-inline-start":0,"padding-inline-end":0},"blocks":{"text_rmApk7":{"type":"text","settings":{"text":"<h2>Back of Body<\/h2>","width":"fit-content","max_width":"normal","alignment":"left","type_preset":"rte","font":"var(--font-body--family)","font_size":"1rem","line_height":"normal","letter_spacing":"normal","case":"none","wrap":"pretty","color":"var(--color-foreground)","background":false,"background_color":"#00000026","corner_radius":0,"padding-block-start":0,"padding-block-end":0,"padding-inline-start":0,"padding-inline-end":0},"blocks":{}},"accordion_jhzKKL":{"type":"accordion","settings":{"icon":"caret","dividers":true,"type_preset":"h6","inherit_color_scheme":true,"color_scheme":"","border":"none","border_width":1,"border_opacity":100,"border_radius":0,"padding-block-start":0,"padding-block-end":0,"padding-inline-start":0,"padding-inline-end":0},"blocks":{"accordion_row_89qgkn":{"type":"_accordion-row","settings":{"heading":"1. Neck \/ Upper Traps","open_by_default":true},"blocks":{"text_yAeia3":{"type":"text","settings":{"text":"<p>Relieve tension headaches and trap tightness caused by stress or overhead volume. This area is key for swimmers, cyclists, and lifters under load.<\/p>","width":"100%","max_width":"normal","alignment":"left","type_preset":"rte","font":"var(--font-body--family)","font_size":"1rem","line_height":"normal","letter_spacing":"normal","case":"none","wrap":"pretty","color":"var(--color-foreground)","background":false,"background_color":"#00000026","corner_radius":0,"padding-block-start":0,"padding-block-end":0,"padding-inline-start":0,"padding-inline-end":0},"blocks":{}}},"block_order":["text_yAeia3"]},"accordion_row_hV7QN7":{"type":"_accordion-row","settings":{"heading":"2. Shoulder Blade (Rhomboid \/ Scapula)","open_by_default":true},"blocks":{"text_UY6VTG":{"type":"text","settings":{"text":"<p>Postural pain? Tape here to stabilize the shoulder girdle, encourage scapular movement, and reduce fatigue from poor desk or lifting posture.<\/p>","width":"100%","max_width":"normal","alignment":"left","type_preset":"rte","font":"var(--font-body--family)","font_size":"1rem","line_height":"normal","letter_spacing":"normal","case":"none","wrap":"pretty","color":"var(--color-foreground)","background":false,"background_color":"#00000026","corner_radius":0,"padding-block-start":0,"padding-block-end":0,"padding-inline-start":0,"padding-inline-end":0},"blocks":{}}},"block_order":["text_UY6VTG"]},"accordion_row_cnVkWr":{"type":"_accordion-row","settings":{"heading":"3. Triceps","open_by_default":true},"blocks":{"text_hLG4ce":{"type":"text","settings":{"text":"<p>Ideal for overhead sports like volleyball and basketball. Taping the triceps reduces overload strain, especially during extension-based movements.<\/p>","width":"100%","max_width":"normal","alignment":"left","type_preset":"rte","font":"var(--font-body--family)","font_size":"1rem","line_height":"normal","letter_spacing":"normal","case":"none","wrap":"pretty","color":"var(--color-foreground)","background":false,"background_color":"#00000026","corner_radius":0,"padding-block-start":0,"padding-block-end":0,"padding-inline-start":0,"padding-inline-end":0},"blocks":{}}},"block_order":["text_hLG4ce"]},"accordion_row_rRA9Bx":{"type":"_accordion-row","settings":{"heading":"4. Lower Back (Erector Spinae \/ QL)","open_by_default":true},"blocks":{"text_BVGhy9":{"type":"text","settings":{"text":"<p>For lumbar pain and fatigue, tape along the QL and erectors to support posture, reduce strain, and aid recovery from long training sessions or back-loaded lifts.<\/p>","width":"100%","max_width":"normal","alignment":"left","type_preset":"rte","font":"var(--font-body--family)","font_size":"1rem","line_height":"normal","letter_spacing":"normal","case":"none","wrap":"pretty","color":"var(--color-foreground)","background":false,"background_color":"#00000026","corner_radius":0,"padding-block-start":0,"padding-block-end":0,"padding-inline-start":0,"padding-inline-end":0},"blocks":{}}},"block_order":["text_BVGhy9"]},"accordion_row_nYVLpg":{"type":"_accordion-row","settings":{"heading":"5. Mid Back (Thoracic Spine)","open_by_default":true},"blocks":{"text_GjBbkJ":{"type":"text","settings":{"text":"<p>Helps correct posture and improve thoracic mobility. Key for athletes who sit, drive, or cycle frequently — opens up the chest and shoulders.<\/p>","width":"100%","max_width":"normal","alignment":"left","type_preset":"rte","font":"var(--font-body--family)","font_size":"1rem","line_height":"normal","letter_spacing":"normal","case":"none","wrap":"pretty","color":"var(--color-foreground)","background":false,"background_color":"#00000026","corner_radius":0,"padding-block-start":0,"padding-block-end":0,"padding-inline-start":0,"padding-inline-end":0},"blocks":{}}},"block_order":["text_GjBbkJ"]},"accordion_row_TgfTHJ":{"type":"_accordion-row","settings":{"heading":"6. Glutes (Glute Max \/ Med)","open_by_default":true},"blocks":{"text_VppNPT":{"type":"text","settings":{"text":"<p>For hip stability, sciatic relief, and sprinting power. Glute taping supports balance, helps unload the SI joint, and improves neuromuscular activation.<\/p>","width":"100%","max_width":"normal","alignment":"left","type_preset":"rte","font":"var(--font-body--family)","font_size":"1rem","line_height":"normal","letter_spacing":"normal","case":"none","wrap":"pretty","color":"var(--color-foreground)","background":false,"background_color":"#00000026","corner_radius":0,"padding-block-start":0,"padding-block-end":0,"padding-inline-start":0,"padding-inline-end":0},"blocks":{}}},"block_order":["text_VppNPT"]},"accordion_row_9ihqRN":{"type":"_accordion-row","settings":{"heading":"7. Hamstrings","open_by_default":true},"blocks":{"text_gbCnmq":{"type":"text","settings":{"text":"<p>Combat strains and support power phases. Taping here provides recoil support for runners, lifters, and field athletes pushing off explosively.<\/p>","width":"100%","max_width":"normal","alignment":"left","type_preset":"rte","font":"var(--font-body--family)","font_size":"1rem","line_height":"normal","letter_spacing":"normal","case":"none","wrap":"pretty","color":"var(--color-foreground)","background":false,"background_color":"#00000026","corner_radius":0,"padding-block-start":0,"padding-block-end":0,"padding-inline-start":0,"padding-inline-end":0},"blocks":{}}},"block_order":["text_gbCnmq"]},"accordion_row_XGPnUU":{"type":"_accordion-row","settings":{"heading":"8. Calves (Gastrocnemius \/ Soleus)","open_by_default":true},"blocks":{"text_tmjbaw":{"type":"text","settings":{"text":"<p>Tape for cramp relief, Achilles pressure reduction, and push-off performance. Especially valuable during endurance runs, cycling, and fast-paced play.<\/p>","width":"100%","max_width":"normal","alignment":"left","type_preset":"rte","font":"var(--font-body--family)","font_size":"1rem","line_height":"normal","letter_spacing":"normal","case":"none","wrap":"pretty","color":"var(--color-foreground)","background":false,"background_color":"#00000026","corner_radius":0,"padding-block-start":0,"padding-block-end":0,"padding-inline-start":0,"padding-inline-end":0},"blocks":{}}},"block_order":["text_tmjbaw"]}},"block_order":["accordion_row_89qgkn","accordion_row_hV7QN7","accordion_row_cnVkWr","accordion_row_rRA9Bx","accordion_row_nYVLpg","accordion_row_TgfTHJ","accordion_row_9ihqRN","accordion_row_XGPnUU"]}},"block_order":["text_rmApk7","accordion_jhzKKL"]},"group_98gMHq":{"type":"group","settings":{"link":"","open_in_new_tab":false,"content_direction":"column","vertical_on_mobile":true,"horizontal_alignment":"flex-start","vertical_alignment":"center","align_baseline":false,"horizontal_alignment_flex_direction_column":"flex-start","vertical_alignment_flex_direction_column":"center","gap":12,"width":"fill","custom_width":100,"width_mobile":"fill","custom_width_mobile":100,"height":"fit","custom_height":100,"inherit_color_scheme":true,"color_scheme":"","background_media":"none","video_position":"cover","background_image_position":"cover","border":"none","border_width":1,"border_opacity":100,"border_radius":0,"toggle_overlay":false,"overlay_color":"#00000026","overlay_style":"solid","gradient_direction":"to top","padding-block-start":0,"padding-block-end":0,"padding-inline-start":0,"padding-inline-end":0},"blocks":{"image_C9rwnX":{"type":"image","settings":{"image":"shopify:\/\/shop_images\/synapex-bodymap-back.png","link":"","image_ratio":"adapt","width":"fill","custom_width":100,"width_mobile":"fill","custom_width_mobile":100,"height":"fit","border":"none","border_width":1,"border_opacity":100,"border_radius":0,"padding-block-start":0,"padding-block-end":0,"padding-inline-start":0,"padding-inline-end":0},"blocks":{}}},"block_order":["image_C9rwnX"]}},"block_order":["group_kRVeqj","group_98gMHq"]}},"block_order":["custom_liquid_A6mM4j","group_fiTXcG","divider_dGkYpK","custom_liquid_9fDiiP","group_yCrQpt"],"settings":{"content_direction":"column","vertical_on_mobile":true,"horizontal_alignment":"flex-start","vertical_alignment":"center","align_baseline":false,"horizontal_alignment_flex_direction_column":"flex-start","vertical_alignment_flex_direction_column":"center","gap":12,"section_width":"page-width","section_height":"","section_height_custom":50,"color_scheme":"scheme-5","background_media":"none","video_position":"cover","background_image_position":"cover","border":"none","border_width":1,"border_opacity":100,"border_radius":0,"toggle_overlay":true,"overlay_color":"rgba(0,0,0,0)","overlay_style":"solid","gradient_direction":"to top","padding-block-start":100,"padding-block-end":32}},"main":{"type":"main-page","settings":{"content_direction":"column","gap":32,"color_scheme":"scheme-5","padding-block-start":40,"padding-block-end":80}}},"order":["section_jWNT6U","section_Xwmc7b","main"]}
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "section_jWNT6U": {
+      "type": "section",
+      "blocks": {
+        "text_yCdHBJ": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Bodymap</p>",
+            "width": "100%",
+            "max_width": "normal",
+            "alignment": "center",
+            "type_preset": "h2",
+            "font": "var(--font-primary--family)",
+            "font_size": "",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "pretty",
+            "color": "",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 100,
+            "padding-block-end": 0,
+            "padding-inline-start": 40,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "text_yCdHBJ"
+      ],
+      "settings": {
+        "content_direction": "row",
+        "vertical_on_mobile": true,
+        "horizontal_alignment": "flex-start",
+        "vertical_alignment": "center",
+        "align_baseline": false,
+        "horizontal_alignment_flex_direction_column": "flex-start",
+        "vertical_alignment_flex_direction_column": "center",
+        "gap": 12,
+        "section_width": "full-width",
+        "section_height": "",
+        "section_height_custom": 50,
+        "color_scheme": "scheme-5",
+        "background_media": "image",
+        "video_position": "cover",
+        "background_image": "shopify://shop_images/synapex-herp-img-clean.png",
+        "background_image_position": "cover",
+        "border": "none",
+        "border_width": 1,
+        "border_opacity": 100,
+        "border_radius": 0,
+        "toggle_overlay": true,
+        "overlay_color": "#2563eb1a",
+        "overlay_style": "solid",
+        "gradient_direction": "to top",
+        "padding-block-start": 100,
+        "padding-block-end": 32
+      }
+    },
+    "section_Xwmc7b": {
+      "type": "section",
+      "blocks": {
+        "custom_liquid_A6mM4j": {
+          "type": "custom-liquid",
+          "name": "t:names.custom_liquid",
+          "settings": {
+            "custom_liquid": "<div id=\"front_body\"></div>"
+          },
+          "blocks": {}
+        },
+        "group_fiTXcG": {
+          "type": "group",
+          "settings": {
+            "link": "",
+            "open_in_new_tab": false,
+            "content_direction": "row",
+            "vertical_on_mobile": true,
+            "horizontal_alignment": "flex-start",
+            "vertical_alignment": "center",
+            "align_baseline": false,
+            "horizontal_alignment_flex_direction_column": "flex-start",
+            "vertical_alignment_flex_direction_column": "center",
+            "gap": 12,
+            "width": "fill",
+            "custom_width": 100,
+            "width_mobile": "fill",
+            "custom_width_mobile": 100,
+            "height": "fit",
+            "custom_height": 100,
+            "inherit_color_scheme": true,
+            "color_scheme": "",
+            "background_media": "none",
+            "video_position": "cover",
+            "background_image_position": "cover",
+            "border": "none",
+            "border_width": 1,
+            "border_opacity": 100,
+            "border_radius": 0,
+            "toggle_overlay": false,
+            "overlay_color": "#00000026",
+            "overlay_style": "solid",
+            "gradient_direction": "to top",
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {
+            "group_j9w33F": {
+              "type": "group",
+              "settings": {
+                "link": "",
+                "open_in_new_tab": false,
+                "content_direction": "column",
+                "vertical_on_mobile": true,
+                "horizontal_alignment": "flex-start",
+                "vertical_alignment": "center",
+                "align_baseline": false,
+                "horizontal_alignment_flex_direction_column": "flex-start",
+                "vertical_alignment_flex_direction_column": "center",
+                "gap": 12,
+                "width": "fill",
+                "custom_width": 100,
+                "width_mobile": "fill",
+                "custom_width_mobile": 100,
+                "height": "fit",
+                "custom_height": 100,
+                "inherit_color_scheme": true,
+                "color_scheme": "",
+                "background_media": "none",
+                "video_position": "cover",
+                "background_image_position": "cover",
+                "border": "none",
+                "border_width": 1,
+                "border_opacity": 100,
+                "border_radius": 0,
+                "toggle_overlay": false,
+                "overlay_color": "#00000026",
+                "overlay_style": "solid",
+                "gradient_direction": "to top",
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {
+                "image_UEhWnM": {
+                  "type": "image",
+                  "settings": {
+                    "image": "shopify://shop_images/synapex-bodymap-front.png",
+                    "link": "",
+                    "image_ratio": "adapt",
+                    "width": "fill",
+                    "custom_width": 100,
+                    "width_mobile": "fill",
+                    "custom_width_mobile": 100,
+                    "height": "fit",
+                    "border": "none",
+                    "border_width": 1,
+                    "border_opacity": 100,
+                    "border_radius": 0,
+                    "padding-block-start": 0,
+                    "padding-block-end": 0,
+                    "padding-inline-start": 0,
+                    "padding-inline-end": 0
+                  },
+                  "blocks": {}
+                }
+              },
+              "block_order": [
+                "image_UEhWnM"
+              ]
+            },
+            "group_FKXrcT": {
+              "type": "group",
+              "settings": {
+                "link": "",
+                "open_in_new_tab": false,
+                "content_direction": "column",
+                "vertical_on_mobile": true,
+                "horizontal_alignment": "flex-start",
+                "vertical_alignment": "center",
+                "align_baseline": false,
+                "horizontal_alignment_flex_direction_column": "flex-start",
+                "vertical_alignment_flex_direction_column": "center",
+                "gap": 12,
+                "width": "fill",
+                "custom_width": 100,
+                "width_mobile": "fill",
+                "custom_width_mobile": 100,
+                "height": "fit",
+                "custom_height": 100,
+                "inherit_color_scheme": true,
+                "color_scheme": "",
+                "background_media": "none",
+                "video_position": "cover",
+                "background_image_position": "cover",
+                "border": "none",
+                "border_width": 1,
+                "border_opacity": 100,
+                "border_radius": 0,
+                "toggle_overlay": false,
+                "overlay_color": "#00000026",
+                "overlay_style": "solid",
+                "gradient_direction": "to top",
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {
+                "text_44mTxR": {
+                  "type": "text",
+                  "settings": {
+                    "text": "<h2>Front of Body</h2>",
+                    "width": "fit-content",
+                    "max_width": "normal",
+                    "alignment": "left",
+                    "type_preset": "rte",
+                    "font": "var(--font-body--family)",
+                    "font_size": "1rem",
+                    "line_height": "normal",
+                    "letter_spacing": "normal",
+                    "case": "none",
+                    "wrap": "pretty",
+                    "color": "var(--color-foreground)",
+                    "background": false,
+                    "background_color": "#00000026",
+                    "corner_radius": 0,
+                    "padding-block-start": 0,
+                    "padding-block-end": 0,
+                    "padding-inline-start": 0,
+                    "padding-inline-end": 0
+                  },
+                  "blocks": {}
+                },
+                "accordion_BieXNc": {
+                  "type": "accordion",
+                  "settings": {
+                    "icon": "caret",
+                    "dividers": true,
+                    "type_preset": "h6",
+                    "inherit_color_scheme": true,
+                    "color_scheme": "",
+                    "border": "none",
+                    "border_width": 1,
+                    "border_opacity": 100,
+                    "border_radius": 0,
+                    "padding-block-start": 0,
+                    "padding-block-end": 0,
+                    "padding-inline-start": 0,
+                    "padding-inline-end": 0
+                  },
+                  "blocks": {
+                    "accordion_row_9NBUr4": {
+                      "type": "_accordion-row",
+                      "settings": {
+                        "heading": "1. Neck (SCM / Anterior Traps)",
+                        "open_by_default": true
+                      },
+                      "blocks": {
+                        "text_TgQyfn": {
+                          "type": "text",
+                          "settings": {
+                            "text": "<p>Combat tech-neck and posture fatigue. Apply tape along the SCM and front of the traps to relieve daily tension, correct forward head position, and ease pressure from long training days or screen time.</p>",
+                            "width": "100%",
+                            "max_width": "normal",
+                            "alignment": "left",
+                            "type_preset": "rte",
+                            "font": "var(--font-body--family)",
+                            "font_size": "1rem",
+                            "line_height": "normal",
+                            "letter_spacing": "normal",
+                            "case": "none",
+                            "wrap": "pretty",
+                            "color": "var(--color-foreground)",
+                            "background": false,
+                            "background_color": "#00000026",
+                            "corner_radius": 0,
+                            "padding-block-start": 0,
+                            "padding-block-end": 0,
+                            "padding-inline-start": 0,
+                            "padding-inline-end": 0
+                          },
+                          "blocks": {}
+                        }
+                      },
+                      "block_order": [
+                        "text_TgQyfn"
+                      ]
+                    },
+                    "accordion_row_x8mz7F": {
+                      "type": "_accordion-row",
+                      "settings": {
+                        "heading": "2. Shoulder (Deltoid)",
+                        "open_by_default": true
+                      },
+                      "blocks": {
+                        "text_3RrcP3": {
+                          "type": "text",
+                          "settings": {
+                            "text": "<p>For lifters, swimmers, and overhead athletes. Taping the deltoid supports the rotator cuff and helps stabilize shoulder mechanics — especially during pressing, throwing, or recovery phases.</p>",
+                            "width": "100%",
+                            "max_width": "normal",
+                            "alignment": "left",
+                            "type_preset": "rte",
+                            "font": "var(--font-body--family)",
+                            "font_size": "1rem",
+                            "line_height": "normal",
+                            "letter_spacing": "normal",
+                            "case": "none",
+                            "wrap": "pretty",
+                            "color": "var(--color-foreground)",
+                            "background": false,
+                            "background_color": "#00000026",
+                            "corner_radius": 0,
+                            "padding-block-start": 0,
+                            "padding-block-end": 0,
+                            "padding-inline-start": 0,
+                            "padding-inline-end": 0
+                          },
+                          "blocks": {}
+                        }
+                      },
+                      "block_order": [
+                        "text_3RrcP3"
+                      ]
+                    },
+                    "accordion_row_qWxwMz": {
+                      "type": "_accordion-row",
+                      "settings": {
+                        "heading": "3. Biceps (Upper Arm)",
+                        "open_by_default": true
+                      },
+                      "blocks": {
+                        "text_7HK9pX": {
+                          "type": "text",
+                          "settings": {
+                            "text": "<p>Whether from overuse or high-volume training, biceps taping aids in tendon relief and anterior shoulder support. Great for pull-ups, boxing, and repetitive arm motion recovery.</p>",
+                            "width": "100%",
+                            "max_width": "normal",
+                            "alignment": "left",
+                            "type_preset": "rte",
+                            "font": "var(--font-body--family)",
+                            "font_size": "1rem",
+                            "line_height": "normal",
+                            "letter_spacing": "normal",
+                            "case": "none",
+                            "wrap": "pretty",
+                            "color": "var(--color-foreground)",
+                            "background": false,
+                            "background_color": "#00000026",
+                            "corner_radius": 0,
+                            "padding-block-start": 0,
+                            "padding-block-end": 0,
+                            "padding-inline-start": 0,
+                            "padding-inline-end": 0
+                          },
+                          "blocks": {}
+                        }
+                      },
+                      "block_order": [
+                        "text_7HK9pX"
+                      ]
+                    },
+                    "accordion_row_Dprxmt": {
+                      "type": "_accordion-row",
+                      "settings": {
+                        "heading": "4. Forearm (Flexors/Extensors)",
+                        "open_by_default": true
+                      },
+                      "blocks": {
+                        "text_tzkmpH": {
+                          "type": "text",
+                          "settings": {
+                            "text": "<p>Perfect for golfers, tennis players, and lifters. Tape helps reduce strain on wrist tendons, offering relief from medial/lateral epicondylitis and improving grip support.</p>",
+                            "width": "100%",
+                            "max_width": "normal",
+                            "alignment": "left",
+                            "type_preset": "rte",
+                            "font": "var(--font-body--family)",
+                            "font_size": "1rem",
+                            "line_height": "normal",
+                            "letter_spacing": "normal",
+                            "case": "none",
+                            "wrap": "pretty",
+                            "color": "var(--color-foreground)",
+                            "background": false,
+                            "background_color": "#00000026",
+                            "corner_radius": 0,
+                            "padding-block-start": 0,
+                            "padding-block-end": 0,
+                            "padding-inline-start": 0,
+                            "padding-inline-end": 0
+                          },
+                          "blocks": {}
+                        }
+                      },
+                      "block_order": [
+                        "text_tzkmpH"
+                      ]
+                    },
+                    "accordion_row_pW8pHk": {
+                      "type": "_accordion-row",
+                      "settings": {
+                        "heading": "5. Quad (Thigh)",
+                        "open_by_default": true
+                      },
+                      "blocks": {
+                        "text_jDReTC": {
+                          "type": "text",
+                          "settings": {
+                            "text": "<p>Support the largest muscle group during sprints, squats, and climbs. Taping helps reduce strain, adds tracking support to the knee, and enhances proprioception.</p>",
+                            "width": "100%",
+                            "max_width": "normal",
+                            "alignment": "left",
+                            "type_preset": "rte",
+                            "font": "var(--font-body--family)",
+                            "font_size": "1rem",
+                            "line_height": "normal",
+                            "letter_spacing": "normal",
+                            "case": "none",
+                            "wrap": "pretty",
+                            "color": "var(--color-foreground)",
+                            "background": false,
+                            "background_color": "#00000026",
+                            "corner_radius": 0,
+                            "padding-block-start": 0,
+                            "padding-block-end": 0,
+                            "padding-inline-start": 0,
+                            "padding-inline-end": 0
+                          },
+                          "blocks": {}
+                        }
+                      },
+                      "block_order": [
+                        "text_jDReTC"
+                      ]
+                    },
+                    "accordion_row_WcFaM4": {
+                      "type": "_accordion-row",
+                      "settings": {
+                        "heading": "6. Knee (Patellar Area)",
+                        "open_by_default": true
+                      },
+                      "blocks": {
+                        "text_773U4e": {
+                          "type": "text",
+                          "settings": {
+                            "text": "<p>For tracking issues, patellar instability, or jumpers’ knee. This taping point improves joint awareness and offloads pressure during high-impact training.</p>",
+                            "width": "100%",
+                            "max_width": "normal",
+                            "alignment": "left",
+                            "type_preset": "rte",
+                            "font": "var(--font-body--family)",
+                            "font_size": "1rem",
+                            "line_height": "normal",
+                            "letter_spacing": "normal",
+                            "case": "none",
+                            "wrap": "pretty",
+                            "color": "var(--color-foreground)",
+                            "background": false,
+                            "background_color": "#00000026",
+                            "corner_radius": 0,
+                            "padding-block-start": 0,
+                            "padding-block-end": 0,
+                            "padding-inline-start": 0,
+                            "padding-inline-end": 0
+                          },
+                          "blocks": {}
+                        }
+                      },
+                      "block_order": [
+                        "text_773U4e"
+                      ]
+                    },
+                    "accordion_row_U7p4U3": {
+                      "type": "_accordion-row",
+                      "settings": {
+                        "heading": "7. Shin (Tibialis Anterior)",
+                        "open_by_default": true
+                      },
+                      "blocks": {
+                        "text_taL7VR": {
+                          "type": "text",
+                          "settings": {
+                            "text": "<p>Shin splints? This zone is essential. Tape here reduces impact strain, supports ankle dorsiflexion, and helps runners, jumpers, and field athletes stay moving pain-free.</p>",
+                            "width": "100%",
+                            "max_width": "normal",
+                            "alignment": "left",
+                            "type_preset": "rte",
+                            "font": "var(--font-body--family)",
+                            "font_size": "1rem",
+                            "line_height": "normal",
+                            "letter_spacing": "normal",
+                            "case": "none",
+                            "wrap": "pretty",
+                            "color": "var(--color-foreground)",
+                            "background": false,
+                            "background_color": "#00000026",
+                            "corner_radius": 0,
+                            "padding-block-start": 0,
+                            "padding-block-end": 0,
+                            "padding-inline-start": 0,
+                            "padding-inline-end": 0
+                          },
+                          "blocks": {}
+                        }
+                      },
+                      "block_order": [
+                        "text_taL7VR"
+                      ]
+                    },
+                    "accordion_row_9HYyFM": {
+                      "type": "_accordion-row",
+                      "settings": {
+                        "heading": "8. Foot & Ankle (Peroneals / Achilles / Plantar Fascia)",
+                        "open_by_default": true
+                      },
+                      "blocks": {
+                        "text_PwYErN": {
+                          "type": "text",
+                          "settings": {
+                            "text": "<p>Ankle giving out or nagging heel pain? Tap this zone to boost lateral stability, unload the Achilles tendon, and cradle the plantar fascia. Perfect for runners dodging uneven terrain, basketball players cutting hard, and dancers landing light—stay grounded and move with confidence.</p>",
+                            "width": "100%",
+                            "max_width": "normal",
+                            "alignment": "left",
+                            "type_preset": "rte",
+                            "font": "var(--font-body--family)",
+                            "font_size": "1rem",
+                            "line_height": "normal",
+                            "letter_spacing": "normal",
+                            "case": "none",
+                            "wrap": "pretty",
+                            "color": "var(--color-foreground)",
+                            "background": false,
+                            "background_color": "#00000026",
+                            "corner_radius": 0,
+                            "padding-block-start": 0,
+                            "padding-block-end": 0,
+                            "padding-inline-start": 0,
+                            "padding-inline-end": 0
+                          },
+                          "blocks": {}
+                        }
+                      },
+                      "block_order": [
+                        "text_PwYErN"
+                      ]
+                    }
+                  },
+                  "block_order": [
+                    "accordion_row_9NBUr4",
+                    "accordion_row_x8mz7F",
+                    "accordion_row_qWxwMz",
+                    "accordion_row_Dprxmt",
+                    "accordion_row_pW8pHk",
+                    "accordion_row_WcFaM4",
+                    "accordion_row_U7p4U3",
+                    "accordion_row_9HYyFM"
+                  ]
+                }
+              },
+              "block_order": [
+                "text_44mTxR",
+                "accordion_BieXNc"
+              ]
+            }
+          },
+          "block_order": [
+            "group_j9w33F",
+            "group_FKXrcT"
+          ]
+        },
+        "divider_dGkYpK": {
+          "type": "_divider",
+          "settings": {
+            "thickness": 1,
+            "corner_radius": "square",
+            "width_percent": 100,
+            "padding-block-start": 0,
+            "padding-block-end": 0
+          },
+          "blocks": {}
+        },
+        "custom_liquid_9fDiiP": {
+          "type": "custom-liquid",
+          "name": "t:names.custom_liquid",
+          "settings": {
+            "custom_liquid": "<div id=\"back_body\"></div>"
+          },
+          "blocks": {}
+        },
+        "group_yCrQpt": {
+          "type": "group",
+          "settings": {
+            "link": "",
+            "open_in_new_tab": false,
+            "content_direction": "row",
+            "vertical_on_mobile": true,
+            "horizontal_alignment": "flex-start",
+            "vertical_alignment": "center",
+            "align_baseline": false,
+            "horizontal_alignment_flex_direction_column": "flex-start",
+            "vertical_alignment_flex_direction_column": "center",
+            "gap": 12,
+            "width": "fill",
+            "custom_width": 100,
+            "width_mobile": "fill",
+            "custom_width_mobile": 100,
+            "height": "fit",
+            "custom_height": 100,
+            "inherit_color_scheme": true,
+            "color_scheme": "",
+            "background_media": "none",
+            "video_position": "cover",
+            "background_image_position": "cover",
+            "border": "none",
+            "border_width": 1,
+            "border_opacity": 100,
+            "border_radius": 0,
+            "toggle_overlay": false,
+            "overlay_color": "#00000026",
+            "overlay_style": "solid",
+            "gradient_direction": "to top",
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {
+            "group_kRVeqj": {
+              "type": "group",
+              "settings": {
+                "link": "",
+                "open_in_new_tab": false,
+                "content_direction": "column",
+                "vertical_on_mobile": true,
+                "horizontal_alignment": "flex-start",
+                "vertical_alignment": "center",
+                "align_baseline": false,
+                "horizontal_alignment_flex_direction_column": "flex-start",
+                "vertical_alignment_flex_direction_column": "center",
+                "gap": 12,
+                "width": "fill",
+                "custom_width": 100,
+                "width_mobile": "fill",
+                "custom_width_mobile": 100,
+                "height": "fit",
+                "custom_height": 100,
+                "inherit_color_scheme": true,
+                "color_scheme": "",
+                "background_media": "none",
+                "video_position": "cover",
+                "background_image_position": "cover",
+                "border": "none",
+                "border_width": 1,
+                "border_opacity": 100,
+                "border_radius": 0,
+                "toggle_overlay": false,
+                "overlay_color": "#00000026",
+                "overlay_style": "solid",
+                "gradient_direction": "to top",
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {
+                "text_rmApk7": {
+                  "type": "text",
+                  "settings": {
+                    "text": "<h2>Back of Body</h2>",
+                    "width": "fit-content",
+                    "max_width": "normal",
+                    "alignment": "left",
+                    "type_preset": "rte",
+                    "font": "var(--font-body--family)",
+                    "font_size": "1rem",
+                    "line_height": "normal",
+                    "letter_spacing": "normal",
+                    "case": "none",
+                    "wrap": "pretty",
+                    "color": "var(--color-foreground)",
+                    "background": false,
+                    "background_color": "#00000026",
+                    "corner_radius": 0,
+                    "padding-block-start": 0,
+                    "padding-block-end": 0,
+                    "padding-inline-start": 0,
+                    "padding-inline-end": 0
+                  },
+                  "blocks": {}
+                },
+                "accordion_jhzKKL": {
+                  "type": "accordion",
+                  "settings": {
+                    "icon": "caret",
+                    "dividers": true,
+                    "type_preset": "h6",
+                    "inherit_color_scheme": true,
+                    "color_scheme": "",
+                    "border": "none",
+                    "border_width": 1,
+                    "border_opacity": 100,
+                    "border_radius": 0,
+                    "padding-block-start": 0,
+                    "padding-block-end": 0,
+                    "padding-inline-start": 0,
+                    "padding-inline-end": 0
+                  },
+                  "blocks": {
+                    "accordion_row_89qgkn": {
+                      "type": "_accordion-row",
+                      "settings": {
+                        "heading": "1. Neck / Upper Traps",
+                        "open_by_default": true
+                      },
+                      "blocks": {
+                        "text_yAeia3": {
+                          "type": "text",
+                          "settings": {
+                            "text": "<p>Relieve tension headaches and trap tightness caused by stress or overhead volume. This area is key for swimmers, cyclists, and lifters under load.</p>",
+                            "width": "100%",
+                            "max_width": "normal",
+                            "alignment": "left",
+                            "type_preset": "rte",
+                            "font": "var(--font-body--family)",
+                            "font_size": "1rem",
+                            "line_height": "normal",
+                            "letter_spacing": "normal",
+                            "case": "none",
+                            "wrap": "pretty",
+                            "color": "var(--color-foreground)",
+                            "background": false,
+                            "background_color": "#00000026",
+                            "corner_radius": 0,
+                            "padding-block-start": 0,
+                            "padding-block-end": 0,
+                            "padding-inline-start": 0,
+                            "padding-inline-end": 0
+                          },
+                          "blocks": {}
+                        }
+                      },
+                      "block_order": [
+                        "text_yAeia3"
+                      ]
+                    },
+                    "accordion_row_hV7QN7": {
+                      "type": "_accordion-row",
+                      "settings": {
+                        "heading": "2. Shoulder Blade (Rhomboid / Scapula)",
+                        "open_by_default": true
+                      },
+                      "blocks": {
+                        "text_UY6VTG": {
+                          "type": "text",
+                          "settings": {
+                            "text": "<p>Postural pain? Tape here to stabilize the shoulder girdle, encourage scapular movement, and reduce fatigue from poor desk or lifting posture.</p>",
+                            "width": "100%",
+                            "max_width": "normal",
+                            "alignment": "left",
+                            "type_preset": "rte",
+                            "font": "var(--font-body--family)",
+                            "font_size": "1rem",
+                            "line_height": "normal",
+                            "letter_spacing": "normal",
+                            "case": "none",
+                            "wrap": "pretty",
+                            "color": "var(--color-foreground)",
+                            "background": false,
+                            "background_color": "#00000026",
+                            "corner_radius": 0,
+                            "padding-block-start": 0,
+                            "padding-block-end": 0,
+                            "padding-inline-start": 0,
+                            "padding-inline-end": 0
+                          },
+                          "blocks": {}
+                        }
+                      },
+                      "block_order": [
+                        "text_UY6VTG"
+                      ]
+                    },
+                    "accordion_row_cnVkWr": {
+                      "type": "_accordion-row",
+                      "settings": {
+                        "heading": "3. Triceps",
+                        "open_by_default": true
+                      },
+                      "blocks": {
+                        "text_hLG4ce": {
+                          "type": "text",
+                          "settings": {
+                            "text": "<p>Ideal for overhead sports like volleyball and basketball. Taping the triceps reduces overload strain, especially during extension-based movements.</p>",
+                            "width": "100%",
+                            "max_width": "normal",
+                            "alignment": "left",
+                            "type_preset": "rte",
+                            "font": "var(--font-body--family)",
+                            "font_size": "1rem",
+                            "line_height": "normal",
+                            "letter_spacing": "normal",
+                            "case": "none",
+                            "wrap": "pretty",
+                            "color": "var(--color-foreground)",
+                            "background": false,
+                            "background_color": "#00000026",
+                            "corner_radius": 0,
+                            "padding-block-start": 0,
+                            "padding-block-end": 0,
+                            "padding-inline-start": 0,
+                            "padding-inline-end": 0
+                          },
+                          "blocks": {}
+                        }
+                      },
+                      "block_order": [
+                        "text_hLG4ce"
+                      ]
+                    },
+                    "accordion_row_rRA9Bx": {
+                      "type": "_accordion-row",
+                      "settings": {
+                        "heading": "4. Lower Back (Erector Spinae / QL)",
+                        "open_by_default": true
+                      },
+                      "blocks": {
+                        "text_BVGhy9": {
+                          "type": "text",
+                          "settings": {
+                            "text": "<p>For lumbar pain and fatigue, tape along the QL and erectors to support posture, reduce strain, and aid recovery from long training sessions or back-loaded lifts.</p>",
+                            "width": "100%",
+                            "max_width": "normal",
+                            "alignment": "left",
+                            "type_preset": "rte",
+                            "font": "var(--font-body--family)",
+                            "font_size": "1rem",
+                            "line_height": "normal",
+                            "letter_spacing": "normal",
+                            "case": "none",
+                            "wrap": "pretty",
+                            "color": "var(--color-foreground)",
+                            "background": false,
+                            "background_color": "#00000026",
+                            "corner_radius": 0,
+                            "padding-block-start": 0,
+                            "padding-block-end": 0,
+                            "padding-inline-start": 0,
+                            "padding-inline-end": 0
+                          },
+                          "blocks": {}
+                        }
+                      },
+                      "block_order": [
+                        "text_BVGhy9"
+                      ]
+                    },
+                    "accordion_row_nYVLpg": {
+                      "type": "_accordion-row",
+                      "settings": {
+                        "heading": "5. Mid Back (Thoracic Spine)",
+                        "open_by_default": true
+                      },
+                      "blocks": {
+                        "text_GjBbkJ": {
+                          "type": "text",
+                          "settings": {
+                            "text": "<p>Helps correct posture and improve thoracic mobility. Key for athletes who sit, drive, or cycle frequently — opens up the chest and shoulders.</p>",
+                            "width": "100%",
+                            "max_width": "normal",
+                            "alignment": "left",
+                            "type_preset": "rte",
+                            "font": "var(--font-body--family)",
+                            "font_size": "1rem",
+                            "line_height": "normal",
+                            "letter_spacing": "normal",
+                            "case": "none",
+                            "wrap": "pretty",
+                            "color": "var(--color-foreground)",
+                            "background": false,
+                            "background_color": "#00000026",
+                            "corner_radius": 0,
+                            "padding-block-start": 0,
+                            "padding-block-end": 0,
+                            "padding-inline-start": 0,
+                            "padding-inline-end": 0
+                          },
+                          "blocks": {}
+                        }
+                      },
+                      "block_order": [
+                        "text_GjBbkJ"
+                      ]
+                    },
+                    "accordion_row_TgfTHJ": {
+                      "type": "_accordion-row",
+                      "settings": {
+                        "heading": "6. Glutes (Glute Max / Med)",
+                        "open_by_default": true
+                      },
+                      "blocks": {
+                        "text_VppNPT": {
+                          "type": "text",
+                          "settings": {
+                            "text": "<p>For hip stability, sciatic relief, and sprinting power. Glute taping supports balance, helps unload the SI joint, and improves neuromuscular activation.</p>",
+                            "width": "100%",
+                            "max_width": "normal",
+                            "alignment": "left",
+                            "type_preset": "rte",
+                            "font": "var(--font-body--family)",
+                            "font_size": "1rem",
+                            "line_height": "normal",
+                            "letter_spacing": "normal",
+                            "case": "none",
+                            "wrap": "pretty",
+                            "color": "var(--color-foreground)",
+                            "background": false,
+                            "background_color": "#00000026",
+                            "corner_radius": 0,
+                            "padding-block-start": 0,
+                            "padding-block-end": 0,
+                            "padding-inline-start": 0,
+                            "padding-inline-end": 0
+                          },
+                          "blocks": {}
+                        }
+                      },
+                      "block_order": [
+                        "text_VppNPT"
+                      ]
+                    },
+                    "accordion_row_9ihqRN": {
+                      "type": "_accordion-row",
+                      "settings": {
+                        "heading": "7. Hamstrings",
+                        "open_by_default": true
+                      },
+                      "blocks": {
+                        "text_gbCnmq": {
+                          "type": "text",
+                          "settings": {
+                            "text": "<p>Combat strains and support power phases. Taping here provides recoil support for runners, lifters, and field athletes pushing off explosively.</p>",
+                            "width": "100%",
+                            "max_width": "normal",
+                            "alignment": "left",
+                            "type_preset": "rte",
+                            "font": "var(--font-body--family)",
+                            "font_size": "1rem",
+                            "line_height": "normal",
+                            "letter_spacing": "normal",
+                            "case": "none",
+                            "wrap": "pretty",
+                            "color": "var(--color-foreground)",
+                            "background": false,
+                            "background_color": "#00000026",
+                            "corner_radius": 0,
+                            "padding-block-start": 0,
+                            "padding-block-end": 0,
+                            "padding-inline-start": 0,
+                            "padding-inline-end": 0
+                          },
+                          "blocks": {}
+                        }
+                      },
+                      "block_order": [
+                        "text_gbCnmq"
+                      ]
+                    },
+                    "accordion_row_XGPnUU": {
+                      "type": "_accordion-row",
+                      "settings": {
+                        "heading": "8. Calves (Gastrocnemius / Soleus)",
+                        "open_by_default": true
+                      },
+                      "blocks": {
+                        "text_tmjbaw": {
+                          "type": "text",
+                          "settings": {
+                            "text": "<p>Tape for cramp relief, Achilles pressure reduction, and push-off performance. Especially valuable during endurance runs, cycling, and fast-paced play.</p>",
+                            "width": "100%",
+                            "max_width": "normal",
+                            "alignment": "left",
+                            "type_preset": "rte",
+                            "font": "var(--font-body--family)",
+                            "font_size": "1rem",
+                            "line_height": "normal",
+                            "letter_spacing": "normal",
+                            "case": "none",
+                            "wrap": "pretty",
+                            "color": "var(--color-foreground)",
+                            "background": false,
+                            "background_color": "#00000026",
+                            "corner_radius": 0,
+                            "padding-block-start": 0,
+                            "padding-block-end": 0,
+                            "padding-inline-start": 0,
+                            "padding-inline-end": 0
+                          },
+                          "blocks": {}
+                        }
+                      },
+                      "block_order": [
+                        "text_tmjbaw"
+                      ]
+                    }
+                  },
+                  "block_order": [
+                    "accordion_row_89qgkn",
+                    "accordion_row_hV7QN7",
+                    "accordion_row_cnVkWr",
+                    "accordion_row_rRA9Bx",
+                    "accordion_row_nYVLpg",
+                    "accordion_row_TgfTHJ",
+                    "accordion_row_9ihqRN",
+                    "accordion_row_XGPnUU"
+                  ]
+                }
+              },
+              "block_order": [
+                "text_rmApk7",
+                "accordion_jhzKKL"
+              ]
+            },
+            "group_98gMHq": {
+              "type": "group",
+              "settings": {
+                "link": "",
+                "open_in_new_tab": false,
+                "content_direction": "column",
+                "vertical_on_mobile": true,
+                "horizontal_alignment": "flex-start",
+                "vertical_alignment": "center",
+                "align_baseline": false,
+                "horizontal_alignment_flex_direction_column": "flex-start",
+                "vertical_alignment_flex_direction_column": "center",
+                "gap": 12,
+                "width": "fill",
+                "custom_width": 100,
+                "width_mobile": "fill",
+                "custom_width_mobile": 100,
+                "height": "fit",
+                "custom_height": 100,
+                "inherit_color_scheme": true,
+                "color_scheme": "",
+                "background_media": "none",
+                "video_position": "cover",
+                "background_image_position": "cover",
+                "border": "none",
+                "border_width": 1,
+                "border_opacity": 100,
+                "border_radius": 0,
+                "toggle_overlay": false,
+                "overlay_color": "#00000026",
+                "overlay_style": "solid",
+                "gradient_direction": "to top",
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {
+                "image_C9rwnX": {
+                  "type": "image",
+                  "settings": {
+                    "image": "shopify://shop_images/synapex-bodymap-back.png",
+                    "link": "",
+                    "image_ratio": "adapt",
+                    "width": "fill",
+                    "custom_width": 100,
+                    "width_mobile": "fill",
+                    "custom_width_mobile": 100,
+                    "height": "fit",
+                    "border": "none",
+                    "border_width": 1,
+                    "border_opacity": 100,
+                    "border_radius": 0,
+                    "padding-block-start": 0,
+                    "padding-block-end": 0,
+                    "padding-inline-start": 0,
+                    "padding-inline-end": 0
+                  },
+                  "blocks": {}
+                }
+              },
+              "block_order": [
+                "image_C9rwnX"
+              ]
+            }
+          },
+          "block_order": [
+            "group_kRVeqj",
+            "group_98gMHq"
+          ]
+        }
+      },
+      "block_order": [
+        "custom_liquid_A6mM4j",
+        "group_fiTXcG",
+        "divider_dGkYpK",
+        "custom_liquid_9fDiiP",
+        "group_yCrQpt"
+      ],
+      "settings": {
+        "content_direction": "column",
+        "vertical_on_mobile": true,
+        "horizontal_alignment": "flex-start",
+        "vertical_alignment": "center",
+        "align_baseline": false,
+        "horizontal_alignment_flex_direction_column": "flex-start",
+        "vertical_alignment_flex_direction_column": "center",
+        "gap": 12,
+        "section_width": "page-width",
+        "section_height": "",
+        "section_height_custom": 50,
+        "color_scheme": "scheme-6",
+        "background_media": "none",
+        "video_position": "cover",
+        "background_image_position": "cover",
+        "border": "none",
+        "border_width": 1,
+        "border_opacity": 100,
+        "border_radius": 0,
+        "toggle_overlay": true,
+        "overlay_color": "rgba(0,0,0,0)",
+        "overlay_style": "solid",
+        "gradient_direction": "to top",
+        "padding-block-start": 100,
+        "padding-block-end": 32
+      }
+    },
+    "main": {
+      "type": "main-page",
+      "settings": {
+        "content_direction": "column",
+        "gap": 32,
+        "color_scheme": "scheme-6",
+        "padding-block-start": 40,
+        "padding-block-end": 80
+      }
+    }
+  },
+  "order": [
+    "section_jWNT6U",
+    "section_Xwmc7b",
+    "main"
+  ]
+}
