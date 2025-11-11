@@ -62,7 +62,13 @@ Brutalist, minimalist architecture for uncompromising conversion
     <div class="product-dossier" id="ProductDossier-{{ section.id }}">
       
       {%- comment -%} PRODUCT TITLE {%- endcomment -%}
-      <h1 class="dossier-title">{{ product.title | upcase }}</h1>
+      <h1 class="dossier-title">
+        {% if section.settings.override_title != blank %}
+          {{ section.settings.override_title }}
+        {% else %}
+          {{ product.title | upcase }}
+        {% endif %}
+      </h1>
 
       {%- comment -%} PRICE {%- endcomment -%}
       <div class="dossier-price" data-product-price>
@@ -72,8 +78,8 @@ Brutalist, minimalist architecture for uncompromising conversion
         {% endif %}
       </div>
 
-      {%- comment -%} VARIANT SELECTOR {%- endcomment -%}
-      <form method="post" action="/cart/add" class="dossier-form">
+      {%- comment -%} VARIANT SELECTOR: BRUTALIST SKU PICKER {%- endcomment -%}
+      <form method="post" action="/cart/add" class="dossier-form" data-product-form>
         {% unless product.has_only_default_variant %}
           <div class="variant-selector">
             {% for option in product.options_with_values %}
@@ -87,9 +93,10 @@ Brutalist, minimalist architecture for uncompromising conversion
                       name="options[{{ option.name }}]" 
                       value="{{ value | escape }}"
                       {% if option.selected_value == value %}checked{% endif %}
+                      data-option-position="{{ option.position }}"
                     >
-                    <label class="variant-button" for="option-{{ option.position }}-{{ forloop.index }}">
-                      {{ value }}
+                    <label class="variant-button variant-button--sku" for="option-{{ option.position }}-{{ forloop.index }}">
+                      {{ value | upcase }}
                     </label>
                   {% endfor %}
                 </div>
@@ -128,7 +135,7 @@ Brutalist, minimalist architecture for uncompromising conversion
           <dd>{{ section.settings.spec_elasticity | default: '160% KINEMATIC ENVELOPE' }}</dd>
           
           <dt>SUBSTRATE COMPOSURE:</dt>
-          <dd>{{ section.settings.spec_substrate | default: '95% ORGANIC COTTON / 5% ELASTANE' }}</dd>
+          <dd>{{ section.settings.spec_substrate | default: '95% ORGANIC COTTON / 5% SPANDEX' }}</dd>
           
           <dt>ADHESION MATRIX:</dt>
           <dd>{{ section.settings.spec_adhesion | default: 'ABSOLUTE (SUBMERSIBLE)' }}</dd>
@@ -137,7 +144,10 @@ Brutalist, minimalist architecture for uncompromising conversion
           <dd>{{ section.settings.spec_neurological | default: 'LATEX-FREE (HYPOALLERGENIC)' }}</dd>
           
           <dt>OPERATIONAL WINDOW:</dt>
-          <dd>{{ section.settings.spec_operational | default: 'UP TO 7 DAYS' }}</dd>
+          <dd>{{ section.settings.spec_operational | default: '5-7 DAYS' }}</dd>
+          
+          <dt>STRIP CONFIGURATION:</dt>
+          <dd>{{ section.settings.spec_strips | default: '20 (10-INCH) PRE-CUT STRIPS PER ROLL' }}</dd>
         </dl>
       </div>
 
@@ -371,26 +381,31 @@ Brutalist, minimalist architecture for uncompromising conversion
 }
 
 .variant-button {
-  padding: 12px 24px;
-  background: transparent;
+  padding: 16px 32px;
+  background: #000000;
   border: 2px solid #FFFFFF;
   color: #FFFFFF;
   font-weight: 700;
-  font-size: 0.875rem;
+  font-size: 0.9375rem;
   text-transform: uppercase;
   cursor: pointer;
-  transition: all 0.2s ease;
-  letter-spacing: 0.05em;
+  transition: all 0.15s ease;
+  letter-spacing: 0.1em;
+  min-width: 140px;
+  text-align: center;
 }
 
 .variant-button:hover {
   background: #FFFFFF;
   color: #000000;
+  border-color: #000000;
 }
 
 .variant-buttons input[type="radio"]:checked + .variant-button {
   background: #FFFFFF;
   color: #000000;
+  border-color: #000000;
+  box-shadow: 0 0 0 2px #FFFFFF, 0 0 0 4px #000000;
 }
 
 /* ════════ QUANTITY SELECTOR ════════ */
@@ -911,10 +926,63 @@ Brutalist, minimalist architecture for uncompromising conversion
     });
   }
 
+  // ════════ VARIANT SELECTOR: SKU SWITCHER ════════
+  const variantRadios = document.querySelectorAll('.variant-buttons input[type="radio"]');
+  const productForm = document.querySelector('[data-product-form]');
+  const hiddenVariantInput = productForm ? productForm.querySelector('input[name="id"]') : null;
+  const priceContainer = document.querySelector('[data-product-price]');
+  
+  // Product variants data
+  const productVariants = {{ product.variants | json }};
+  
+  variantRadios.forEach(radio => {
+    radio.addEventListener('change', updateVariant);
+  });
+  
+  function updateVariant() {
+    const selectedOptions = {};
+    document.querySelectorAll('.variant-buttons input[type="radio"]:checked').forEach(radio => {
+      const optionPosition = radio.getAttribute('data-option-position');
+      selectedOptions[`option${optionPosition}`] = radio.value;
+    });
+    
+    const selectedVariant = productVariants.find(variant => {
+      let matches = true;
+      for (let i = 1; i <= 3; i++) {
+        if (selectedOptions[`option${i}`] && variant[`option${i}`] !== selectedOptions[`option${i}`]) {
+          matches = false;
+          break;
+        }
+      }
+      return matches;
+    });
+    
+    if (selectedVariant && hiddenVariantInput) {
+      hiddenVariantInput.value = selectedVariant.id;
+      
+      if (priceContainer) {
+        const priceElement = priceContainer.querySelector('.price-current');
+        if (priceElement && selectedVariant.price) {
+          priceElement.textContent = '$' + (selectedVariant.price / 100).toFixed(2);
+        }
+      }
+      
+      const ctaButton = document.querySelector('.cta-acquire');
+      if (ctaButton) {
+        if (selectedVariant.available) {
+          ctaButton.disabled = false;
+          ctaButton.textContent = '{{ section.settings.cta_text | default: "ACQUIRE STANDARD" }}';
+        } else {
+          ctaButton.disabled = true;
+          ctaButton.textContent = 'OUT OF STOCK';
+        }
+      }
+    }
+  }
+
   // ════════ PROTOCOL 3: ADD TO CART - ACQUISITION VECTOR ════════
   const form = document.querySelector('.dossier-form');
   const ctaButton = document.querySelector('.cta-acquire');
-  const hiddenVariantInput = form ? form.querySelector('input[name="id"]') : null;
 
   if (form && ctaButton) {
     form.addEventListener('submit', function(e) {
@@ -997,6 +1065,16 @@ Brutalist, minimalist architecture for uncompromising conversion
     },
     {
       "type": "header",
+      "content": "Product Title"
+    },
+    {
+      "type": "text",
+      "id": "override_title",
+      "label": "Override Product Title",
+      "info": "Leave blank to use default product title. Format: THE ATHLETE PACK | 3 COUNT | SYNAPEX KT TAPE"
+    },
+    {
+      "type": "header",
       "content": "Call-to-Action"
     },
     {
@@ -1019,7 +1097,7 @@ Brutalist, minimalist architecture for uncompromising conversion
       "type": "text",
       "id": "spec_substrate",
       "label": "Substrate Composure",
-      "default": "95% ORGANIC COTTON / 5% ELASTANE"
+      "default": "95% ORGANIC COTTON / 5% SPANDEX"
     },
     {
       "type": "text",
@@ -1037,7 +1115,13 @@ Brutalist, minimalist architecture for uncompromising conversion
       "type": "text",
       "id": "spec_operational",
       "label": "Operational Window",
-      "default": "UP TO 7 DAYS"
+      "default": "5-7 DAYS"
+    },
+    {
+      "type": "text",
+      "id": "spec_strips",
+      "label": "Strip Configuration",
+      "default": "20 (10-INCH) PRE-CUT STRIPS PER ROLL"
     },
     {
       "type": "header",
