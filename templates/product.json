@@ -110,16 +110,16 @@
                 "product": "{{ closest.product }}",
                 "show_sale_price_first": true,
                 "show_installments": false,
-                "show_tax_info": true,
+                "show_tax_info": false,
                 "type_preset": "h4",
                 "width": "100%",
-                "alignment": "left",
+                "alignment": "right",
                 "font": "var(--font-body--family)",
                 "font_size": "1rem",
                 "line_height": "normal",
                 "letter_spacing": "normal",
                 "case": "none",
-                "color": "var(--color-foreground-heading)",
+                "color": "var(--color-foreground)",
                 "padding-block-start": 4,
                 "padding-block-end": 0,
                 "padding-inline-start": 0,
@@ -166,7 +166,7 @@
                   "static": true,
                   "settings": {
                     "product": "{{ closest.product }}",
-                    "style_class": "button"
+                    "style_class": "button-secondary"
                   },
                   "blocks": {}
                 },
