@@ -296,38 +296,6 @@
         "padding-block-end": 0
       }
     },
-    "main_product_FhdEeA": {
-      "type": "main-product",
-      "name": "Synapex Product Page",
-      "settings": {
-        "product": "",
-        "cta_text": "ACQUIRE STANDARD",
-        "spec_elasticity": "160% KINEMATIC ENVELOPE",
-        "spec_substrate": "95% ORGANIC COTTON / 5% ELASTANE",
-        "spec_adhesion": "ABSOLUTE (SUBMERSIBLE)",
-        "spec_neurological": "LATEX-FREE (HYPOALLERGENIC)",
-        "spec_operational": "UP TO 7 DAYS",
-        "doctrine_text": "Reinforce kinetic chains. Provide direct neuro-haptic feedback. Maintain absolute structural integrity under maximum operational duress.",
-        "armory_product_1": "",
-        "armory_product_2": "",
-        "armory_product_3": "",
-        "dispatch_1_quote": "",
-        "dispatch_1_name": "",
-        "dispatch_1_title": "",
-        "dispatch_2_quote": "",
-        "dispatch_2_name": "",
-        "dispatch_2_title": "",
-        "dispatch_3_quote": "",
-        "dispatch_3_name": "",
-        "dispatch_3_title": "",
-        "dispatch_4_quote": "",
-        "dispatch_4_name": "",
-        "dispatch_4_title": "",
-        "dispatch_5_quote": "",
-        "dispatch_5_name": "",
-        "dispatch_5_title": ""
-      }
-    },
     "product_selection_brutalist_JaWGMJ": {
       "type": "product-selection-brutalist",
       "name": "Choose Your Standard",
@@ -358,6 +326,38 @@
         "box3_feature3": "Hold the line, together",
         "box3_cta_text": "EQUIP THE TEAM",
         "box3_link": "shopify://products/the-team-pack-kinesiology-tape-10count-synapex"
+      }
+    },
+    "main_product_FhdEeA": {
+      "type": "main-product",
+      "name": "Synapex Product Page",
+      "settings": {
+        "product": "",
+        "cta_text": "ACQUIRE STANDARD",
+        "spec_elasticity": "160% KINEMATIC ENVELOPE",
+        "spec_substrate": "95% ORGANIC COTTON / 5% ELASTANE",
+        "spec_adhesion": "ABSOLUTE (SUBMERSIBLE)",
+        "spec_neurological": "LATEX-FREE (HYPOALLERGENIC)",
+        "spec_operational": "UP TO 7 DAYS",
+        "doctrine_text": "Reinforce kinetic chains. Provide direct neuro-haptic feedback. Maintain absolute structural integrity under maximum operational duress.",
+        "armory_product_1": "",
+        "armory_product_2": "",
+        "armory_product_3": "",
+        "dispatch_1_quote": "",
+        "dispatch_1_name": "",
+        "dispatch_1_title": "",
+        "dispatch_2_quote": "",
+        "dispatch_2_name": "",
+        "dispatch_2_title": "",
+        "dispatch_3_quote": "",
+        "dispatch_3_name": "",
+        "dispatch_3_title": "",
+        "dispatch_4_quote": "",
+        "dispatch_4_name": "",
+        "dispatch_4_title": "",
+        "dispatch_5_quote": "",
+        "dispatch_5_name": "",
+        "dispatch_5_title": ""
       }
     },
     "section_c7dNJW": {
@@ -636,8 +636,8 @@
   },
   "order": [
     "main",
-    "main_product_FhdEeA",
     "product_selection_brutalist_JaWGMJ",
+    "main_product_FhdEeA",
     "section_c7dNJW"
   ]
 }
