@@ -25,7 +25,7 @@ Brutalist, minimalist architecture for uncompromising conversion
           {% if product.featured_media.media_type == 'video' or product.featured_media.media_type == 'external_video' %}
             {{ product.featured_media | video_tag: autoplay: false, loop: true, controls: true, muted: false }}
           {% else %}
-            {{ product.featured_media | image_url: width: 1200 | image_tag: alt: product.featured_media.alt | escape, class: 'media-primary__image' }}
+            <img src="{{ product.featured_media | image_url: width: 1200 }}" alt="{{ product.featured_media.alt | escape }}" class="media-primary__image">
           {% endif %}
         {% else %}
           {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}
@@ -39,7 +39,7 @@ Brutalist, minimalist architecture for uncompromising conversion
               {% if media.media_type == 'video' or media.media_type == 'external_video' %}
                 <div class="thumbnail-video-indicator">▶</div>
               {% endif %}
-              {{ media | image_url: width: 200 | image_tag: alt: media.alt | escape, class: 'thumbnail__image' }}
+              <img src="{{ media | image_url: width: 200 }}" alt="{{ media.alt | escape }}" class="thumbnail__image">
             </div>
           {% endfor %}
         </div>
@@ -150,7 +150,7 @@ Brutalist, minimalist architecture for uncompromising conversion
         <div class="armory-asset">
           <a href="{{ armory_product.url }}" class="asset-link">
             <div class="asset-image">
-              {{ armory_product.featured_image | image_url: width: 600 | image_tag: alt: armory_product.title | escape }}
+              <img src="{{ armory_product.featured_image | image_url: width: 600 }}" alt="{{ armory_product.title | escape }}">
             </div>
             <h3 class="asset-title">{{ armory_product.title | upcase }}</h3>
             <div class="asset-cta">VIEW ASSET</div>
