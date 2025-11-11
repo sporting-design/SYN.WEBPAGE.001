@@ -1,0 +1,30 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "settings": {
+        "product": "{{ product }}",
+        "cta_text": "ACQUIRE STANDARD",
+        "spec_elasticity": "160% KINEMATIC ENVELOPE",
+        "spec_substrate": "95% ORGANIC COTTON / 5% ELASTANE",
+        "spec_adhesion": "ABSOLUTE (SUBMERSIBLE)",
+        "spec_neurological": "LATEX-FREE (HYPOALLERGENIC)",
+        "spec_operational": "UP TO 7 DAYS",
+        "doctrine_text": "Reinforce kinetic chains. Provide direct neuro-haptic feedback. Maintain absolute structural integrity under maximum operational duress.",
+        "dispatch_1_quote": "Held fast through a 2.4-mile open water swim and a full marathon. The standard is real.",
+        "dispatch_1_name": "J. REYNOLDS",
+        "dispatch_1_title": "IRONMAN TRIATHLETE",
+        "dispatch_2_quote": "After 6 months of chronic shoulder pain, this gave me the stability to return to Olympic lifting. Uncompromising.",
+        "dispatch_2_name": "SARAH K.",
+        "dispatch_2_title": "WEIGHTLIFTING COACH",
+        "dispatch_3_quote": "I've used every tape on the market. This is the only one that stays locked through bjj rolls and doesn't peel.",
+        "dispatch_3_name": "M. CHEN",
+        "dispatch_3_title": "BJJ BLACK BELT"
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}
+

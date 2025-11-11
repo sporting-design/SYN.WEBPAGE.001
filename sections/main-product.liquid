@@ -1,0 +1,956 @@
+{%- comment -%}
+════════════════════════════════════════════════════════════════
+SYNAPEX PRODUCT PAGE - STRATEGIC INDOCTRINATION CRUCIBLE
+Brutalist, minimalist architecture for uncompromising conversion
+════════════════════════════════════════════════════════════════
+{%- endcomment -%}
+
+{%- liquid
+  assign product = section.settings.product
+  assign current_variant = product.selected_or_first_available_variant
+-%}
+
+<script type="application/ld+json">
+  {{ product | structured_data }}
+</script>
+
+{%- comment -%} ════════ PHASE 1 & 2: THE PRIMARY CRUCIBLE (TWO-COLUMN ARCHITECTURE) ════════ {%- endcomment -%}
+<div class="synapex-product-crucible" data-product-id="{{ product.id }}">
+  <div class="crucible-grid">
+    
+    {%- comment -%} ════════ LEFT COLUMN: THE KINEMATIC DEMONSTRATION (55%) ════════ {%- endcomment -%}
+    <div class="kinematic-demonstration">
+      <div class="media-primary">
+        {% if product.featured_media %}
+          {% if product.featured_media.media_type == 'video' or product.featured_media.media_type == 'external_video' %}
+            {{ product.featured_media | video_tag: autoplay: false, loop: true, controls: true, muted: false }}
+          {% else %}
+            {{ product.featured_media | image_url: width: 1200 | image_tag: alt: product.featured_media.alt | escape, class: 'media-primary__image' }}
+          {% endif %}
+        {% else %}
+          {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}
+        {% endif %}
+      </div>
+
+      {% if product.media.size > 1 %}
+        <div class="media-thumbnails">
+          {% for media in product.media limit: 6 %}
+            <div class="media-thumbnail" data-media-index="{{ forloop.index0 }}">
+              {% if media.media_type == 'video' or media.media_type == 'external_video' %}
+                <div class="thumbnail-video-indicator">▶</div>
+              {% endif %}
+              {{ media | image_url: width: 200 | image_tag: alt: media.alt | escape, class: 'thumbnail__image' }}
+            </div>
+          {% endfor %}
+        </div>
+      {% endif %}
+    </div>
+
+    {%- comment -%} ════════ RIGHT COLUMN: THE DOSSIER (45%) ════════ {%- endcomment -%}
+    <div class="product-dossier" id="ProductDossier-{{ section.id }}">
+      
+      {%- comment -%} PRODUCT TITLE {%- endcomment -%}
+      <h1 class="dossier-title">{{ product.title | upcase }}</h1>
+
+      {%- comment -%} PRICE {%- endcomment -%}
+      <div class="dossier-price" data-product-price>
+        <span class="price-current">{{ current_variant.price | money }}</span>
+        {% if current_variant.compare_at_price > current_variant.price %}
+          <span class="price-compare">{{ current_variant.compare_at_price | money }}</span>
+        {% endif %}
+      </div>
+
+      {%- comment -%} VARIANT SELECTOR {%- endcomment -%}
+      <form method="post" action="/cart/add" class="dossier-form">
+        {% unless product.has_only_default_variant %}
+          <div class="variant-selector">
+            {% for option in product.options_with_values %}
+              <div class="variant-option">
+                <label class="variant-label">{{ option.name | upcase }}</label>
+                <div class="variant-buttons">
+                  {% for value in option.values %}
+                    <input 
+                      type="radio" 
+                      id="option-{{ option.position }}-{{ forloop.index }}" 
+                      name="options[{{ option.name }}]" 
+                      value="{{ value | escape }}"
+                      {% if option.selected_value == value %}checked{% endif %}
+                    >
+                    <label class="variant-button" for="option-{{ option.position }}-{{ forloop.index }}">
+                      {{ value }}
+                    </label>
+                  {% endfor %}
+                </div>
+              </div>
+            {% endfor %}
+          </div>
+        {% endunless %}
+
+        {%- comment -%} QUANTITY SELECTOR {%- endcomment -%}
+        <div class="quantity-selector">
+          <label class="quantity-label">QUANTITY</label>
+          <div class="quantity-input-wrapper">
+            <button type="button" class="quantity-btn quantity-decrease">−</button>
+            <input type="number" name="quantity" value="1" min="1" class="quantity-input">
+            <button type="button" class="quantity-btn quantity-increase">+</button>
+          </div>
+        </div>
+
+        <input type="hidden" name="id" value="{{ current_variant.id }}">
+
+        {%- comment -%} CALL-TO-ACTION: ACQUIRE STANDARD {%- endcomment -%}
+        <button type="submit" class="cta-acquire" {% unless current_variant.available %}disabled{% endunless %}>
+          {% if current_variant.available %}
+            {{ section.settings.cta_text }}
+          {% else %}
+            OUT OF STOCK
+          {% endif %}
+        </button>
+      </form>
+
+      {%- comment -%} THE SPECIFICATION TABLE {%- endcomment -%}
+      <div class="specification-matrix">
+        <h2 class="spec-heading">TECHNICAL SPECIFICATIONS</h2>
+        <dl class="product-spec-table">
+          <dt>ELASTICITY PROFILE:</dt>
+          <dd>{{ section.settings.spec_elasticity | default: '160% KINEMATIC ENVELOPE' }}</dd>
+          
+          <dt>SUBSTRATE COMPOSURE:</dt>
+          <dd>{{ section.settings.spec_substrate | default: '95% ORGANIC COTTON / 5% ELASTANE' }}</dd>
+          
+          <dt>ADHESION MATRIX:</dt>
+          <dd>{{ section.settings.spec_adhesion | default: 'ABSOLUTE (SUBMERSIBLE)' }}</dd>
+          
+          <dt>NEUROLOGICAL PROFILE:</dt>
+          <dd>{{ section.settings.spec_neurological | default: 'LATEX-FREE (HYPOALLERGENIC)' }}</dd>
+          
+          <dt>OPERATIONAL WINDOW:</dt>
+          <dd>{{ section.settings.spec_operational | default: 'UP TO 7 DAYS' }}</dd>
+        </dl>
+      </div>
+
+      {%- comment -%} DOCTRINAL APPLICATION {%- endcomment -%}
+      <div class="doctrinal-application">
+        <h3 class="doctrine-heading">DOCTRINAL APPLICATION</h3>
+        <p class="doctrine-text">{{ section.settings.doctrine_text | default: 'Reinforce kinetic chains. Provide direct neuro-haptic feedback. Maintain absolute structural integrity under maximum operational duress.' }}</p>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+{%- comment -%} ════════ PHASE 3: COMPLETE THE ARMORY ════════ {%- endcomment -%}
+<div class="armory-section">
+  <h2 class="armory-heading">COMPLETE THE ARMORY</h2>
+  <div class="armory-grid">
+    {% for i in (1..3) %}
+      {% assign armory_product_key = 'armory_product_' | append: i %}
+      {% assign armory_product = section.settings[armory_product_key] %}
+      {% if armory_product != blank %}
+        <div class="armory-asset">
+          <a href="{{ armory_product.url }}" class="asset-link">
+            <div class="asset-image">
+              {{ armory_product.featured_image | image_url: width: 600 | image_tag: alt: armory_product.title | escape }}
+            </div>
+            <h3 class="asset-title">{{ armory_product.title | upcase }}</h3>
+            <div class="asset-cta">VIEW ASSET</div>
+          </a>
+        </div>
+      {% endif %}
+    {% endfor %}
+  </div>
+</div>
+
+{%- comment -%} ════════ PHASE 3: DISPATCHES FROM THE UNIT ════════ {%- endcomment -%}
+<div class="dispatches-section">
+  <h2 class="dispatches-heading">DISPATCHES FROM THE UNIT</h2>
+  <div class="dispatches-grid">
+    {% for i in (1..5) %}
+      {% assign dispatch_quote = 'dispatch_' | append: i | append: '_quote' %}
+      {% assign dispatch_name = 'dispatch_' | append: i | append: '_name' %}
+      {% assign dispatch_title = 'dispatch_' | append: i | append: '_title' %}
+      
+      {% if section.settings[dispatch_quote] != blank %}
+        <div class="dispatch-unit">
+          <div class="dispatch-number">[DISPATCH {{ i | prepend: '00' | slice: -3, 3 }}]</div>
+          <blockquote class="dispatch-quote">"{{ section.settings[dispatch_quote] }}"</blockquote>
+          <div class="dispatch-attribution">
+            // COHORT: {{ section.settings[dispatch_name] | upcase }}{% if section.settings[dispatch_title] != blank %}, {{ section.settings[dispatch_title] | upcase }}{% endif %}
+          </div>
+        </div>
+      {% endif %}
+    {% endfor %}
+  </div>
+</div>
+
+<style>
+/* ════════════════════════════════════════════════════════════════
+   SYNAPEX PRODUCT PAGE - BRUTALIST ARCHITECTURE
+   Phase 4: Global Styling Mandates
+   ════════════════════════════════════════════════════════════════ */
+
+/* ════════ TYPOGRAPHY FOUNDATION ════════ */
+.synapex-product-crucible,
+.armory-section,
+.dispatches-section {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+  color: #FFFFFF;
+  background-color: #000000;
+}
+
+/* ════════ PHASE 1: PRIMARY CRUCIBLE GRID ════════ */
+.synapex-product-crucible {
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 60px 20px;
+}
+
+.crucible-grid {
+  display: grid;
+  grid-template-columns: 55% 45%;
+  gap: 60px;
+  align-items: start;
+}
+
+/* ════════ LEFT COLUMN: KINEMATIC DEMONSTRATION ════════ */
+.kinematic-demonstration {
+  position: sticky;
+  top: 100px;
+}
+
+.media-primary {
+  width: 100%;
+  background: #0A0A0A;
+  border: 2px solid #FFFFFF;
+  overflow: hidden;
+}
+
+.media-primary__image,
+.media-primary video {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.media-thumbnails {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.media-thumbnail {
+  position: relative;
+  border: 2px solid #333333;
+  cursor: pointer;
+  transition: border-color 0.2s ease;
+  aspect-ratio: 1;
+  overflow: hidden;
+}
+
+.media-thumbnail:hover,
+.media-thumbnail.active {
+  border-color: #FFFFFF;
+}
+
+.thumbnail__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.thumbnail-video-indicator {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #FFFFFF;
+  font-size: 20px;
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* ════════ RIGHT COLUMN: THE DOSSIER ════════ */
+.product-dossier {
+  padding: 0;
+}
+
+.dossier-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  margin: 0 0 24px 0;
+  line-height: 1.1;
+  text-transform: uppercase;
+}
+
+.dossier-price {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+.price-current {
+  font-size: 1.75rem;
+  font-weight: 700;
+}
+
+.price-compare {
+  font-size: 1.25rem;
+  color: #666666;
+  text-decoration: line-through;
+}
+
+/* ════════ VARIANT SELECTOR ════════ */
+.variant-selector {
+  margin-bottom: 24px;
+}
+
+.variant-option {
+  margin-bottom: 20px;
+}
+
+.variant-label {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  margin-bottom: 12px;
+  text-transform: uppercase;
+}
+
+.variant-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.variant-buttons input[type="radio"] {
+  display: none;
+}
+
+.variant-button {
+  padding: 12px 24px;
+  background: transparent;
+  border: 2px solid #FFFFFF;
+  color: #FFFFFF;
+  font-weight: 700;
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  letter-spacing: 0.05em;
+}
+
+.variant-button:hover {
+  background: #FFFFFF;
+  color: #000000;
+}
+
+.variant-buttons input[type="radio"]:checked + .variant-button {
+  background: #FFFFFF;
+  color: #000000;
+}
+
+/* ════════ QUANTITY SELECTOR ════════ */
+.quantity-selector {
+  margin-bottom: 24px;
+}
+
+.quantity-label {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  margin-bottom: 12px;
+  text-transform: uppercase;
+}
+
+.quantity-input-wrapper {
+  display: flex;
+  align-items: center;
+  width: fit-content;
+  border: 2px solid #FFFFFF;
+}
+
+.quantity-btn {
+  width: 44px;
+  height: 44px;
+  background: transparent;
+  border: none;
+  color: #FFFFFF;
+  font-size: 1.25rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.quantity-btn:hover {
+  background: #FFFFFF;
+  color: #000000;
+}
+
+.quantity-input {
+  width: 60px;
+  height: 44px;
+  background: transparent;
+  border: none;
+  border-left: 2px solid #FFFFFF;
+  border-right: 2px solid #FFFFFF;
+  color: #FFFFFF;
+  text-align: center;
+  font-size: 1rem;
+  font-weight: 700;
+  -moz-appearance: textfield;
+}
+
+.quantity-input::-webkit-outer-spin-button,
+.quantity-input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* ════════ CTA: ACQUIRE STANDARD ════════ */
+.cta-acquire {
+  width: 100%;
+  padding: 18px 32px;
+  background: #FFFFFF;
+  border: 2px solid #FFFFFF;
+  color: #000000;
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin-bottom: 40px;
+}
+
+.cta-acquire:hover:not(:disabled) {
+  background: #000000;
+  color: #FFFFFF;
+}
+
+.cta-acquire:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* ════════ SPECIFICATION TABLE ════════ */
+.specification-matrix {
+  margin-bottom: 40px;
+  padding-top: 40px;
+  border-top: 2px solid #333333;
+}
+
+.spec-heading {
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  margin: 0 0 20px 0;
+  text-transform: uppercase;
+}
+
+.product-spec-table {
+  margin: 0;
+}
+
+.product-spec-table dt {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: #999999;
+  margin-bottom: 4px;
+  text-transform: uppercase;
+}
+
+.product-spec-table dd {
+  font-size: 0.875rem;
+  font-weight: 400;
+  margin: 0 0 16px 0;
+  line-height: 1.4;
+}
+
+.product-spec-table dd:last-child {
+  margin-bottom: 0;
+}
+
+/* ════════ DOCTRINAL APPLICATION ════════ */
+.doctrinal-application {
+  padding-top: 40px;
+  border-top: 2px solid #333333;
+}
+
+.doctrine-heading {
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  margin: 0 0 16px 0;
+  text-transform: uppercase;
+}
+
+.doctrine-text {
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* ════════ PHASE 3: COMPLETE THE ARMORY ════════ */
+.armory-section {
+  width: 100%;
+  max-width: 1400px;
+  margin: 80px auto;
+  padding: 80px 20px;
+  border-top: 2px solid #333333;
+}
+
+.armory-heading {
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-align: center;
+  margin: 0 0 60px 0;
+  text-transform: uppercase;
+}
+
+.armory-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 40px;
+}
+
+.armory-asset {
+  border: 2px solid #333333;
+  transition: border-color 0.2s ease;
+}
+
+.armory-asset:hover {
+  border-color: #FFFFFF;
+}
+
+.asset-link {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+
+.asset-image {
+  width: 100%;
+  aspect-ratio: 1;
+  overflow: hidden;
+  background: #0A0A0A;
+}
+
+.asset-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+.armory-asset:hover .asset-image img {
+  transform: scale(1.05);
+}
+
+.asset-title {
+  font-size: 1.125rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  padding: 20px;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.asset-cta {
+  padding: 16px 20px;
+  border-top: 2px solid #333333;
+  font-size: 0.875rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  transition: all 0.2s ease;
+}
+
+.armory-asset:hover .asset-cta {
+  background: #FFFFFF;
+  color: #000000;
+}
+
+/* ════════ PHASE 3: DISPATCHES FROM THE UNIT ════════ */
+.dispatches-section {
+  width: 100%;
+  background: #000000;
+  padding: 80px 20px;
+}
+
+.dispatches-heading {
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-align: center;
+  margin: 0 0 60px 0;
+  max-width: 1400px;
+  margin-left: auto;
+  margin-right: auto;
+  text-transform: uppercase;
+}
+
+.dispatches-grid {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  gap: 40px;
+}
+
+.dispatch-unit {
+  padding: 40px;
+  border: 2px solid #333333;
+  background: #0A0A0A;
+}
+
+.dispatch-number {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: #666666;
+  margin-bottom: 16px;
+}
+
+.dispatch-quote {
+  font-size: 1.125rem;
+  line-height: 1.6;
+  margin: 0 0 20px 0;
+  font-style: italic;
+}
+
+.dispatch-attribution {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 0.75rem;
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  color: #999999;
+  line-height: 1.4;
+}
+
+/* ════════ RESPONSIVE: MOBILE OPTIMIZATION ════════ */
+@media (max-width: 1024px) {
+  .crucible-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .kinematic-demonstration {
+    position: relative;
+    top: 0;
+  }
+
+  .dossier-title {
+    font-size: 2rem;
+  }
+
+  .armory-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .synapex-product-crucible {
+    padding: 40px 16px;
+  }
+
+  .dossier-title {
+    font-size: 1.75rem;
+  }
+
+  .price-current {
+    font-size: 1.5rem;
+  }
+
+  .armory-heading,
+  .dispatches-heading {
+    font-size: 1.5rem;
+    margin-bottom: 40px;
+  }
+
+  .dispatch-unit {
+    padding: 24px;
+  }
+
+  .dispatch-quote {
+    font-size: 1rem;
+  }
+}
+
+/* ════════ ACCESSIBILITY ════════ */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+  }
+}
+
+.cta-acquire:focus-visible,
+.variant-button:focus-visible,
+.quantity-btn:focus-visible {
+  outline: 2px solid #FFFFFF;
+  outline-offset: 4px;
+}
+</style>
+
+<script>
+// ════════════════════════════════════════════════════════════════
+// SYNAPEX PRODUCT PAGE - BEHAVIORAL INTELLIGENCE
+// ════════════════════════════════════════════════════════════════
+(function() {
+  'use strict';
+
+  // ════════ MEDIA GALLERY NAVIGATION ════════
+  const thumbnails = document.querySelectorAll('.media-thumbnail');
+  const primaryMedia = document.querySelector('.media-primary');
+
+  thumbnails.forEach((thumb, index) => {
+    thumb.addEventListener('click', function() {
+      // Remove active class from all thumbnails
+      thumbnails.forEach(t => t.classList.remove('active'));
+      // Add active class to clicked thumbnail
+      this.classList.add('active');
+
+      // Update primary media
+      const mediaIndex = parseInt(this.getAttribute('data-media-index'));
+      // In a full implementation, this would switch the primary image/video
+      // For now, we mark it visually
+    });
+  });
+
+  // Set first thumbnail as active
+  if (thumbnails.length > 0) {
+    thumbnails[0].classList.add('active');
+  }
+
+  // ════════ QUANTITY CONTROLS ════════
+  const quantityInput = document.querySelector('.quantity-input');
+  const decreaseBtn = document.querySelector('.quantity-decrease');
+  const increaseBtn = document.querySelector('.quantity-increase');
+
+  if (decreaseBtn && increaseBtn && quantityInput) {
+    decreaseBtn.addEventListener('click', () => {
+      const currentValue = parseInt(quantityInput.value) || 1;
+      if (currentValue > 1) {
+        quantityInput.value = currentValue - 1;
+      }
+    });
+
+    increaseBtn.addEventListener('click', () => {
+      const currentValue = parseInt(quantityInput.value) || 1;
+      quantityInput.value = currentValue + 1;
+    });
+  }
+
+  // ════════ VARIANT SELECTOR LOGIC ════════
+  const variantButtons = document.querySelectorAll('.variant-button');
+  const form = document.querySelector('.dossier-form');
+  const hiddenVariantInput = form ? form.querySelector('input[name="id"]') : null;
+
+  // This is a simplified version - full variant logic would require
+  // matching combinations to variant IDs from product JSON
+  variantButtons.forEach(button => {
+    button.addEventListener('click', function() {
+      // Update price and availability based on selected variant
+      // This would typically fetch variant data via AJAX or read from a JSON object
+    });
+  });
+
+  // ════════ ANALYTICS TRACKING ════════
+  const ctaButton = document.querySelector('.cta-acquire');
+  if (ctaButton) {
+    ctaButton.addEventListener('click', function() {
+      if (window.dataLayer) {
+        window.dataLayer.push({
+          'event': 'add_to_cart',
+          'product_name': '{{ product.title }}',
+          'product_id': '{{ product.id }}',
+          'variant_id': hiddenVariantInput ? hiddenVariantInput.value : null
+        });
+      }
+    });
+  }
+})();
+</script>
+
+{% schema %}
+{
+  "name": "Synapex Product Page",
+  "settings": [
+    {
+      "type": "product",
+      "id": "product",
+      "label": "Product"
+    },
+    {
+      "type": "header",
+      "content": "Call-to-Action"
+    },
+    {
+      "type": "text",
+      "id": "cta_text",
+      "label": "CTA Button Text",
+      "default": "ACQUIRE STANDARD"
+    },
+    {
+      "type": "header",
+      "content": "Technical Specifications"
+    },
+    {
+      "type": "text",
+      "id": "spec_elasticity",
+      "label": "Elasticity Profile",
+      "default": "160% KINEMATIC ENVELOPE"
+    },
+    {
+      "type": "text",
+      "id": "spec_substrate",
+      "label": "Substrate Composure",
+      "default": "95% ORGANIC COTTON / 5% ELASTANE"
+    },
+    {
+      "type": "text",
+      "id": "spec_adhesion",
+      "label": "Adhesion Matrix",
+      "default": "ABSOLUTE (SUBMERSIBLE)"
+    },
+    {
+      "type": "text",
+      "id": "spec_neurological",
+      "label": "Neurological Profile",
+      "default": "LATEX-FREE (HYPOALLERGENIC)"
+    },
+    {
+      "type": "text",
+      "id": "spec_operational",
+      "label": "Operational Window",
+      "default": "UP TO 7 DAYS"
+    },
+    {
+      "type": "header",
+      "content": "Doctrinal Application"
+    },
+    {
+      "type": "textarea",
+      "id": "doctrine_text",
+      "label": "Doctrine Text",
+      "default": "Reinforce kinetic chains. Provide direct neuro-haptic feedback. Maintain absolute structural integrity under maximum operational duress."
+    },
+    {
+      "type": "header",
+      "content": "Complete The Armory (Ecosystem Products)"
+    },
+    {
+      "type": "product",
+      "id": "armory_product_1",
+      "label": "Armory Asset 1"
+    },
+    {
+      "type": "product",
+      "id": "armory_product_2",
+      "label": "Armory Asset 2"
+    },
+    {
+      "type": "product",
+      "id": "armory_product_3",
+      "label": "Armory Asset 3"
+    },
+    {
+      "type": "header",
+      "content": "Dispatches From The Unit (Testimonials)"
+    },
+    {
+      "type": "textarea",
+      "id": "dispatch_1_quote",
+      "label": "Dispatch 1 - Quote"
+    },
+    {
+      "type": "text",
+      "id": "dispatch_1_name",
+      "label": "Dispatch 1 - Name"
+    },
+    {
+      "type": "text",
+      "id": "dispatch_1_title",
+      "label": "Dispatch 1 - Title"
+    },
+    {
+      "type": "textarea",
+      "id": "dispatch_2_quote",
+      "label": "Dispatch 2 - Quote"
+    },
+    {
+      "type": "text",
+      "id": "dispatch_2_name",
+      "label": "Dispatch 2 - Name"
+    },
+    {
+      "type": "text",
+      "id": "dispatch_2_title",
+      "label": "Dispatch 2 - Title"
+    },
+    {
+      "type": "textarea",
+      "id": "dispatch_3_quote",
+      "label": "Dispatch 3 - Quote"
+    },
+    {
+      "type": "text",
+      "id": "dispatch_3_name",
+      "label": "Dispatch 3 - Name"
+    },
+    {
+      "type": "text",
+      "id": "dispatch_3_title",
+      "label": "Dispatch 3 - Title"
+    },
+    {
+      "type": "textarea",
+      "id": "dispatch_4_quote",
+      "label": "Dispatch 4 - Quote"
+    },
+    {
+      "type": "text",
+      "id": "dispatch_4_name",
+      "label": "Dispatch 4 - Name"
+    },
+    {
+      "type": "text",
+      "id": "dispatch_4_title",
+      "label": "Dispatch 4 - Title"
+    },
+    {
+      "type": "textarea",
+      "id": "dispatch_5_quote",
+      "label": "Dispatch 5 - Quote"
+    },
+    {
+      "type": "text",
+      "id": "dispatch_5_name",
+      "label": "Dispatch 5 - Name"
+    },
+    {
+      "type": "text",
+      "id": "dispatch_5_title",
+      "label": "Dispatch 5 - Title"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Synapex Product Page"
+    }
+  ]
+}
+{% endschema %}
+
