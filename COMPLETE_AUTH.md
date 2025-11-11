@@ -77,3 +77,4 @@ npx @shopify/cli theme dev
 3. Check that you have theme development permissions
 4. Try the myshopify.com domain instead of custom domain
 
+

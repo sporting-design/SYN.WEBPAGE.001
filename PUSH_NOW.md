@@ -35,3 +35,4 @@ The token will be saved in your macOS keychain for future use.
 3. Add a new key with write permissions
 4. Switch back to SSH: `git remote set-url origin git@github.com:sporting-design/SYN.WEBPAGE.001.git`
 
+

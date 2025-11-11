@@ -20,3 +20,4 @@ npx @shopify/cli theme dev
 echo ""
 echo "Server stopped."
 
+

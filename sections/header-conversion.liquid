@@ -1,562 +1,562 @@
-{% comment %}
-  Conversion-Focused Header - WHOOP-Style Architecture
-  Synapex Command Center
-{% endcomment %}
+  {% comment %}
+    Conversion-Focused Header - WHOOP-Style Architecture
+    Synapex Command Center
+  {% endcomment %}
 
-<header id="synapex-command-header" class="command-header" data-section-id="{{ section.id }}">
-  <div class="command-header__container">
-    
-    {%- comment -%} LEFT SECTION: LOGO {%- endcomment -%}
-    <div class="command-header__logo">
-      <a href="{{ routes.root_url }}" class="logo-link">
-        {% if settings.logo %}
-          <img 
-            src="{{ settings.logo | image_url: width: 200 }}" 
-            alt="{{ shop.name }}"
-            width="auto"
-            height="40"
-            class="logo-image"
-          >
-        {% else %}
-          <span class="logo-text">SYNAPEX</span>
-        {% endif %}
-      </a>
-    </div>
-
-    {%- comment -%} CENTER SECTION: MISSION NAVIGATION {%- endcomment -%}
-    <nav class="command-header__nav desktop-only" aria-label="Main navigation">
-      <ul class="nav-list">
-        {% if section.settings.command_center_menu != blank %}
-          {% for link in linklists[section.settings.command_center_menu].links %}
-            <li class="nav-item">
-              <a href="{{ link.url }}" class="nav-link">
-                {{ link.title | upcase }}
-              </a>
-            </li>
-          {% endfor %}
-        {% else %}
-          {%- comment -%} Default navigation if menu not set {%- endcomment -%}
-          <li class="nav-item">
-            <a href="{{ section.settings.tools_link | default: '/collections/all' }}" class="nav-link">
-              THE TOOLS
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="{{ section.settings.learn_link | default: '/pages/about' }}" class="nav-link">
-              LEARN
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="{{ section.settings.mission_link | default: '/pages/mission' }}" class="nav-link">
-              THE MISSION
-            </a>
-          </li>
-        {% endif %}
-      </ul>
-    </nav>
-
-    {%- comment -%} RIGHT SECTION: THE COMMAND {%- endcomment -%}
-    <div class="command-header__actions">
-      {%- comment -%} Primary CTA Button {%- endcomment -%}
-      <a href="{{ section.settings.cta_link | default: '/collections/all' }}" class="command-btn desktop-only">
-        {{ section.settings.cta_text | default: "JOIN THE UNIT" }}
-      </a>
-
-      {%- comment -%} User Icon {%- endcomment -%}
-      {% if shop.customer_accounts_enabled %}
-        <a href="{{ routes.account_url }}" class="icon-link" aria-label="Account">
-          <svg class="icon" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M10 10C12.7614 10 15 7.76142 15 5C15 2.23858 12.7614 0 10 0C7.23858 0 5 2.23858 5 5C5 7.76142 7.23858 10 10 10Z" fill="currentColor"/>
-            <path d="M10 12C4.477 12 0 14.686 0 18V20H20V18C20 14.686 15.523 12 10 12Z" fill="currentColor"/>
-          </svg>
+  <header id="synapex-command-header" class="command-header" data-section-id="{{ section.id }}">
+    <div class="command-header__container">
+      
+      {%- comment -%} LEFT SECTION: LOGO {%- endcomment -%}
+      <div class="command-header__logo">
+        <a href="{{ routes.root_url }}" class="logo-link">
+          {% if settings.logo %}
+            <img 
+              src="{{ settings.logo | image_url: width: 200 }}" 
+              alt="{{ shop.name }}"
+              width="auto"
+              height="40"
+              class="logo-image"
+            >
+          {% else %}
+            <span class="logo-text">SYNAPEX</span>
+          {% endif %}
         </a>
-      {% endif %}
+      </div>
 
-      {%- comment -%} Cart Icon {%- endcomment -%}
-      <a href="{{ routes.cart_url }}" class="icon-link cart-link" aria-label="Cart">
-        <svg class="icon" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M6 16C4.9 16 4.01 16.9 4.01 18C4.01 19.1 4.9 20 6 20C7.1 20 8 19.1 8 18C8 16.9 7.1 16 6 16ZM0 0V2H2L5.6 9.59L4.25 12.04C4.09 12.32 4 12.65 4 13C4 14.1 4.9 15 6 15H18V13H6.42C6.28 13 6.17 12.89 6.17 12.75L6.2 12.63L7.1 11H14.55C15.3 11 15.96 10.59 16.3 9.97L19.88 3.48C19.96 3.34 20 3.17 20 3C20 2.45 19.55 2 19 2H4.21L3.27 0H0ZM16 16C14.9 16 14.01 16.9 14.01 18C14.01 19.1 14.9 20 16 20C17.1 20 18 19.1 18 18C18 16.9 17.1 16 16 16Z" fill="currentColor"/>
-        </svg>
-        {% if cart.item_count > 0 %}
-          <span class="cart-count">{{ cart.item_count }}</span>
-        {% endif %}
-      </a>
-
-      {%- comment -%} Mobile Hamburger Menu {%- endcomment -%}
-      <button class="hamburger-btn mobile-only" aria-label="Open menu" aria-expanded="false" id="mobile-menu-toggle">
-        <span class="hamburger-line"></span>
-        <span class="hamburger-line"></span>
-        <span class="hamburger-line"></span>
-      </button>
-    </div>
-  </div>
-
-  {%- comment -%} MOBILE MENU OVERLAY {%- endcomment -%}
-  <div class="mobile-menu" id="mobile-menu" aria-hidden="true">
-    <div class="mobile-menu__content">
-      <button class="mobile-menu__close" aria-label="Close menu" id="mobile-menu-close">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-        </svg>
-      </button>
-
-      <nav class="mobile-nav" aria-label="Mobile navigation">
-        <ul class="mobile-nav-list">
+      {%- comment -%} CENTER SECTION: MISSION NAVIGATION {%- endcomment -%}
+      <nav class="command-header__nav desktop-only" aria-label="Main navigation">
+        <ul class="nav-list">
           {% if section.settings.command_center_menu != blank %}
             {% for link in linklists[section.settings.command_center_menu].links %}
-              <li class="mobile-nav-item">
-                <a href="{{ link.url }}" class="mobile-nav-link">
+              <li class="nav-item">
+                <a href="{{ link.url }}" class="nav-link">
                   {{ link.title | upcase }}
                 </a>
               </li>
             {% endfor %}
           {% else %}
-            <li class="mobile-nav-item">
-              <a href="{{ section.settings.tools_link | default: '/collections/all' }}" class="mobile-nav-link">
+            {%- comment -%} Default navigation if menu not set {%- endcomment -%}
+            <li class="nav-item">
+              <a href="{{ section.settings.tools_link | default: '/collections/all' }}" class="nav-link">
                 THE TOOLS
               </a>
             </li>
-            <li class="mobile-nav-item">
-              <a href="{{ section.settings.learn_link | default: '/pages/about' }}" class="mobile-nav-link">
+            <li class="nav-item">
+              <a href="{{ section.settings.learn_link | default: '/pages/about' }}" class="nav-link">
                 LEARN
               </a>
             </li>
-            <li class="mobile-nav-item">
-              <a href="{{ section.settings.mission_link | default: '/pages/mission' }}" class="mobile-nav-link">
+            <li class="nav-item">
+              <a href="{{ section.settings.mission_link | default: '/pages/mission' }}" class="nav-link">
                 THE MISSION
               </a>
             </li>
           {% endif %}
         </ul>
+      </nav>
 
-        {%- comment -%} Mobile CTA {%- endcomment -%}
-        <a href="{{ section.settings.cta_link | default: '/collections/all' }}" class="mobile-command-btn">
+      {%- comment -%} RIGHT SECTION: THE COMMAND {%- endcomment -%}
+      <div class="command-header__actions">
+        {%- comment -%} Primary CTA Button {%- endcomment -%}
+        <a href="{{ section.settings.cta_link | default: '/collections/all' }}" class="command-btn desktop-only">
           {{ section.settings.cta_text | default: "JOIN THE UNIT" }}
         </a>
-      </nav>
+
+        {%- comment -%} User Icon {%- endcomment -%}
+        {% if shop.customer_accounts_enabled %}
+          <a href="{{ routes.account_url }}" class="icon-link" aria-label="Account">
+            <svg class="icon" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M10 10C12.7614 10 15 7.76142 15 5C15 2.23858 12.7614 0 10 0C7.23858 0 5 2.23858 5 5C5 7.76142 7.23858 10 10 10Z" fill="currentColor"/>
+              <path d="M10 12C4.477 12 0 14.686 0 18V20H20V18C20 14.686 15.523 12 10 12Z" fill="currentColor"/>
+            </svg>
+          </a>
+        {% endif %}
+
+        {%- comment -%} Cart Icon {%- endcomment -%}
+        <a href="{{ routes.cart_url }}" class="icon-link cart-link" aria-label="Cart">
+          <svg class="icon" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M6 16C4.9 16 4.01 16.9 4.01 18C4.01 19.1 4.9 20 6 20C7.1 20 8 19.1 8 18C8 16.9 7.1 16 6 16ZM0 0V2H2L5.6 9.59L4.25 12.04C4.09 12.32 4 12.65 4 13C4 14.1 4.9 15 6 15H18V13H6.42C6.28 13 6.17 12.89 6.17 12.75L6.2 12.63L7.1 11H14.55C15.3 11 15.96 10.59 16.3 9.97L19.88 3.48C19.96 3.34 20 3.17 20 3C20 2.45 19.55 2 19 2H4.21L3.27 0H0ZM16 16C14.9 16 14.01 16.9 14.01 18C14.01 19.1 14.9 20 16 20C17.1 20 18 19.1 18 18C18 16.9 17.1 16 16 16Z" fill="currentColor"/>
+          </svg>
+          {% if cart.item_count > 0 %}
+            <span class="cart-count">{{ cart.item_count }}</span>
+          {% endif %}
+        </a>
+
+        {%- comment -%} Mobile Hamburger Menu {%- endcomment -%}
+        <button class="hamburger-btn mobile-only" aria-label="Open menu" aria-expanded="false" id="mobile-menu-toggle">
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+        </button>
+      </div>
     </div>
-  </div>
-</header>
 
-<style>
-  /* ============================================
-     COMMAND HEADER - BASE STRUCTURE
-     ============================================ */
-  .command-header {
-    background-color: #000000;
-    width: 100%;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  }
+    {%- comment -%} MOBILE MENU OVERLAY {%- endcomment -%}
+    <div class="mobile-menu" id="mobile-menu" aria-hidden="true">
+      <div class="mobile-menu__content">
+        <button class="mobile-menu__close" aria-label="Close menu" id="mobile-menu-close">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </button>
 
-  .command-header__container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    max-width: 1440px;
-    margin: 0 auto;
-    padding: 1rem 2rem;
-    height: 70px;
-  }
+        <nav class="mobile-nav" aria-label="Mobile navigation">
+          <ul class="mobile-nav-list">
+            {% if section.settings.command_center_menu != blank %}
+              {% for link in linklists[section.settings.command_center_menu].links %}
+                <li class="mobile-nav-item">
+                  <a href="{{ link.url }}" class="mobile-nav-link">
+                    {{ link.title | upcase }}
+                  </a>
+                </li>
+              {% endfor %}
+            {% else %}
+              <li class="mobile-nav-item">
+                <a href="{{ section.settings.tools_link | default: '/collections/all' }}" class="mobile-nav-link">
+                  THE TOOLS
+                </a>
+              </li>
+              <li class="mobile-nav-item">
+                <a href="{{ section.settings.learn_link | default: '/pages/about' }}" class="mobile-nav-link">
+                  LEARN
+                </a>
+              </li>
+              <li class="mobile-nav-item">
+                <a href="{{ section.settings.mission_link | default: '/pages/mission' }}" class="mobile-nav-link">
+                  THE MISSION
+                </a>
+              </li>
+            {% endif %}
+          </ul>
 
-  /* ============================================
-     LEFT SECTION: LOGO
-     ============================================ */
-  .command-header__logo {
-    flex-shrink: 0;
-  }
+          {%- comment -%} Mobile CTA {%- endcomment -%}
+          <a href="{{ section.settings.cta_link | default: '/collections/all' }}" class="mobile-command-btn">
+            {{ section.settings.cta_text | default: "JOIN THE UNIT" }}
+          </a>
+        </nav>
+      </div>
+    </div>
+  </header>
 
-  .logo-link {
-    display: block;
-    text-decoration: none;
-  }
-
-  .logo-text {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-    font-size: 1.5rem;
-    font-weight: 900;
-    color: #FFFFFF;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-  }
-
-  .logo-image {
-    display: block;
-    height: 40px;
-    width: auto;
-  }
-
-  /* ============================================
-     CENTER SECTION: MISSION NAVIGATION
-     ============================================ */
-  .command-header__nav {
-    flex-grow: 1;
-    display: flex;
-    justify-content: center;
-    padding: 0 2rem;
-  }
-
-  .nav-list {
-    display: flex;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    gap: 3rem;
-    align-items: center;
-  }
-
-  .nav-item {
-    margin: 0;
-  }
-
-  .nav-link {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-    font-size: 0.875rem;
-    font-weight: 600;
-    color: #FFFFFF;
-    text-decoration: none;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-    transition: opacity 0.2s ease-in-out;
-    display: inline-block;
-  }
-
-  .nav-link:hover {
-    opacity: 0.7;
-  }
-
-  /* ============================================
-     RIGHT SECTION: THE COMMAND
-     ============================================ */
-  .command-header__actions {
-    display: flex;
-    align-items: center;
-    gap: 1.5rem;
-    flex-shrink: 0;
-  }
-
-  .command-btn {
-    background-color: #FFFFFF;
-    color: #000000;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-    font-size: 0.875rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    padding: 0.75rem 1.5rem;
-    border-radius: 4px;
-    text-decoration: none;
-    transition: transform 0.2s ease-out, box-shadow 0.2s ease-out;
-    display: inline-block;
-    white-space: nowrap;
-  }
-
-  .command-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(255, 255, 255, 0.3);
-  }
-
-  .command-btn:active {
-    transform: translateY(0);
-  }
-
-  .icon-link {
-    color: #FFFFFF;
-    text-decoration: none;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    transition: opacity 0.2s ease-in-out;
-  }
-
-  .icon-link:hover {
-    opacity: 0.7;
-  }
-
-  .icon {
-    width: 20px;
-    height: 20px;
-  }
-
-  .cart-count {
-    position: absolute;
-    top: -8px;
-    right: -8px;
-    background-color: #FFFFFF;
-    color: #000000;
-    font-size: 0.625rem;
-    font-weight: 700;
-    border-radius: 50%;
-    min-width: 18px;
-    height: 18px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0 4px;
-  }
-
-  /* ============================================
-     MOBILE HAMBURGER BUTTON
-     ============================================ */
-  .hamburger-btn {
-    display: none;
-    flex-direction: column;
-    justify-content: space-between;
-    width: 24px;
-    height: 18px;
-    background: transparent;
-    border: none;
-    cursor: pointer;
-    padding: 0;
-  }
-
-  .hamburger-line {
-    width: 100%;
-    height: 2px;
-    background-color: #FFFFFF;
-    transition: all 0.3s ease;
-  }
-
-  /* ============================================
-     MOBILE MENU OVERLAY
-     ============================================ */
-  .mobile-menu {
-    position: fixed;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    background-color: rgba(0, 0, 0, 0.95);
-    z-index: 2000;
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.3s ease, visibility 0.3s ease;
-  }
-
-  .mobile-menu[aria-hidden="false"] {
-    opacity: 1;
-    visibility: visible;
-  }
-
-  .mobile-menu__content {
-    position: relative;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 2rem;
-  }
-
-  .mobile-menu__close {
-    position: absolute;
-    top: 1.5rem;
-    right: 1.5rem;
-    background: transparent;
-    border: none;
-    color: #FFFFFF;
-    cursor: pointer;
-    padding: 0.5rem;
-  }
-
-  .mobile-nav-list {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 2rem;
-  }
-
-  .mobile-nav-link {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: #FFFFFF;
-    text-decoration: none;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-  }
-
-  .mobile-command-btn {
-    background-color: #FFFFFF;
-    color: #000000;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-    font-size: 1rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    padding: 1rem 2rem;
-    border-radius: 4px;
-    text-decoration: none;
-    display: inline-block;
-    margin-top: 3rem;
-  }
-
-  /* ============================================
-     RESPONSIVE BREAKPOINTS
-     ============================================ */
-  .desktop-only {
-    display: flex;
-  }
-
-  .mobile-only {
-    display: none;
-  }
-
-  @media (max-width: 768px) {
-    .desktop-only {
-      display: none !important;
+  <style>
+    /* ============================================
+      COMMAND HEADER - BASE STRUCTURE
+      ============================================ */
+    .command-header {
+      background-color: #000000;
+      width: 100%;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     }
 
-    .mobile-only {
+    .command-header__container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1440px;
+      margin: 0 auto;
+      padding: 1rem 2rem;
+      height: 70px;
+    }
+
+    /* ============================================
+      LEFT SECTION: LOGO
+      ============================================ */
+    .command-header__logo {
+      flex-shrink: 0;
+    }
+
+    .logo-link {
+      display: block;
+      text-decoration: none;
+    }
+
+    .logo-text {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      font-size: 1.5rem;
+      font-weight: 900;
+      color: #FFFFFF;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    .logo-image {
+      display: block;
+      height: 40px;
+      width: auto;
+    }
+
+    /* ============================================
+      CENTER SECTION: MISSION NAVIGATION
+      ============================================ */
+    .command-header__nav {
+      flex-grow: 1;
+      display: flex;
+      justify-content: center;
+      padding: 0 2rem;
+    }
+
+    .nav-list {
+      display: flex;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      gap: 3rem;
+      align-items: center;
+    }
+
+    .nav-item {
+      margin: 0;
+    }
+
+    .nav-link {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: #FFFFFF;
+      text-decoration: none;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      transition: opacity 0.2s ease-in-out;
+      display: inline-block;
+    }
+
+    .nav-link:hover {
+      opacity: 0.7;
+    }
+
+    /* ============================================
+      RIGHT SECTION: THE COMMAND
+      ============================================ */
+    .command-header__actions {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      flex-shrink: 0;
+    }
+
+    .command-btn {
+      background-color: #FFFFFF;
+      color: #000000;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      font-size: 0.875rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 0.75rem 1.5rem;
+      border-radius: 4px;
+      text-decoration: none;
+      transition: transform 0.2s ease-out, box-shadow 0.2s ease-out;
+      display: inline-block;
+      white-space: nowrap;
+    }
+
+    .command-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(255, 255, 255, 0.3);
+    }
+
+    .command-btn:active {
+      transform: translateY(0);
+    }
+
+    .icon-link {
+      color: #FFFFFF;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      transition: opacity 0.2s ease-in-out;
+    }
+
+    .icon-link:hover {
+      opacity: 0.7;
+    }
+
+    .icon {
+      width: 20px;
+      height: 20px;
+    }
+
+    .cart-count {
+      position: absolute;
+      top: -8px;
+      right: -8px;
+      background-color: #FFFFFF;
+      color: #000000;
+      font-size: 0.625rem;
+      font-weight: 700;
+      border-radius: 50%;
+      min-width: 18px;
+      height: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 4px;
+    }
+
+    /* ============================================
+      MOBILE HAMBURGER BUTTON
+      ============================================ */
+    .hamburger-btn {
+      display: none;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 24px;
+      height: 18px;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+    }
+
+    .hamburger-line {
+      width: 100%;
+      height: 2px;
+      background-color: #FFFFFF;
+      transition: all 0.3s ease;
+    }
+
+    /* ============================================
+      MOBILE MENU OVERLAY
+      ============================================ */
+    .mobile-menu {
+      position: fixed;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      background-color: rgba(0, 0, 0, 0.95);
+      z-index: 2000;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s ease, visibility 0.3s ease;
+    }
+
+    .mobile-menu[aria-hidden="false"] {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .mobile-menu__content {
+      position: relative;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+    }
+
+    .mobile-menu__close {
+      position: absolute;
+      top: 1.5rem;
+      right: 1.5rem;
+      background: transparent;
+      border: none;
+      color: #FFFFFF;
+      cursor: pointer;
+      padding: 0.5rem;
+    }
+
+    .mobile-nav-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2rem;
+    }
+
+    .mobile-nav-link {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #FFFFFF;
+      text-decoration: none;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    .mobile-command-btn {
+      background-color: #FFFFFF;
+      color: #000000;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 1rem 2rem;
+      border-radius: 4px;
+      text-decoration: none;
+      display: inline-block;
+      margin-top: 3rem;
+    }
+
+    /* ============================================
+      RESPONSIVE BREAKPOINTS
+      ============================================ */
+    .desktop-only {
       display: flex;
     }
 
-    .command-header__container {
-      padding: 1rem;
-      height: 60px;
-    }
-
-    .command-header__nav {
+    .mobile-only {
       display: none;
     }
 
-    .command-header__actions {
-      gap: 1rem;
+    @media (max-width: 768px) {
+      .desktop-only {
+        display: none !important;
+      }
+
+      .mobile-only {
+        display: flex;
+      }
+
+      .command-header__container {
+        padding: 1rem;
+        height: 60px;
+      }
+
+      .command-header__nav {
+        display: none;
+      }
+
+      .command-header__actions {
+        gap: 1rem;
+      }
+
+      .logo-text {
+        font-size: 1.25rem;
+      }
     }
 
-    .logo-text {
-      font-size: 1.25rem;
+    @media (max-width: 480px) {
+      .command-header__container {
+        padding: 0.75rem;
+      }
+
+      .logo-text {
+        font-size: 1rem;
+      }
     }
-  }
+  </style>
 
-  @media (max-width: 480px) {
-    .command-header__container {
-      padding: 0.75rem;
-    }
+  <script>
+    // Mobile Menu Toggle
+    document.addEventListener('DOMContentLoaded', function() {
+      const menuToggle = document.getElementById('mobile-menu-toggle');
+      const menuClose = document.getElementById('mobile-menu-close');
+      const mobileMenu = document.getElementById('mobile-menu');
 
-    .logo-text {
-      font-size: 1rem;
-    }
-  }
-</style>
+      if (menuToggle && mobileMenu) {
+        menuToggle.addEventListener('click', function() {
+          mobileMenu.setAttribute('aria-hidden', 'false');
+          menuToggle.setAttribute('aria-expanded', 'true');
+          document.body.style.overflow = 'hidden';
+        });
+      }
 
-<script>
-  // Mobile Menu Toggle
-  document.addEventListener('DOMContentLoaded', function() {
-    const menuToggle = document.getElementById('mobile-menu-toggle');
-    const menuClose = document.getElementById('mobile-menu-close');
-    const mobileMenu = document.getElementById('mobile-menu');
-
-    if (menuToggle && mobileMenu) {
-      menuToggle.addEventListener('click', function() {
-        mobileMenu.setAttribute('aria-hidden', 'false');
-        menuToggle.setAttribute('aria-expanded', 'true');
-        document.body.style.overflow = 'hidden';
-      });
-    }
-
-    if (menuClose && mobileMenu) {
-      menuClose.addEventListener('click', function() {
-        mobileMenu.setAttribute('aria-hidden', 'true');
-        menuToggle.setAttribute('aria-expanded', 'false');
-        document.body.style.overflow = '';
-      });
-    }
-
-    // Close menu when clicking outside
-    if (mobileMenu) {
-      mobileMenu.addEventListener('click', function(e) {
-        if (e.target === mobileMenu) {
+      if (menuClose && mobileMenu) {
+        menuClose.addEventListener('click', function() {
           mobileMenu.setAttribute('aria-hidden', 'true');
           menuToggle.setAttribute('aria-expanded', 'false');
           document.body.style.overflow = '';
-        }
-      });
-    }
+        });
+      }
 
-    // Close menu on link click
-    const mobileLinks = document.querySelectorAll('.mobile-nav-link, .mobile-command-btn');
-    mobileLinks.forEach(link => {
-      link.addEventListener('click', function() {
-        mobileMenu.setAttribute('aria-hidden', 'true');
-        menuToggle.setAttribute('aria-expanded', 'false');
-        document.body.style.overflow = '';
+      // Close menu when clicking outside
+      if (mobileMenu) {
+        mobileMenu.addEventListener('click', function(e) {
+          if (e.target === mobileMenu) {
+            mobileMenu.setAttribute('aria-hidden', 'true');
+            menuToggle.setAttribute('aria-expanded', 'false');
+            document.body.style.overflow = '';
+          }
+        });
+      }
+
+      // Close menu on link click
+      const mobileLinks = document.querySelectorAll('.mobile-nav-link, .mobile-command-btn');
+      mobileLinks.forEach(link => {
+        link.addEventListener('click', function() {
+          mobileMenu.setAttribute('aria-hidden', 'true');
+          menuToggle.setAttribute('aria-expanded', 'false');
+          document.body.style.overflow = '';
+        });
       });
     });
-  });
-</script>
+  </script>
 
-{% schema %}
-{
-  "name": "Command Header",
-  "settings": [
+    {% schema %}
     {
-      "type": "header",
-      "content": "Navigation Menu"
-    },
-    {
-      "type": "link_list",
-      "id": "command_center_menu",
-      "label": "Command Center Nav",
-      "info": "Create a menu in Navigation with 3 links: THE TOOLS, LEARN, THE MISSION"
-    },
-    {
-      "type": "header",
-      "content": "Fallback Navigation Links (if menu not set)"
-    },
-    {
-      "type": "url",
-      "id": "tools_link",
-      "label": "THE TOOLS Link"
-    },
-    {
-      "type": "url",
-      "id": "learn_link",
-      "label": "LEARN Link"
-    },
-    {
-      "type": "url",
-      "id": "mission_link",
-      "label": "THE MISSION Link"
-    },
-    {
-      "type": "header",
-      "content": "Primary CTA Button"
-    },
-    {
-      "type": "text",
-      "id": "cta_text",
-      "label": "CTA Button Text",
-      "default": "JOIN THE UNIT"
-    },
-    {
-      "type": "url",
-      "id": "cta_link",
-      "label": "CTA Button Link",
-      "info": "Link to your main product collection"
-    },
-    {
-      "type": "header",
-      "content": "Persistent Engagement Vector (PEV)"
-    },
-    {
-      "type": "url",
-      "id": "pev_link",
-      "label": "Persistent CTA Button Link",
-      "info": "This controls the floating button at the bottom of the screen. Links to the master product page."
+      "name": "Command Header",
+      "settings": [
+        {
+          "type": "header",
+          "content": "Navigation Menu"
+        },
+        {
+          "type": "link_list",
+          "id": "command_center_menu",
+          "label": "Command Center Nav",
+          "info": "Create a menu in Navigation with 3 links: THE TOOLS, LEARN, THE MISSION"
+        },
+        {
+          "type": "header",
+          "content": "Fallback Navigation Links (if menu not set)"
+        },
+        {
+          "type": "url",
+          "id": "tools_link",
+          "label": "THE TOOLS Link"
+        },
+        {
+          "type": "url",
+          "id": "learn_link",
+          "label": "LEARN Link"
+        },
+        {
+          "type": "url",
+          "id": "mission_link",
+          "label": "THE MISSION Link"
+        },
+        {
+          "type": "header",
+          "content": "Primary CTA Button"
+        },
+        {
+          "type": "text",
+          "id": "cta_text",
+          "label": "CTA Button Text",
+          "default": "JOIN THE UNIT"
+        },
+        {
+          "type": "url",
+          "id": "cta_link",
+          "label": "CTA Button Link",
+          "info": "Link to your main product collection"
+        },
+        {
+          "type": "header",
+          "content": "Persistent Engagement Vector (PEV)"
+        },
+        {
+          "type": "url",
+          "id": "pev_link",
+          "label": "Persistent CTA Button Link",
+          "info": "This controls the floating button at the bottom of the screen. Links to the master product page."
+        }
+      ],
+      "presets": [
+        {
+          "name": "Command Header"
+        }
+      ]
     }
-  ],
-  "presets": [
-    {
-      "name": "Command Header"
-    }
-  ]
-}
-{% endschema %}
+    {% endschema %}
 

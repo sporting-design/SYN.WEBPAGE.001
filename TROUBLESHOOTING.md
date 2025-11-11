@@ -60,3 +60,4 @@ npx @shopify/cli theme dev
 # It will prompt you to select a store from the list
 ```
 
+

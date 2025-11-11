@@ -67,3 +67,4 @@ Then follow the authentication prompts!
 
 **The key**: You need to run this in YOUR terminal (not through Cursor) so you can interact with the authentication prompts.
 
+

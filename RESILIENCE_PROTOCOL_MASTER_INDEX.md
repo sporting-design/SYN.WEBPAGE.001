@@ -531,3 +531,4 @@ Emergency: Disable app → Verify fallback → Contact support
 
 **For detailed steps, see implementation sequence above.**
 
+

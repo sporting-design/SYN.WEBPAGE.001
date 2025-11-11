@@ -268,3 +268,4 @@ SYN.WEBPAGE.001/
 
 You're 95% there! Just need to complete Shopify CLI authentication to view the UI.
 
+

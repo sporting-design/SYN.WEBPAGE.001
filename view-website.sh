@@ -13,3 +13,4 @@ cd /Users/user/Desktop/SYN.Webpage.code
 # Start the dev server in foreground so you can see everything
 npx @shopify/cli theme dev --store synapex.store
 
+
