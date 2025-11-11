@@ -20,12 +20,19 @@ Brutalist, minimalist architecture for uncompromising conversion
     
     {%- comment -%} ════════ LEFT COLUMN: THE KINEMATIC DEMONSTRATION (55%) ════════ {%- endcomment -%}
     <div class="kinematic-demonstration">
-      <div class="media-primary">
+      <div class="media-primary" id="primary-media-container">
         {% if product.featured_media %}
           {% if product.featured_media.media_type == 'video' or product.featured_media.media_type == 'external_video' %}
-            {{ product.featured_media | video_tag: autoplay: false, loop: true, controls: true, muted: false }}
+            {{ product.featured_media | video_tag: autoplay: false, loop: true, controls: true, muted: false, id: 'primary-media-element' }}
           {% else %}
-            <img src="{{ product.featured_media | image_url: width: 1200 }}" alt="{{ product.featured_media.alt | escape }}" class="media-primary__image">
+            <img 
+              src="{{ product.featured_media | image_url: width: 1200 }}" 
+              alt="{{ product.featured_media.alt | escape }}" 
+              class="media-primary__image"
+              id="primary-media-element"
+              data-zoom-src="{{ product.featured_media | image_url: width: 2400 }}"
+            >
+            <div class="zoom-icon">🔍</div>
           {% endif %}
         {% else %}
           {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}
@@ -35,7 +42,12 @@ Brutalist, minimalist architecture for uncompromising conversion
       {% if product.media.size > 1 %}
         <div class="media-thumbnails">
           {% for media in product.media limit: 6 %}
-            <div class="media-thumbnail" data-media-index="{{ forloop.index0 }}">
+            <div class="media-thumbnail" 
+                 data-media-index="{{ forloop.index0 }}"
+                 data-media-type="{{ media.media_type }}"
+                 data-media-src="{{ media | image_url: width: 1200 }}"
+                 data-media-zoom-src="{{ media | image_url: width: 2400 }}"
+                 data-media-alt="{{ media.alt | escape }}">
               {% if media.media_type == 'video' or media.media_type == 'external_video' %}
                 <div class="thumbnail-video-indicator">▶</div>
               {% endif %}
@@ -224,6 +236,8 @@ Brutalist, minimalist architecture for uncompromising conversion
   background: #0A0A0A;
   border: 2px solid #FFFFFF;
   overflow: hidden;
+  position: relative;
+  cursor: zoom-in;
 }
 
 .media-primary__image,
@@ -231,6 +245,30 @@ Brutalist, minimalist architecture for uncompromising conversion
   width: 100%;
   height: auto;
   display: block;
+  transition: transform 0.3s ease;
+}
+
+.zoom-icon {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: rgba(0, 0, 0, 0.7);
+  color: #FFFFFF;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  border: 2px solid #FFFFFF;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  z-index: 10;
+}
+
+.media-primary:hover .zoom-icon {
+  opacity: 1;
 }
 
 .media-thumbnails {
@@ -702,36 +740,156 @@ Brutalist, minimalist architecture for uncompromising conversion
   outline: 2px solid #FFFFFF;
   outline-offset: 4px;
 }
+
+/* ════════ LIGHTBOX ZOOM MODAL ════════ */
+.synapex-lightbox {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.lightbox-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.95);
+  cursor: pointer;
+}
+
+.lightbox-content {
+  position: relative;
+  max-width: 90vw;
+  max-height: 90vh;
+  z-index: 10000;
+}
+
+.lightbox-image {
+  max-width: 100%;
+  max-height: 90vh;
+  display: block;
+  border: 2px solid #FFFFFF;
+}
+
+.lightbox-close {
+  position: absolute;
+  top: -50px;
+  right: 0;
+  background: #000000;
+  border: 2px solid #FFFFFF;
+  color: #FFFFFF;
+  width: 44px;
+  height: 44px;
+  font-size: 24px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.lightbox-close:hover {
+  background: #FFFFFF;
+  color: #000000;
+}
 </style>
 
 <script>
 // ════════════════════════════════════════════════════════════════
 // SYNAPEX PRODUCT PAGE - BEHAVIORAL INTELLIGENCE
+// PROTOCOL 2 & 3: Full gallery & acquisition functionality
 // ════════════════════════════════════════════════════════════════
 (function() {
   'use strict';
 
-  // ════════ MEDIA GALLERY NAVIGATION ════════
+  // ════════ PROTOCOL 2: MEDIA GALLERY COMMAND & ZOOM ════════
   const thumbnails = document.querySelectorAll('.media-thumbnail');
-  const primaryMedia = document.querySelector('.media-primary');
+  const primaryMediaContainer = document.querySelector('#primary-media-container');
+  const primaryMediaElement = document.querySelector('#primary-media-element');
 
-  thumbnails.forEach((thumb, index) => {
+  // Thumbnail switching functionality
+  thumbnails.forEach((thumb) => {
     thumb.addEventListener('click', function() {
       // Remove active class from all thumbnails
       thumbnails.forEach(t => t.classList.remove('active'));
       // Add active class to clicked thumbnail
       this.classList.add('active');
 
+      // Get media data from thumbnail
+      const mediaSrc = this.getAttribute('data-media-src');
+      const mediaZoomSrc = this.getAttribute('data-media-zoom-src');
+      const mediaAlt = this.getAttribute('data-media-alt');
+      const mediaType = this.getAttribute('data-media-type');
+
       // Update primary media
-      const mediaIndex = parseInt(this.getAttribute('data-media-index'));
-      // In a full implementation, this would switch the primary image/video
-      // For now, we mark it visually
+      if (mediaType === 'video' || mediaType === 'external_video') {
+        // Handle video (simplified - would need full video URL)
+        console.log('Video switching not yet implemented');
+      } else {
+        // Update image
+        if (primaryMediaElement && primaryMediaElement.tagName === 'IMG') {
+          primaryMediaElement.src = mediaSrc;
+          primaryMediaElement.alt = mediaAlt;
+          primaryMediaElement.setAttribute('data-zoom-src', mediaZoomSrc);
+        }
+      }
     });
   });
 
   // Set first thumbnail as active
   if (thumbnails.length > 0) {
     thumbnails[0].classList.add('active');
+  }
+
+  // Image zoom functionality (lightbox on click)
+  if (primaryMediaContainer) {
+    primaryMediaContainer.addEventListener('click', function(e) {
+      if (primaryMediaElement && primaryMediaElement.tagName === 'IMG') {
+        const zoomSrc = primaryMediaElement.getAttribute('data-zoom-src');
+        if (zoomSrc) {
+          // Create lightbox
+          const lightbox = document.createElement('div');
+          lightbox.className = 'synapex-lightbox';
+          lightbox.innerHTML = `
+            <div class="lightbox-overlay"></div>
+            <div class="lightbox-content">
+              <button class="lightbox-close" aria-label="Close">✕</button>
+              <img src="${zoomSrc}" alt="${primaryMediaElement.alt}" class="lightbox-image">
+            </div>
+          `;
+          document.body.appendChild(lightbox);
+          document.body.style.overflow = 'hidden';
+
+          // Close functionality
+          const closeBtn = lightbox.querySelector('.lightbox-close');
+          const overlay = lightbox.querySelector('.lightbox-overlay');
+          
+          const closeLightbox = () => {
+            document.body.removeChild(lightbox);
+            document.body.style.overflow = '';
+          };
+
+          closeBtn.addEventListener('click', closeLightbox);
+          overlay.addEventListener('click', closeLightbox);
+          
+          // ESC key to close
+          document.addEventListener('keydown', function escHandler(e) {
+            if (e.key === 'Escape') {
+              closeLightbox();
+              document.removeEventListener('keydown', escHandler);
+            }
+          });
+        }
+      }
+    });
   }
 
   // ════════ QUANTITY CONTROLS ════════
@@ -753,32 +911,76 @@ Brutalist, minimalist architecture for uncompromising conversion
     });
   }
 
-  // ════════ VARIANT SELECTOR LOGIC ════════
-  const variantButtons = document.querySelectorAll('.variant-button');
+  // ════════ PROTOCOL 3: ADD TO CART - ACQUISITION VECTOR ════════
   const form = document.querySelector('.dossier-form');
+  const ctaButton = document.querySelector('.cta-acquire');
   const hiddenVariantInput = form ? form.querySelector('input[name="id"]') : null;
 
-  // This is a simplified version - full variant logic would require
-  // matching combinations to variant IDs from product JSON
-  variantButtons.forEach(button => {
-    button.addEventListener('click', function() {
-      // Update price and availability based on selected variant
-      // This would typically fetch variant data via AJAX or read from a JSON object
-    });
-  });
+  if (form && ctaButton) {
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      const formData = new FormData(this);
+      
+      // Disable button during submission
+      ctaButton.disabled = true;
+      const originalText = ctaButton.textContent;
+      ctaButton.textContent = 'PROCESSING...';
 
-  // ════════ ANALYTICS TRACKING ════════
-  const ctaButton = document.querySelector('.cta-acquire');
-  if (ctaButton) {
-    ctaButton.addEventListener('click', function() {
-      if (window.dataLayer) {
-        window.dataLayer.push({
-          'event': 'add_to_cart',
-          'product_name': '{{ product.title }}',
-          'product_id': '{{ product.id }}',
-          'variant_id': hiddenVariantInput ? hiddenVariantInput.value : null
-        });
-      }
+      // Submit via AJAX
+      fetch('/cart/add.js', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          id: formData.get('id'),
+          quantity: parseInt(formData.get('quantity'))
+        })
+      })
+      .then(response => response.json())
+      .then(data => {
+        // Success - update cart
+        ctaButton.textContent = 'ADDED TO CART ✓';
+        
+        // Analytics tracking
+        if (window.dataLayer) {
+          window.dataLayer.push({
+            'event': 'add_to_cart',
+            'product_name': '{{ product.title }}',
+            'product_id': '{{ product.id }}',
+            'variant_id': data.variant_id,
+            'quantity': data.quantity,
+            'price': data.price
+          });
+        }
+
+        // Open cart drawer if available
+        if (window.Shopify && window.Shopify.theme && window.Shopify.theme.cartDrawer) {
+          window.Shopify.theme.cartDrawer.open();
+        } else {
+          // Fallback: redirect to cart after brief delay
+          setTimeout(() => {
+            window.location.href = '/cart';
+          }, 800);
+        }
+
+        // Reset button after 2 seconds
+        setTimeout(() => {
+          ctaButton.textContent = originalText;
+          ctaButton.disabled = false;
+        }, 2000);
+      })
+      .catch(error => {
+        console.error('Add to cart error:', error);
+        ctaButton.textContent = 'ERROR - TRY AGAIN';
+        ctaButton.disabled = false;
+        
+        // Reset after 2 seconds
+        setTimeout(() => {
+          ctaButton.textContent = originalText;
+        }, 2000);
+      });
     });
   }
 })();
