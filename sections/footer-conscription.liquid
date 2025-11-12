@@ -1,0 +1,382 @@
+<!-- 
+  SYNAPEX FOOTER CONSCRIPTION PROTOCOL
+  Purpose: High-conversion email acquisition vector + foundation bar
+  Architecture: Minimalist, brutalist, doctrinally pure
+-->
+
+<footer class="footer-conscription">
+  <!-- PHASE 1: THE CONSCRIPTION VECTOR -->
+  <div class="conscription-vector">
+    <div class="conscription-vector__inner">
+      <h2 class="conscription-headline">
+        {{ section.settings.conscription_headline }}
+      </h2>
+      
+      <div class="conscription-subheader">
+        {{ section.settings.conscription_subheader }}
+      </div>
+
+      {% form 'customer', class: 'conscription-form' %}
+        {% if form.posted_successfully? %}
+          <div class="conscription-form__success">
+            CONSCRIPTION CONFIRMED. YOU ARE NOW PART OF THE UNIT.
+          </div>
+        {% endif %}
+
+        {% if form.errors %}
+          <div class="conscription-form__error">
+            {{ form.errors | default_errors }}
+          </div>
+        {% endif %}
+
+        <input type="hidden" name="contact[tags]" value="newsletter">
+        
+        <div class="conscription-form__input-group">
+          <input 
+            type="email" 
+            name="contact[email]" 
+            id="footer-email-{{ section.id }}"
+            class="conscription-form__input"
+            placeholder="ENTER YOUR DESIGNATION"
+            required
+            autocomplete="email"
+          >
+          <button type="submit" class="conscription-form__submit" aria-label="Submit Email">
+            <span class="conscription-form__arrow">→</span>
+          </button>
+        </div>
+      {% endform %}
+    </div>
+  </div>
+
+  <!-- PHASE 2: THE FOUNDATION BAR -->
+  <div class="foundation-bar">
+    <div class="foundation-bar__inner">
+      <!-- Copyright Sigil (Left) -->
+      <div class="foundation-bar__copyright">
+        © {{ 'now' | date: "%Y" }} SYNAPEX // THE STANDARD IS ABSOLUTE
+      </div>
+
+      <!-- Policy Links (Center) -->
+      <nav class="foundation-bar__policy" aria-label="Footer Navigation">
+        {% if linklists.footer.links.size > 0 %}
+          <ul class="foundation-bar__policy-list">
+            {% for link in linklists.footer.links %}
+              <li class="foundation-bar__policy-item">
+                <a href="{{ link.url }}" class="foundation-bar__policy-link">
+                  {{ link.title | upcase }}
+                </a>
+              </li>
+            {% endfor %}
+          </ul>
+        {% endif %}
+      </nav>
+
+      <!-- Social Outposts (Right) -->
+      <div class="foundation-bar__social">
+        {% if settings.social_twitter_link != blank %}
+          <a href="{{ settings.social_twitter_link }}" class="foundation-bar__social-link" aria-label="Twitter" target="_blank" rel="noopener">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        {% endif %}
+
+        {% if settings.social_facebook_link != blank %}
+          <a href="{{ settings.social_facebook_link }}" class="foundation-bar__social-link" aria-label="Facebook" target="_blank" rel="noopener">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        {% endif %}
+
+        {% if settings.social_instagram_link != blank %}
+          <a href="{{ settings.social_instagram_link }}" class="foundation-bar__social-link" aria-label="Instagram" target="_blank" rel="noopener">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="2" y="2" width="20" height="20" rx="5" ry="5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        {% endif %}
+
+        {% if settings.social_youtube_link != blank %}
+          <a href="{{ settings.social_youtube_link }}" class="foundation-bar__social-link" aria-label="YouTube" target="_blank" rel="noopener">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M22.54 6.42a2.78 2.78 0 00-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 00-1.94 2A29 29 0 001 11.75a29 29 0 00.46 5.33A2.78 2.78 0 003.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 001.94-2 29 29 0 00.46-5.25 29 29 0 00-.46-5.33z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        {% endif %}
+
+        {% if settings.social_tiktok_link != blank %}
+          <a href="{{ settings.social_tiktok_link }}" class="foundation-bar__social-link" aria-label="TikTok" target="_blank" rel="noopener">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</footer>
+
+<style>
+  /* ============================================
+     PHASE 1: CONSCRIPTION VECTOR STYLING
+     ============================================ */
+  .footer-conscription {
+    background-color: #000000;
+    color: #FFFFFF;
+  }
+
+  .conscription-vector {
+    padding: 80px 20px;
+    text-align: center;
+  }
+
+  .conscription-vector__inner {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .conscription-headline {
+    font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', 'Arial', sans-serif;
+    font-size: 32px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    margin: 0 0 16px 0;
+    line-height: 1.2;
+  }
+
+  .conscription-subheader {
+    font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', 'Arial', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.6;
+    margin: 0 0 40px 0;
+    opacity: 0.9;
+  }
+
+  .conscription-form__input-group {
+    position: relative;
+    display: flex;
+    align-items: center;
+    max-width: 500px;
+    margin: 0 auto;
+  }
+
+  .conscription-form__input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    color: #FFFFFF;
+    font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', 'Arial', sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    padding: 12px 50px 12px 0;
+    outline: none;
+    transition: border-color 0.3s ease;
+  }
+
+  .conscription-form__input::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+  }
+
+  .conscription-form__input:focus {
+    border-bottom-color: #FFFFFF;
+  }
+
+  .conscription-form__submit {
+    position: absolute;
+    right: 0;
+    background: transparent;
+    border: none;
+    color: #FFFFFF;
+    font-size: 24px;
+    cursor: pointer;
+    padding: 8px 12px;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+  }
+
+  .conscription-form__submit:hover {
+    transform: translateX(4px);
+    opacity: 0.8;
+  }
+
+  .conscription-form__arrow {
+    display: block;
+    line-height: 1;
+  }
+
+  .conscription-form__success {
+    font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', 'Arial', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: #FFFFFF;
+    padding: 20px;
+    margin-bottom: 20px;
+    border: 2px solid #FFFFFF;
+  }
+
+  .conscription-form__error {
+    font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', 'Arial', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: #FFFFFF;
+    padding: 20px;
+    margin-bottom: 20px;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+  }
+
+  /* ============================================
+     PHASE 2: FOUNDATION BAR STYLING
+     ============================================ */
+  .foundation-bar {
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 30px 20px;
+  }
+
+  .foundation-bar__inner {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 40px;
+  }
+
+  .foundation-bar__copyright {
+    font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', 'Arial', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  .foundation-bar__policy-list {
+    display: flex;
+    gap: 30px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .foundation-bar__policy-item {
+    margin: 0;
+  }
+
+  .foundation-bar__policy-link {
+    font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', 'Arial', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    color: #FFFFFF;
+    text-decoration: none;
+    transition: opacity 0.2s ease;
+  }
+
+  .foundation-bar__policy-link:hover {
+    opacity: 0.7;
+  }
+
+  .foundation-bar__social {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+  }
+
+  .foundation-bar__social-link {
+    color: #FFFFFF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+  }
+
+  .foundation-bar__social-link:hover {
+    opacity: 0.7;
+    transform: scale(1.1);
+  }
+
+  .foundation-bar__social-link svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  /* ============================================
+     RESPONSIVE PROTOCOL: MOBILE FORTIFICATION
+     ============================================ */
+  @media screen and (max-width: 768px) {
+    .conscription-headline {
+      font-size: 24px;
+    }
+
+    .conscription-subheader {
+      font-size: 13px;
+    }
+
+    .foundation-bar__inner {
+      flex-direction: column;
+      text-align: center;
+      gap: 20px;
+    }
+
+    .foundation-bar__policy-list {
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .foundation-bar__copyright {
+      white-space: normal;
+    }
+  }
+
+  @media screen and (max-width: 480px) {
+    .conscription-vector {
+      padding: 60px 20px;
+    }
+
+    .conscription-headline {
+      font-size: 20px;
+    }
+
+    .conscription-form__input {
+      font-size: 14px;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Footer Conscription Protocol",
+  "settings": [
+    {
+      "type": "header",
+      "content": "CONSCRIPTION VECTOR SETTINGS"
+    },
+    {
+      "type": "text",
+      "id": "conscription_headline",
+      "label": "Headline",
+      "default": "ENLIST. RECEIVE THE DISPATCH."
+    },
+    {
+      "type": "richtext",
+      "id": "conscription_subheader",
+      "label": "Sub-Header",
+      "default": "<p>Access classified athlete intelligence, early asset deployment, and the core doctrines of the Synapex Standard.</p>"
+    }
+  ]
+}
+{% endschema %}
+
