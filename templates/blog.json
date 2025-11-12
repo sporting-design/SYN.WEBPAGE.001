@@ -112,7 +112,7 @@
         "text_6znmwF": {
           "type": "text",
           "settings": {
-            "text": "<p>Gain access to classified athlete intelligence, early asset deployment, and the core doctrines of the Synapex Standard.</p>",
+            "text": "<p>Access classified athlete intelligence, early asset deployment, and the core doctrines of the Synapex Standard.</p>",
             "width": "100%",
             "max_width": "normal",
             "alignment": "center",
@@ -143,7 +143,7 @@
             "color_scheme": "",
             "border_style": "all",
             "border_width": 1,
-            "border_radius": 100,
+            "border_radius": 15,
             "input_type_preset": "paragraph",
             "style_class": "button-unstyled",
             "display_type": "arrow",
