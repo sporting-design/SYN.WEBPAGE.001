@@ -87,7 +87,7 @@
           "type": "text",
           "name": "t:names.heading",
           "settings": {
-            "text": "<h2>The SYNAPEX MOMENTUM Newsletter</h2>",
+            "text": "<h2><em>The SYNAPEX MOMENTUM Newsletter</em></h2>",
             "width": "100%",
             "max_width": "normal",
             "alignment": "center",
