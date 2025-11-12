@@ -86,6 +86,19 @@
         "collection_color_scheme": "inverse"
       }
     },
+    "header_conversion_NJBnzN": {
+      "type": "header-conversion",
+      "name": "Command Header",
+      "settings": {
+        "command_center_menu": "",
+        "tools_link": "shopify://collections/all",
+        "learn_link": "shopify://pages/bodymap",
+        "mission_link": "shopify://pages/collection-bundle",
+        "cta_text": "JOIN THE UNIT",
+        "cta_link": "shopify://products/synapex-tape-kt-performance-trio",
+        "pev_link": "shopify://collections/all"
+      }
+    },
     "1762683921550c821a": {
       "type": "_blocks",
       "blocks": {
@@ -182,6 +195,7 @@
   },
   "order": [
     "header_section",
+    "header_conversion_NJBnzN",
     "1762683921550c821a",
     "1755460336964fed85"
   ]
