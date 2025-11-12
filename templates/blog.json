@@ -75,7 +75,7 @@
         }
       },
       "settings": {
-        "color_scheme": "scheme-1",
+        "color_scheme": "scheme-6",
         "padding-block-start": 0,
         "padding-block-end": 48
       }
@@ -112,7 +112,7 @@
         "text_6znmwF": {
           "type": "text",
           "settings": {
-            "text": "<p>Be the first to know about new collections and special offers. </p>",
+            "text": "<p>Gain access to classified athlete intelligence, early asset deployment, and the core doctrines of the Synapex Standard.</p>",
             "width": "100%",
             "max_width": "normal",
             "alignment": "center",
@@ -176,7 +176,7 @@
         "section_width": "page-width",
         "section_height": "",
         "section_height_custom": 50,
-        "color_scheme": "scheme-2",
+        "color_scheme": "scheme-6",
         "background_media": "none",
         "video_position": "cover",
         "background_image_position": "cover",
