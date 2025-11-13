@@ -497,6 +497,40 @@
         "padding-block-end": 40
       }
     },
+    "main_product_7zgAMz": {
+      "type": "main-product",
+      "name": "Synapex Product Page",
+      "settings": {
+        "product": "synapex-tape-kt-performance-trio",
+        "override_title": "",
+        "cta_text": "ACQUIRE STANDARD",
+        "spec_elasticity": "160% KINEMATIC ENVELOPE",
+        "spec_substrate": "95% ORGANIC COTTON / 5% SPANDEX",
+        "spec_adhesion": "ABSOLUTE (SUBMERSIBLE)",
+        "spec_neurological": "LATEX-FREE (HYPOALLERGENIC)",
+        "spec_operational": "5-7 DAYS",
+        "spec_strips": "20 (10-INCH) PRE-CUT STRIPS PER ROLL",
+        "doctrine_text": "Reinforce kinetic chains. Provide direct neuro-haptic feedback. Maintain absolute structural integrity under maximum operational duress.",
+        "armory_product_1": "",
+        "armory_product_2": "",
+        "armory_product_3": "",
+        "dispatch_1_quote": "",
+        "dispatch_1_name": "",
+        "dispatch_1_title": "",
+        "dispatch_2_quote": "",
+        "dispatch_2_name": "",
+        "dispatch_2_title": "",
+        "dispatch_3_quote": "",
+        "dispatch_3_name": "",
+        "dispatch_3_title": "",
+        "dispatch_4_quote": "",
+        "dispatch_4_name": "",
+        "dispatch_4_title": "",
+        "dispatch_5_quote": "",
+        "dispatch_5_name": "",
+        "dispatch_5_title": ""
+      }
+    },
     "main_product_FhdEeA": {
       "type": "main-product",
       "disabled": true,
@@ -922,6 +956,7 @@
     "main",
     "product_selection_brutalist_JaWGMJ",
     "section_6C7VfJ",
+    "main_product_7zgAMz",
     "main_product_FhdEeA",
     "section_KdA73g",
     "section_c7dNJW"
