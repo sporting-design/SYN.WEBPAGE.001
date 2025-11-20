@@ -1,0 +1,677 @@
+<!-- 
+  ════════════════════════════════════════════════════════════════
+  SYNAPEX: THE CRUCIBLE - MISSION PROTOCOL
+  Purpose: Full-screen, scroll-jacking gallery experience
+  Architecture: Brutalist, minimalist, percussive
+  Standard: Absolute
+  ════════════════════════════════════════════════════════════════
+-->
+
+<div id="crucible-container">
+  
+  {%- comment -%} ════════ HEADER SECTION ════════ {%- endcomment -%}
+  <section id="crucible-header" style="background-image: url('{{ section.settings.header_image | image_url: width: 2400 }}');">
+    <div class="crucible-header__overlay">
+      <h1 class="crucible-header__title">{{ section.settings.header_title }}</h1>
+      <h2 class="crucible-header__subtitle">{{ section.settings.header_subtitle }}</h2>
+    </div>
+  </section>
+
+  {%- comment -%} ════════ GALLERY SECTION ════════ {%- endcomment -%}
+  <section id="crucible-gallery">
+    
+    {%- comment -%} IMAGE 1 {%- endcomment -%}
+    {% if section.settings.image_1 %}
+    <article class="crucible-image">
+      <img src="{{ section.settings.image_1 | image_url: width: 2400 }}" alt="{{ section.settings.designator_1 }}" loading="lazy">
+      <div class="crucible-scripture">
+        <p class="designator">{{ section.settings.designator_1 }}</p>
+        <p class="declaration">{{ section.settings.declaration_1 }}</p>
+      </div>
+    </article>
+    {% endif %}
+
+    {%- comment -%} IMAGE 2 {%- endcomment -%}
+    {% if section.settings.image_2 %}
+    <article class="crucible-image">
+      <img src="{{ section.settings.image_2 | image_url: width: 2400 }}" alt="{{ section.settings.designator_2 }}" loading="lazy">
+      <div class="crucible-scripture">
+        <p class="designator">{{ section.settings.designator_2 }}</p>
+        <p class="declaration">{{ section.settings.declaration_2 }}</p>
+      </div>
+    </article>
+    {% endif %}
+
+    {%- comment -%} IMAGE 3 {%- endcomment -%}
+    {% if section.settings.image_3 %}
+    <article class="crucible-image">
+      <img src="{{ section.settings.image_3 | image_url: width: 2400 }}" alt="{{ section.settings.designator_3 }}" loading="lazy">
+      <div class="crucible-scripture">
+        <p class="designator">{{ section.settings.designator_3 }}</p>
+        <p class="declaration">{{ section.settings.declaration_3 }}</p>
+      </div>
+    </article>
+    {% endif %}
+
+    {%- comment -%} IMAGE 4 {%- endcomment -%}
+    {% if section.settings.image_4 %}
+    <article class="crucible-image">
+      <img src="{{ section.settings.image_4 | image_url: width: 2400 }}" alt="{{ section.settings.designator_4 }}" loading="lazy">
+      <div class="crucible-scripture">
+        <p class="designator">{{ section.settings.designator_4 }}</p>
+        <p class="declaration">{{ section.settings.declaration_4 }}</p>
+      </div>
+    </article>
+    {% endif %}
+
+    {%- comment -%} IMAGE 5 {%- endcomment -%}
+    {% if section.settings.image_5 %}
+    <article class="crucible-image">
+      <img src="{{ section.settings.image_5 | image_url: width: 2400 }}" alt="{{ section.settings.designator_5 }}" loading="lazy">
+      <div class="crucible-scripture">
+        <p class="designator">{{ section.settings.designator_5 }}</p>
+        <p class="declaration">{{ section.settings.declaration_5 }}</p>
+      </div>
+    </article>
+    {% endif %}
+
+    {%- comment -%} IMAGE 6 {%- endcomment -%}
+    {% if section.settings.image_6 %}
+    <article class="crucible-image">
+      <img src="{{ section.settings.image_6 | image_url: width: 2400 }}" alt="{{ section.settings.designator_6 }}" loading="lazy">
+      <div class="crucible-scripture">
+        <p class="designator">{{ section.settings.designator_6 }}</p>
+        <p class="declaration">{{ section.settings.declaration_6 }}</p>
+      </div>
+    </article>
+    {% endif %}
+
+    {%- comment -%} IMAGE 7 {%- endcomment -%}
+    {% if section.settings.image_7 %}
+    <article class="crucible-image">
+      <img src="{{ section.settings.image_7 | image_url: width: 2400 }}" alt="{{ section.settings.designator_7 }}" loading="lazy">
+      <div class="crucible-scripture">
+        <p class="designator">{{ section.settings.designator_7 }}</p>
+        <p class="declaration">{{ section.settings.declaration_7 }}</p>
+      </div>
+    </article>
+    {% endif %}
+
+    {%- comment -%} IMAGE 8 {%- endcomment -%}
+    {% if section.settings.image_8 %}
+    <article class="crucible-image">
+      <img src="{{ section.settings.image_8 | image_url: width: 2400 }}" alt="{{ section.settings.designator_8 }}" loading="lazy">
+      <div class="crucible-scripture">
+        <p class="designator">{{ section.settings.designator_8 }}</p>
+        <p class="declaration">{{ section.settings.declaration_8 }}</p>
+      </div>
+    </article>
+    {% endif %}
+
+    {%- comment -%} IMAGE 9 {%- endcomment -%}
+    {% if section.settings.image_9 %}
+    <article class="crucible-image">
+      <img src="{{ section.settings.image_9 | image_url: width: 2400 }}" alt="{{ section.settings.designator_9 }}" loading="lazy">
+      <div class="crucible-scripture">
+        <p class="designator">{{ section.settings.designator_9 }}</p>
+        <p class="declaration">{{ section.settings.declaration_9 }}</p>
+      </div>
+    </article>
+    {% endif %}
+
+  </section>
+
+</div>
+
+<style>
+  /* ════════════════════════════════════════════════════════════════
+     GLOBAL CRUCIBLE PROTOCOL
+     ════════════════════════════════════════════════════════════════ */
+  
+  #crucible-container {
+    background-color: #000000;
+    color: #FFFFFF;
+    font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Helvetica Neue', 'Arial', sans-serif;
+    overflow-x: hidden;
+  }
+
+  /* Reset margins to ensure full-bleed sections */
+  #crucible-container * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  /* ════════════════════════════════════════════════════════════════
+     HEADER SECTION PROTOCOL
+     ════════════════════════════════════════════════════════════════ */
+  
+  #crucible-header {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    scroll-snap-align: start;
+  }
+
+  .crucible-header__overlay {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    padding: 0 20px;
+    max-width: 1200px;
+  }
+
+  /* Dark overlay for text legibility */
+  #crucible-header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+  }
+
+  .crucible-header__title {
+    font-size: clamp(2.5rem, 8vw, 5rem);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
+  }
+
+  .crucible-header__subtitle {
+    font-size: clamp(1rem, 2.5vw, 1.75rem);
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    line-height: 1.4;
+    text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.8);
+    opacity: 0.95;
+  }
+
+  /* ════════════════════════════════════════════════════════════════
+     GALLERY SECTION PROTOCOL
+     ════════════════════════════════════════════════════════════════ */
+  
+  #crucible-gallery {
+    width: 100vw;
+  }
+
+  .crucible-image {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    scroll-snap-align: start;
+  }
+
+  .crucible-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+    filter: grayscale(100%);
+    transition: filter 0.3s ease;
+  }
+
+  /* Every 3rd image is full color */
+  .crucible-image:nth-child(3n) img {
+    filter: grayscale(0%);
+  }
+
+  /* Hover effect: restore color on grayscale images */
+  .crucible-image:not(:nth-child(3n)):hover img {
+    filter: grayscale(0%);
+  }
+
+  /* ════════════════════════════════════════════════════════════════
+     SCRIPTURE OVERLAY PROTOCOL
+     ════════════════════════════════════════════════════════════════ */
+  
+  .crucible-scripture {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 60px 40px 40px;
+    background: linear-gradient(transparent, rgba(0, 0, 0, 0.85));
+    z-index: 10;
+  }
+
+  .crucible-scripture .designator,
+  .crucible-scripture .declaration {
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+  }
+
+  .crucible-image:hover .crucible-scripture .designator,
+  .crucible-image:hover .crucible-scripture .declaration {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .crucible-scripture .designator {
+    font-size: clamp(0.75rem, 1.5vw, 1rem);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    margin-bottom: 0.75rem;
+    line-height: 1.4;
+  }
+
+  /* Magenta accent for // characters */
+  .crucible-scripture .designator::first-line {
+    color: #FF00FF;
+  }
+
+  .crucible-scripture .declaration {
+    font-size: clamp(1.25rem, 3vw, 2rem);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    line-height: 1.2;
+  }
+
+  /* ════════════════════════════════════════════════════════════════
+     SCROLL-SNAP PROTOCOL
+     ════════════════════════════════════════════════════════════════ */
+  
+  #crucible-container {
+    scroll-snap-type: y mandatory;
+    overflow-y: scroll;
+    height: 100vh;
+  }
+
+  /* ════════════════════════════════════════════════════════════════
+     RESPONSIVE PROTOCOL
+     ════════════════════════════════════════════════════════════════ */
+  
+  @media (max-width: 768px) {
+    .crucible-scripture {
+      padding: 40px 20px 20px;
+    }
+
+    .crucible-header__overlay {
+      padding: 0 15px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .crucible-scripture {
+      padding: 30px 15px 15px;
+    }
+
+    .crucible-scripture .designator {
+      margin-bottom: 0.5rem;
+    }
+  }
+
+  /* ════════════════════════════════════════════════════════════════
+     ACCESSIBILITY PROTOCOL
+     ════════════════════════════════════════════════════════════════ */
+  
+  @media (prefers-reduced-motion: reduce) {
+    #crucible-container {
+      scroll-snap-type: none;
+    }
+
+    .crucible-image img,
+    .crucible-scripture .designator,
+    .crucible-scripture .declaration {
+      transition: none;
+    }
+  }
+</style>
+
+<script>
+  /* ════════════════════════════════════════════════════════════════
+     PERCUSSIVE SCROLL-JACKING PROTOCOL
+     Enhanced scroll snapping with hard transitions
+     ════════════════════════════════════════════════════════════════ */
+  
+  (function() {
+    'use strict';
+
+    const container = document.getElementById('crucible-container');
+    const sections = document.querySelectorAll('#crucible-header, .crucible-image');
+    
+    if (!container || sections.length === 0) return;
+
+    let isScrolling = false;
+    let currentSection = 0;
+
+    // Detect scroll direction and force snap to next/prev section
+    function handleScroll(e) {
+      if (isScrolling) return;
+
+      const delta = e.deltaY;
+      
+      if (Math.abs(delta) < 10) return; // Ignore micro-scrolls
+
+      isScrolling = true;
+
+      // Determine direction
+      if (delta > 0 && currentSection < sections.length - 1) {
+        // Scroll down
+        currentSection++;
+      } else if (delta < 0 && currentSection > 0) {
+        // Scroll up
+        currentSection--;
+      }
+
+      // Execute hard snap
+      sections[currentSection].scrollIntoView({ 
+        behavior: 'smooth',
+        block: 'start'
+      });
+
+      // Reset scroll lock after animation completes
+      setTimeout(() => {
+        isScrolling = false;
+      }, 800);
+    }
+
+    // Attach wheel event listener for desktop
+    container.addEventListener('wheel', handleScroll, { passive: false });
+
+    // Touch support for mobile (swipe detection)
+    let touchStartY = 0;
+    let touchEndY = 0;
+
+    container.addEventListener('touchstart', (e) => {
+      touchStartY = e.touches[0].clientY;
+    }, { passive: true });
+
+    container.addEventListener('touchend', (e) => {
+      touchEndY = e.changedTouches[0].clientY;
+      handleTouchSwipe();
+    }, { passive: true });
+
+    function handleTouchSwipe() {
+      const swipeThreshold = 50; // Minimum swipe distance
+      const diff = touchStartY - touchEndY;
+
+      if (Math.abs(diff) < swipeThreshold) return;
+
+      if (isScrolling) return;
+
+      isScrolling = true;
+
+      if (diff > 0 && currentSection < sections.length - 1) {
+        // Swipe up (scroll down)
+        currentSection++;
+      } else if (diff < 0 && currentSection > 0) {
+        // Swipe down (scroll up)
+        currentSection--;
+      }
+
+      sections[currentSection].scrollIntoView({ 
+        behavior: 'smooth',
+        block: 'start'
+      });
+
+      setTimeout(() => {
+        isScrolling = false;
+      }, 800);
+    }
+
+    // Initialize: ensure we start at the top
+    window.addEventListener('load', () => {
+      container.scrollTop = 0;
+      currentSection = 0;
+    });
+
+    // Update current section on manual scroll (for fallback compatibility)
+    let scrollTimeout;
+    container.addEventListener('scroll', () => {
+      clearTimeout(scrollTimeout);
+      scrollTimeout = setTimeout(() => {
+        const scrollPosition = container.scrollTop + (window.innerHeight / 2);
+        sections.forEach((section, index) => {
+          const sectionTop = section.offsetTop;
+          const sectionBottom = sectionTop + section.offsetHeight;
+          if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
+            currentSection = index;
+          }
+        });
+      }, 100);
+    }, { passive: true });
+
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "The Crucible - Mission",
+  "settings": [
+    {
+      "type": "header",
+      "content": "HEADER SECTION"
+    },
+    {
+      "type": "image_picker",
+      "id": "header_image",
+      "label": "Header Background Image"
+    },
+    {
+      "type": "text",
+      "id": "header_title",
+      "label": "Header Title",
+      "default": "THE MISSION"
+    },
+    {
+      "type": "textarea",
+      "id": "header_subtitle",
+      "label": "Header Subtitle",
+      "default": "TO ENGINEER ABSOLUTE ATHLETE PERFORMANCE"
+    },
+    {
+      "type": "header",
+      "content": "GALLERY IMAGE 1"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_1",
+      "label": "Image 1"
+    },
+    {
+      "type": "text",
+      "id": "designator_1",
+      "label": "Designator 1",
+      "default": "// PROTOCOL 01"
+    },
+    {
+      "type": "textarea",
+      "id": "declaration_1",
+      "label": "Declaration 1",
+      "default": "THE STANDARD IS ABSOLUTE"
+    },
+    {
+      "type": "header",
+      "content": "GALLERY IMAGE 2"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_2",
+      "label": "Image 2"
+    },
+    {
+      "type": "text",
+      "id": "designator_2",
+      "label": "Designator 2",
+      "default": "// PROTOCOL 02"
+    },
+    {
+      "type": "textarea",
+      "id": "declaration_2",
+      "label": "Declaration 2",
+      "default": "ENGINEERED FOR VICTORY"
+    },
+    {
+      "type": "header",
+      "content": "GALLERY IMAGE 3"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_3",
+      "label": "Image 3"
+    },
+    {
+      "type": "text",
+      "id": "designator_3",
+      "label": "Designator 3",
+      "default": "// PROTOCOL 03"
+    },
+    {
+      "type": "textarea",
+      "id": "declaration_3",
+      "label": "Declaration 3",
+      "default": "ZERO COMPROMISE"
+    },
+    {
+      "type": "header",
+      "content": "GALLERY IMAGE 4"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_4",
+      "label": "Image 4"
+    },
+    {
+      "type": "text",
+      "id": "designator_4",
+      "label": "Designator 4",
+      "default": "// PROTOCOL 04"
+    },
+    {
+      "type": "textarea",
+      "id": "declaration_4",
+      "label": "Declaration 4",
+      "default": "BUILT TO ENDURE"
+    },
+    {
+      "type": "header",
+      "content": "GALLERY IMAGE 5"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_5",
+      "label": "Image 5"
+    },
+    {
+      "type": "text",
+      "id": "designator_5",
+      "label": "Designator 5",
+      "default": "// PROTOCOL 05"
+    },
+    {
+      "type": "textarea",
+      "id": "declaration_5",
+      "label": "Declaration 5",
+      "default": "THE ATHLETE ASCENDS"
+    },
+    {
+      "type": "header",
+      "content": "GALLERY IMAGE 6"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_6",
+      "label": "Image 6"
+    },
+    {
+      "type": "text",
+      "id": "designator_6",
+      "label": "Designator 6",
+      "default": "// PROTOCOL 06"
+    },
+    {
+      "type": "textarea",
+      "id": "declaration_6",
+      "label": "Declaration 6",
+      "default": "KINETIC PRECISION"
+    },
+    {
+      "type": "header",
+      "content": "GALLERY IMAGE 7"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_7",
+      "label": "Image 7"
+    },
+    {
+      "type": "text",
+      "id": "designator_7",
+      "label": "Designator 7",
+      "default": "// PROTOCOL 07"
+    },
+    {
+      "type": "textarea",
+      "id": "declaration_7",
+      "label": "Declaration 7",
+      "default": "NEURAL DOMINANCE"
+    },
+    {
+      "type": "header",
+      "content": "GALLERY IMAGE 8"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_8",
+      "label": "Image 8"
+    },
+    {
+      "type": "text",
+      "id": "designator_8",
+      "label": "Designator 8",
+      "default": "// PROTOCOL 08"
+    },
+    {
+      "type": "textarea",
+      "id": "declaration_8",
+      "label": "Declaration 8",
+      "default": "STRUCTURAL INTEGRITY"
+    },
+    {
+      "type": "header",
+      "content": "GALLERY IMAGE 9"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_9",
+      "label": "Image 9"
+    },
+    {
+      "type": "text",
+      "id": "designator_9",
+      "label": "Designator 9",
+      "default": "// PROTOCOL 09"
+    },
+    {
+      "type": "textarea",
+      "id": "declaration_9",
+      "label": "Declaration 9",
+      "default": "THE MISSION CONTINUES"
+    }
+  ],
+  "presets": [
+    {
+      "name": "The Crucible - Mission"
+    }
+  ]
+}
+{% endschema %}
+

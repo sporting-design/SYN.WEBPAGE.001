@@ -14,6 +14,19 @@ Brutalist, minimalist architecture for uncompromising conversion
   {{ product | structured_data }}
 </script>
 
+{%- comment -%} INJECT PRODUCT DATA FOR JAVASCRIPT {%- endcomment -%}
+<script id="product-json" type="application/json">
+  {
+    "id": {{ product.id | json }},
+    "title": {{ product.title | json }},
+    "variants": {{ product.variants | json }},
+    "media": {{ product.media | json }},
+    "options": {{ product.options_with_values | json }},
+    "selected_variant_id": {{ current_variant.id | json }},
+    "money_format": {{ shop.money_format | json }}
+  }
+</script>
+
 {%- comment -%} ════════ PHASE 1 & 2: THE PRIMARY CRUCIBLE (TWO-COLUMN ARCHITECTURE) ════════ {%- endcomment -%}
 <div class="synapex-product-crucible" data-product-id="{{ product.id }}">
   <div class="crucible-grid">
@@ -47,7 +60,10 @@ Brutalist, minimalist architecture for uncompromising conversion
                  data-media-type="{{ media.media_type }}"
                  data-media-src="{{ media | image_url: width: 1200 }}"
                  data-media-zoom-src="{{ media | image_url: width: 2400 }}"
-                 data-media-alt="{{ media.alt | escape }}">
+                 data-media-alt="{{ media.alt | escape }}"
+                 {% if media.media_type == 'video' or media.media_type == 'external_video' %}
+                 data-video-id="{{ media.id }}"
+                 {% endif %}>
               {% if media.media_type == 'video' or media.media_type == 'external_video' %}
                 <div class="thumbnail-video-indicator">▶</div>
               {% endif %}
@@ -72,9 +88,9 @@ Brutalist, minimalist architecture for uncompromising conversion
 
       {%- comment -%} PRICE {%- endcomment -%}
       <div class="dossier-price" data-product-price>
-        <span class="price-current">{{ current_variant.price | money }}</span>
+        <span class="price-current" data-price-current>{{ current_variant.price | money }}</span>
         {% if current_variant.compare_at_price > current_variant.price %}
-          <span class="price-compare">{{ current_variant.compare_at_price | money }}</span>
+          <span class="price-compare" data-price-compare>{{ current_variant.compare_at_price | money }}</span>
         {% endif %}
       </div>
 
@@ -109,9 +125,9 @@ Brutalist, minimalist architecture for uncompromising conversion
         <div class="quantity-selector">
           <label class="quantity-label">QUANTITY</label>
           <div class="quantity-input-wrapper">
-            <button type="button" class="quantity-btn quantity-decrease">−</button>
-            <input type="number" name="quantity" value="1" min="1" class="quantity-input">
-            <button type="button" class="quantity-btn quantity-increase">+</button>
+            <button type="button" class="quantity-btn quantity-decrease" aria-label="Decrease quantity">−</button>
+            <input type="number" name="quantity" value="1" min="1" max="99" class="quantity-input" data-quantity-input>
+            <button type="button" class="quantity-btn quantity-increase" aria-label="Increase quantity">+</button>
           </div>
         </div>
 
