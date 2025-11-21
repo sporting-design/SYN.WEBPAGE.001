@@ -5,18 +5,17 @@
 >
   <head>
     <!-- Open Graph Meta Tags for Link Previews -->
-<meta property="og:title" content="Synapex – Kinesiology Tape for Athletes" />
-<meta property="og:description" content="Built for performance. Synapex kinesiology tape is engineered for elite athletes who demand durability, adhesion, and recovery support." />
-<meta property="og:image" content="https://cdn.shopify.com/s/files/1/0937/9050/3223/files/synapex-front-hero-img.png?v=1749829779" />
-<meta property="og:url" content="https://synapex.com/" />
-<meta property="og:type" content="website" />
-<meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="Synapex – Kinesiology Tape for Athletes" />
-<meta name="twitter:description" content="Built for performance. Synapex kinesiology tape is engineered for elite athletes who demand durability, adhesion, and recovery support." />
-<meta name="twitter:image" content="https://cdn.shopify.com/s/files/1/0937/9050/3223/files/synapex-front-hero-img.png?v=1749829779" />
+    <meta property="og:title" content="Synapex – Kinesiology Tape for Athletes" />
+    <meta property="og:description" content="Built for performance. Synapex kinesiology tape is engineered for elite athletes who demand durability, adhesion, and recovery support." />
+    <meta property="og:image" content="https://cdn.shopify.com/s/files/1/0937/9050/3223/files/synapex-front-hero-img.png?v=1749829779" />
+    <meta property="og:url" content="https://synapex.com/" />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Synapex – Kinesiology Tape for Athletes" />
+    <meta name="twitter:description" content="Built for performance. Synapex kinesiology tape is engineered for elite athletes who demand durability, adhesion, and recovery support." />
+    <meta name="twitter:image" content="https://cdn.shopify.com/s/files/1/0937/9050/3223/files/synapex-front-hero-img.png?v=1749829779" />
 
-
- {%- render 'ecom_header' -%}
+    {%- render 'ecom_header' -%}
     {{ 'base.css' | asset_url | stylesheet_tag }}
 
     {%- if settings.favicon != blank -%}
@@ -80,102 +79,157 @@
   {%- comment -%}
   ════════════════════════════════════════════════════════════════
   PERSISTENT ENGAGEMENT VECTOR (PEV)
-  Global floating CTA - Annihilated on product pages
-  Command interface: Header section settings
+  ════════════════════════════════════════════════════════════════
+  
+  WHAT IT IS:
+  A floating call-to-action button that persists across all pages
+  to drive conversions and guide users to key product collections.
+  
+  ADMIN CONTROLS:
+  Shopify Admin → Online Store → Themes → Customize → Theme Settings
+  → ⚡ Floating CTA Button (PEV)
+  
+  CUSTOMIZABLE SETTINGS:
+  ✓ Enable/Disable toggle
+  ✓ Button text
+  ✓ Destination URL
+  ✓ Background color
+  ✓ Text & border color
+  
+  INTELLIGENT BEHAVIOR:
+  • Automatically hidden on product pages (to avoid competing CTAs)
+  • Auto-hides when scrolling near footer (prevents overlap)
+  • Fully responsive across all device sizes
+  • Accessibility compliant (WCAG AA)
+  • Includes analytics tracking (GA4 & Shopify Analytics)
+  
+  TECHNICAL NOTES:
+  • Uses CSS custom properties for easy theming
+  • RequestAnimationFrame for optimal scroll performance
+  • Supports reduced motion preferences
+  • High contrast mode compatible
+  
   ════════════════════════════════════════════════════════════════
   {%- endcomment -%}
-  <a href="{{ sections.header.settings.pev_link }}" id="synapex-pev" class="synapex-pev {% if template.name == 'product' %}pev-hidden{% endif %}">
-    <span class="pev-icon">≠</span>
-    <span class="pev-text">SHOP THE STANDARD</span>
+  {% if settings.pev_enable %}
+  <a 
+    href="{{ settings.pev_link | default: '/collections/all' }}" 
+    id="synapex-pev" 
+    class="synapex-pev {% if template.name == 'product' %}pev-hidden{% endif %}"
+    aria-label="{{ settings.pev_text | default: 'SHOP THE STANDARD' }}"
+  >
+    <span class="pev-icon" aria-hidden="true">≠</span>
+    <span class="pev-text">{{ settings.pev_text | default: 'SHOP THE STANDARD' }}</span>
   </a>
 
   <style>
-    /* ════════════════════════════════════════
-       PERSISTENT ENGAGEMENT VECTOR - BASE
-       ════════════════════════════════════════ */
+    /* ════════════════════════════════════════════════════════════
+       PERSISTENT ENGAGEMENT VECTOR (PEV) - STYLE ARCHITECTURE
+       Fully customizable via Shopify Admin Theme Settings
+       ════════════════════════════════════════════════════════════ */
+    
+    :root {
+      --pev-bg: {{ settings.pev_bg_color | default: '#FFFFFF' }};
+      --pev-text: {{ settings.pev_text_color | default: '#000000' }};
+      --pev-border-width: 2px;
+      --pev-border-radius: 50px;
+      --pev-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+      --pev-shadow-hover: 0 12px 32px rgba(0, 0, 0, 0.4);
+      --pev-shadow-active: 0 4px 16px rgba(0, 0, 0, 0.3);
+      --pev-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      --pev-z-index: 999;
+    }
+
     .synapex-pev {
-      /* POSITIONING: Fixed to viewport, bottom center */
+      /* ═══ POSITIONING ═══ */
       position: fixed;
       bottom: 20px;
       left: 50%;
       transform: translateX(-50%);
-      z-index: 999;
+      z-index: var(--pev-z-index);
 
-      /* VISUAL ARCHITECTURE: SOVEREIGN STATE - Universal Visibility */
+      /* ═══ LAYOUT ═══ */
       display: flex;
       align-items: center;
       gap: 0.5rem;
       padding: 0.5rem 1rem;
-      background-color: #FFFFFF;
-      color: #000000;
-      border: 2px solid #000000;
-      border-radius: 50px;
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
-      text-decoration: none;
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+
+      /* ═══ VISUAL DESIGN (Shopify Customizable) ═══ */
+      background-color: var(--pev-bg);
+      color: var(--pev-text);
+      border: var(--pev-border-width) solid var(--pev-text);
+      border-radius: var(--pev-border-radius);
+      box-shadow: var(--pev-shadow);
+
+      /* ═══ TYPOGRAPHY ═══ */
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
       font-size: 0.75rem;
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.05em;
+      line-height: 1;
+      text-decoration: none;
       white-space: nowrap;
 
-      /* BEHAVIORAL PROTOCOL: Smooth cinematic transitions */
-      transition: opacity 0.3s ease-in-out,
-                  transform 0.3s ease-out,
-                  background-color 0.3s ease-out,
-                  color 0.3s ease-out,
-                  border-color 0.3s ease-out,
-                  box-shadow 0.3s ease-out,
-                  bottom 0.3s ease-out;
-      
-      /* DEFAULT STATE: Visible */
+      /* ═══ BEHAVIOR ═══ */
+      transition: var(--pev-transition);
       opacity: 1;
       pointer-events: auto;
+      cursor: pointer;
+      
+      /* ═══ ACCESSIBILITY ═══ */
+      -webkit-tap-highlight-color: transparent;
+      user-select: none;
     }
 
-    /* ICON: The Synapex ≠ symbol */
+    /* ═══ ICON ELEMENT ═══ */
     .pev-icon {
       font-size: 1rem;
       line-height: 1;
-      opacity: 1;
+      display: inline-block;
     }
 
-    /* TEXT: Command payload */
+    /* ═══ TEXT ELEMENT ═══ */
     .pev-text {
       line-height: 1;
+      display: inline-block;
     }
 
-    /* HOVER STATE: THE INVERSION - Tactile dominance */
+    /* ═══ HOVER STATE: Color Inversion Effect ═══ */
     .synapex-pev:hover {
-      background-color: #000000;
-      color: #FFFFFF;
-      border-color: #FFFFFF;
+      background-color: var(--pev-text);
+      color: var(--pev-bg);
+      border-color: var(--pev-bg);
       transform: translateX(-50%) translateY(-4px);
-      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);
+      box-shadow: var(--pev-shadow-hover);
     }
 
-    /* ACTIVE STATE: Press feedback with maintained inversion */
+    /* ═══ ACTIVE STATE: Press Feedback ═══ */
     .synapex-pev:active {
-      background-color: #000000;
-      color: #FFFFFF;
-      border-color: #FFFFFF;
       transform: translateX(-50%) translateY(-1px);
-      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+      box-shadow: var(--pev-shadow-active);
+      transition: var(--pev-transition);
     }
 
-    /* ════════════════════════════════════════
-       ANNIHILATION PROTOCOL
-       Product page exception - PEV inert
-       ════════════════════════════════════════ */
+    /* ═══ FOCUS STATE: Keyboard Accessibility ═══ */
+    .synapex-pev:focus-visible {
+      outline: 3px solid var(--pev-text);
+      outline-offset: 4px;
+    }
+
+    /* ═══ HIDDEN STATE: Annihilation Protocol ═══ */
     .pev-hidden {
       opacity: 0 !important;
       pointer-events: none !important;
       bottom: -100px !important;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.6, 1) !important;
     }
 
-    /* ════════════════════════════════════════
-       RESPONSIVE ADJUSTMENTS
-       ════════════════════════════════════════ */
+    /* ════════════════════════════════════════════════════════════
+       RESPONSIVE DESIGN - Mobile Optimization
+       ════════════════════════════════════════════════════════════ */
+    
+    /* Tablet & Small Desktop */
     @media (max-width: 768px) {
       .synapex-pev {
         bottom: 16px;
@@ -188,6 +242,7 @@
       }
     }
 
+    /* Mobile Devices */
     @media (max-width: 480px) {
       .synapex-pev {
         bottom: 12px;
@@ -201,56 +256,84 @@
       }
     }
 
-    /* ════════════════════════════════════════
-       ACCESSIBILITY
-       ════════════════════════════════════════ */
-    @media (prefers-reduced-motion: reduce) {
+    /* Small Mobile Devices */
+    @media (max-width: 360px) {
       .synapex-pev {
-        transition: none;
+        bottom: 10px;
+        padding: 0.3125rem 0.625rem;
+        font-size: 0.5625rem;
+        gap: 0.25rem;
+      }
+
+      .pev-icon {
+        font-size: 0.6875rem;
       }
     }
 
-    /* Focus state for keyboard navigation */
-    .synapex-pev:focus-visible {
-      outline: 2px solid #FFFFFF;
-      outline-offset: 4px;
+    /* ═══ REDUCED MOTION ACCESSIBILITY ═══ */
+    @media (prefers-reduced-motion: reduce) {
+      .synapex-pev,
+      .pev-hidden {
+        transition: none !important;
+      }
+    }
+
+    /* ═══ HIGH CONTRAST MODE SUPPORT ═══ */
+    @media (prefers-contrast: high) {
+      .synapex-pev {
+        border-width: 3px;
+      }
     }
   </style>
 
   <script>
     // ════════════════════════════════════════════════════════════════
-    // PERSISTENT ENGAGEMENT VECTOR - BEHAVIORAL INTELLIGENCE
-    // Dynamic annihilation protocol with scroll awareness
+    // PERSISTENT ENGAGEMENT VECTOR - BEHAVIORAL INTELLIGENCE SYSTEM
+    // Intelligent scroll-aware visibility with performance optimization
     // ════════════════════════════════════════════════════════════════
     (function() {
       'use strict';
       
+      // ═══ CONFIGURATION ═══
+      const CONFIG = {
+        footerBuffer: 150,        // Hide when within 150px of footer
+        throttleDelay: 100,       // Throttle scroll events
+        analyticsEnabled: true    // Enable analytics tracking
+      };
+
+      // ═══ ELEMENT REFERENCES ═══
       const pev = document.getElementById('synapex-pev');
-      
-      if (!pev) return;
+      if (!pev) {
+        console.warn('[PEV] Floating button element not found');
+        return;
+      }
 
-      // Scroll-aware behavior: Hide when scrolled to bottom (near footer)
-      let lastScrollY = window.scrollY;
+      // ═══ STATE MANAGEMENT ═══
       let ticking = false;
+      let isProductPage = {{ template.name == 'product' | json }};
 
+      // ═══ VISIBILITY CONTROLLER ═══
       function updatePEVVisibility() {
         const scrollY = window.scrollY;
         const windowHeight = window.innerHeight;
         const documentHeight = document.documentElement.scrollHeight;
-        const scrolledToBottom = (scrollY + windowHeight) >= (documentHeight - 100);
+        
+        // Calculate if user is near footer
+        const distanceFromBottom = documentHeight - (scrollY + windowHeight);
+        const isNearFooter = distanceFromBottom <= CONFIG.footerBuffer;
 
-        // Hide PEV when near footer to prevent overlap
-        if (scrolledToBottom && !pev.classList.contains('pev-hidden')) {
-          pev.style.opacity = '0';
-          pev.style.pointerEvents = 'none';
-        } else if (!scrolledToBottom && !pev.classList.contains('pev-hidden')) {
-          pev.style.opacity = '1';
-          pev.style.pointerEvents = 'auto';
+        // Hide PEV when near footer (to prevent overlap)
+        if (isNearFooter) {
+          pev.classList.add('pev-hidden');
+        } else if (!isProductPage) {
+          // Show PEV only if NOT on product page
+          pev.classList.remove('pev-hidden');
         }
 
         ticking = false;
       }
 
+      // ═══ PERFORMANCE OPTIMIZED SCROLL HANDLER ═══
       function requestTick() {
         if (!ticking) {
           window.requestAnimationFrame(updatePEVVisibility);
@@ -258,24 +341,48 @@
         }
       }
 
-      // Initialize scroll listener
+      // ═══ EVENT LISTENERS ═══
       window.addEventListener('scroll', requestTick, { passive: true });
+      window.addEventListener('resize', requestTick, { passive: true });
 
-      // Initialize on page load
-      updatePEVVisibility();
-
-      // Track engagement
-      pev.addEventListener('click', function() {
-        if (window.dataLayer) {
+      // ═══ ANALYTICS TRACKING ═══
+      pev.addEventListener('click', function(e) {
+        // Google Analytics / GA4 Event Tracking
+        if (CONFIG.analyticsEnabled && window.dataLayer) {
           window.dataLayer.push({
-            'event': 'pev_engagement',
+            'event': 'pev_click',
+            'event_category': 'engagement',
+            'event_label': 'floating_cta',
             'pev_location': '{{ template.name }}',
-            'pev_text': 'SHOP THE STANDARD'
+            'pev_text': '{{ settings.pev_text | default: "SHOP THE STANDARD" | escape }}',
+            'pev_url': '{{ settings.pev_link | default: "/collections/all" | escape }}'
+          });
+        }
+
+        // Shopify Analytics
+        if (window.ShopifyAnalytics) {
+          window.ShopifyAnalytics.lib.track('PEV Click', {
+            template: '{{ template.name }}',
+            buttonText: '{{ settings.pev_text | default: "SHOP THE STANDARD" | escape }}'
           });
         }
       });
+
+      // ═══ INITIALIZATION ═══
+      updatePEVVisibility();
+      
+      // Log successful initialization in dev mode
+      if ({{ request.design_mode | json }}) {
+        console.log('[PEV] Floating CTA initialized', {
+          enabled: true,
+          productPage: isProductPage,
+          text: '{{ settings.pev_text | default: "SHOP THE STANDARD" | escape }}',
+          link: '{{ settings.pev_link | default: "/collections/all" | escape }}'
+        });
+      }
     })();
   </script>
+  {% endif %}
 
   {%- comment -%}ecom_footer snippet removed - footer now handled by footer-conscription section{%- endcomment -%}
 </body>

@@ -2242,27 +2242,61 @@
     ]
   },
   {
-    "name": "Persistent Engagement Vector",
+    "name": "⚡ Floating CTA Button (PEV)",
     "settings": [
       {
         "type": "header",
-        "content": "Global Floating CTA Button"
+        "content": "🎯 Persistent Engagement Vector"
       },
       {
         "type": "paragraph",
-        "content": "This button appears at the bottom of all pages except product pages."
+        "content": "A floating call-to-action button that appears at the bottom center of all pages. Automatically hidden on product pages and when scrolling near the footer to prevent overlap."
       },
       {
-        "type": "url",
-        "id": "pev_button_link",
-        "label": "Button Link",
-        "info": "The destination URL when the button is clicked."
+        "type": "checkbox",
+        "id": "pev_enable",
+        "label": "Enable Floating Button",
+        "default": true,
+        "info": "Show the floating CTA button across the site"
       },
       {
         "type": "text",
-        "id": "pev_button_text",
+        "id": "pev_text",
         "label": "Button Text",
-        "default": "SHOP THE STANDARD"
+        "default": "SHOP THE STANDARD",
+        "info": "The text displayed on the button"
+      },
+      {
+        "type": "url",
+        "id": "pev_link",
+        "label": "Button Link",
+        "info": "Where the button should navigate when clicked"
+      },
+      {
+        "type": "header",
+        "content": "🎨 Button Styling"
+      },
+      {
+        "type": "color",
+        "id": "pev_bg_color",
+        "label": "Background Color",
+        "default": "#FFFFFF",
+        "info": "Button background color (inverts on hover)"
+      },
+      {
+        "type": "color",
+        "id": "pev_text_color",
+        "label": "Text & Border Color",
+        "default": "#000000",
+        "info": "Button text and border color (inverts on hover)"
+      },
+      {
+        "type": "header",
+        "content": "⚙️ Advanced Settings"
+      },
+      {
+        "type": "paragraph",
+        "content": "The button uses intelligent behavior: it hides automatically on product pages and when users scroll near the footer to prevent UI conflicts."
       }
     ]
   }
