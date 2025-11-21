@@ -9,6 +9,59 @@
  */
 {
   "sections": {
+    "synapex_carousel_v5_G73PPg": {
+      "type": "synapex-carousel-v5",
+      "blocks": {
+        "slide_CmCVmA": {
+          "type": "slide",
+          "settings": {
+            "video_desktop": "shopify://files/videos/copy_1C53D966-E79C-4A40-ACD9-A1098DD7F31C.MOV",
+            "video_mobile": "shopify://files/videos/copy_1C53D966-E79C-4A40-ACD9-A1098DD7F31C.MOV",
+            "image_fallback": "shopify://shop_images/IMG_4227.jpg",
+            "tagline": "PROTOCOL 011",
+            "heading": "SYNAPEX",
+            "subheading": "The standard is absolute.",
+            "button_label": "SHOP THE COLLECTION",
+            "button_link": "",
+            "text_position": "bottom-left"
+          }
+        },
+        "slide_KLrfiE": {
+          "type": "slide",
+          "settings": {
+            "tagline": "PROTOCOL 01",
+            "heading": "ENGINEERED FOR VICTORY",
+            "subheading": "The standard is absolute.",
+            "button_label": "SHOP THE COLLECTION",
+            "button_link": "",
+            "text_position": "bottom-left"
+          }
+        },
+        "slide_k8FDez": {
+          "type": "slide",
+          "settings": {
+            "tagline": "PROTOCOL 01",
+            "heading": "ENGINEERED FOR VICTORY",
+            "subheading": "The standard is absolute.",
+            "button_label": "SHOP THE COLLECTION",
+            "button_link": "",
+            "text_position": "bottom-left"
+          }
+        }
+      },
+      "block_order": [
+        "slide_CmCVmA",
+        "slide_KLrfiE",
+        "slide_k8FDez"
+      ],
+      "name": "Synapex Carousel V5",
+      "settings": {
+        "section_height": "70vh",
+        "overlay_opacity": 20,
+        "autoplay": true,
+        "autoplay_speed": 5
+      }
+    },
     "product_selection_brutalist_new": {
       "type": "product-selection-brutalist",
       "settings": {
@@ -2347,6 +2400,7 @@
     }
   },
   "order": [
+    "synapex_carousel_v5_G73PPg",
     "product_selection_brutalist_new",
     "reviews_marquee_new",
     "17597176204a724de2",
