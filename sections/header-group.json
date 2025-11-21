@@ -233,6 +233,7 @@
           "type": "slide",
           "settings": {
             "video_desktop": "shopify://files/videos/synapex_vid-1.mp4",
+            "video_mobile": "shopify://files/videos/copy_1C53D966-E79C-4A40-ACD9-A1098DD7F31C.MOV",
             "image_fallback": "shopify://shop_images/IMG_4227.jpg",
             "tagline": "PROTOCOL 011",
             "heading": "ENGINEERED FOR VICTORY",
