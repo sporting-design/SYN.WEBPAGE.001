@@ -218,6 +218,7 @@
         "slide_Q9Vim9": {
           "type": "slide",
           "settings": {
+            "video_desktop": "shopify://files/videos/copy_1C53D966-E79C-4A40-ACD9-A1098DD7F31C.MOV",
             "image_fallback": "shopify://shop_images/IMG_4227.jpg",
             "tagline": "PROTOCOL 01",
             "heading": "ENGINEERED FOR VICTORY",
@@ -230,6 +231,7 @@
         "slide_dkxKkJ": {
           "type": "slide",
           "settings": {
+            "video_desktop": "shopify://files/videos/synapex_vid-1.mp4",
             "image_fallback": "shopify://shop_images/IMG_4227.jpg",
             "tagline": "PROTOCOL 011",
             "heading": "ENGINEERED FOR VICTORY",
@@ -242,18 +244,8 @@
         "slide_LQ8xWz": {
           "type": "slide",
           "settings": {
+            "video_desktop": "shopify://files/videos/AC SYN.MOV",
             "tagline": "PROTOCOL 011",
-            "heading": "ENGINEERED FOR VICTORY",
-            "subheading": "The standard is absolute. Performance without compromise.",
-            "button_label": "SHOP THE COLLECTION",
-            "button_link": "",
-            "text_position": "bottom-left"
-          }
-        },
-        "slide_hrLTjr": {
-          "type": "slide",
-          "settings": {
-            "tagline": "PROTOCOL 01",
             "heading": "ENGINEERED FOR VICTORY",
             "subheading": "The standard is absolute. Performance without compromise.",
             "button_label": "SHOP THE COLLECTION",
@@ -265,12 +257,11 @@
       "block_order": [
         "slide_Q9Vim9",
         "slide_dkxKkJ",
-        "slide_LQ8xWz",
-        "slide_hrLTjr"
+        "slide_LQ8xWz"
       ],
       "name": "Synapex Carousel V5",
       "settings": {
-        "section_height": "60vh",
+        "section_height": "70vh",
         "overlay_opacity": 20,
         "autoplay": true,
         "autoplay_speed": 5
