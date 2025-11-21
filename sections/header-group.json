@@ -211,64 +211,6 @@
         "button_link": "",
         "button_style": "primary"
       }
-    },
-    "synapex_carousel_v5_xq7UKa": {
-      "type": "synapex-carousel-v5",
-      "blocks": {
-        "slide_Q9Vim9": {
-          "type": "slide",
-          "settings": {
-            "video_desktop": "shopify://files/videos/copy_1C53D966-E79C-4A40-ACD9-A1098DD7F31C.MOV",
-            "video_mobile": "shopify://files/videos/IMG_7117.mov",
-            "image_fallback": "shopify://shop_images/IMG_4227.jpg",
-            "tagline": "PROTOCOL 011",
-            "heading": "ENGINEERED FOR VICTORY",
-            "subheading": "The standard is absolute. Performance without compromise.",
-            "button_label": "SHOP THE COLLECTION",
-            "button_link": "shopify://collections/all",
-            "text_position": "bottom-left"
-          }
-        },
-        "slide_dkxKkJ": {
-          "type": "slide",
-          "settings": {
-            "video_desktop": "shopify://files/videos/synapex_vid-1.mp4",
-            "video_mobile": "shopify://files/videos/copy_1C53D966-E79C-4A40-ACD9-A1098DD7F31C.MOV",
-            "image_fallback": "shopify://shop_images/IMG_4227.jpg",
-            "tagline": "PROTOCOL 011",
-            "heading": "ENGINEERED FOR VICTORY",
-            "subheading": "The standard is absolute. Performance without compromise.",
-            "button_label": "SHOP THE COLLECTION",
-            "button_link": "shopify://collections/all",
-            "text_position": "bottom-left"
-          }
-        },
-        "slide_LQ8xWz": {
-          "type": "slide",
-          "settings": {
-            "video_desktop": "shopify://files/videos/AC SYN.MOV",
-            "video_mobile": "shopify://files/videos/AC SYN.MOV",
-            "tagline": "PROTOCOL 011",
-            "heading": "ENGINEERED FOR VICTORY",
-            "subheading": "The standard is absolute. Performance without compromise.",
-            "button_label": "SHOP THE COLLECTION",
-            "button_link": "shopify://collections/all",
-            "text_position": "bottom-left"
-          }
-        }
-      },
-      "block_order": [
-        "slide_Q9Vim9",
-        "slide_dkxKkJ",
-        "slide_LQ8xWz"
-      ],
-      "name": "Synapex Carousel V5",
-      "settings": {
-        "section_height": "70vh",
-        "overlay_opacity": 20,
-        "autoplay": true,
-        "autoplay_speed": 5
-      }
     }
   },
   "order": [
@@ -276,7 +218,6 @@
     "header_conversion_NJBnzN",
     "1755460336964fed85",
     "1762683921550c821a",
-    "synapex_hero_video_BrwCAm",
-    "synapex_carousel_v5_xq7UKa"
+    "synapex_hero_video_BrwCAm"
   ]
 }
