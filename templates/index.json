@@ -29,8 +29,11 @@
         "slide_KLrfiE": {
           "type": "slide",
           "settings": {
-            "tagline": "PROTOCOL 01",
-            "heading": "ENGINEERED FOR VICTORY",
+            "video_desktop": "shopify://files/videos/IMG_7117.mov",
+            "video_mobile": "shopify://files/videos/IMG_7117.mov",
+            "image_fallback": "shopify://shop_images/IMG_4227.jpg",
+            "tagline": "PROTOCOL 011",
+            "heading": "SYNAPEX",
             "subheading": "The standard is absolute.",
             "button_label": "SHOP THE COLLECTION",
             "button_link": "",
@@ -40,8 +43,11 @@
         "slide_k8FDez": {
           "type": "slide",
           "settings": {
-            "tagline": "PROTOCOL 01",
-            "heading": "ENGINEERED FOR VICTORY",
+            "video_desktop": "shopify://files/videos/0912(1).mp4",
+            "video_mobile": "shopify://files/videos/0912(1).mp4",
+            "image_fallback": "shopify://shop_images/IMG_0672_1.jpg",
+            "tagline": "PROTOCOL 011",
+            "heading": "SYNAPEX",
             "subheading": "The standard is absolute.",
             "button_label": "SHOP THE COLLECTION",
             "button_link": "",
