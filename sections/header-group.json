@@ -225,7 +225,7 @@
             "heading": "ENGINEERED FOR VICTORY",
             "subheading": "The standard is absolute. Performance without compromise.",
             "button_label": "SHOP THE COLLECTION",
-            "button_link": "",
+            "button_link": "shopify://collections/all",
             "text_position": "bottom-left"
           }
         },
@@ -239,7 +239,7 @@
             "heading": "ENGINEERED FOR VICTORY",
             "subheading": "The standard is absolute. Performance without compromise.",
             "button_label": "SHOP THE COLLECTION",
-            "button_link": "",
+            "button_link": "shopify://collections/all",
             "text_position": "bottom-left"
           }
         },
@@ -247,11 +247,12 @@
           "type": "slide",
           "settings": {
             "video_desktop": "shopify://files/videos/AC SYN.MOV",
+            "video_mobile": "shopify://files/videos/AC SYN.MOV",
             "tagline": "PROTOCOL 011",
             "heading": "ENGINEERED FOR VICTORY",
             "subheading": "The standard is absolute. Performance without compromise.",
             "button_label": "SHOP THE COLLECTION",
-            "button_link": "",
+            "button_link": "shopify://collections/all",
             "text_position": "bottom-left"
           }
         }
