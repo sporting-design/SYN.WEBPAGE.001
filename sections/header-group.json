@@ -219,8 +219,9 @@
           "type": "slide",
           "settings": {
             "video_desktop": "shopify://files/videos/copy_1C53D966-E79C-4A40-ACD9-A1098DD7F31C.MOV",
+            "video_mobile": "shopify://files/videos/IMG_7117.mov",
             "image_fallback": "shopify://shop_images/IMG_4227.jpg",
-            "tagline": "PROTOCOL 01",
+            "tagline": "PROTOCOL 011",
             "heading": "ENGINEERED FOR VICTORY",
             "subheading": "The standard is absolute. Performance without compromise.",
             "button_label": "SHOP THE COLLECTION",
