@@ -808,7 +808,7 @@
             "inverse": false,
             "font": "heading",
             "unit": "percent",
-            "percent_width": 100,
+            "percent_width": 16,
             "pixel_height": 48,
             "custom_mobile_size": false,
             "unit_mobile": "percent",
