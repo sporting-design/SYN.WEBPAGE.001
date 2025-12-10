@@ -11,38 +11,6 @@
   "type": "footer",
   "name": "Footer",
   "sections": {
-    "crucible_mission_F74KLb": {
-      "type": "crucible-mission",
-      "name": "The Crucible - Mission",
-      "settings": {
-        "header_image": "shopify://shop_images/IMG_4227.jpg",
-        "header_title": "//movement",
-        "header_subtitle": "TO ENGINEER ABSOLUTE ATHLETE PERFORMANCE",
-        "image_1": "shopify://shop_images/IMG_2156_7bc51879-dc56-4716-83d5-061a48b1f88d.jpg",
-        "designator_1": "// PROTOCOL 01",
-        "declaration_1": "THE STANDARD IS ABSOLUTE",
-        "image_2": "shopify://shop_images/IMG_3968.jpg",
-        "designator_2": "// PROTOCOL 02",
-        "declaration_2": "ENGINEERED FOR VICTORY",
-        "image_3": "shopify://shop_images/IMG_0672_1.jpg",
-        "designator_3": "// PROTOCOL 03",
-        "declaration_3": "ZERO COMPROMISE",
-        "image_4": "shopify://shop_images/IMG_4228.jpg",
-        "designator_4": "// PROTOCOL 04",
-        "declaration_4": "BUILT TO ENDURE",
-        "image_5": "shopify://shop_images/IMG_2254.jpg",
-        "designator_5": "// PROTOCOL 05",
-        "declaration_5": "THE ATHLETE ASCENDS",
-        "designator_6": "// PROTOCOL 06",
-        "declaration_6": "KINETIC PRECISION",
-        "designator_7": "// PROTOCOL 07",
-        "declaration_7": "NEURAL DOMINANCE",
-        "designator_8": "// PROTOCOL 08",
-        "declaration_8": "STRUCTURAL INTEGRITY",
-        "designator_9": "// PROTOCOL 09",
-        "declaration_9": "THE MISSION CONTINUES"
-      }
-    },
     "section_z8f3Xt": {
       "type": "section",
       "blocks": {
@@ -485,7 +453,6 @@
     }
   },
   "order": [
-    "crucible_mission_F74KLb",
     "section_z8f3Xt",
     "custom_liquid_tE6BUH",
     "175787814478f8a2ff",
