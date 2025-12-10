@@ -1,0 +1,467 @@
+{% doc %}
+  @prompt
+    Create a full-width hero banner section with a 16:9 aspect ratio background image container. The banner should have:
+    
+    1. A dark overlay (rgba(0,0,0,0.7)) on top of the background image
+    2. Centered text content including:
+       - Small eyebrow text: "SYNAPEX CLINICAL DIVISION"
+       - Large headline: "WELCOME TO THE PARTNER NETWORK"
+       - Subheadline: "Factory-Direct Pricing. German Engineering. Zero Compromise."
+       - Technical specs in a grid below (3 columns):
+         * "165 GSM DENSITY" - "20% Denser Than Standard"
+         * "5-DAY HOLD" - "German Henkel® Adhesive"
+         * "$7.50/ROLL" - "Wholesale Partner Pricing"
+    
+    3. Style: Brutalist, high-contrast, black background with beige (#E3DAC9) accent text
+    4. Make it responsive - stack on mobile
+    5. Include options to:
+       - Upload custom background image
+       - Edit all text fields
+       - Adjust overlay opacity
+    6. Section should be named "B2B Hero Banner"
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-b2b-hero-{{ ai_gen_id }} {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+  }
+
+  .ai-b2b-hero-container-{{ ai_gen_id }} {
+    position: relative;
+    width: 100%;
+    padding-bottom: 56.25%;
+    background-color: #000000;
+  }
+
+  .ai-b2b-hero-image-{{ ai_gen_id }} {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .ai-b2b-hero-placeholder-{{ ai_gen_id }} {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #000000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .ai-b2b-hero-placeholder-{{ ai_gen_id }} svg {
+    width: 100%;
+    height: 100%;
+    max-width: 500px;
+    max-height: 500px;
+    opacity: 0.1;
+  }
+
+  .ai-b2b-hero-overlay-{{ ai_gen_id }} {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, {{ block.settings.overlay_opacity }});
+    z-index: 1;
+  }
+
+  .ai-b2b-hero-content-{{ ai_gen_id }} {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    text-align: center;
+    width: 90%;
+    max-width: 1200px;
+  }
+
+  .ai-b2b-hero-eyebrow-{{ ai_gen_id }} {
+    font-family: {{ block.settings.eyebrow_font.family }}, {{ block.settings.eyebrow_font.fallback_families }};
+    font-weight: {{ block.settings.eyebrow_font.weight }};
+    font-size: {{ block.settings.eyebrow_size }}px;
+    color: {{ block.settings.eyebrow_color }};
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin: 0 0 16px 0;
+  }
+
+  .ai-b2b-hero-headline-{{ ai_gen_id }} {
+    font-family: {{ block.settings.headline_font.family }}, {{ block.settings.headline_font.fallback_families }};
+    font-weight: {{ block.settings.headline_font.weight }};
+    font-size: {{ block.settings.headline_size }}px;
+    color: {{ block.settings.headline_color }};
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    margin: 0 0 24px 0;
+    line-height: 1.1;
+  }
+
+  .ai-b2b-hero-subheadline-{{ ai_gen_id }} {
+    font-family: {{ block.settings.subheadline_font.family }}, {{ block.settings.subheadline_font.fallback_families }};
+    font-weight: {{ block.settings.subheadline_font.weight }};
+    font-size: {{ block.settings.subheadline_size }}px;
+    color: {{ block.settings.subheadline_color }};
+    margin: 0 0 48px 0;
+    line-height: 1.5;
+  }
+
+  .ai-b2b-hero-specs-{{ ai_gen_id }} {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .ai-b2b-hero-spec-{{ ai_gen_id }} {
+    text-align: center;
+  }
+
+  .ai-b2b-hero-spec-title-{{ ai_gen_id }} {
+    font-family: {{ block.settings.spec_title_font.family }}, {{ block.settings.spec_title_font.fallback_families }};
+    font-weight: {{ block.settings.spec_title_font.weight }};
+    font-size: {{ block.settings.spec_title_size }}px;
+    color: {{ block.settings.spec_title_color }};
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    margin: 0 0 8px 0;
+  }
+
+  .ai-b2b-hero-spec-desc-{{ ai_gen_id }} {
+    font-family: {{ block.settings.spec_desc_font.family }}, {{ block.settings.spec_desc_font.fallback_families }};
+    font-weight: {{ block.settings.spec_desc_font.weight }};
+    font-size: {{ block.settings.spec_desc_size }}px;
+    color: {{ block.settings.spec_desc_color }};
+    margin: 0;
+    line-height: 1.4;
+  }
+
+  @media screen and (max-width: 749px) {
+    .ai-b2b-hero-eyebrow-{{ ai_gen_id }} {
+      font-size: {{ block.settings.eyebrow_size | times: 0.7 }}px;
+      margin-bottom: 12px;
+    }
+
+    .ai-b2b-hero-headline-{{ ai_gen_id }} {
+      font-size: {{ block.settings.headline_size | times: 0.5 }}px;
+      margin-bottom: 16px;
+    }
+
+    .ai-b2b-hero-subheadline-{{ ai_gen_id }} {
+      font-size: {{ block.settings.subheadline_size | times: 0.8 }}px;
+      margin-bottom: 32px;
+    }
+
+    .ai-b2b-hero-specs-{{ ai_gen_id }} {
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
+
+    .ai-b2b-hero-spec-title-{{ ai_gen_id }} {
+      font-size: {{ block.settings.spec_title_size | times: 0.9 }}px;
+    }
+
+    .ai-b2b-hero-spec-desc-{{ ai_gen_id }} {
+      font-size: {{ block.settings.spec_desc_size | times: 0.9 }}px;
+    }
+  }
+{% endstyle %}
+
+<div class="ai-b2b-hero-{{ ai_gen_id }}" {{ block.shopify_attributes }}>
+  <div class="ai-b2b-hero-container-{{ ai_gen_id }}">
+    {% if block.settings.background_image %}
+      <img
+        src="{{ block.settings.background_image | image_url: width: 2000 }}"
+        alt="{{ block.settings.background_image.alt | escape }}"
+        loading="lazy"
+        width="{{ block.settings.background_image.width }}"
+        height="{{ block.settings.background_image.height }}"
+        class="ai-b2b-hero-image-{{ ai_gen_id }}"
+      >
+    {% else %}
+      <div class="ai-b2b-hero-placeholder-{{ ai_gen_id }}">
+        {{ 'hero-apparel-1' | placeholder_svg_tag }}
+      </div>
+    {% endif %}
+
+    <div class="ai-b2b-hero-overlay-{{ ai_gen_id }}"></div>
+
+    <div class="ai-b2b-hero-content-{{ ai_gen_id }}">
+      {% if block.settings.eyebrow_text != blank %}
+        <div class="ai-b2b-hero-eyebrow-{{ ai_gen_id }}">{{ block.settings.eyebrow_text }}</div>
+      {% endif %}
+
+      {% if block.settings.headline_text != blank %}
+        <h1 class="ai-b2b-hero-headline-{{ ai_gen_id }}">{{ block.settings.headline_text }}</h1>
+      {% endif %}
+
+      {% if block.settings.subheadline_text != blank %}
+        <div class="ai-b2b-hero-subheadline-{{ ai_gen_id }}">{{ block.settings.subheadline_text }}</div>
+      {% endif %}
+
+      <div class="ai-b2b-hero-specs-{{ ai_gen_id }}">
+        <div class="ai-b2b-hero-spec-{{ ai_gen_id }}">
+          {% if block.settings.spec_1_title != blank %}
+            <div class="ai-b2b-hero-spec-title-{{ ai_gen_id }}">{{ block.settings.spec_1_title }}</div>
+          {% endif %}
+          {% if block.settings.spec_1_desc != blank %}
+            <div class="ai-b2b-hero-spec-desc-{{ ai_gen_id }}">{{ block.settings.spec_1_desc }}</div>
+          {% endif %}
+        </div>
+
+        <div class="ai-b2b-hero-spec-{{ ai_gen_id }}">
+          {% if block.settings.spec_2_title != blank %}
+            <div class="ai-b2b-hero-spec-title-{{ ai_gen_id }}">{{ block.settings.spec_2_title }}</div>
+          {% endif %}
+          {% if block.settings.spec_2_desc != blank %}
+            <div class="ai-b2b-hero-spec-desc-{{ ai_gen_id }}">{{ block.settings.spec_2_desc }}</div>
+          {% endif %}
+        </div>
+
+        <div class="ai-b2b-hero-spec-{{ ai_gen_id }}">
+          {% if block.settings.spec_3_title != blank %}
+            <div class="ai-b2b-hero-spec-title-{{ ai_gen_id }}">{{ block.settings.spec_3_title }}</div>
+          {% endif %}
+          {% if block.settings.spec_3_desc != blank %}
+            <div class="ai-b2b-hero-spec-desc-{{ ai_gen_id }}">{{ block.settings.spec_3_desc }}</div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "B2B Hero Banner",
+  "tag": null,
+  "settings": [
+    {
+      "type": "header",
+      "content": "Background"
+    },
+    {
+      "type": "image_picker",
+      "id": "background_image",
+      "label": "Background image"
+    },
+    {
+      "type": "range",
+      "id": "overlay_opacity",
+      "min": 0,
+      "max": 1,
+      "step": 0.1,
+      "label": "Overlay opacity",
+      "default": 0.7
+    },
+    {
+      "type": "header",
+      "content": "Eyebrow text"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow_text",
+      "label": "Text",
+      "default": "SYNAPEX CLINICAL DIVISION"
+    },
+    {
+      "type": "font_picker",
+      "id": "eyebrow_font",
+      "label": "Font",
+      "default": "barlow_condensed_n6"
+    },
+    {
+      "type": "range",
+      "id": "eyebrow_size",
+      "min": 10,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "label": "Size",
+      "default": 14
+    },
+    {
+      "type": "color",
+      "id": "eyebrow_color",
+      "label": "Color",
+      "default": "#E3DAC9"
+    },
+    {
+      "type": "header",
+      "content": "Headline"
+    },
+    {
+      "type": "text",
+      "id": "headline_text",
+      "label": "Text",
+      "default": "WELCOME TO THE PARTNER NETWORK"
+    },
+    {
+      "type": "font_picker",
+      "id": "headline_font",
+      "label": "Font",
+      "default": "barlow_condensed_n6"
+    },
+    {
+      "type": "range",
+      "id": "headline_size",
+      "min": 24,
+      "max": 120,
+      "step": 2,
+      "unit": "px",
+      "label": "Size",
+      "default": 72
+    },
+    {
+      "type": "color",
+      "id": "headline_color",
+      "label": "Color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "header",
+      "content": "Subheadline"
+    },
+    {
+      "type": "text",
+      "id": "subheadline_text",
+      "label": "Text",
+      "default": "Factory-Direct Pricing. German Engineering. Zero Compromise."
+    },
+    {
+      "type": "font_picker",
+      "id": "subheadline_font",
+      "label": "Font",
+      "default": "montserrat_n4"
+    },
+    {
+      "type": "range",
+      "id": "subheadline_size",
+      "min": 12,
+      "max": 32,
+      "step": 1,
+      "unit": "px",
+      "label": "Size",
+      "default": 18
+    },
+    {
+      "type": "color",
+      "id": "subheadline_color",
+      "label": "Color",
+      "default": "#E3DAC9"
+    },
+    {
+      "type": "header",
+      "content": "Spec 1"
+    },
+    {
+      "type": "text",
+      "id": "spec_1_title",
+      "label": "Title",
+      "default": "165 GSM DENSITY"
+    },
+    {
+      "type": "text",
+      "id": "spec_1_desc",
+      "label": "Description",
+      "default": "20% Denser Than Standard"
+    },
+    {
+      "type": "header",
+      "content": "Spec 2"
+    },
+    {
+      "type": "text",
+      "id": "spec_2_title",
+      "label": "Title",
+      "default": "5-DAY HOLD"
+    },
+    {
+      "type": "text",
+      "id": "spec_2_desc",
+      "label": "Description",
+      "default": "German Henkel® Adhesive"
+    },
+    {
+      "type": "header",
+      "content": "Spec 3"
+    },
+    {
+      "type": "text",
+      "id": "spec_3_title",
+      "label": "Title",
+      "default": "$7.50/ROLL"
+    },
+    {
+      "type": "text",
+      "id": "spec_3_desc",
+      "label": "Description",
+      "default": "Wholesale Partner Pricing"
+    },
+    {
+      "type": "header",
+      "content": "Spec styling"
+    },
+    {
+      "type": "font_picker",
+      "id": "spec_title_font",
+      "label": "Title font",
+      "default": "barlow_condensed_n6"
+    },
+    {
+      "type": "range",
+      "id": "spec_title_size",
+      "min": 12,
+      "max": 32,
+      "step": 1,
+      "unit": "px",
+      "label": "Title size",
+      "default": 20
+    },
+    {
+      "type": "color",
+      "id": "spec_title_color",
+      "label": "Title color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "font_picker",
+      "id": "spec_desc_font",
+      "label": "Description font",
+      "default": "montserrat_n4"
+    },
+    {
+      "type": "range",
+      "id": "spec_desc_size",
+      "min": 10,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "label": "Description size",
+      "default": 14
+    },
+    {
+      "type": "color",
+      "id": "spec_desc_color",
+      "label": "Description color",
+      "default": "#E3DAC9"
+    }
+  ],
+  "presets": [
+    {
+      "name": "B2B Hero Banner"
+    }
+  ]
+}
+{% endschema %}
