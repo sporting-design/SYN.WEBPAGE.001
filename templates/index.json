@@ -107,7 +107,7 @@
         "review1_name": "Omariko L.",
         "review1_quote": "As a Runner, my Knees thank you.",
         "review2_name": "Keti U.",
-        "review2_quote": "Post Spine surgery, Synapex has supported my Lower Back, allowing me to go back to Judo.",
+        "review2_quote": "Decompresses by back and has provided much relief.",
         "review3_name": "DAVIT .C",
         "review3_quote": "Stabilizes my shoulder and allows me to train with intensity, great piece of equipment!"
       }
@@ -772,164 +772,6 @@
         "color_scheme": "scheme-6",
         "padding-block-start": 0,
         "padding-block-end": 48
-      }
-    },
-    "section_cHRP8U": {
-      "type": "section",
-      "blocks": {
-        "text_3H3pDt": {
-          "type": "text",
-          "settings": {
-            "text": "<p><em><strong>Synapex is Augmented Kinesiology Tape. We've integrated a superior German Henkel adhesive with a high-performance cotton fabric to create a tool that enhances stability and durability beyond the limits of standard tape.</strong></em></p>",
-            "width": "fit-content",
-            "max_width": "narrow",
-            "alignment": "left",
-            "type_preset": "custom",
-            "font": "var(--font-body--family)",
-            "font_size": "0.75rem",
-            "line_height": "normal",
-            "letter_spacing": "tight",
-            "case": "none",
-            "wrap": "pretty",
-            "color": "var(--color-foreground)",
-            "background": false,
-            "background_color": "#00000026",
-            "corner_radius": 0,
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {}
-        },
-        "logo_PiMYdm": {
-          "type": "logo",
-          "settings": {
-            "inverse": false,
-            "font": "heading",
-            "unit": "percent",
-            "percent_width": 16,
-            "pixel_height": 48,
-            "custom_mobile_size": false,
-            "unit_mobile": "percent",
-            "percent_width_mobile": 100,
-            "pixel_height_mobile": 120,
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {}
-        }
-      },
-      "block_order": [
-        "text_3H3pDt",
-        "logo_PiMYdm"
-      ],
-      "name": "t:names.large_logo",
-      "settings": {
-        "content_direction": "column",
-        "vertical_on_mobile": true,
-        "horizontal_alignment": "flex-start",
-        "vertical_alignment": "center",
-        "align_baseline": false,
-        "horizontal_alignment_flex_direction_column": "flex-start",
-        "vertical_alignment_flex_direction_column": "space-between",
-        "gap": 16,
-        "section_width": "page-width",
-        "section_height": "medium",
-        "section_height_custom": 50,
-        "color_scheme": "scheme-6",
-        "background_media": "none",
-        "video_position": "cover",
-        "background_image_position": "cover",
-        "border": "none",
-        "border_width": 1,
-        "border_opacity": 100,
-        "border_radius": 0,
-        "toggle_overlay": false,
-        "overlay_color": "#00000026",
-        "overlay_style": "solid",
-        "gradient_direction": "to top",
-        "padding-block-start": 0,
-        "padding-block-end": 0
-      }
-    },
-    "1757730739ed113dc5": {
-      "type": "_blocks",
-      "blocks": {
-        "ai_gen_block_1599af4_ytEEyX": {
-          "type": "ai_gen_block_1599af4",
-          "settings": {
-            "headline": "HOW IT WORKS: ENGINEERED TO INTEGRATE",
-            "headline_color": "#000000",
-            "headline_size": 32,
-            "headline_weight": "700",
-            "headline_case": "uppercase",
-            "headline_letter_spacing": 1,
-            "headline_alignment": "center",
-            "icon_1": "shopify://shop_images/ChatGPT_Image_Sep_13_2025_01_43_37_AM.png",
-            "title_1": "DECOMPRESSES TISSUE",
-            "copy_1": "The tape's elastic recoil creates a microscopic lift of the skin. This aims to decompress the layers of tissue beneath, supporting better localized fluid dynamics and reducing pressure on sensitive areas.",
-            "icon_2": "shopify://shop_images/ChatGPT_Image_Sep_13_2025_01_48_11_AM.png",
-            "title_2": "ENHANCES AWARENESS",
-            "copy_2": "The constant sensory input of the tape on your skin provides your brain with increased feedback on your body's position and movement. This heightened awareness, or proprioception, allows for more confident and controlled motion.",
-            "icon_3": "shopify://shop_images/ChatGPT_Image_Sep_13_2025_01_50_12_AM.png",
-            "title_3": "SUPPORTS WITHOUT RESTRICTION",
-            "copy_3": "Unlike a rigid brace, Synapex is engineered to stretch and move with you. Our German Henkel® adhesive ensures this high-performance support system remains locked in place through sweat, water, and competition—when other tapes fail.",
-            "background_color": "#000000",
-            "column_background_color": "#ffffff",
-            "section_padding": 60,
-            "column_padding": 20,
-            "column_gap": 40,
-            "mobile_gap": 30,
-            "column_border_radius": 8,
-            "column_alignment": "center",
-            "content_margin_top": 40,
-            "icon_size": 80,
-            "icon_margin_bottom": 20,
-            "title_color": "#000000",
-            "title_size": 20,
-            "title_weight": "600",
-            "title_case": "uppercase",
-            "title_letter_spacing": 0.5,
-            "title_margin_bottom": 15,
-            "copy_color": "#666666",
-            "copy_size": 14,
-            "copy_line_height": 1.5
-          },
-          "blocks": {}
-        }
-      },
-      "block_order": [
-        "ai_gen_block_1599af4_ytEEyX"
-      ],
-      "settings": {
-        "content_direction": "column",
-        "vertical_on_mobile": true,
-        "horizontal_alignment": "flex-start",
-        "vertical_alignment": "center",
-        "align_baseline": false,
-        "horizontal_alignment_flex_direction_column": "flex-start",
-        "vertical_alignment_flex_direction_column": "center",
-        "gap": 12,
-        "section_width": "page-width",
-        "section_height": "",
-        "section_height_custom": 50,
-        "color_scheme": "scheme-6",
-        "background_media": "none",
-        "video_position": "cover",
-        "background_image_position": "cover",
-        "border": "none",
-        "border_width": 1,
-        "border_opacity": 100,
-        "border_radius": 0,
-        "toggle_overlay": false,
-        "overlay_color": "#00000026",
-        "overlay_style": "solid",
-        "gradient_direction": "to top",
-        "padding-block-start": 0,
-        "padding-block-end": 0
       }
     },
     "section_e6eqGD": {
@@ -2415,8 +2257,6 @@
     "section_zdibHM",
     "175971785402019ebb",
     "product_list_X8Q7bi",
-    "section_cHRP8U",
-    "1757730739ed113dc5",
     "section_e6eqGD",
     "marquee_3HfU6D",
     "section_VDtJY8",
