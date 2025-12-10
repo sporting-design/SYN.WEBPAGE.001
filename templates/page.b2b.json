@@ -9,6 +9,36 @@
  */
 {
   "sections": {
+    "176534319779b998a6": {
+      "type": "_blocks",
+      "settings": {
+        "content_direction": "column",
+        "vertical_on_mobile": true,
+        "horizontal_alignment": "flex-start",
+        "vertical_alignment": "center",
+        "align_baseline": false,
+        "horizontal_alignment_flex_direction_column": "flex-start",
+        "vertical_alignment_flex_direction_column": "center",
+        "gap": 12,
+        "section_width": "page-width",
+        "section_height": "",
+        "section_height_custom": 50,
+        "color_scheme": "",
+        "background_media": "none",
+        "video_position": "cover",
+        "background_image_position": "cover",
+        "border": "none",
+        "border_width": 1,
+        "border_opacity": 100,
+        "border_radius": 0,
+        "toggle_overlay": false,
+        "overlay_color": "#00000026",
+        "overlay_style": "solid",
+        "gradient_direction": "to top",
+        "padding-block-start": 0,
+        "padding-block-end": 0
+      }
+    },
     "main": {
       "type": "main-page",
       "disabled": true,
@@ -60,11 +90,42 @@
           "settings": {
             "formId": ""
           }
+        },
+        "ai_gen_block_ece5b94_VRExtr": {
+          "type": "ai_gen_block_ece5b94",
+          "settings": {
+            "left_image": "shopify://shop_images/Group_7_1.png",
+            "right_image": "shopify://shop_images/07971EFD-E49E-401D-85A7-93383075D4E6.jpg",
+            "eyebrow": "BROOKLYN COLLEGE × SYNAPEX",
+            "heading": "Proud to Fuel Brooklyn College Athletics",
+            "paragraph": "<p>Supporting elite athletes with medical-grade performance tape engineered for durability and precision.</p>",
+            "quote": "\"The tape's recoil gives great tactile feedback during application, and the durability has been outstanding for our athletes.\"",
+            "section_padding": 60,
+            "column_gap": 40,
+            "text_padding": 20,
+            "text_spacing": 20,
+            "mobile_gap": 30,
+            "background_color": "#000000",
+            "eyebrow_color": "#ffffff",
+            "heading_color": "#ffffff",
+            "text_color": "#ffffff",
+            "quote_bg_color": "#1a1a1a",
+            "quote_border_color": "#ffffff",
+            "quote_text_color": "#ffffff",
+            "eyebrow_size": 12,
+            "heading_size": 36,
+            "text_size": 16,
+            "quote_size": 15,
+            "quote_padding": 20,
+            "quote_spacing": 20
+          },
+          "blocks": {}
         }
       },
       "block_order": [
         "ai_gen_block_6ab1806_hAFmcK",
-        "klaviyo_email_marketing_sms_form_embed_block_zhkAcg"
+        "klaviyo_email_marketing_sms_form_embed_block_zhkAcg",
+        "ai_gen_block_ece5b94_VRExtr"
       ],
       "settings": {
         "content_direction": "column",
@@ -81,37 +142,6 @@
         "color_scheme": "scheme-6",
         "background_media": "none",
         "video_position": "cover",
-        "background_image_position": "cover",
-        "border": "none",
-        "border_width": 1,
-        "border_opacity": 100,
-        "border_radius": 0,
-        "toggle_overlay": false,
-        "overlay_color": "#00000026",
-        "overlay_style": "solid",
-        "gradient_direction": "to top",
-        "padding-block-start": 0,
-        "padding-block-end": 0
-      }
-    },
-    "17554625602899f3a8": {
-      "type": "_blocks",
-      "settings": {
-        "content_direction": "column",
-        "vertical_on_mobile": true,
-        "horizontal_alignment": "flex-start",
-        "vertical_alignment": "center",
-        "align_baseline": false,
-        "horizontal_alignment_flex_direction_column": "center",
-        "vertical_alignment_flex_direction_column": "center",
-        "gap": 12,
-        "section_width": "page-width",
-        "section_height": "",
-        "section_height_custom": 50,
-        "color_scheme": "",
-        "background_media": "none",
-        "video_position": "cover",
-        "background_image": "shopify://shop_images/red-green-and-white-lines-of-a-track.jpg",
         "background_image_position": "cover",
         "border": "none",
         "border_width": 1,
@@ -168,9 +198,9 @@
     }
   },
   "order": [
+    "176534319779b998a6",
     "main",
     "176533885843edc085",
-    "17554625602899f3a8",
     "176533610619910c40"
   ]
 }
