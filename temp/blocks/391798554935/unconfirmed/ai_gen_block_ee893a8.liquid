@@ -1,6 +1,405 @@
+{% doc %}
+  @prompt
+    Create a testimonial section for a B2B wholesale landing page.
+    
+    STYLE: Brutalist design, black background (#000000), beige accent (#E3DAC9), white text, industrial aesthetic, dark borders (#222).
+    
+    LAYOUT: Section heading "WHAT CLINICAL PARTNERS SAY" (centered, uppercase, bold). 3 testimonial cards in grid (3 columns desktop, stack on mobile). Each card has dark border, padding, italic quote text (gray), author name (beige, bold), clinic name + city (small gray text).
+    
+    TESTIMONIAL 1:
+    "We switched from KT Tape and immediately noticed better patient adherence. The 5-day hold is real—patients stop coming back for re-taping mid-week. That alone saves us 3-4 hours weekly."
+    — Dr. Sarah Chen, PT, DPT
+    Peak Performance PT — Austin, TX
+    
+    TESTIMONIAL 2:
+    "The wholesale pricing changed our tape economics entirely. We went from break-even to a 160% margin on front-desk sales. It's now our #2 retail revenue stream."
+    — Marcus Webb, DPT
+    Velocity Sports Rehab — Denver, CO
+    
+    TESTIMONIAL 3:
+    "Finally, a tape that doesn't macerate skin under sweat. Our CrossFit and BJJ athletes can train through the full tape lifecycle without irritation. Clinical-grade performance."
+    — Dr. James Kowalski, PT
+    Forge Physical Therapy — Miami, FL
+    
+    Make all text editable, responsive, 100px padding top/bottom. Name: "B2B Testimonials", Adjust the alignment of the Clinical Partners Testimonials section so that its content block shifts slightly to the right, visually centering it between the full-width hero section above and the Partner FAQ section below. Maintain all current spacing, typography, and styles. Only modify the horizontal alignment of the entire testimonial group so that the left and right visual margins match the sections above and below
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-b2b-testimonials-{{ ai_gen_id }} {
+    background-color: {{ block.settings.background_color }};
+    padding: {{ block.settings.padding_top }}px 20px {{ block.settings.padding_bottom }}px;
+  }
+
+  .ai-b2b-testimonials-container-{{ ai_gen_id }} {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-left: {{ block.settings.horizontal_offset }}px;
+    padding-right: {{ block.settings.horizontal_offset }}px;
+  }
+
+  .ai-b2b-testimonials-heading-{{ ai_gen_id }} {
+    text-align: center;
+    color: {{ block.settings.heading_color }};
+    font-size: {{ block.settings.heading_size }}px;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin: 0 0 {{ block.settings.heading_spacing }}px;
+    letter-spacing: 1px;
+  }
+
+  .ai-b2b-testimonials-grid-{{ ai_gen_id }} {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: {{ block.settings.card_gap }}px;
+  }
+
+  .ai-b2b-testimonial-card-{{ ai_gen_id }} {
+    background-color: {{ block.settings.card_background }};
+    border: {{ block.settings.card_border_width }}px solid {{ block.settings.card_border_color }};
+    padding: {{ block.settings.card_padding }}px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .ai-b2b-testimonial-quote-{{ ai_gen_id }} {
+    color: {{ block.settings.quote_color }};
+    font-size: {{ block.settings.quote_size }}px;
+    font-style: italic;
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  .ai-b2b-testimonial-author-{{ ai_gen_id }} {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .ai-b2b-testimonial-name-{{ ai_gen_id }} {
+    color: {{ block.settings.author_color }};
+    font-size: {{ block.settings.author_size }}px;
+    font-weight: 700;
+    margin: 0;
+  }
+
+  .ai-b2b-testimonial-clinic-{{ ai_gen_id }} {
+    color: {{ block.settings.clinic_color }};
+    font-size: {{ block.settings.clinic_size }}px;
+    margin: 0;
+  }
+
+  @media screen and (max-width: 989px) {
+    .ai-b2b-testimonials-grid-{{ ai_gen_id }} {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media screen and (max-width: 749px) {
+    .ai-b2b-testimonials-grid-{{ ai_gen_id }} {
+      grid-template-columns: 1fr;
+    }
+
+    .ai-b2b-testimonials-heading-{{ ai_gen_id }} {
+      font-size: {{ block.settings.heading_size | times: 0.7 }}px;
+    }
+
+    .ai-b2b-testimonials-{{ ai_gen_id }} {
+      padding: {{ block.settings.padding_top | times: 0.6 }}px 16px {{ block.settings.padding_bottom | times: 0.6 }}px;
+    }
+
+    .ai-b2b-testimonials-container-{{ ai_gen_id }} {
+      padding-left: 0;
+      padding-right: 0;
+    }
+  }
+{% endstyle %}
+
+<div class="ai-b2b-testimonials-{{ ai_gen_id }}" {{ block.shopify_attributes }}>
+  <div class="ai-b2b-testimonials-container-{{ ai_gen_id }}">
+    {% if block.settings.heading != blank %}
+      <h2 class="ai-b2b-testimonials-heading-{{ ai_gen_id }}">{{ block.settings.heading }}</h2>
+    {% endif %}
+
+    <div class="ai-b2b-testimonials-grid-{{ ai_gen_id }}">
+      <div class="ai-b2b-testimonial-card-{{ ai_gen_id }}">
+        <p class="ai-b2b-testimonial-quote-{{ ai_gen_id }}">{{ block.settings.testimonial_1_quote }}</p>
+        <div class="ai-b2b-testimonial-author-{{ ai_gen_id }}">
+          <p class="ai-b2b-testimonial-name-{{ ai_gen_id }}">{{ block.settings.testimonial_1_author }}</p>
+          <p class="ai-b2b-testimonial-clinic-{{ ai_gen_id }}">{{ block.settings.testimonial_1_clinic }}</p>
+        </div>
+      </div>
+
+      <div class="ai-b2b-testimonial-card-{{ ai_gen_id }}">
+        <p class="ai-b2b-testimonial-quote-{{ ai_gen_id }}">{{ block.settings.testimonial_2_quote }}</p>
+        <div class="ai-b2b-testimonial-author-{{ ai_gen_id }}">
+          <p class="ai-b2b-testimonial-name-{{ ai_gen_id }}">{{ block.settings.testimonial_2_author }}</p>
+          <p class="ai-b2b-testimonial-clinic-{{ ai_gen_id }}">{{ block.settings.testimonial_2_clinic }}</p>
+        </div>
+      </div>
+
+      <div class="ai-b2b-testimonial-card-{{ ai_gen_id }}">
+        <p class="ai-b2b-testimonial-quote-{{ ai_gen_id }}">{{ block.settings.testimonial_3_quote }}</p>
+        <div class="ai-b2b-testimonial-author-{{ ai_gen_id }}">
+          <p class="ai-b2b-testimonial-name-{{ ai_gen_id }}">{{ block.settings.testimonial_3_author }}</p>
+          <p class="ai-b2b-testimonial-clinic-{{ ai_gen_id }}">{{ block.settings.testimonial_3_clinic }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 {% schema %}
- {
-   "name": "AI_Block",
-   "tag": "shopify-ai-generated-block"
- }
+{
+  "name": "B2B Testimonials",
+  "tag": null,
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section heading"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "WHAT CLINICAL PARTNERS SAY"
+    },
+    {
+      "type": "range",
+      "id": "heading_size",
+      "min": 16,
+      "max": 72,
+      "step": 2,
+      "unit": "px",
+      "label": "Heading size",
+      "default": 32
+    },
+    {
+      "type": "range",
+      "id": "heading_spacing",
+      "min": 20,
+      "max": 80,
+      "step": 4,
+      "unit": "px",
+      "label": "Heading spacing",
+      "default": 48
+    },
+    {
+      "type": "header",
+      "content": "Testimonial 1"
+    },
+    {
+      "type": "textarea",
+      "id": "testimonial_1_quote",
+      "label": "Quote",
+      "default": "We switched from KT Tape and immediately noticed better patient adherence. The 5-day hold is real—patients stop coming back for re-taping mid-week. That alone saves us 3-4 hours weekly."
+    },
+    {
+      "type": "text",
+      "id": "testimonial_1_author",
+      "label": "Author",
+      "default": "— Dr. Sarah Chen, PT, DPT"
+    },
+    {
+      "type": "text",
+      "id": "testimonial_1_clinic",
+      "label": "Clinic and location",
+      "default": "Peak Performance PT — Austin, TX"
+    },
+    {
+      "type": "header",
+      "content": "Testimonial 2"
+    },
+    {
+      "type": "textarea",
+      "id": "testimonial_2_quote",
+      "label": "Quote",
+      "default": "The wholesale pricing changed our tape economics entirely. We went from break-even to a 160% margin on front-desk sales. It's now our #2 retail revenue stream."
+    },
+    {
+      "type": "text",
+      "id": "testimonial_2_author",
+      "label": "Author",
+      "default": "— Marcus Webb, DPT"
+    },
+    {
+      "type": "text",
+      "id": "testimonial_2_clinic",
+      "label": "Clinic and location",
+      "default": "Velocity Sports Rehab — Denver, CO"
+    },
+    {
+      "type": "header",
+      "content": "Testimonial 3"
+    },
+    {
+      "type": "textarea",
+      "id": "testimonial_3_quote",
+      "label": "Quote",
+      "default": "Finally, a tape that doesn't macerate skin under sweat. Our CrossFit and BJJ athletes can train through the full tape lifecycle without irritation. Clinical-grade performance."
+    },
+    {
+      "type": "text",
+      "id": "testimonial_3_author",
+      "label": "Author",
+      "default": "— Dr. James Kowalski, PT"
+    },
+    {
+      "type": "text",
+      "id": "testimonial_3_clinic",
+      "label": "Clinic and location",
+      "default": "Forge Physical Therapy — Miami, FL"
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 200,
+      "step": 10,
+      "unit": "px",
+      "label": "Padding top",
+      "default": 100
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 200,
+      "step": 10,
+      "unit": "px",
+      "label": "Padding bottom",
+      "default": 100
+    },
+    {
+      "type": "range",
+      "id": "horizontal_offset",
+      "min": 0,
+      "max": 200,
+      "step": 10,
+      "unit": "px",
+      "label": "Horizontal offset",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "card_gap",
+      "min": 10,
+      "max": 60,
+      "step": 5,
+      "unit": "px",
+      "label": "Card gap",
+      "default": 30
+    },
+    {
+      "type": "range",
+      "id": "card_padding",
+      "min": 20,
+      "max": 60,
+      "step": 4,
+      "unit": "px",
+      "label": "Card padding",
+      "default": 32
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "card_background",
+      "label": "Card background",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "card_border_color",
+      "label": "Card border",
+      "default": "#222222"
+    },
+    {
+      "type": "range",
+      "id": "card_border_width",
+      "min": 0,
+      "max": 4,
+      "step": 1,
+      "unit": "px",
+      "label": "Card border width",
+      "default": 2
+    },
+    {
+      "type": "color",
+      "id": "quote_color",
+      "label": "Quote text",
+      "default": "#999999"
+    },
+    {
+      "type": "color",
+      "id": "author_color",
+      "label": "Author name",
+      "default": "#E3DAC9"
+    },
+    {
+      "type": "color",
+      "id": "clinic_color",
+      "label": "Clinic info",
+      "default": "#666666"
+    },
+    {
+      "type": "header",
+      "content": "Typography"
+    },
+    {
+      "type": "range",
+      "id": "quote_size",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "label": "Quote size",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "author_size",
+      "min": 12,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "label": "Author size",
+      "default": 14
+    },
+    {
+      "type": "range",
+      "id": "clinic_size",
+      "min": 10,
+      "max": 16,
+      "step": 1,
+      "unit": "px",
+      "label": "Clinic size",
+      "default": 12
+    }
+  ],
+  "presets": [
+    {
+      "name": "B2B Testimonials"
+    }
+  ]
+}
 {% endschema %}
