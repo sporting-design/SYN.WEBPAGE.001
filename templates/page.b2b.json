@@ -120,12 +120,50 @@
             "quote_spacing": 20
           },
           "blocks": {}
+        },
+        "ai_gen_block_fed8e21_UrR7Yd": {
+          "type": "ai_gen_block_fed8e21",
+          "settings": {
+            "section_title": "Wholesale Partner FAQ",
+            "title_alignment": "left",
+            "max_width": 900,
+            "section_padding": 60,
+            "background_color": "#000000",
+            "title_color": "#ffffff",
+            "question_color": "#ffffff",
+            "question_hover_color": "#cccccc",
+            "answer_color": "#cccccc",
+            "divider_color": "#333333",
+            "title_size": 32,
+            "title_spacing": 40,
+            "question_size": 16,
+            "answer_size": 14,
+            "item_padding": 20,
+            "faq_1_question": "What is the minimum order quantity (MOQ)?",
+            "faq_1_answer": "Our standard MOQ for wholesale partners is 48 rolls per shipment. Higher-volume clinics and athletic programs may qualify for tiered pricing and pallet-level fulfillment.",
+            "faq_2_question": "Do you offer bulk pricing or volume discounts?",
+            "faq_2_answer": "Yes. Synapex provides structured wholesale tiers based on monthly volume, including reduced per-unit cost, priority production allocation, and early access to new SKUs.",
+            "faq_3_question": "How fast do orders ship?",
+            "faq_3_answer": "Domestic U.S. wholesale orders ship within 24–48 hours. High-volume accounts may receive scheduled automatic restock windows.",
+            "faq_4_question": "Can Synapex support college or team-wide programs?",
+            "faq_4_answer": "Yes. We supply athletic departments, PT programs, and competitive sports teams with program-wide pricing, supply planning, marketing assets, and partner success support.",
+            "faq_5_question": "What is the durability of Synapex tape?",
+            "faq_5_answer": "Synapex KT uses a 165 GSM Cotton Fiber Chassis™, German Henkel medical-grade adhesive, and 5-Day Hold technology. Engineered for sweat, friction, and competition settings.",
+            "faq_6_question": "Do you offer samples for clinics?",
+            "faq_6_answer": "Yes. Verified clinics can request a Partner Trial Kit including tape samples, application guides, and a product spec sheet.",
+            "faq_7_question": "How do I reorder or manage my account?",
+            "faq_7_answer": "Partners receive a private reorder URL with wholesale pricing, plus optional support from a dedicated Partner Manager.",
+            "faq_8_question": "Can we resell Synapex in our facility?",
+            "faq_8_answer": "Yes. Wholesale partners may offer Synapex as an in-clinic retail product. Branded display units are available for high-volume partners."
+          },
+          "blocks": {}
         }
       },
       "block_order": [
         "ai_gen_block_6ab1806_hAFmcK",
         "klaviyo_email_marketing_sms_form_embed_block_yngTfW",
-        "ai_gen_block_ece5b94_VRExtr"
+        "ai_gen_block_ece5b94_VRExtr",
+        "ai_gen_block_fed8e21_UrR7Yd"
       ],
       "settings": {
         "content_direction": "column",
