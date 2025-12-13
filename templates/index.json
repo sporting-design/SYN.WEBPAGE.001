@@ -237,7 +237,7 @@
               "type": "text",
               "name": "t:names.heading",
               "settings": {
-                "text": "<p><strong>THE ARCHITECTURE OF A GREATER SELF.</strong></p>",
+                "text": "<p><strong>The SYNAPEX SYSTEM MISSION</strong></p>",
                 "width": "100%",
                 "max_width": "normal",
                 "alignment": "center",
@@ -262,7 +262,7 @@
             "text_amYJgw": {
               "type": "text",
               "settings": {
-                "text": "<p>Competition teaches one hard lesson: <em>the real fight is always internal.</em></p><p>I have seen the will break in giants, and I have taken my own to the absolute edge. But for the few who win that internal war, there is no greater treason than being failed by your equipment. <strong>When your spirit is absolute, your gear cannot be the weak link.</strong></p><p>I built Synapex on a single mandate: To engineer the pinnacle of performance equipment for the committed.</p><p>We do not just sell products; we provide the systems that enable your victory. We build for the athlete who has already won the fight against themselves.</p><p><strong>This is the equipment that is worthy of you.</strong></p><p>// NIKO</p>",
+                "text": "<p>We chose the name Synapex because it represents the <strong>connection</strong> between the mind, muscles, and <strong>movement</strong>.<br/><br/>‘Syn’ comes from <em><strong>synapse</strong></em> — the neural connections that control how we move.<br/><br/>‘Apex’ means <em><strong>peak performance</strong></em>.<strong><br/></strong><br/><strong>Synapex</strong> = smart performance — Today that is tape designed to elevate the way your body moves, recovers, and performs.</p>",
                 "width": "100%",
                 "max_width": "normal",
                 "alignment": "center",
@@ -286,6 +286,7 @@
             },
             "button_4rX3Tb": {
               "type": "button",
+              "disabled": true,
               "settings": {
                 "label": "Full Read",
                 "link": "shopify://collections/all",
@@ -954,6 +955,7 @@
         "text_yKnDfJ",
         "text_CAdpAp"
       ],
+      "disabled": true,
       "settings": {
         "movement_direction": "normal",
         "color_scheme": "scheme-6",
@@ -1579,6 +1581,7 @@
         "text_BXUGga",
         "text_rpBfEr"
       ],
+      "disabled": true,
       "settings": {
         "movement_direction": "normal",
         "color_scheme": "scheme-6",
