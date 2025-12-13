@@ -19,7 +19,7 @@
             "video_mobile": "shopify://files/videos/Synapex AD V2.mov",
             "image_fallback": "shopify://shop_images/IMG_4227.jpg",
             "tagline": "Synapex",
-            "heading": "To Move You.",
+            "heading": "GET MOVING",
             "subheading": "Engineered For Movement.",
             "button_label": "",
             "button_link": "",
@@ -33,7 +33,7 @@
             "video_mobile": "shopify://files/videos/IMG_7117.mov",
             "image_fallback": "shopify://shop_images/IMG_4227.jpg",
             "tagline": "Synapex",
-            "heading": "To Move You.",
+            "heading": "GET MOVING",
             "subheading": "Engineered For Movement.",
             "button_label": "",
             "button_link": "",
@@ -47,7 +47,7 @@
             "video_mobile": "shopify://files/videos/copy_1C53D966-E79C-4A40-ACD9-A1098DD7F31C.MOV",
             "image_fallback": "shopify://shop_images/IMG_0672_1.jpg",
             "tagline": "SYNAPEX",
-            "heading": "To Move You.",
+            "heading": "GET MOVING",
             "subheading": "Engineered For Movement.",
             "button_label": "",
             "button_link": "",
@@ -71,7 +71,7 @@
     "product_selection_brutalist_new": {
       "type": "product-selection-brutalist",
       "settings": {
-        "headline": "CHOOSE YOUR STANDARD",
+        "headline": "SYNAPEX KT",
         "box1_title": "THE FIRST STEP",
         "box1_subtitle": "The tool to begin the work.",
         "box1_image": "shopify://shop_images/Synapex_Gym_Sandbag_Close-Up_687c64bf-7a2c-4326-a444-dc2eba7a0d07.png",
@@ -99,19 +99,6 @@
         "box3_link": "shopify://products/the-team-pack-kinesiology-tape-10count-synapex"
       }
     },
-    "reviews_marquee_new": {
-      "type": "reviews-marquee-brutalist",
-      "settings": {
-        "padding_top": 0,
-        "padding_bottom": 40,
-        "review1_name": "Omariko L.",
-        "review1_quote": "As a Runner, my Knees thank you.",
-        "review2_name": "Keti U.",
-        "review2_quote": "Decompresses by back and has provided much relief.",
-        "review3_name": "DAVIT .C",
-        "review3_quote": "Stabilizes my shoulder and allows me to train with intensity, great piece of equipment!"
-      }
-    },
     "17597176204a724de2": {
       "type": "_blocks",
       "blocks": {
@@ -119,9 +106,9 @@
           "type": "image",
           "name": "t:names.image",
           "settings": {
-            "image": "shopify://shop_images/ChatGPT_Image_Oct_5_2025_11_23_35_PM.png",
+            "image": "shopify://shop_images/Gemini_Generated_Image_isvk1risvk1risvk.png",
             "link": "",
-            "image_ratio": "landscape",
+            "image_ratio": "adapt",
             "width": "fill",
             "custom_width": 100,
             "width_mobile": "fill",
@@ -168,6 +155,19 @@
         "gradient_direction": "to top",
         "padding-block-start": 0,
         "padding-block-end": 0
+      }
+    },
+    "reviews_marquee_new": {
+      "type": "reviews-marquee-brutalist",
+      "settings": {
+        "padding_top": 0,
+        "padding_bottom": 40,
+        "review1_name": "Omariko L.",
+        "review1_quote": "As a Runner, my Knees thank you.",
+        "review2_name": "Keti U.",
+        "review2_quote": "Decompresses by back and has provided much relief.",
+        "review3_name": "DAVIT .C",
+        "review3_quote": "Stabilizes my shoulder and allows me to train with intensity, great piece of equipment!"
       }
     },
     "section_zdibHM": {
@@ -430,6 +430,7 @@
         },
         "static-product-card": {
           "type": "product-card",
+          "disabled": true,
           "static": true,
           "settings": {
             "product": "{{ closest.product }}",
@@ -776,6 +777,19 @@
     },
     "section_e6eqGD": {
       "type": "section",
+      "blocks": {
+        "ai_gen_block_123dca6_UNtJw6": {
+          "type": "ai_gen_block_123dca6",
+          "settings": {
+            "desktop_image": "shopify://shop_images/3-layer-tech.png",
+            "background_color": "#000000"
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "ai_gen_block_123dca6_UNtJw6"
+      ],
       "settings": {
         "content_direction": "column",
         "vertical_on_mobile": true,
@@ -788,7 +802,7 @@
         "section_width": "page-width",
         "section_height": "",
         "section_height_custom": 50,
-        "color_scheme": "",
+        "color_scheme": "scheme-6",
         "background_media": "none",
         "video_position": "cover",
         "background_image_position": "cover",
@@ -2100,66 +2114,6 @@
     },
     "175773868653282ad3": {
       "type": "_blocks",
-      "blocks": {
-        "ai_gen_block_cf19188_iDEpdM": {
-          "type": "ai_gen_block_cf19188",
-          "settings": {
-            "section_heading": "What Athletes Say",
-            "section_padding": 60,
-            "background_color": "#ffffff",
-            "grid_gap": 30,
-            "card_background": "#f8f9fa",
-            "card_border_radius": 12,
-            "card_padding": 30,
-            "heading_size": 32,
-            "heading_color": "#000000",
-            "heading_margin": 40,
-            "image_width": 120,
-            "image_height": 120,
-            "image_border_radius": 60,
-            "image_margin": 20,
-            "name_size": 20,
-            "name_color": "#000000",
-            "name_margin": 10,
-            "sport_size": 14,
-            "sport_color": "#666666",
-            "sport_margin": 15,
-            "star_size": 16,
-            "star_color": "#ffc107",
-            "star_empty_color": "#e9ecef",
-            "rating_margin": 15,
-            "quote_size": 18,
-            "quote_weight": "500",
-            "quote_color": "#000000",
-            "quote_margin": 15,
-            "review_size": 16,
-            "review_color": "#333333",
-            "review_margin": 0,
-            "athlete_1_image": "shopify://shop_images/IMG_0672.jpg",
-            "athlete_1_name": "M.D.",
-            "athlete_1_sport": "Professional Footballer",
-            "athlete_1_rating": 5,
-            "athlete_1_quote": "Design is aggressive. The hold is relentless.",
-            "athlete_1_review": "You can feel the quality as soon as you handle it. It's not flimsy like other tapes. On the field, it doesn't stretch out or lose its hold, even late in the game. The double-stripe design looks engineered, and it performs that way",
-            "athlete_2_image": "shopify://shop_images/IMG_2229.jpg",
-            "athlete_2_name": "HELBOW M.",
-            "athlete_2_sport": " Pro Muay Thai Fighter",
-            "athlete_2_rating": 5,
-            "athlete_2_quote": "Holds through sweat, grappling, and impact",
-            "athlete_2_review": "In my sport, if your tape peels, it's a dangerous distraction. I've had other brands come undone after one hard sparring session. Synapex holds. Through hours of grappling, pad work, and sweating, the adhesion is on another level. It provides the necessary support for my wrists and ankles without limiting my striking. This is professional-grade gear.",
-            "athlete_3_image": "shopify://shop_images/IMG_2228.jpg",
-            "athlete_3_name": "David L.",
-            "athlete_3_sport": "Tennis Player & Endurance Athlete",
-            "athlete_3_rating": 5,
-            "athlete_3_quote": "Unexpected injury on Kilimanjaro. This tape held.",
-            "athlete_3_review": "I packed Synapex for my trek up Kilimanjaro for my usual knee support. When I took a bad fall and strained my shoulder, it became mission-critical. I applied it right there on the trail, and it didn't move for the next three days of grueling hiking. In a place where gear failure isn't an option, Synapex delivered. Absolute trust in this product."
-          },
-          "blocks": {}
-        }
-      },
-      "block_order": [
-        "ai_gen_block_cf19188_iDEpdM"
-      ],
       "settings": {
         "content_direction": "column",
         "vertical_on_mobile": true,
@@ -2252,8 +2206,8 @@
   "order": [
     "synapex_carousel_v5_G73PPg",
     "product_selection_brutalist_new",
-    "reviews_marquee_new",
     "17597176204a724de2",
+    "reviews_marquee_new",
     "section_zdibHM",
     "175971785402019ebb",
     "product_list_X8Q7bi",
