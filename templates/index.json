@@ -237,7 +237,7 @@
               "type": "text",
               "name": "t:names.heading",
               "settings": {
-                "text": "<p><strong>The SYNAPEX SYSTEM MISSION</strong></p>",
+                "text": "<p><strong>The SYNAPEX SYSTEM </strong></p>",
                 "width": "100%",
                 "max_width": "normal",
                 "alignment": "center",
