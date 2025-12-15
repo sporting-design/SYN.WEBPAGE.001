@@ -328,6 +328,89 @@
         "box3_link": "shopify://products/synapex-air"
       }
     },
+    "main_product_FhdEeA": {
+      "type": "main-product",
+      "disabled": true,
+      "name": "Synapex Product Page",
+      "settings": {
+        "product": "",
+        "override_title": "",
+        "cta_text": "ACQUIRE STANDARD",
+        "spec_elasticity": "160% KINEMATIC ENVELOPE",
+        "spec_substrate": "95% ORGANIC COTTON / 5% ELASTANE",
+        "spec_adhesion": "ABSOLUTE (SUBMERSIBLE)",
+        "spec_neurological": "LATEX-FREE (HYPOALLERGENIC)",
+        "spec_operational": "UP TO 7 DAYS",
+        "spec_strips": "20 (10-INCH) PRE-CUT STRIPS PER ROLL",
+        "doctrine_text": "Reinforce kinetic chains. Provide direct neuro-haptic feedback. Maintain absolute structural integrity under maximum operational duress.",
+        "armory_product_1": "",
+        "armory_product_2": "",
+        "armory_product_3": "",
+        "dispatch_1_quote": "",
+        "dispatch_1_name": "",
+        "dispatch_1_title": "",
+        "dispatch_2_quote": "",
+        "dispatch_2_name": "",
+        "dispatch_2_title": "",
+        "dispatch_3_quote": "",
+        "dispatch_3_name": "",
+        "dispatch_3_title": "",
+        "dispatch_4_quote": "",
+        "dispatch_4_name": "",
+        "dispatch_4_title": "",
+        "dispatch_5_quote": "",
+        "dispatch_5_name": "",
+        "dispatch_5_title": ""
+      }
+    },
+    "17657859164c1d8741": {
+      "type": "_blocks",
+      "blocks": {
+        "ai_gen_block_fdfbd03_MCw6Ph": {
+          "type": "ai_gen_block_fdfbd03",
+          "settings": {
+            "image": "shopify://shop_images/3-layer-tech_56385323-f4e9-45fd-bf2d-b3bfb73108c6.png",
+            "image_fit": "contain",
+            "image_position": "center",
+            "frame_height": 400,
+            "mobile_frame_height": 300,
+            "border_radius": 0,
+            "background_color": "#000000"
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "ai_gen_block_fdfbd03_MCw6Ph"
+      ],
+      "settings": {
+        "content_direction": "column",
+        "vertical_on_mobile": true,
+        "horizontal_alignment": "flex-start",
+        "vertical_alignment": "center",
+        "align_baseline": false,
+        "horizontal_alignment_flex_direction_column": "flex-start",
+        "vertical_alignment_flex_direction_column": "center",
+        "gap": 12,
+        "section_width": "page-width",
+        "section_height": "",
+        "section_height_custom": 50,
+        "color_scheme": "scheme-6",
+        "background_media": "none",
+        "video_position": "cover",
+        "background_image_position": "cover",
+        "border": "none",
+        "border_width": 1,
+        "border_opacity": 100,
+        "border_radius": 0,
+        "toggle_overlay": false,
+        "overlay_color": "#00000026",
+        "overlay_style": "solid",
+        "gradient_direction": "to top",
+        "padding-block-start": 0,
+        "padding-block-end": 0
+      }
+    },
     "section_6C7VfJ": {
       "type": "section",
       "blocks": {
@@ -420,7 +503,7 @@
             "text_HV9t4P": {
               "type": "text",
               "settings": {
-                "text": "<p>our cardiovascular system is a combustion engine. Oxygen is the fuel. During peak output, the nasal valve naturally collapses, throttling your intake and triggering hypoxic fatigue.</p><p>Synapex 'AIR' installs a rigid exoskeleton to mechanically dilate the airway. The spring-loaded core generates outward tension, keeping the valve open under load.</p><p><strong>+31% Airflow Capacity.</strong></p><p><strong>Zero Valve Collapse.</strong></p><p><strong>Maximum Oxygen Saturation.</strong></p>",
+                "text": "<p></p><p>Synapex 'AIR' installs a rigid exoskeleton to mechanically dilate the airway. The spring-loaded core generates outward tension, keeping the valve open under load.</p><p><strong>+31% Airflow Capacity.</strong></p><p><strong>Zero Valve Collapse.</strong></p><p><strong>Maximum Oxygen Saturation.</strong></p>",
                 "width": "100%",
                 "max_width": "narrow",
                 "alignment": "left",
@@ -495,89 +578,6 @@
         "gradient_direction": "to top",
         "padding-block-start": 40,
         "padding-block-end": 40
-      }
-    },
-    "main_product_FhdEeA": {
-      "type": "main-product",
-      "disabled": true,
-      "name": "Synapex Product Page",
-      "settings": {
-        "product": "",
-        "override_title": "",
-        "cta_text": "ACQUIRE STANDARD",
-        "spec_elasticity": "160% KINEMATIC ENVELOPE",
-        "spec_substrate": "95% ORGANIC COTTON / 5% ELASTANE",
-        "spec_adhesion": "ABSOLUTE (SUBMERSIBLE)",
-        "spec_neurological": "LATEX-FREE (HYPOALLERGENIC)",
-        "spec_operational": "UP TO 7 DAYS",
-        "spec_strips": "20 (10-INCH) PRE-CUT STRIPS PER ROLL",
-        "doctrine_text": "Reinforce kinetic chains. Provide direct neuro-haptic feedback. Maintain absolute structural integrity under maximum operational duress.",
-        "armory_product_1": "",
-        "armory_product_2": "",
-        "armory_product_3": "",
-        "dispatch_1_quote": "",
-        "dispatch_1_name": "",
-        "dispatch_1_title": "",
-        "dispatch_2_quote": "",
-        "dispatch_2_name": "",
-        "dispatch_2_title": "",
-        "dispatch_3_quote": "",
-        "dispatch_3_name": "",
-        "dispatch_3_title": "",
-        "dispatch_4_quote": "",
-        "dispatch_4_name": "",
-        "dispatch_4_title": "",
-        "dispatch_5_quote": "",
-        "dispatch_5_name": "",
-        "dispatch_5_title": ""
-      }
-    },
-    "17657859164c1d8741": {
-      "type": "_blocks",
-      "blocks": {
-        "ai_gen_block_fdfbd03_Y3mmEj": {
-          "type": "ai_gen_block_fdfbd03",
-          "settings": {
-            "image": "shopify://shop_images/3-layer-tech_56385323-f4e9-45fd-bf2d-b3bfb73108c6.png",
-            "image_fit": "contain",
-            "image_position": "center",
-            "frame_height": 400,
-            "mobile_frame_height": 300,
-            "border_radius": 0,
-            "background_color": "#000000"
-          },
-          "blocks": {}
-        }
-      },
-      "block_order": [
-        "ai_gen_block_fdfbd03_Y3mmEj"
-      ],
-      "settings": {
-        "content_direction": "column",
-        "vertical_on_mobile": true,
-        "horizontal_alignment": "flex-start",
-        "vertical_alignment": "center",
-        "align_baseline": false,
-        "horizontal_alignment_flex_direction_column": "flex-start",
-        "vertical_alignment_flex_direction_column": "center",
-        "gap": 12,
-        "section_width": "page-width",
-        "section_height": "",
-        "section_height_custom": 50,
-        "color_scheme": "scheme-6",
-        "background_media": "none",
-        "video_position": "cover",
-        "background_image_position": "cover",
-        "border": "none",
-        "border_width": 1,
-        "border_opacity": 100,
-        "border_radius": 0,
-        "toggle_overlay": false,
-        "overlay_color": "#00000026",
-        "overlay_style": "solid",
-        "gradient_direction": "to top",
-        "padding-block-start": 0,
-        "padding-block-end": 0
       }
     },
     "section_c7dNJW": {
@@ -857,9 +857,9 @@
   "order": [
     "main",
     "product_selection_brutalist_JaWGMJ",
-    "section_6C7VfJ",
     "main_product_FhdEeA",
     "17657859164c1d8741",
+    "section_6C7VfJ",
     "section_c7dNJW"
   ]
 }
