@@ -301,7 +301,7 @@
       "name": "Choose Your Standard",
       "settings": {
         "headline": "CHOOSE YOUR STANDARD",
-        "box1_title": "THE FIRST STEP",
+        "box1_title": "SYNAPEX KT",
         "box1_subtitle": "The tool to begin the work.",
         "box1_image": "shopify://shop_images/Synapex_Gym_Sandbag_Close-Up_687c64bf-7a2c-4326-a444-dc2eba7a0d07.png",
         "box1_feature1": "1 Roll of Synapex Tape",
@@ -334,7 +334,7 @@
         "image_X7tmMT": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/Copilot_20251112_110448.png",
+            "image": "shopify://shop_images/Gemini_Generated_Image_l1op9fl1op9fl1op.png",
             "link": "",
             "image_ratio": "adapt",
             "width": "fill",
@@ -395,7 +395,7 @@
               "type": "text",
               "name": "t:names.heading",
               "settings": {
-                "text": "<h3><strong>THE STANDARD EVOLVES.</strong></h3>",
+                "text": "<p><strong>OPTIMIZE VOLUMETRIC EFFICIENCY.</strong></p>",
                 "width": "fit-content",
                 "max_width": "normal",
                 "alignment": "left",
@@ -420,7 +420,7 @@
             "text_HV9t4P": {
               "type": "text",
               "settings": {
-                "text": "<p>The architecture of the apex athlete is a relentless pursuit. Complacency is the enemy. A new instrument is being forged—an evolution of our core doctrine, engineered to grant dominion over a new battlefield.<br/>The technical specifications are classified. The first dispatch will be released only to the core unit.</p>",
+                "text": "<p>our cardiovascular system is a combustion engine. Oxygen is the fuel. During peak output, the nasal valve naturally collapses, throttling your intake and triggering hypoxic fatigue.</p><p>Synapex 'AIR' installs a rigid exoskeleton to mechanically dilate the airway. The spring-loaded core generates outward tension, keeping the valve open under load.</p><p><strong>+31% Airflow Capacity.</strong></p><p><strong>Zero Valve Collapse.</strong></p><p><strong>Maximum Oxygen Saturation.</strong></p>",
                 "width": "100%",
                 "max_width": "narrow",
                 "alignment": "left",
@@ -445,8 +445,8 @@
             "button_EAEgqk": {
               "type": "button",
               "settings": {
-                "label": "Join Roster",
-                "link": "shopify://blogs/news",
+                "label": "SYNAPEX 'AIR'",
+                "link": "shopify://products/synapex-air",
                 "open_in_new_tab": false,
                 "style_class": "button",
                 "width": "fit-content",
@@ -497,40 +497,6 @@
         "padding-block-end": 40
       }
     },
-    "main_product_7zgAMz": {
-      "type": "main-product",
-      "name": "Synapex Product Page",
-      "settings": {
-        "product": "synapex-tape-kt-performance-trio",
-        "override_title": "",
-        "cta_text": "ACQUIRE STANDARD",
-        "spec_elasticity": "160% KINEMATIC ENVELOPE",
-        "spec_substrate": "95% ORGANIC COTTON / 5% SPANDEX",
-        "spec_adhesion": "ABSOLUTE (SUBMERSIBLE)",
-        "spec_neurological": "LATEX-FREE (HYPOALLERGENIC)",
-        "spec_operational": "5-7 DAYS",
-        "spec_strips": "20 (10-INCH) PRE-CUT STRIPS PER ROLL",
-        "doctrine_text": "Reinforce kinetic chains. Provide direct neuro-haptic feedback. Maintain absolute structural integrity under maximum operational duress.",
-        "armory_product_1": "",
-        "armory_product_2": "",
-        "armory_product_3": "",
-        "dispatch_1_quote": "",
-        "dispatch_1_name": "",
-        "dispatch_1_title": "",
-        "dispatch_2_quote": "",
-        "dispatch_2_name": "",
-        "dispatch_2_title": "",
-        "dispatch_3_quote": "",
-        "dispatch_3_name": "",
-        "dispatch_3_title": "",
-        "dispatch_4_quote": "",
-        "dispatch_4_name": "",
-        "dispatch_4_title": "",
-        "dispatch_5_quote": "",
-        "dispatch_5_name": "",
-        "dispatch_5_title": ""
-      }
-    },
     "main_product_FhdEeA": {
       "type": "main-product",
       "disabled": true,
@@ -566,99 +532,35 @@
         "dispatch_5_title": ""
       }
     },
-    "section_KdA73g": {
-      "type": "section",
+    "17657859164c1d8741": {
+      "type": "_blocks",
       "blocks": {
-        "text_xtmViA": {
-          "type": "text",
-          "name": "t:names.heading",
+        "ai_gen_block_fdfbd03_Y3mmEj": {
+          "type": "ai_gen_block_fdfbd03",
           "settings": {
-            "text": "<h2><em>The Synapex momentum newletter</em></h2>",
-            "width": "100%",
-            "max_width": "normal",
-            "alignment": "center",
-            "type_preset": "rte",
-            "font": "var(--font-body--family)",
-            "font_size": "1rem",
-            "line_height": "normal",
-            "letter_spacing": "normal",
-            "case": "none",
-            "wrap": "pretty",
-            "color": "var(--color-foreground)",
-            "background": false,
-            "background_color": "#00000026",
-            "corner_radius": 0,
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {}
-        },
-        "text_nmAPnE": {
-          "type": "text",
-          "settings": {
-            "text": "<p>Gain access to classified athlete intelligence, early asset deployment, and the core doctrines of the Synapex Standard.</p>",
-            "width": "100%",
-            "max_width": "normal",
-            "alignment": "center",
-            "type_preset": "paragraph",
-            "font": "var(--font-body--family)",
-            "font_size": "1rem",
-            "line_height": "normal",
-            "letter_spacing": "normal",
-            "case": "none",
-            "wrap": "pretty",
-            "color": "var(--color-foreground)",
-            "background": false,
-            "background_color": "#00000026",
-            "corner_radius": 0,
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {}
-        },
-        "email_signup_yf8GaB": {
-          "type": "email-signup",
-          "settings": {
-            "width": "custom",
-            "custom_width": 50,
-            "inherit_color_scheme": true,
-            "color_scheme": "",
-            "border_style": "all",
-            "border_width": 1,
-            "border_radius": 100,
-            "input_type_preset": "paragraph",
-            "style_class": "button-unstyled",
-            "display_type": "arrow",
-            "label": "Sign Up",
-            "integrated_button": true,
-            "button_type_preset": "paragraph",
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
+            "image": "shopify://shop_images/3-layer-tech_56385323-f4e9-45fd-bf2d-b3bfb73108c6.png",
+            "image_fit": "contain",
+            "image_position": "center",
+            "frame_height": 400,
+            "mobile_frame_height": 300,
+            "border_radius": 0,
+            "background_color": "#000000"
           },
           "blocks": {}
         }
       },
       "block_order": [
-        "text_xtmViA",
-        "text_nmAPnE",
-        "email_signup_yf8GaB"
+        "ai_gen_block_fdfbd03_Y3mmEj"
       ],
-      "name": "t:names.email_signup",
       "settings": {
         "content_direction": "column",
         "vertical_on_mobile": true,
         "horizontal_alignment": "flex-start",
         "vertical_alignment": "center",
         "align_baseline": false,
-        "horizontal_alignment_flex_direction_column": "center",
+        "horizontal_alignment_flex_direction_column": "flex-start",
         "vertical_alignment_flex_direction_column": "center",
-        "gap": 16,
+        "gap": 12,
         "section_width": "page-width",
         "section_height": "",
         "section_height_custom": 50,
@@ -674,8 +576,8 @@
         "overlay_color": "#00000026",
         "overlay_style": "solid",
         "gradient_direction": "to top",
-        "padding-block-start": 40,
-        "padding-block-end": 40
+        "padding-block-start": 0,
+        "padding-block-end": 0
       }
     },
     "section_c7dNJW": {
@@ -956,9 +858,8 @@
     "main",
     "product_selection_brutalist_JaWGMJ",
     "section_6C7VfJ",
-    "main_product_7zgAMz",
     "main_product_FhdEeA",
-    "section_KdA73g",
+    "17657859164c1d8741",
     "section_c7dNJW"
   ]
 }
