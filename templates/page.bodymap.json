@@ -15,7 +15,7 @@
         "text_yCdHBJ": {
           "type": "text",
           "settings": {
-            "text": "<p>LEARN</p>",
+            "text": "",
             "width": "100%",
             "max_width": "normal",
             "alignment": "center",
@@ -64,6 +64,55 @@
         "border_radius": 0,
         "toggle_overlay": true,
         "overlay_color": "rgba(0,0,0,0)",
+        "overlay_style": "solid",
+        "gradient_direction": "to top",
+        "padding-block-start": 0,
+        "padding-block-end": 0
+      }
+    },
+    "blocks_XiY3nd": {
+      "type": "_blocks",
+      "blocks": {
+        "ai_gen_block_fdfbd03_XdQpkD": {
+          "type": "ai_gen_block_fdfbd03",
+          "settings": {
+            "image": "shopify://shop_images/1231.png",
+            "image_fit": "fill",
+            "image_position": "center",
+            "frame_height": 400,
+            "mobile_frame_height": 300,
+            "border_radius": 0,
+            "background_color": "#f4f4f4"
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "ai_gen_block_fdfbd03_XdQpkD"
+      ],
+      "name": "Image frame",
+      "settings": {
+        "content_direction": "column",
+        "vertical_on_mobile": true,
+        "horizontal_alignment": "flex-start",
+        "vertical_alignment": "center",
+        "align_baseline": false,
+        "horizontal_alignment_flex_direction_column": "flex-start",
+        "vertical_alignment_flex_direction_column": "center",
+        "gap": 12,
+        "section_width": "page-width",
+        "section_height": "",
+        "section_height_custom": 50,
+        "color_scheme": "scheme-6",
+        "background_media": "none",
+        "video_position": "cover",
+        "background_image_position": "cover",
+        "border": "none",
+        "border_width": 1,
+        "border_opacity": 100,
+        "border_radius": 0,
+        "toggle_overlay": false,
+        "overlay_color": "#00000026",
         "overlay_style": "solid",
         "gradient_direction": "to top",
         "padding-block-start": 0,
@@ -1157,6 +1206,7 @@
   },
   "order": [
     "section_jWNT6U",
+    "blocks_XiY3nd",
     "section_Xwmc7b",
     "main"
   ]
