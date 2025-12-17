@@ -551,6 +551,7 @@
         "image_X7tmMT",
         "group_wYPqMJ"
       ],
+      "disabled": true,
       "name": "t:names.image_with_text",
       "settings": {
         "content_direction": "row",
