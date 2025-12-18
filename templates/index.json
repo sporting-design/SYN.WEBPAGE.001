@@ -15,21 +15,21 @@
         "slide_CmCVmA": {
           "type": "slide",
           "settings": {
-            "video_desktop": "shopify://files/videos/1210.mp4",
+            "video_desktop": "shopify://files/videos/u9885441888_httpss.mj.runTaQ5cOx5gm8_animate_the_product_phot_ab6904d7-3335-475a-b272-f1dae33cbdce_3.mp4",
             "video_mobile": "shopify://files/videos/Synapex AD V2.mov",
-            "image_fallback": "shopify://shop_images/IMG_4227.jpg",
+            "image_fallback": "shopify://shop_images/syn_air.png",
             "tagline": "Synapex",
-            "heading": "GET MOVING",
-            "subheading": "Engineered For Movement.",
-            "button_label": "",
-            "button_link": "",
-            "text_position": "bottom-left"
+            "heading": "SYNAPEX 'AIR' RELEASE",
+            "subheading": "Oxygen Intake Nasal Strips",
+            "button_label": "SHOP NOW",
+            "button_link": "shopify://products/synapex-air",
+            "text_position": "top-left"
           }
         },
         "slide_KLrfiE": {
           "type": "slide",
           "settings": {
-            "video_desktop": "shopify://files/videos/IMG_7117.mov",
+            "video_desktop": "shopify://files/videos/1210.mp4",
             "video_mobile": "shopify://files/videos/IMG_7117.mov",
             "image_fallback": "shopify://shop_images/IMG_4227.jpg",
             "tagline": "Synapex",
