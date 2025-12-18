@@ -133,7 +133,7 @@
                 "product": "{{ closest.product }}",
                 "variant_style": "buttons",
                 "show_swatches": true,
-                "alignment": "left",
+                "alignment": "center",
                 "padding-block-start": 12,
                 "padding-block-end": 24,
                 "padding-inline-start": 0,
@@ -185,7 +185,7 @@
               "type": "custom-liquid",
               "name": "t:names.custom_liquid",
               "settings": {
-                "custom_liquid": "<style>\n  .product-specs {\n    width: 100%;\n    max-width: 600px;\n    margin: 20px 0;\n    border-collapse: collapse;\n    font-family: Arial, sans-serif;\n    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);\n    border-radius: 8px;\n    overflow: hidden;\n  }\n  .product-specs thead {\n    background-color: #2563EB;\n  }\n  .product-specs thead th {\n    color: #fff;\n    text-transform: uppercase;\n    font-size: 0.85em;\n    letter-spacing: 0.05em;\n    padding: 12px 15px;\n  }\n  .product-specs tbody tr:nth-child(even) {\n    background-color: #f5f5f5;\n  }\n  .product-specs tbody tr:hover {\n    background-color: #e2e8f0;\n  }\n  .product-specs th,\n  .product-specs td {\n    padding: 12px 15px;\n    text-align: left;\n  }\n  .product-specs td {\n    border-bottom: 1px solid #e2e8f0;\n    font-size: 0.95em;\n    color: #999;\n  }\n</style>\n\n<table class=\"product-specs\">\n  <thead>\n    <tr>\n      <th>Specification</th>\n      <th>Detail</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>Tape Width</td>\n      <td>5 cm</td>\n    </tr>\n    <tr>\n      <td>Roll Length</td>\n      <td>5 m</td>\n    </tr>\n    <tr>\n      <td>Stretch Capacity</td>\n      <td>140% of resting length</td>\n    </tr>\n    <tr>\n      <td>Wear Time</td>\n      <td>3–5 days</td>\n    </tr>\n    <tr>\n      <td>Material</td>\n      <td>Cotton + nylon blend</td>\n    </tr>\n  </tbody>\n</table>"
+                "custom_liquid": "<style>\n  .specs-table {\n    width: 100%;\n    border-collapse: collapse;\n    background-color: #000000;\n    margin: 20px 0;\n  }\n  .specs-table thead {\n    background-color: #2563eb;\n  }\n  .specs-table th {\n    color: #ffffff;\n    padding: 12px;\n    text-align: left;\n    font-weight: 600;\n  }\n  .specs-table td {\n    color: #ffffff;\n    padding: 12px;\n    border-bottom: 1px solid #333333;\n  }\n  .specs-table tr:last-child td {\n    border-bottom: none;\n  }\n</style>\n\n<table class=\"specs-table\">\n  <thead>\n    <tr>\n      <th>Specification</th>\n      <th>Details</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>Mechanism</td>\n      <td>Spring-Loaded Core</td>\n    </tr>\n    <tr>\n      <td>Airflow</td>\n      <td>+31% Volumetric Intake</td>\n    </tr>\n    <tr>\n      <td>Chassis</td>\n      <td>Porous Sweat-Wicking</td>\n    </tr>\n    <tr>\n      <td>Adhesion</td>\n      <td>Hypoallergenic Acrylic</td>\n    </tr>\n    <tr>\n      <td>Duration</td>\n      <td>12-18 Hours</td>\n    </tr>\n  </tbody>\n</table>"
               },
               "blocks": {}
             },
