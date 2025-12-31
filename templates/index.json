@@ -15,15 +15,15 @@
         "slide_CmCVmA": {
           "type": "slide",
           "settings": {
-            "video_desktop": "shopify://files/videos/u9885441888_httpss.mj.runTaQ5cOx5gm8_animate_the_product_phot_ab6904d7-3335-475a-b272-f1dae33cbdce_3.mp4",
+            "video_desktop": "shopify://files/videos/u9885441888_httpss.mj.run1_1T6McC2qE_Subtle_cinematic_environ_c007e467-cd7f-462b-99fa-4783decbdb30_1.mp4",
             "video_mobile": "shopify://files/videos/u9885441888_httpss.mj.run6a1wcF7DFJU_animate_the_product_phot_61faf0af-fb1d-4508-8a9f-508f96cc54f7_1.mp4",
             "image_fallback": "shopify://shop_images/syn_air.png",
-            "tagline": "Synapex",
-            "heading": "SYNAPEX 'AIR' RELEASE",
-            "subheading": "Oxygen Intake Nasal Strips",
-            "button_label": "SHOP NOW",
+            "tagline": "",
+            "heading": "",
+            "subheading": "",
+            "button_label": "UPGRADE INTAKE",
             "button_link": "shopify://products/synapex-air",
-            "text_position": "top-left"
+            "text_position": "bottom-left"
           }
         },
         "slide_KLrfiE": {
@@ -74,7 +74,7 @@
         "headline": "ATHLETE ENGINEERING",
         "box1_title": "SYNAPEX KT",
         "box1_subtitle": "The tool to begin the work.",
-        "box1_image": "shopify://shop_images/Synapex_Gym_Sandbag_Close-Up_687c64bf-7a2c-4326-a444-dc2eba7a0d07.png",
+        "box1_image": "shopify://shop_images/Group_29.png",
         "box1_feature1": "1 Roll of Synapex Tape",
         "box1_feature2": "The first step to silencing excuses",
         "box1_feature3": "Feel the standard for yourself",
@@ -83,7 +83,7 @@
         "box2_badge": "BEST VALUE",
         "box2_title": "THE ATHLETE PACK",
         "box2_subtitle": "The monthly supply for the committed.",
-        "box2_image": "shopify://shop_images/Copilot_20251109_022800_51233704-9874-4c79-bcab-97e4a4dfcc8e.png",
+        "box2_image": "shopify://shop_images/Gemini_Generated_Image_iey8xdiey8xdiey8.png",
         "box2_feature1": "3 Rolls of Synapex Tape",
         "box2_feature2": "For consistent, daily training",
         "box2_feature3": "Never run out, never make an excuse",
@@ -91,7 +91,7 @@
         "box2_link": "shopify://products/synapex-tape-kt-performance-trio",
         "box3_title": "SYNAPEX 'AIR'",
         "box3_subtitle": "Optimize volumetric efficiency.",
-        "box3_image": "shopify://shop_images/Gemini_Generated_Image_red1ctred1ctred1.png",
+        "box3_image": "shopify://shop_images/Group_31.png",
         "box3_feature1": "Mechanical Valve Dilation",
         "box3_feature2": "+31% Airflow Capacity",
         "box3_feature3": "Delay Hypoxic Failure",
