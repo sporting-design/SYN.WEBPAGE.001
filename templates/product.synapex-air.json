@@ -53,7 +53,7 @@
             "gap": 12,
             "sticky_details_desktop": true,
             "inherit_color_scheme": true,
-            "color_scheme": "scheme-6",
+            "color_scheme": "scheme-7",
             "background_media": "none",
             "video_position": "cover",
             "background_image_position": "cover",
@@ -222,7 +222,7 @@
         "equal_columns": false,
         "limit_details_width": false,
         "gap": 8,
-        "color_scheme": "scheme-6",
+        "color_scheme": "scheme-7",
         "padding-block-start": 0,
         "padding-block-end": 0
       }
@@ -1370,7 +1370,7 @@
         "section_width": "page-width",
         "section_height": "",
         "section_height_custom": 50,
-        "color_scheme": "scheme-6",
+        "color_scheme": "scheme-7",
         "background_media": "none",
         "video_position": "cover",
         "background_image_position": "cover",
