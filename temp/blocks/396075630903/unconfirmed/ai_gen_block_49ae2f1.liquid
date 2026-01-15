@@ -1,6 +1,446 @@
+{% doc %}
+  @prompt
+    create for me a 16:4 section where i can put a cta, i want the user to be able to choose a 'QTY' from a scroll bar of numbers 1-11, and second button is cta button that will be linked to product page.
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-qty-cta-section-{{ ai_gen_id }} {
+    display: block;
+    width: 100%;
+    position: relative;
+    aspect-ratio: 16 / 4;
+    background-color: {{ block.settings.background_color }};
+    overflow: hidden;
+  }
+
+  .ai-qty-cta-container-{{ ai_gen_id }} {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+    height: 100%;
+    width: 100%;
+    padding: 20px;
+  }
+
+  .ai-qty-selector-wrapper-{{ ai_gen_id }} {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .ai-qty-label-{{ ai_gen_id }} {
+    font-size: {{ block.settings.label_size }}px;
+    font-weight: 600;
+    color: {{ block.settings.text_color }};
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  .ai-qty-selector-{{ ai_gen_id }} {
+    position: relative;
+    width: {{ block.settings.selector_width }}px;
+  }
+
+  .ai-qty-display-{{ ai_gen_id }} {
+    width: 100%;
+    padding: 12px 20px;
+    font-size: {{ block.settings.qty_display_size }}px;
+    font-weight: 700;
+    text-align: center;
+    color: {{ block.settings.text_color }};
+    background-color: {{ block.settings.selector_bg_color }};
+    border: {{ block.settings.selector_border_width }}px solid {{ block.settings.selector_border_color }};
+    border-radius: {{ block.settings.selector_border_radius }}px;
+    cursor: pointer;
+    user-select: none;
+  }
+
+  .ai-qty-dropdown-{{ ai_gen_id }} {
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 0;
+    right: 0;
+    max-height: 200px;
+    overflow-y: auto;
+    background-color: {{ block.settings.dropdown_bg_color }};
+    border: {{ block.settings.selector_border_width }}px solid {{ block.settings.selector_border_color }};
+    border-radius: {{ block.settings.selector_border_radius }}px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
+    z-index: 10;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
+
+  .ai-qty-dropdown-{{ ai_gen_id }}.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  .ai-qty-option-{{ ai_gen_id }} {
+    padding: 12px 20px;
+    font-size: {{ block.settings.qty_display_size }}px;
+    font-weight: 600;
+    text-align: center;
+    color: {{ block.settings.text_color }};
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+  }
+
+  .ai-qty-option-{{ ai_gen_id }}:hover {
+    background-color: {{ block.settings.dropdown_hover_color }};
+  }
+
+  .ai-qty-option-{{ ai_gen_id }}.selected {
+    background-color: {{ block.settings.selector_bg_color }};
+  }
+
+  .ai-cta-button-{{ ai_gen_id }} {
+    padding: 16px 48px;
+    font-size: {{ block.settings.button_text_size }}px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: {{ block.settings.button_text_color }};
+    background-color: {{ block.settings.button_bg_color }};
+    border: {{ block.settings.button_border_width }}px solid {{ block.settings.button_border_color }};
+    border-radius: {{ block.settings.button_border_radius }}px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .ai-cta-button-{{ ai_gen_id }}:hover {
+    background-color: {{ block.settings.button_hover_bg_color }};
+    color: {{ block.settings.button_hover_text_color }};
+    border-color: {{ block.settings.button_hover_border_color }};
+    transform: translateY(-2px);
+  }
+
+  @media screen and (max-width: 749px) {
+    .ai-qty-cta-container-{{ ai_gen_id }} {
+      flex-direction: column;
+      gap: 16px;
+      padding: 16px;
+    }
+
+    .ai-qty-selector-{{ ai_gen_id }} {
+      width: 100%;
+      max-width: 200px;
+    }
+
+    .ai-cta-button-{{ ai_gen_id }} {
+      width: 100%;
+      max-width: 300px;
+    }
+  }
+{% endstyle %}
+
+<qty-cta-section-{{ ai_gen_id }}
+  class="ai-qty-cta-section-{{ ai_gen_id }}"
+  {{ block.shopify_attributes }}
+>
+  <div class="ai-qty-cta-container-{{ ai_gen_id }}">
+    <div class="ai-qty-selector-wrapper-{{ ai_gen_id }}">
+      {% if block.settings.qty_label != blank %}
+        <div class="ai-qty-label-{{ ai_gen_id }}">{{ block.settings.qty_label }}</div>
+      {% endif %}
+      <div class="ai-qty-selector-{{ ai_gen_id }}">
+        <div class="ai-qty-display-{{ ai_gen_id }}" data-qty-display>1</div>
+        <div class="ai-qty-dropdown-{{ ai_gen_id }}" data-qty-dropdown>
+          {% for i in (1..11) %}
+            <div class="ai-qty-option-{{ ai_gen_id }} {% if i == 1 %}selected{% endif %}" data-qty-value="{{ i }}">
+              {{ i }}
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+
+    {% if block.settings.cta_link != blank %}
+      <a
+        href="{{ block.settings.cta_link }}"
+        class="ai-cta-button-{{ ai_gen_id }}"
+        data-cta-link
+      >
+        {{ block.settings.cta_text }}
+      </a>
+    {% else %}
+      <button class="ai-cta-button-{{ ai_gen_id }}" disabled>
+        {{ block.settings.cta_text }}
+      </button>
+    {% endif %}
+  </div>
+</qty-cta-section-{{ ai_gen_id }}>
+
+<script>
+  (function() {
+    class QtyCTASection{{ ai_gen_id }} extends HTMLElement {
+      constructor() {
+        super();
+        this.selectedQty = 1;
+      }
+
+      connectedCallback() {
+        this.display = this.querySelector('[data-qty-display]');
+        this.dropdown = this.querySelector('[data-qty-dropdown]');
+        this.options = this.querySelectorAll('[data-qty-value]');
+        this.ctaLink = this.querySelector('[data-cta-link]');
+
+        this.setupEventListeners();
+      }
+
+      setupEventListeners() {
+        this.display.addEventListener('click', () => {
+          this.toggleDropdown();
+        });
+
+        this.options.forEach((option) => {
+          option.addEventListener('click', (e) => {
+            const value = parseInt(e.target.getAttribute('data-qty-value'));
+            this.selectQty(value);
+          });
+        });
+
+        document.addEventListener('click', (e) => {
+          if (!this.contains(e.target)) {
+            this.closeDropdown();
+          }
+        });
+      }
+
+      toggleDropdown() {
+        this.dropdown.classList.toggle('active');
+      }
+
+      closeDropdown() {
+        this.dropdown.classList.remove('active');
+      }
+
+      selectQty(value) {
+        this.selectedQty = value;
+        this.display.textContent = value;
+
+        this.options.forEach((opt) => {
+          opt.classList.remove('selected');
+          if (parseInt(opt.getAttribute('data-qty-value')) === value) {
+            opt.classList.add('selected');
+          }
+        });
+
+        if (this.ctaLink) {
+          const url = new URL(this.ctaLink.href);
+          url.searchParams.set('quantity', value);
+          this.ctaLink.href = url.toString();
+        }
+
+        this.closeDropdown();
+      }
+    }
+
+    customElements.define('qty-cta-section-{{ ai_gen_id }}', QtyCTASection{{ ai_gen_id }});
+  })();
+</script>
+
 {% schema %}
- {
-   "name": "AI_Block",
-   "tag": "shopify-ai-generated-block"
- }
+{
+  "name": "Quantity CTA section",
+  "tag": null,
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section style"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text",
+      "default": "#ffffff"
+    },
+    {
+      "type": "header",
+      "content": "Quantity selector"
+    },
+    {
+      "type": "text",
+      "id": "qty_label",
+      "label": "Label",
+      "default": "Select Quantity"
+    },
+    {
+      "type": "range",
+      "id": "label_size",
+      "min": 10,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "label": "Label size",
+      "default": 14
+    },
+    {
+      "type": "range",
+      "id": "selector_width",
+      "min": 80,
+      "max": 200,
+      "step": 10,
+      "unit": "px",
+      "label": "Selector width",
+      "default": 120
+    },
+    {
+      "type": "range",
+      "id": "qty_display_size",
+      "min": 14,
+      "max": 32,
+      "step": 2,
+      "unit": "px",
+      "label": "Number size",
+      "default": 18
+    },
+    {
+      "type": "color",
+      "id": "selector_bg_color",
+      "label": "Background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "selector_border_color",
+      "label": "Border",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "selector_border_width",
+      "min": 0,
+      "max": 4,
+      "step": 1,
+      "unit": "px",
+      "label": "Border width",
+      "default": 2
+    },
+    {
+      "type": "range",
+      "id": "selector_border_radius",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "label": "Border radius",
+      "default": 8
+    },
+    {
+      "type": "color",
+      "id": "dropdown_bg_color",
+      "label": "Dropdown background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "dropdown_hover_color",
+      "label": "Dropdown hover",
+      "default": "#f5f5f5"
+    },
+    {
+      "type": "header",
+      "content": "CTA button"
+    },
+    {
+      "type": "text",
+      "id": "cta_text",
+      "label": "Button text",
+      "default": "Add to Cart"
+    },
+    {
+      "type": "url",
+      "id": "cta_link",
+      "label": "Button link"
+    },
+    {
+      "type": "range",
+      "id": "button_text_size",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "label": "Text size",
+      "default": 16
+    },
+    {
+      "type": "color",
+      "id": "button_bg_color",
+      "label": "Background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "button_text_color",
+      "label": "Text",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "button_border_color",
+      "label": "Border",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "button_border_width",
+      "min": 0,
+      "max": 4,
+      "step": 1,
+      "unit": "px",
+      "label": "Border width",
+      "default": 2
+    },
+    {
+      "type": "range",
+      "id": "button_border_radius",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "label": "Border radius",
+      "default": 26
+    },
+    {
+      "type": "color",
+      "id": "button_hover_bg_color",
+      "label": "Hover background",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "button_hover_text_color",
+      "label": "Hover text",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "button_hover_border_color",
+      "label": "Hover border",
+      "default": "#000000"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Quantity CTA section"
+    }
+  ]
+}
 {% endschema %}
