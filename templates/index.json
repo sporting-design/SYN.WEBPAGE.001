@@ -29,7 +29,7 @@
         "slide_KLrfiE": {
           "type": "slide",
           "settings": {
-            "video_desktop": "shopify://files/videos/1210.mp4",
+            "video_desktop": "shopify://files/videos/0912(1).mp4",
             "video_mobile": "shopify://files/videos/IMG_7117.mov",
             "image_fallback": "shopify://shop_images/IMG_4227.jpg",
             "tagline": "Synapex",
@@ -43,7 +43,7 @@
         "slide_k8FDez": {
           "type": "slide",
           "settings": {
-            "video_desktop": "shopify://files/videos/copy_1C53D966-E79C-4A40-ACD9-A1098DD7F31C.MOV",
+            "video_desktop": "shopify://files/videos/1210.mp4",
             "video_mobile": "shopify://files/videos/copy_1C53D966-E79C-4A40-ACD9-A1098DD7F31C.MOV",
             "image_fallback": "shopify://shop_images/IMG_0672_1.jpg",
             "tagline": "SYNAPEX",
@@ -74,22 +74,22 @@
         "ai_gen_block_26d1bba_eaxnKK": {
           "type": "ai_gen_block_26d1bba",
           "settings": {
-            "image": "shopify://shop_images/sxs_landing_KT.png",
-            "image_fit": "cover",
-            "frame_background": "#000000",
+            "image": "shopify://shop_images/11101.png",
+            "image_fit": "contain",
+            "frame_background": "#ffffff",
             "frame_border_color": "#ffffff",
-            "frame_border_width": 2,
+            "frame_border_width": 0,
             "frame_border_radius": 0,
             "placeholder_background": "#000000",
             "desktop_width_percent": 100
           },
           "blocks": {}
         },
-        "image_eRqgh8": {
+        "image_zghUpT": {
           "type": "image",
           "name": "t:names.image",
           "settings": {
-            "image": "shopify://shop_images/Group_31_443d5cbc-dd49-4657-bb8a-1bfe2c8fa9bb.png",
+            "image": "shopify://shop_images/labimageSXKT.png",
             "link": "",
             "image_ratio": "adapt",
             "width": "fill",
@@ -98,7 +98,7 @@
             "custom_width_mobile": 100,
             "height": "fit",
             "border": "none",
-            "border_width": 1,
+            "border_width": 0,
             "border_opacity": 100,
             "border_radius": 0,
             "padding-block-start": 0,
@@ -111,7 +111,7 @@
       },
       "block_order": [
         "ai_gen_block_26d1bba_eaxnKK",
-        "image_eRqgh8"
+        "image_zghUpT"
       ],
       "settings": {
         "content_direction": "column",
@@ -125,7 +125,7 @@
         "section_width": "page-width",
         "section_height": "",
         "section_height_custom": 50,
-        "color_scheme": "scheme-6",
+        "color_scheme": "scheme-7",
         "background_media": "none",
         "video_position": "cover",
         "background_image_position": "cover",
@@ -144,31 +144,31 @@
     "product_selection_brutalist_new": {
       "type": "product-selection-brutalist",
       "settings": {
-        "headline": "ATHLETE ENGINEERING",
-        "box1_title": "SYNAPEX KT",
-        "box1_subtitle": "The tool to begin the work.",
+        "headline": "",
+        "box1_title": "SXKT",
+        "box1_subtitle": "",
         "box1_image": "shopify://shop_images/Group_29.png",
-        "box1_feature1": "1 Roll of Synapex Tape",
-        "box1_feature2": "The first step to silencing excuses",
-        "box1_feature3": "Feel the standard for yourself",
-        "box1_cta_text": "TAKE THE FIRST STEP",
+        "box1_feature1": "",
+        "box1_feature2": "",
+        "box1_feature3": "",
+        "box1_cta_text": "001 roll",
         "box1_link": "shopify://products/syn-black",
         "box2_badge": "BEST VALUE",
-        "box2_title": "buy SXS AIR",
+        "box2_title": "THE ATHLETE PACK",
         "box2_subtitle": "",
         "box2_image": "shopify://shop_images/Gemini_Generated_Image_iey8xdiey8xdiey8.png",
-        "box2_feature1": "3 Rolls of Synapex Tape",
-        "box2_feature2": "For consistent, daily training",
-        "box2_feature3": "Never run out, never make an excuse",
-        "box2_cta_text": "CHOOSE ATHLETE",
+        "box2_feature1": "",
+        "box2_feature2": "",
+        "box2_feature3": "",
+        "box2_cta_text": "| | |  roll",
         "box2_link": "shopify://products/synapex-tape-kt-performance-trio",
         "box3_title": "SYNAPEX 'AIR'",
-        "box3_subtitle": "Nasal dialator bond",
+        "box3_subtitle": "",
         "box3_image": "shopify://shop_images/Group_31.png",
-        "box3_feature1": "Mechanical Valve Dilation",
-        "box3_feature2": "+31% Airflow Capacity",
-        "box3_feature3": "Delay Hypoxic Failure",
-        "box3_cta_text": "UPGRADE INTAKE",
+        "box3_feature1": "",
+        "box3_feature2": "",
+        "box3_feature3": "",
+        "box3_cta_text": "BUY SXS AIR",
         "box3_link": "shopify://products/synapex-air"
       }
     },
