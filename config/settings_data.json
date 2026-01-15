@@ -48,8 +48,9 @@
     "variant_swatch_radius": 0,
     "variant_button_radius": 0,
     "variant_button_width": "equal-width-buttons",
+    "pev_text": "SHOP",
     "pev_link": "shopify://products/synapex-tape-kt-performance-trio",
-    "pev_bg_color": "#694e4e",
+    "pev_bg_color": "#000000",
     "pev_text_color": "#ffffff",
     "content_for_index": [],
     "blocks": {
