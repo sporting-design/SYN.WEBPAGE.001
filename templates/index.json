@@ -12,20 +12,6 @@
     "synapex_carousel_v5_G73PPg": {
       "type": "synapex-carousel-v5",
       "blocks": {
-        "slide_CmCVmA": {
-          "type": "slide",
-          "settings": {
-            "video_desktop": "shopify://files/videos/u9885441888_httpss.mj.run9YcEdLow1e8_Cinematic_ultra-realisti_3e31de11-0817-4ecc-ab6e-12199b650da3_2.mp4",
-            "video_mobile": "shopify://files/videos/1231.mov",
-            "image_fallback": "shopify://shop_images/Group_6.png",
-            "tagline": "",
-            "heading": "SXS AIR - NASAL STRIPS",
-            "subheading": "+31% Oxygen Instantly.",
-            "button_label": "UPGRADE INTAKE",
-            "button_link": "shopify://products/synapex-air",
-            "text_position": "top-left"
-          }
-        },
         "slide_KLrfiE": {
           "type": "slide",
           "settings": {
@@ -37,6 +23,20 @@
             "subheading": "Athlete-Engineering",
             "button_label": "Shop Performance",
             "button_link": "",
+            "text_position": "top-left"
+          }
+        },
+        "slide_CmCVmA": {
+          "type": "slide",
+          "settings": {
+            "video_desktop": "shopify://files/videos/u9885441888_httpss.mj.run9YcEdLow1e8_Cinematic_ultra-realisti_3e31de11-0817-4ecc-ab6e-12199b650da3_2.mp4",
+            "video_mobile": "shopify://files/videos/1231.mov",
+            "image_fallback": "shopify://shop_images/Group_6.png",
+            "tagline": "",
+            "heading": "SXS AIR - NASAL STRIPS",
+            "subheading": "+31% Oxygen Instantly.",
+            "button_label": "UPGRADE INTAKE",
+            "button_link": "shopify://products/synapex-air",
             "text_position": "top-left"
           }
         },
@@ -56,8 +56,8 @@
         }
       },
       "block_order": [
-        "slide_CmCVmA",
         "slide_KLrfiE",
+        "slide_CmCVmA",
         "slide_k8FDez"
       ],
       "name": "Synapex Carousel V5",
