@@ -11,24 +11,6 @@
   "sections": {
     "blocks_XiY3nd": {
       "type": "_blocks",
-      "blocks": {
-        "ai_gen_block_fdfbd03_XdQpkD": {
-          "type": "ai_gen_block_fdfbd03",
-          "settings": {
-            "image": "shopify://shop_images/1231.png",
-            "image_fit": "fill",
-            "image_position": "center",
-            "frame_height": 400,
-            "mobile_frame_height": 300,
-            "border_radius": 0,
-            "background_color": "#f4f4f4"
-          },
-          "blocks": {}
-        }
-      },
-      "block_order": [
-        "ai_gen_block_fdfbd03_XdQpkD"
-      ],
       "name": "Image frame",
       "settings": {
         "content_direction": "column",
