@@ -1,6 +1,588 @@
+{% doc %}
+  @prompt
+    make a section where there is an image section on one side with text and a button on the other side, and allow for me to add multiple rows of alternating sides
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-image-text-rows-{{ ai_gen_id }} {
+    display: block;
+    width: 100%;
+  }
+
+  .ai-image-text-row-{{ ai_gen_id }} {
+    display: flex;
+    align-items: center;
+    gap: {{ block.settings.gap }}px;
+    margin-bottom: {{ block.settings.row_spacing }}px;
+    width: 100%;
+  }
+
+  .ai-image-text-row-{{ ai_gen_id }}:last-child {
+    margin-bottom: 0;
+  }
+
+  .ai-image-text-row-{{ ai_gen_id }}--reverse {
+    flex-direction: row-reverse;
+  }
+
+  .ai-image-text-image-wrapper-{{ ai_gen_id }} {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .ai-image-text-image-{{ ai_gen_id }} {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: {{ block.settings.image_border_radius }}px;
+  }
+
+  .ai-image-text-placeholder-{{ ai_gen_id }} {
+    position: relative;
+    width: 100%;
+    aspect-ratio: {{ block.settings.image_aspect_ratio }};
+    background-color: #f4f4f4;
+    border-radius: {{ block.settings.image_border_radius }}px;
+    overflow: hidden;
+  }
+
+  .ai-image-text-placeholder-{{ ai_gen_id }} svg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .ai-image-text-content-{{ ai_gen_id }} {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .ai-image-text-heading-{{ ai_gen_id }} {
+    margin: 0 0 {{ block.settings.heading_spacing }}px;
+    color: {{ block.settings.heading_color }};
+    font-size: {{ block.settings.heading_size }}px;
+  }
+
+  .ai-image-text-text-{{ ai_gen_id }} {
+    margin: 0 0 {{ block.settings.text_spacing }}px;
+    color: {{ block.settings.text_color }};
+    font-size: {{ block.settings.text_size }}px;
+    line-height: 1.6;
+  }
+
+  .ai-image-text-button-{{ ai_gen_id }} {
+    display: inline-block;
+    padding: {{ block.settings.button_padding_vertical }}px {{ block.settings.button_padding_horizontal }}px;
+    background-color: {{ block.settings.button_bg_color }};
+    color: {{ block.settings.button_text_color }};
+    text-decoration: none;
+    border-radius: {{ block.settings.button_border_radius }}px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    font-weight: 600;
+  }
+
+  .ai-image-text-button-{{ ai_gen_id }}:hover {
+    background-color: {{ block.settings.button_hover_bg_color }};
+    color: {{ block.settings.button_hover_text_color }};
+  }
+
+  @media screen and (max-width: 749px) {
+    .ai-image-text-row-{{ ai_gen_id }},
+    .ai-image-text-row-{{ ai_gen_id }}--reverse {
+      flex-direction: column;
+      gap: {{ block.settings.mobile_gap }}px;
+    }
+
+    .ai-image-text-heading-{{ ai_gen_id }} {
+      font-size: {{ block.settings.heading_size | times: 0.8 }}px;
+    }
+
+    .ai-image-text-text-{{ ai_gen_id }} {
+      font-size: {{ block.settings.text_size | times: 0.9 }}px;
+    }
+  }
+{% endstyle %}
+
+<div class="ai-image-text-rows-{{ ai_gen_id }}" {{ block.shopify_attributes }}>
+  {% for i in (1..6) %}
+    {% liquid
+      assign row_enabled_key = 'row_' | append: i | append: '_enabled'
+      assign row_image_key = 'row_' | append: i | append: '_image'
+      assign row_heading_key = 'row_' | append: i | append: '_heading'
+      assign row_text_key = 'row_' | append: i | append: '_text'
+      assign row_button_text_key = 'row_' | append: i | append: '_button_text'
+      assign row_button_link_key = 'row_' | append: i | append: '_button_link'
+
+      assign row_enabled = block.settings[row_enabled_key]
+      assign row_image = block.settings[row_image_key]
+      assign row_heading = block.settings[row_heading_key]
+      assign row_text = block.settings[row_text_key]
+      assign row_button_text = block.settings[row_button_text_key]
+      assign row_button_link = block.settings[row_button_link_key]
+
+      assign is_even = i | modulo: 2
+      assign should_reverse = false
+      if block.settings.alternate_layout and is_even == 0
+        assign should_reverse = true
+      endif
+    %}
+
+    {% if row_enabled %}
+      <div class="ai-image-text-row-{{ ai_gen_id }} {% if should_reverse %}ai-image-text-row-{{ ai_gen_id }}--reverse{% endif %}">
+        <div class="ai-image-text-image-wrapper-{{ ai_gen_id }}">
+          {% if row_image %}
+            <img
+              src="{{ row_image | image_url: width: 1200 }}"
+              alt="{{ row_image.alt | escape }}"
+              loading="lazy"
+              width="{{ row_image.width }}"
+              height="{{ row_image.height }}"
+              class="ai-image-text-image-{{ ai_gen_id }}"
+              style="aspect-ratio: {{ block.settings.image_aspect_ratio }};"
+            >
+          {% else %}
+            <div class="ai-image-text-placeholder-{{ ai_gen_id }}">
+              {{ 'image' | placeholder_svg_tag }}
+            </div>
+          {% endif %}
+        </div>
+
+        <div class="ai-image-text-content-{{ ai_gen_id }}">
+          {% if row_heading != blank %}
+            <h2 class="ai-image-text-heading-{{ ai_gen_id }}">{{ row_heading }}</h2>
+          {% endif %}
+
+          {% if row_text != blank %}
+            <div class="ai-image-text-text-{{ ai_gen_id }}">{{ row_text }}</div>
+          {% endif %}
+
+          {% if row_button_text != blank and row_button_link != blank %}
+            <a href="{{ row_button_link }}" class="ai-image-text-button-{{ ai_gen_id }}">
+              {{ row_button_text }}
+            </a>
+          {% endif %}
+        </div>
+      </div>
+    {% endif %}
+  {% endfor %}
+</div>
+
 {% schema %}
- {
-   "name": "AI_Block",
-   "tag": "shopify-ai-generated-block"
- }
+{
+  "name": "Image and text rows",
+  "tag": null,
+  "settings": [
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "checkbox",
+      "id": "alternate_layout",
+      "label": "Alternate image position",
+      "default": true,
+      "info": "Image will alternate between left and right sides"
+    },
+    {
+      "type": "range",
+      "id": "gap",
+      "min": 20,
+      "max": 100,
+      "step": 10,
+      "unit": "px",
+      "label": "Gap between image and text",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "mobile_gap",
+      "min": 10,
+      "max": 60,
+      "step": 5,
+      "unit": "px",
+      "label": "Mobile gap",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "row_spacing",
+      "min": 20,
+      "max": 120,
+      "step": 10,
+      "unit": "px",
+      "label": "Space between rows",
+      "default": 60
+    },
+    {
+      "type": "header",
+      "content": "Image"
+    },
+    {
+      "type": "select",
+      "id": "image_aspect_ratio",
+      "label": "Aspect ratio",
+      "options": [
+        { "value": "1/1", "label": "Square (1:1)" },
+        { "value": "4/3", "label": "Landscape (4:3)" },
+        { "value": "16/9", "label": "Wide (16:9)" },
+        { "value": "3/4", "label": "Portrait (3:4)" }
+      ],
+      "default": "4/3"
+    },
+    {
+      "type": "range",
+      "id": "image_border_radius",
+      "min": 0,
+      "max": 40,
+      "step": 4,
+      "unit": "px",
+      "label": "Border radius",
+      "default": 0
+    },
+    {
+      "type": "header",
+      "content": "Text style"
+    },
+    {
+      "type": "range",
+      "id": "heading_size",
+      "min": 16,
+      "max": 72,
+      "step": 4,
+      "unit": "px",
+      "label": "Heading size",
+      "default": 32
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading color",
+      "default": "#000000"
+    },
+    {
+      "type": "range",
+      "id": "heading_spacing",
+      "min": 8,
+      "max": 40,
+      "step": 4,
+      "unit": "px",
+      "label": "Heading bottom spacing",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "text_size",
+      "min": 12,
+      "max": 24,
+      "step": 2,
+      "unit": "px",
+      "label": "Text size",
+      "default": 16
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text color",
+      "default": "#000000"
+    },
+    {
+      "type": "range",
+      "id": "text_spacing",
+      "min": 8,
+      "max": 40,
+      "step": 4,
+      "unit": "px",
+      "label": "Text bottom spacing",
+      "default": 20
+    },
+    {
+      "type": "header",
+      "content": "Button style"
+    },
+    {
+      "type": "color",
+      "id": "button_bg_color",
+      "label": "Background",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "button_text_color",
+      "label": "Text",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "button_hover_bg_color",
+      "label": "Hover background",
+      "default": "#333333"
+    },
+    {
+      "type": "color",
+      "id": "button_hover_text_color",
+      "label": "Hover text",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "button_padding_vertical",
+      "min": 8,
+      "max": 24,
+      "step": 2,
+      "unit": "px",
+      "label": "Vertical padding",
+      "default": 12
+    },
+    {
+      "type": "range",
+      "id": "button_padding_horizontal",
+      "min": 16,
+      "max": 48,
+      "step": 4,
+      "unit": "px",
+      "label": "Horizontal padding",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "button_border_radius",
+      "min": 0,
+      "max": 40,
+      "step": 4,
+      "unit": "px",
+      "label": "Border radius",
+      "default": 4
+    },
+    {
+      "type": "header",
+      "content": "Row 1"
+    },
+    {
+      "type": "checkbox",
+      "id": "row_1_enabled",
+      "label": "Enable row 1",
+      "default": true
+    },
+    {
+      "type": "image_picker",
+      "id": "row_1_image",
+      "label": "Image"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "row_1_heading",
+      "label": "Heading",
+      "default": "Premium Performance"
+    },
+    {
+      "type": "richtext",
+      "id": "row_1_text",
+      "label": "Text",
+      "default": "<p>Experience the difference with our medical-grade adhesion technology designed for athletes and clinical professionals.</p>"
+    },
+    {
+      "type": "text",
+      "id": "row_1_button_text",
+      "label": "Button text",
+      "default": "Learn more"
+    },
+    {
+      "type": "url",
+      "id": "row_1_button_link",
+      "label": "Button link"
+    },
+    {
+      "type": "header",
+      "content": "Row 2"
+    },
+    {
+      "type": "checkbox",
+      "id": "row_2_enabled",
+      "label": "Enable row 2",
+      "default": true
+    },
+    {
+      "type": "image_picker",
+      "id": "row_2_image",
+      "label": "Image"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "row_2_heading",
+      "label": "Heading",
+      "default": "Clinical Excellence"
+    },
+    {
+      "type": "richtext",
+      "id": "row_2_text",
+      "label": "Text",
+      "default": "<p>Trusted by healthcare professionals for superior support and reliability in demanding environments.</p>"
+    },
+    {
+      "type": "text",
+      "id": "row_2_button_text",
+      "label": "Button text",
+      "default": "Shop now"
+    },
+    {
+      "type": "url",
+      "id": "row_2_button_link",
+      "label": "Button link"
+    },
+    {
+      "type": "header",
+      "content": "Row 3"
+    },
+    {
+      "type": "checkbox",
+      "id": "row_3_enabled",
+      "label": "Enable row 3",
+      "default": false
+    },
+    {
+      "type": "image_picker",
+      "id": "row_3_image",
+      "label": "Image"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "row_3_heading",
+      "label": "Heading",
+      "default": "Row 3 heading"
+    },
+    {
+      "type": "richtext",
+      "id": "row_3_text",
+      "label": "Text",
+      "default": "<p>Add your content here.</p>"
+    },
+    {
+      "type": "text",
+      "id": "row_3_button_text",
+      "label": "Button text"
+    },
+    {
+      "type": "url",
+      "id": "row_3_button_link",
+      "label": "Button link"
+    },
+    {
+      "type": "header",
+      "content": "Row 4"
+    },
+    {
+      "type": "checkbox",
+      "id": "row_4_enabled",
+      "label": "Enable row 4",
+      "default": false
+    },
+    {
+      "type": "image_picker",
+      "id": "row_4_image",
+      "label": "Image"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "row_4_heading",
+      "label": "Heading",
+      "default": "Row 4 heading"
+    },
+    {
+      "type": "richtext",
+      "id": "row_4_text",
+      "label": "Text",
+      "default": "<p>Add your content here.</p>"
+    },
+    {
+      "type": "text",
+      "id": "row_4_button_text",
+      "label": "Button text"
+    },
+    {
+      "type": "url",
+      "id": "row_4_button_link",
+      "label": "Button link"
+    },
+    {
+      "type": "header",
+      "content": "Row 5"
+    },
+    {
+      "type": "checkbox",
+      "id": "row_5_enabled",
+      "label": "Enable row 5",
+      "default": false
+    },
+    {
+      "type": "image_picker",
+      "id": "row_5_image",
+      "label": "Image"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "row_5_heading",
+      "label": "Heading",
+      "default": "Row 5 heading"
+    },
+    {
+      "type": "richtext",
+      "id": "row_5_text",
+      "label": "Text",
+      "default": "<p>Add your content here.</p>"
+    },
+    {
+      "type": "text",
+      "id": "row_5_button_text",
+      "label": "Button text"
+    },
+    {
+      "type": "url",
+      "id": "row_5_button_link",
+      "label": "Button link"
+    },
+    {
+      "type": "header",
+      "content": "Row 6"
+    },
+    {
+      "type": "checkbox",
+      "id": "row_6_enabled",
+      "label": "Enable row 6",
+      "default": false
+    },
+    {
+      "type": "image_picker",
+      "id": "row_6_image",
+      "label": "Image"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "row_6_heading",
+      "label": "Heading",
+      "default": "Row 6 heading"
+    },
+    {
+      "type": "richtext",
+      "id": "row_6_text",
+      "label": "Text",
+      "default": "<p>Add your content here.</p>"
+    },
+    {
+      "type": "text",
+      "id": "row_6_button_text",
+      "label": "Button text"
+    },
+    {
+      "type": "url",
+      "id": "row_6_button_link",
+      "label": "Button link"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Image and text rows"
+    }
+  ]
+}
 {% endschema %}
