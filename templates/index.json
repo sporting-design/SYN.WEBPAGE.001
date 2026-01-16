@@ -19,11 +19,11 @@
             "video_mobile": "shopify://files/videos/1231.mov",
             "image_fallback": "shopify://shop_images/Group_6.png",
             "tagline": "",
-            "heading": "FOR ATHLETES",
-            "subheading": "31% More Air < $1/pc",
+            "heading": "SYNAPEX AIR - NASAL STRIPS",
+            "subheading": "+31% Oxygen Instantly.",
             "button_label": "UPGRADE INTAKE",
             "button_link": "shopify://products/synapex-air",
-            "text_position": "bottom-left"
+            "text_position": "top-left"
           }
         },
         "slide_KLrfiE": {
@@ -32,12 +32,12 @@
             "video_desktop": "shopify://files/videos/0912(1).mp4",
             "video_mobile": "shopify://files/videos/0912(1).mp4",
             "image_fallback": "shopify://shop_images/IMG_4227.jpg",
-            "tagline": "Synapex",
-            "heading": "GET MOVING",
-            "subheading": "Engineered For Movement.",
-            "button_label": "",
+            "tagline": "",
+            "heading": "SYNAPEX KT - EXOSKELETAL TAPE",
+            "subheading": "Athlete-Engineering",
+            "button_label": "KT",
             "button_link": "",
-            "text_position": "bottom-left"
+            "text_position": "top-left"
           }
         },
         "slide_k8FDez": {
@@ -51,7 +51,7 @@
             "subheading": "Engineered For Movement.",
             "button_label": "",
             "button_link": "",
-            "text_position": "bottom-left"
+            "text_position": "center"
           }
         }
       },
